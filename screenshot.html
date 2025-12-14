@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screenshot Capture - Mobile Viewer</title>
+    <meta name="description" content="Capture screenshots of any website in mobile or desktop view. Free website screenshot tool.">
+    <meta name="keywords" content="screenshot tool, website screenshot, capture website, screen capture">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mobileviewer.github.io/screenshot.html">
+    
+    <meta property="og:title" content="Screenshot Capture - Mobile Viewer">
+    <meta property="og:description" content="Capture screenshots of any website in mobile or desktop view">
+    <meta property="og:url" content="https://mobileviewer.github.io/screenshot.html">
+    <meta property="og:type" content="website">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="cursor-glow"></div>
+    <div class="floating-orbs">
+        <div class="orb"></div>
+        <div class="orb"></div>
+        <div class="orb"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">Mobile<span class="gradient-text">Viewer</span></a>
+            <a href="index.html" class="nav-link">← Back to Home</a>
+        </div>
+    </nav>
+
+    <main class="tool-page">
+        <div class="container">
+            <h1 class="page-title gradient-text">Screenshot Capture</h1>
+            <p class="page-subtitle">Capture screenshots of any website in different device views</p>
+
+            <div class="screenshot-container">
+                <div class="screenshot-controls">
+                    <input type="url" id="screenshotUrl" class="url-input" placeholder="Enter website URL">
+                    
+                    <div class="screenshot-options">
+                        <label>
+                            Device:
+                            <select id="deviceType" class="qr-select">
+                                <option value="desktop">Desktop (1920x1080)</option>
+                                <option value="tablet">Tablet (768x1024)</option>
+                                <option value="mobile">Mobile (375x667)</option>
+                            </select>
+                        </label>
+                        
+                        <label>
+                            Format:
+                            <select id="imageFormat" class="qr-select">
+                                <option value="png">PNG</option>
+                                <option value="jpg">JPG</option>
+                            </select>
+                        </label>
+                    </div>
+
+                    <button id="captureBtn" class="btn btn-primary">Capture Screenshot</button>
+                </div>
+
+                <div class="screenshot-preview">
+                    <div id="screenshotResult" class="screenshot-result">
+                        <p class="qr-placeholder">Enter a URL and click Capture Screenshot</p>
+                    </div>
+                    <button id="downloadScreenshot" class="btn btn-secondary" style="display: none;">Download Screenshot</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>About</h3>
+                <p>Mobile Viewer - Test websites across all devices</p>
+            </div>
+            <div class="footer-section">
+                <p>&copy; 2025 Mobile Viewer. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        const screenshotUrl = document.getElementById('screenshotUrl');
+        const deviceType = document.getElementById('deviceType');
+        const imageFormat = document.getElementById('imageFormat');
+        const captureBtn = document.getElementById('captureBtn');
+        const screenshotResult = document.getElementById('screenshotResult');
+        const downloadScreenshot = document.getElementById('downloadScreenshot');
+
+        captureBtn.addEventListener('click', captureScreenshot);
+        screenshotUrl.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') captureScreenshot();
+        });
+
+        function captureScreenshot() {
+            let url = screenshotUrl.value.trim();
+            if (!url) {
+                alert('Please enter a URL');
+                return;
+            }
+            if (!url.startsWith('http://') && !url.startsWith('https://')) {
+                url = 'https://' + url;
+            }
+
+            const dimensions = {
+                desktop: '1920x1080',
+                tablet: '768x1024',
+                mobile: '375x667'
+            };
+
+            const size = dimensions[deviceType.value];
+            const format = imageFormat.value;
+            
+            const screenshotApiUrl = `https://api.screenshotmachine.com/?key=demo&url=${encodeURIComponent(url)}&dimension=${size}&format=${format}`;
+            
+            screenshotResult.innerHTML = `
+                <div class="loading-state">Capturing screenshot...</div>
+                <img src="${screenshotApiUrl}" alt="Website Screenshot" class="screenshot-image" onload="this.previousElementSibling.style.display='none'">
+            `;
+            downloadScreenshot.style.display = 'block';
+            
+            downloadScreenshot.onclick = () => {
+                const link = document.createElement('a');
+                link.href = screenshotApiUrl;
+                link.download = `screenshot.${format}`;
+                link.click();
+            };
+        }
+    </script>
+</body>
+</html>
