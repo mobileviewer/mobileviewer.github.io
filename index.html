@@ -1,40 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MBJB77SQ0K"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MBJB77SQ0K"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', 'G-MBJB77SQ0K');
+    gtag('config', 'G-MBJB77SQ0K');
 </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mobile Viewer - Test Your Website on Any Device | Responsive Design Tools</title>
+    <title>Mobile Viewer - Test Your Website on Any Device</title>
     
-    <!-- SEO Meta Tags -->
     <meta name="description" content="Mobile Viewer is a powerful tool to test and preview your website on mobile and desktop devices. Includes responsive checker, QR code generator, screenshot tool, and more.">
     <meta name="keywords" content="mobile viewer, responsive design, website testing, mobile preview, desktop preview, QR code generator, responsive checker">
     <meta name="author" content="Mobile Viewer">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://mobileviewer.github.io/">
     
-    <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Mobile Viewer - Test Your Website on Any Device">
     <meta property="og:description" content="Powerful tools to test and preview your website on mobile and desktop devices instantly.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://mobileviewer.github.io/">
     <meta property="og:image" content="https://mobileviewer.github.io/og-image.jpg">
     
-    <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Mobile Viewer - Test Your Website on Any Device">
     <meta name="twitter:description" content="Powerful tools to test and preview your website on mobile and desktop devices instantly.">
     <meta name="twitter:image" content="https://mobileviewer.github.io/twitter-image.jpg">
     
-    <!-- Schema Markup -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -49,18 +44,44 @@
         "price": "0",
         "priceCurrency": "USD"
       },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "ratingCount": "1247"
-      }
+      "tool": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "Responsive Checker",
+          "description": "Test your website across multiple screen sizes and resolutions instantly."
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "QR Code Generator",
+          "description": "Generate QR codes for any URL and test mobile access instantly."
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "Screenshot Capture",
+          "description": "Capture high-quality screenshots of websites on any device size."
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "Performance Analyzer",
+          "description": "Analyze page load times and performance metrics across devices."
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "User Agent Switcher",
+          "description": "Test how your website appears to different browsers and crawlers."
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "Page Speed Insights",
+          "description": "Get detailed insights into your website's loading speed and optimization."
+        }
+      ]
     }
     </script>
     
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
             <a href="#" class="logo">
@@ -77,7 +98,6 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-bg">
             <div class="grid-overlay"></div>
@@ -127,7 +147,6 @@
         </div>
     </section>
 
-    <!-- Main Viewer Section -->
     <section id="viewer" class="viewer-section">
         <div class="container">
             <div class="section-header">
@@ -196,7 +215,6 @@
         </div>
     </section>
 
-    <!-- Tools Section -->
     <section id="tools" class="tools-section">
         <div class="container">
             <div class="section-header">
@@ -215,7 +233,7 @@
                     </div>
                     <h3 class="tool-title">Responsive Checker</h3>
                     <p class="tool-description">Test your website across multiple screen sizes and resolutions instantly</p>
-                    <button class="tool-button" onclick="openTool('responsive')">Launch Tool</button>
+                    <button class="tool-button" onclick="openTool('responsive')">Use Tool</button>
                 </div>
 
                 <div class="tool-card">
@@ -230,7 +248,7 @@
                     </div>
                     <h3 class="tool-title">QR Code Generator</h3>
                     <p class="tool-description">Generate QR codes for any URL and test mobile access instantly</p>
-                    <button class="tool-button" onclick="openTool('qrcode')">Launch Tool</button>
+                    <button class="tool-button" onclick="openTool('qrcode')">Use Tool</button>
                 </div>
 
                 <div class="tool-card">
@@ -242,7 +260,7 @@
                     </div>
                     <h3 class="tool-title">Screenshot Capture</h3>
                     <p class="tool-description">Capture high-quality screenshots of websites on any device size</p>
-                    <button class="tool-button" onclick="openTool('screenshot')">Launch Tool</button>
+                    <button class="tool-button" onclick="openTool('screenshot')">Use Tool</button>
                 </div>
 
                 <div class="tool-card">
@@ -254,7 +272,7 @@
                     </div>
                     <h3 class="tool-title">Performance Analyzer</h3>
                     <p class="tool-description">Analyze page load times and performance metrics across devices</p>
-                    <button class="tool-button" onclick="openTool('performance')">Launch Tool</button>
+                    <button class="tool-button" onclick="openTool('performance')">Use Tool</button>
                 </div>
 
                 <div class="tool-card">
@@ -269,7 +287,7 @@
                     </div>
                     <h3 class="tool-title">User Agent Switcher</h3>
                     <p class="tool-description">Test how your website appears to different browsers and crawlers</p>
-                    <button class="tool-button" onclick="openTool('useragent')">Launch Tool</button>
+                    <button class="tool-button" onclick="openTool('useragent')">Use Tool</button>
                 </div>
 
                 <div class="tool-card">
@@ -281,13 +299,12 @@
                     </div>
                     <h3 class="tool-title">Page Speed Insights</h3>
                     <p class="tool-description">Get detailed insights into your website's loading speed and optimization</p>
-                    <button class="tool-button" onclick="openTool('pagespeed')">Launch Tool</button>
+                    <button class="tool-button" onclick="openTool('pagespeed')">Use Tool</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Features Section -->
     <section id="features" class="features-section">
         <div class="container">
             <div class="section-header">
@@ -336,7 +353,6 @@
         </div>
     </section>
 
-    <!-- How It Works Section -->
     <section id="how-it-works" class="how-it-works-section">
         <div class="container">
             <div class="section-header">
@@ -409,7 +425,6 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
             <div class="cta-card">
@@ -426,7 +441,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
