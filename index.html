@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Viewer - Test Your Website on Any Device | Responsive Design Tools</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Mobile Viewer is a powerful tool to test and preview your website on mobile and desktop devices. Includes responsive checker, QR code generator, screenshot tool, and more.">
+    <meta name="keywords" content="mobile viewer, responsive design, website testing, mobile preview, desktop preview, QR code generator, responsive checker">
+    <meta name="author" content="Mobile Viewer">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mobileviewer.github.io/">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Mobile Viewer - Test Your Website on Any Device">
+    <meta property="og:description" content="Powerful tools to test and preview your website on mobile and desktop devices instantly.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mobileviewer.github.io/">
+    <meta property="og:image" content="https://mobileviewer.github.io/og-image.jpg">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Mobile Viewer - Test Your Website on Any Device">
+    <meta name="twitter:description" content="Powerful tools to test and preview your website on mobile and desktop devices instantly.">
+    <meta name="twitter:image" content="https://mobileviewer.github.io/twitter-image.jpg">
+    
+    <!-- Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Mobile Viewer",
+      "url": "https://mobileviewer.github.io/",
+      "description": "Test and preview your website on mobile and desktop devices with powerful responsive design tools",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "ratingCount": "1247"
+      }
+    }
+    </script>
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="#" class="logo">
+                <span class="logo-icon">◢</span>
+                <span class="logo-text">Mobile<span class="highlight">Viewer</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#tools">Tools</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+            </ul>
+            <button class="cta-button">Get Started</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg">
+            <div class="grid-overlay"></div>
+            <div class="glow-orb orb-1"></div>
+            <div class="glow-orb orb-2"></div>
+        </div>
+        <div class="container hero-content">
+            <div class="hero-text">
+                <span class="badge">Next-Gen Device Testing</span>
+                <h1 class="hero-title">
+                    View any website on
+                    <span class="gradient-text">any device</span>
+                </h1>
+                <p class="hero-description">
+                    Experience the future of responsive design testing. Preview, test, and optimize your websites across mobile and desktop platforms instantly with our advanced viewing tools.
+                </p>
+                <div class="hero-actions">
+                    <button class="primary-button" onclick="scrollToViewer()">
+                        <span>Launch Viewer</span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M7.5 5L12.5 10L7.5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                    <button class="secondary-button">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="2"/>
+                            <path d="M8 7L13 10L8 13V7Z" fill="currentColor"/>
+                        </svg>
+                        <span>Watch Demo</span>
+                    </button>
+                </div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-number">1M+</div>
+                        <div class="stat-label">Tests Run</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50K+</div>
+                        <div class="stat-label">Active Users</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">99.9%</div>
+                        <div class="stat-label">Accuracy</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Viewer Section -->
+    <section id="viewer" class="viewer-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Core Feature</span>
+                <h2 class="section-title">Device Preview</h2>
+                <p class="section-description">Enter any URL and instantly preview it on mobile or desktop devices</p>
+            </div>
+
+            <div class="viewer-card">
+                <div class="viewer-controls">
+                    <input type="text" id="urlInput" placeholder="Enter website URL (e.g., https://example.com)" class="url-input">
+                    <div class="device-toggle">
+                        <button class="toggle-btn active" data-device="mobile" onclick="switchDevice('mobile')">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <rect x="5" y="2" width="10" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                                <path d="M9 15H11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                            <span>Mobile</span>
+                        </button>
+                        <button class="toggle-btn" data-device="desktop" onclick="switchDevice('desktop')">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <rect x="2" y="3" width="16" height="11" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                                <path d="M7 17H13M10 14V17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                            <span>Desktop</span>
+                        </button>
+                    </div>
+                    <button class="load-button" onclick="loadURL()">
+                        <span>Load</span>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                            <path d="M14 8C14 11.3137 11.3137 14 8 14C4.68629 14 2 11.3137 2 8C2 4.68629 4.68629 2 8 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M8 2V6L10 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="device-frame mobile-frame active" id="mobileFrame">
+                    <div class="device-screen">
+                        <div class="device-notch"></div>
+                        <iframe id="mobileIframe" src="" frameborder="0"></iframe>
+                        <div class="loading-overlay" id="mobileLoading">
+                            <div class="spinner"></div>
+                            <p>Loading preview...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="device-frame desktop-frame" id="desktopFrame">
+                    <div class="device-screen">
+                        <div class="browser-bar">
+                            <div class="browser-dots">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <div class="browser-url" id="browserUrl">about:blank</div>
+                        </div>
+                        <iframe id="desktopIframe" src="" frameborder="0"></iframe>
+                        <div class="loading-overlay" id="desktopLoading">
+                            <div class="spinner"></div>
+                            <p>Loading preview...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section id="tools" class="tools-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Power Tools</span>
+                <h2 class="section-title">Complete Testing Suite</h2>
+                <p class="section-description">Everything you need to test and optimize your web presence</p>
+            </div>
+
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <rect x="6" y="4" width="20" height="24" rx="2" stroke="currentColor" stroke-width="2"/>
+                            <path d="M10 8H22M10 12H18M10 16H22M10 20H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="tool-title">Responsive Checker</h3>
+                    <p class="tool-description">Test your website across multiple screen sizes and resolutions instantly</p>
+                    <button class="tool-button" onclick="openTool('responsive')">Launch Tool</button>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <rect x="8" y="8" width="16" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
+                            <rect x="11" y="11" width="4" height="4" fill="currentColor"/>
+                            <rect x="17" y="11" width="4" height="4" fill="currentColor"/>
+                            <rect x="11" y="17" width="4" height="4" fill="currentColor"/>
+                            <rect x="17" y="17" width="4" height="4" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3 class="tool-title">QR Code Generator</h3>
+                    <p class="tool-description">Generate QR codes for any URL and test mobile access instantly</p>
+                    <button class="tool-button" onclick="openTool('qrcode')">Launch Tool</button>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <rect x="4" y="8" width="24" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
+                            <path d="M4 12H28M8 16H12M8 20H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="tool-title">Screenshot Capture</h3>
+                    <p class="tool-description">Capture high-quality screenshots of websites on any device size</p>
+                    <button class="tool-button" onclick="openTool('screenshot')">Launch Tool</button>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <path d="M6 10L16 4L26 10V22L16 28L6 22V10Z" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="16" cy="16" r="4" stroke="currentColor" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <h3 class="tool-title">Performance Analyzer</h3>
+                    <p class="tool-description">Analyze page load times and performance metrics across devices</p>
+                    <button class="tool-button" onclick="openTool('performance')">Launch Tool</button>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <rect x="4" y="6" width="24" height="20" rx="2" stroke="currentColor" stroke-width="2"/>
+                            <path d="M4 11H28M8 6V11M24 6V11" stroke="currentColor" stroke-width="2"/>
+                            <circle cx="12" cy="17" r="2" fill="currentColor"/>
+                            <circle cx="20" cy="17" r="2" fill="currentColor"/>
+                            <circle cx="16" cy="22" r="2" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3 class="tool-title">User Agent Switcher</h3>
+                    <p class="tool-description">Test how your website appears to different browsers and crawlers</p>
+                    <button class="tool-button" onclick="openTool('useragent')">Launch Tool</button>
+                </div>
+
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <path d="M28 16C28 22.6274 22.6274 28 16 28C9.37258 28 4 22.6274 4 16C4 9.37258 9.37258 4 16 4C19.0859 4 21.8929 5.19643 24 7.17157" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M16 8V16L22 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3 class="tool-title">Page Speed Insights</h3>
+                    <p class="tool-description">Get detailed insights into your website's loading speed and optimization</p>
+                    <button class="tool-button" onclick="openTool('pagespeed')">Launch Tool</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Why Choose Us</span>
+                <h2 class="section-title">Powerful Features</h2>
+                <p class="section-description">Built for developers, designers, and digital professionals</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-number">01</div>
+                    <h3 class="feature-title">Instant Preview</h3>
+                    <p class="feature-description">Load any website instantly without delays. Our optimized rendering engine provides real-time previews.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-number">02</div>
+                    <h3 class="feature-title">Multiple Devices</h3>
+                    <p class="feature-description">Test across various device types including phones, tablets, and desktops with accurate screen dimensions.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-number">03</div>
+                    <h3 class="feature-title">Developer Tools</h3>
+                    <p class="feature-description">Access professional-grade tools including responsive testing, QR generation, and performance analysis.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-number">04</div>
+                    <h3 class="feature-title">No Installation</h3>
+                    <p class="feature-description">100% browser-based solution. No downloads, no plugins, no hassle. Just open and start testing.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-number">05</div>
+                    <h3 class="feature-title">High Accuracy</h3>
+                    <p class="feature-description">Pixel-perfect rendering that accurately represents how your site will appear on real devices.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-number">06</div>
+                    <h3 class="feature-title">Free Forever</h3>
+                    <p class="feature-description">All core features are completely free. No hidden costs, no premium tiers, no limitations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Simple Process</span>
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-description">Get started in three easy steps</p>
+            </div>
+
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                            <rect x="8" y="8" width="24" height="24" rx="4" stroke="currentColor" stroke-width="2.5"/>
+                            <path d="M14 16H26M14 20H22M14 24H26" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <div class="step-number">Step 1</div>
+                    <h3 class="step-title">Enter URL</h3>
+                    <p class="step-description">Simply paste the website URL you want to test into the input field</p>
+                </div>
+
+                <div class="step-arrow">
+                    <svg width="60" height="24" viewBox="0 0 60 24" fill="none">
+                        <path d="M0 12H58M58 12L48 2M58 12L48 22" stroke="url(#arrow-gradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <defs>
+                            <linearGradient id="arrow-gradient" x1="0" y1="12" x2="58" y2="12" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#00F0FF"/>
+                                <stop offset="1" stop-color="#7B61FF"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                            <rect x="10" y="6" width="12" height="20" rx="2" stroke="currentColor" stroke-width="2.5"/>
+                            <rect x="6" y="10" width="28" height="18" rx="2" stroke="currentColor" stroke-width="2.5"/>
+                        </svg>
+                    </div>
+                    <div class="step-number">Step 2</div>
+                    <h3 class="step-title">Choose Device</h3>
+                    <p class="step-description">Select between mobile or desktop view to see your website in action</p>
+                </div>
+
+                <div class="step-arrow">
+                    <svg width="60" height="24" viewBox="0 0 60 24" fill="none">
+                        <path d="M0 12H58M58 12L48 2M58 12L48 22" stroke="url(#arrow-gradient2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <defs>
+                            <linearGradient id="arrow-gradient2" x1="0" y1="12" x2="58" y2="12" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#00F0FF"/>
+                                <stop offset="1" stop-color="#7B61FF"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-icon">
+                        <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+                            <circle cx="20" cy="20" r="12" stroke="currentColor" stroke-width="2.5"/>
+                            <path d="M14 20L18 24L26 16" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <div class="step-number">Step 3</div>
+                    <h3 class="step-title">Test & Optimize</h3>
+                    <p class="step-description">Interact with your site and identify any responsive design issues</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-card">
+                <div class="cta-glow"></div>
+                <h2 class="cta-title">Ready to test your website?</h2>
+                <p class="cta-description">Join thousands of developers and designers who trust Mobile Viewer for responsive testing</p>
+                <button class="cta-large-button" onclick="scrollToViewer()">
+                    <span>Start Testing Now</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-widget">
+                    <h4 class="widget-title">About</h4>
+                    <div class="footer-logo">
+                        <span class="logo-icon">◢</span>
+                        <span class="logo-text">Mobile<span class="highlight">Viewer</span></span>
+                    </div>
+                    <p class="widget-text">
+                        The ultimate platform for testing and previewing websites across all devices. Built for developers, designers, and digital professionals.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M15.751 2.5h2.241l-4.897 5.597L18.5 17.5h-4.508l-3.531-4.615L6.311 17.5H4.07l5.238-5.987L3.5 2.5h4.621l3.192 4.221L15.751 2.5z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="GitHub">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M10 0C4.477 0 0 4.477 0 10c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0110 4.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C17.137 18.163 20 14.418 20 10c0-5.523-4.477-10-10-10z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="LinkedIn">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M17.5 0h-15C1.119 0 0 1.119 0 2.5v15C0 18.881 1.119 20 2.5 20h15c1.381 0 2.5-1.119 2.5-2.5v-15C20 1.119 18.881 0 17.5 0zM6.25 17.5H3.125V7.5H6.25v10zM4.688 6.188A1.813 1.813 0 1 1 6.5 4.375a1.813 1.813 0 0 1-1.813 1.813zM17.5 17.5h-3.125v-5c0-1.206-.644-1.875-1.563-1.875-.956 0-1.562.719-1.562 1.875v5H8.125V7.5h3.125v1.406c.431-.806 1.344-1.656 2.813-1.656 1.875 0 3.438 1.125 3.438 3.75v6.5z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-widget">
+                    <h4 class="widget-title">Pages</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#viewer">Device Viewer</a></li>
+                        <li><a href="#tools">All Tools</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-widget">
+                    <h4 class="widget-title">Tools</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="openTool('responsive')">Responsive Checker</a></li>
+                        <li><a href="#" onclick="openTool('qrcode')">QR Code Generator</a></li>
+                        <li><a href="#" onclick="openTool('screenshot')">Screenshot Capture</a></li>
+                        <li><a href="#" onclick="openTool('performance')">Performance Analyzer</a></li>
+                        <li><a href="#" onclick="openTool('useragent')">User Agent Switcher</a></li>
+                        <li><a href="#" onclick="openTool('pagespeed')">Page Speed Insights</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-widget">
+                    <h4 class="widget-title">Newsletter</h4>
+                    <p class="widget-text">Subscribe to get updates on new features and tools</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Enter your email" required>
+                        <button type="submit">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M7.5 5L12.5 10L7.5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Mobile Viewer. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
