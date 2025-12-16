@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "QR Code Generator",
+  "url": "https://mobileviewer.github.io/qr-code-generator.html",
+  "description": "A free, browser-based QR code generator designed for developers to instantly test URLs on physical mobile devices.",
+  "applicationCategory": "WebApplication",
+  "operatingSystem": "Any",
+  "browserRequirements": "Requires JavaScript",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "description": "Free to use"
+  },
+  "author": {
+    "@type": "Organization",
+    "name": "Mobile Viewer",
+    "url": "https://mobileviewer.github.io/"
+  },
+  "isPartOf": {
+    "@type": "WebApplication",
+    "name": "Mobile Viewer",
+    "url": "https://mobileviewer.github.io/",
+    "description": "Test and preview your website on mobile and desktop devices with powerful responsive design tools"
+  },
+  "featureList": [
+    "Instant QR code generation from text or URL",
+    "Downloadable PNG support",
+    "Client-side processing (Privacy focused)",
+    "Dark mode interface"
+  ]
+}
+</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MBJB77SQ0K"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-MBJB77SQ0K');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator - Mobile Viewer Tools</title>
+    
+    <meta name="description" content="Free instant QR Code Generator. Create scannable QR codes for URLs, text, and wifi to test on mobile devices instantly.">
+    
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <style>
+        /* Page Specific Styles */
+        .tool-workspace {
+            padding: 6rem 0;
+            background: var(--bg-dark);
+            min-height: 60vh;
+        }
+
+        .qr-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .qr-controls {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .qr-display-area {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            width: fit-content;
+            margin: 0 auto;
+            min-width: 250px;
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        #qrcode img {
+            display: block;
+            margin: 0 auto;
+        }
+
+        .action-row {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .content-block {
+            padding: 4rem 0;
+            background: var(--bg-darker);
+        }
+
+        .text-content {
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--text-secondary);
+        }
+
+        .text-content h3 {
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            margin-top: 2rem;
+        }
+
+        .text-content p {
+            margin-bottom: 1rem;
+        }
+
+        .text-content ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .text-content li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">◢</span>
+                <span class="logo-text">Mobile<span class="highlight">Viewer</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#tools">Tools</a></li>
+                <li><a href="index.html#features">Features</a></li>
+            </ul>
+            <a href="index.html#viewer" class="cta-button">Open Viewer</a>
+        </div>
+    </nav>
+
+    <section class="hero" style="min-height: 50vh; padding-top: 120px;">
+        <div class="hero-bg">
+            <div class="grid-overlay"></div>
+            <div class="glow-orb orb-1" style="top: -20%; left: -10%;"></div>
+            <div class="glow-orb orb-2" style="bottom: 20%; right: -10%;"></div>
+        </div>
+        <div class="container hero-content" style="text-align: center;">
+            <span class="badge">Free Developer Tool</span>
+            <h1 class="hero-title">QR Code <span class="gradient-text">Generator</span></h1>
+            <p class="hero-description" style="margin: 0 auto 2rem;">
+                Instantly generate high-quality QR codes for your URLs to test on physical mobile devices.
+            </p>
+        </div>
+    </section>
+
+    <section class="tool-workspace">
+        <div class="container">
+            <div class="qr-card">
+                <div class="qr-controls">
+                    <input type="text" id="qrText" placeholder="Enter URL or Text here..." class="url-input">
+                    <button class="load-button" onclick="generateQR()">
+                        <span>Generate</span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M10 4V16M4 10H16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="qr-display-area">
+                    <div id="qrcode"></div>
+                </div>
+
+                <div class="action-row">
+                    <button class="secondary-button" onclick="downloadQR()">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M4 16v1a2 2 0 002 2h8a2 2 0 002-2v-1M10 12V4M10 12l-4-4m4 4l4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <span>Download PNG</span>
+                    </button>
+                    <button class="secondary-button" onclick="clearQR()">
+                        <span>Clear</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-block">
+        <div class="container">
+            <div class="text-content">
+                <h2>About This Tool</h2>
+                <p>
+                    The Mobile Viewer QR Code Generator is a simple, privacy-focused tool designed for developers and designers. It allows you to quickly transfer a URL from your desktop development environment to a physical mobile device without typing long addresses.
+                </p>
+
+                <h3>How to Use</h3>
+                <ol>
+                    <li><strong>Enter your content:</strong> Paste your website URL or type any text into the input field above.</li>
+                    <li><strong>Generate:</strong> Click the "Generate" button. The QR code will appear instantly.</li>
+                    <li><strong>Scan:</strong> Open your mobile phone's camera app or a QR scanner and point it at the screen.</li>
+                    <li><strong>Download (Optional):</strong> If you need to save the code for print or sharing, click "Download PNG".</li>
+                </ol>
+
+                <h3>Why use QR Codes for Testing?</h3>
+                <p>
+                    While browser-based emulators (like our <a href="index.html#viewer" style="color: var(--primary);">Mobile Viewer</a>) are excellent for layout testing, sometimes you need to test on real hardware to check:
+                </p>
+                <ul>
+                    <li>Touch responsiveness and gestures.</li>
+                    <li>Real-world performance and battery usage.</li>
+                    <li>Native browser behaviors (Safari iOS vs Chrome Android).</li>
+                    <li>Camera or gyroscope permissions.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-widget">
+                    <h4 class="widget-title">About</h4>
+                    <div class="footer-logo">
+                        <span class="logo-icon">◢</span>
+                        <span class="logo-text">Mobile<span class="highlight">Viewer</span></span>
+                    </div>
+                    <p class="widget-text">
+                        The ultimate platform for testing and previewing websites across all devices.
+                    </p>
+                </div>
+
+                <div class="footer-widget">
+                    <h4 class="widget-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="qr-code-generator.html">QR Generator</a></li>
+                        <li><a href="index.html#tools">All Tools</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Mobile Viewer. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize global variable
+        let qrcodeObj = null;
+
+        document.addEventListener("DOMContentLoaded", () => {
+            // Generate a default QR code on load (optional)
+            generateQR("https://mobileviewer.github.io/");
+
+            // Handle Enter Key
+            document.getElementById("qrText").addEventListener("keypress", (e) => {
+                if (e.key === "Enter") {
+                    generateQR();
+                }
+            });
+        });
+
+        function generateQR(defaultText) {
+            const input = document.getElementById("qrText");
+            const text = defaultText || input.value.trim();
+            const container = document.getElementById("qrcode");
+
+            if (!text) {
+                alert("Please enter text or a URL");
+                return;
+            }
+
+            // Clear previous QR
+            container.innerHTML = "";
+
+            // Create new QR
+            qrcodeObj = new QRCode(container, {
+                text: text,
+                width: 256,
+                height: 256,
+                colorDark : "#000000",
+                colorLight : "#ffffff",
+                correctLevel : QRCode.CorrectLevel.H
+            });
+            
+            // If it was a manual click (not default load), clear input focus
+            if(!defaultText) input.blur();
+        }
+
+        function downloadQR() {
+            const img = document.querySelector("#qrcode img");
+            if (img && img.src) {
+                const link = document.createElement("a");
+                link.href = img.src;
+                link.download = "qrcode.png";
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            } else {
+                alert("Please generate a QR code first.");
+            }
+        }
+
+        function clearQR() {
+            document.getElementById("qrText").value = "";
+            document.getElementById("qrcode").innerHTML = "";
+            qrcodeObj = null;
+        }
+    </script>
+
+</body>
+</html>
