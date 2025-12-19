@@ -115,23 +115,6 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 })
 
-// Tool launching functionality
-function openTool(toolName) {
-  const toolMessages = {
-    responsive:
-      "Responsive Checker: Test your website across multiple device sizes (320px, 375px, 768px, 1024px, 1440px). This feature is coming soon!",
-    qrcode:
-      "QR Code Generator: Generate QR codes for any URL to quickly test on mobile devices. Enter your URL above and we'll generate a scannable QR code!",
-    screenshot:
-      "Screenshot Capture: Take high-quality screenshots of any website in mobile or desktop view. This feature is in development!",
-    performance:
-      "Performance Analyzer: Get detailed insights into page load times, resource sizes, and optimization opportunities. Coming soon!",
-    useragent:
-      "User Agent Switcher: Test how your website appears to different browsers, devices, and search engine crawlers. Feature in development!",
-    pagespeed:
-      "Page Speed Insights: Comprehensive analysis of your website's speed and performance metrics. Powered by industry-standard tools. Coming soon!",
-  }
-
   alert(toolMessages[toolName] || "Tool launching...")
 
   // Scroll to viewer for demonstration
