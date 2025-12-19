@@ -3,13 +3,17 @@ let currentDevice = "mobile"
 
 // Smooth scroll to viewer section
 function scrollToViewer() {
-  document.getElementById("viewer").scrollIntoView({
-    behavior: "smooth",
-  })
+  const viewer = document.getElementById("viewer");
+  if (viewer) {
+    viewer.scrollIntoView({
+      behavior: "smooth",
+    })
+  }
 
   // Focus on URL input after scroll
   setTimeout(() => {
-    document.getElementById("urlInput").focus()
+    const urlInput = document.getElementById("urlInput");
+    if (urlInput) urlInput.focus();
   }, 800)
 }
 
@@ -66,7 +70,7 @@ function loadURL() {
   const loadingOverlay =
     currentDevice === "mobile" ? document.getElementById("mobileLoading") : document.getElementById("desktopLoading")
 
-  loadingOverlay.classList.add("show")
+  if (loadingOverlay) loadingOverlay.classList.add("show")
 
   // Load URL in appropriate iframe
   const iframe =
@@ -74,52 +78,54 @@ function loadURL() {
 
   // Update browser URL display for desktop
   if (currentDevice === "desktop") {
-    document.getElementById("browserUrl").textContent = url
+    const browserUrl = document.getElementById("browserUrl");
+    if (browserUrl) browserUrl.textContent = url;
   }
 
   // Set iframe source
-  iframe.src = url
+  if (iframe) {
+    iframe.src = url
 
-  // Hide loading overlay after delay
-  setTimeout(() => {
-    loadingOverlay.classList.remove("show")
-  }, 2000)
+    // Hide loading overlay after delay
+    setTimeout(() => {
+      if (loadingOverlay) loadingOverlay.classList.remove("show")
+    }, 2000)
 
-  // Handle iframe load error
-  iframe.onerror = () => {
-    loadingOverlay.classList.remove("show")
-    alert("Unable to load the URL. The website may not allow embedding.")
+    // Handle iframe load error
+    iframe.onerror = () => {
+      if (loadingOverlay) loadingOverlay.classList.remove("show")
+      alert("Unable to load the URL. The website may not allow embedding.")
+    }
   }
 }
 
-// Handle Enter key in URL input
+// Handle Event Listeners
 document.addEventListener("DOMContentLoaded", () => {
   const urlInput = document.getElementById("urlInput")
 
-  urlInput.addEventListener("keypress", (e) => {
-    if (e.key === "Enter") {
-      loadURL()
-    }
-  })
+  if (urlInput) {
+    urlInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        loadURL()
+      }
+    })
+  }
 
   // Add scroll animations
   observeElements()
 
   // Newsletter form submission
   const newsletterForm = document.querySelector(".newsletter-form")
-  newsletterForm.addEventListener("submit", (e) => {
-    e.preventDefault()
-    const email = e.target.querySelector("input").value
-    alert(`Thank you for subscribing with ${email}!`)
-    e.target.reset()
-  })
+  if (newsletterForm) {
+    newsletterForm.addEventListener("submit", (e) => {
+      e.preventDefault()
+      const emailInput = e.target.querySelector("input")
+      const email = emailInput ? emailInput.value : ""
+      alert(`Thank you for subscribing with ${email}!`)
+      e.target.reset()
+    })
+  }
 })
-
-  alert(toolMessages[toolName] || "Tool launching...")
-
-  // Scroll to viewer for demonstration
-  scrollToViewer()
-}
 
 // Intersection Observer for scroll animations
 function observeElements() {
@@ -163,9 +169,9 @@ document.addEventListener("mousemove", (e) => {
 
 // Add scroll progress indicator
 window.addEventListener("scroll", () => {
-  const scrollProgress = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100
+  const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const scrollProgress = scrollHeight > 0 ? (window.scrollY / scrollHeight) * 100 : 0;
 
-  // Create progress bar if it doesn't exist
   let progressBar = document.querySelector(".scroll-progress")
   if (!progressBar) {
     progressBar = document.createElement("div")
@@ -175,7 +181,7 @@ window.addEventListener("scroll", () => {
             top: 0;
             left: 0;
             height: 3px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            background: linear-gradient(90deg, #00F0FF, #7B61FF);
             z-index: 9999;
             transition: width 0.1s ease-out;
         `
@@ -184,14 +190,3 @@ window.addEventListener("scroll", () => {
 
   progressBar.style.width = `${scrollProgress}%`
 })
-
-// Console message for developers
-console.log("%c🚀 Mobile Viewer", "color: #00F0FF; font-size: 24px; font-weight: bold;")
-console.log(
-  "%cWelcome to Mobile Viewer! Built with ❤️ for developers and designers.",
-  "color: #7B61FF; font-size: 14px;",
-)
-console.log(
-  "%cNote: Some websites may not load due to X-Frame-Options restrictions.",
-  "color: #FF006B; font-size: 12px;",
-)
