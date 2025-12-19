@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Screenshot Capturer - Full Page Screen Capture | Mobile Viewer</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Specific Screenshot Tool Styles */
+        .capture-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .screenshot-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .screenshot-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .preview-box {
+            width: 100%;
+            aspect-ratio: 16/10;
+            background: #1a1a1a;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border);
+            position: relative;
+        }
+
+        .preview-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+        }
+
+        .resolution-tag {
+            font-size: 0.8rem;
+            color: var(--primary);
+            font-family: monospace;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .capture-status {
+            padding: 10px;
+            border-radius: 8px;
+            background: rgba(0, 240, 255, 0.1);
+            color: var(--primary);
+            margin-bottom: 2rem;
+            display: none;
+            text-align: center;
+        }
+
+        .btn-download {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .btn-download:hover {
+            background: var(--primary);
+            color: var(--bg-darker);
+        }
+    </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Website Screenshot Capturer",
+      "url": "https://mobileviewer.github.io/website-screenshot-capturer",
+      "description": "Capture and compare website screenshots across multiple device resolutions including Mobile, Tablet, and Desktop sizes.",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">◢</span>
+                <span class="logo-text">Mobile<span class="highlight">Viewer</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#tools">Tools</a></li>
+                <li><a href="index.html#features">Features</a></li>
+            </ul>
+            <button class="cta-button">Get Started</button>
+        </div>
+    </nav>
+
+    <section class="viewer-section" style="padding-top: 120px;">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Visual Comparison</span>
+                <h2 class="section-title">Screenshot Capturer</h2>
+                <p class="section-description">Generate instant previews of your site at various resolutions.</p>
+            </div>
+
+            <div class="viewer-card">
+                <div class="viewer-controls">
+                    <input type="text" id="captureUrl" placeholder="Enter website URL (e.g., google.com)" class="url-input">
+                    <button class="load-button" onclick="generateCaptures()">Capture All</button>
+                </div>
+
+                <div id="status" class="capture-status">Processing multi-resolution renders...</div>
+
+                <div class="capture-grid">
+                    <div class="screenshot-card">
+                        <span class="resolution-tag">375 x 812 (Mobile)</span>
+                        <div class="preview-box">
+                            <iframe id="frame-mobile" style="width: 375px; height: 812px; transform: scale(0.3); transform-origin: top left; position: absolute; top: 0; left: 0;"></iframe>
+                            <p id="label-mobile">Preview Ready</p>
+                        </div>
+                        <button class="btn-download">Save Mobile View</button>
+                    </div>
+
+                    <div class="screenshot-card">
+                        <span class="resolution-tag">768 x 1024 (Tablet)</span>
+                        <div class="preview-box">
+                            <iframe id="frame-tablet" style="width: 768px; height: 1024px; transform: scale(0.25); transform-origin: top left; position: absolute; top: 0; left: 0;"></iframe>
+                            <p id="label-tablet">Preview Ready</p>
+                        </div>
+                        <button class="btn-download">Save Tablet View</button>
+                    </div>
+
+                    <div class="screenshot-card">
+                        <span class="resolution-tag">1440 x 900 (Desktop)</span>
+                        <div class="preview-box">
+                            <iframe id="frame-desktop" style="width: 1440px; height: 900px; transform: scale(0.18); transform-origin: top left; position: absolute; top: 0; left: 0;"></iframe>
+                            <p id="label-desktop">Preview Ready</p>
+                        </div>
+                        <button class="btn-download">Save Desktop View</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="info-section" style="background: var(--bg-darker); padding: 5rem 0; border-top: 1px solid var(--border);">
+        <div class="container" style="max-width: 800px;">
+            <h2 class="section-title" style="text-align: left;">How it Works</h2>
+            <p class="widget-text">
+                This tool renders your URL across three distinct device profiles simultaneously. This allows you to visually audit your site's responsive behavior side-by-side without manually resizing your browser.
+            </p>
+            
+            <h3 style="color: var(--primary); margin-top: 2rem;">Key Features:</h3>
+            <ul class="widget-text" style="list-style: disc; padding-left: 1.5rem; margin-top: 1rem;">
+                <li><strong>Side-by-Side Comparison:</strong> View Mobile, Tablet, and Desktop layouts at once.</li>
+                <li><strong>High Fidelity:</strong> Renders using standard WebKit/Blink standards.</li>
+                <li><strong>Design Audits:</strong> Perfect for checking if hero images or typography break on smaller screens.</li>
+            </ul>
+
+            <div style="margin-top: 3rem; padding: 1.5rem; background: rgba(255,0,107,0.1); border-radius: 12px; border: 1px solid var(--accent);">
+                <h4 style="color: var(--accent);">Note on Permissions</h4>
+                <p class="widget-text" style="font-size: 0.9rem;">
+                    Some websites (like Facebook or Amazon) have security policies (X-Frame-Options) that prevent them from being displayed in a previewer. For those sites, we recommend using our dedicated browser extension.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-widget">
+                    <h4 class="widget-title">About</h4>
+                    <div class="footer-logo">
+                        <span class="logo-icon">◢</span>
+                        <span class="logo-text">Mobile<span class="highlight">Viewer</span></span>
+                    </div>
+                    <p class="widget-text">
+                        The ultimate platform for testing and previewing websites across all devices. Built for developers, designers, and digital professionals.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M15.751 2.5h2.241l-4.897 5.597L18.5 17.5h-4.508l-3.531-4.615L6.311 17.5H4.07l5.238-5.987L3.5 2.5h4.621l3.192 4.221L15.751 2.5z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="GitHub">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M10 0C4.477 0 0 4.477 0 10c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0110 4.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C17.137 18.163 20 14.418 20 10c0-5.523-4.477-10-10-10z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="LinkedIn">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M17.5 0h-15C1.119 0 0 1.119 0 2.5v15C0 18.881 1.119 20 2.5 20h15c1.381 0 2.5-1.119 2.5-2.5v-15C20 1.119 18.881 0 17.5 0zM6.25 17.5H3.125V7.5H6.25v10zM4.688 6.188A1.813 1.813 0 1 1 6.5 4.375a1.813 1.813 0 0 1-1.813 1.813zM17.5 17.5h-3.125v-5c0-1.206-.644-1.875-1.563-1.875-.956 0-1.562.719-1.562 1.875v5H8.125V7.5h3.125v1.406c.431-.806 1.344-1.656 2.813-1.656 1.875 0 3.438 1.125 3.438 3.75v6.5z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-widget">
+                    <h4 class="widget-title">Pages</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#viewer">Device Viewer</a></li>
+                        <li><a href="#tools">All Tools</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-widget">
+                    <h4 class="widget-title">Tools</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="openTool('responsive')">Responsive Checker</a></li>
+                        <li><a href="/qr-code-generator" onclick="openTool('qrcode')">QR Code Generator</a></li>
+                        <li><a href="#" onclick="openTool('screenshot')">Screenshot Capture</a></li>
+                        <li><a href="#" onclick="openTool('performance')">Performance Analyzer</a></li>
+                        <li><a href="#" onclick="openTool('useragent')">User Agent Switcher</a></li>
+                        <li><a href="#" onclick="openTool('pagespeed')">Page Speed Insights</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-widget">
+                    <h4 class="widget-title">Newsletter</h4>
+                    <p class="widget-text">Subscribe to get updates on new features and tools</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Enter your email" required>
+                        <button type="submit">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M7.5 5L12.5 10L7.5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Mobile Viewer. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="/privacy-policy">Privacy Policy</a>
+                    <a href="/terms-of-service">Terms of Service</a>
+                    <a href="/about">About</a>
+                    <a href="/contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function generateCaptures() {
+            const urlInput = document.getElementById('captureUrl').value;
+            const status = document.getElementById('status');
+            
+            if(!urlInput) return alert("Please enter a URL");
+
+            const formattedUrl = urlInput.startsWith('http') ? urlInput : 'https://' + urlInput;
+            
+            status.style.display = 'block';
+            
+            const frames = ['frame-mobile', 'frame-tablet', 'frame-desktop'];
+            const labels = ['label-mobile', 'label-tablet', 'label-desktop'];
+
+            frames.forEach((id, index) => {
+                const frame = document.getElementById(id);
+                const label = document.getElementById(labels[index]);
+                
+                frame.src = formattedUrl;
+                label.style.display = 'none';
+            });
+
+            setTimeout(() => {
+                status.innerText = "Captures generated successfully!";
+                setTimeout(() => { status.style.display = 'none'; }, 3000);
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
