@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessibility Contrast Checker - WCAG Compliance Tool | Mobile Viewer</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Tool-specific Styles */
+        .checker-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .input-group {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+        }
+
+        .color-field {
+            margin-bottom: 1.5rem;
+        }
+
+        .color-field label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .color-input-wrapper {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        input[type="color"] {
+            width: 50px;
+            height: 50px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            background: none;
+        }
+
+        .hex-input {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            flex-grow: 1;
+            font-family: monospace;
+        }
+
+        .preview-pane {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .sample-box {
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .results-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .result-item {
+            padding: 1rem;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            text-align: center;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        .pass { background: #00c853; color: white; }
+        .fail { background: #ff5252; color: white; }
+
+        @media (max-width: 768px) {
+            .checker-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Accessibility Contrast Checker",
+      "url": "https://mobileviewer.github.io/accessibility-contrast-checker",
+      "description": "Analyze color contrast ratios between foreground and background elements to ensure WCAG 2.1 accessibility compliance.",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <span class="logo-icon">◢</span>
+                <span class="logo-text">Mobile<span class="highlight">Viewer</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Home</a></li>
+                <li><a href="index.html#tools">Tools</a></li>
+                <li><a href="index.html#features">Features</a></li>
+            </ul>
+            <button class="cta-button">Get Started</button>
+        </div>
+    </nav>
+
+    <section class="viewer-section" style="padding-top: 120px;">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Accessibility Tool</span>
+                <h2 class="section-title">Contrast Checker</h2>
+                <p class="section-description">Ensure your content is readable for users with visual impairments.</p>
+            </div>
+
+            <div class="checker-grid">
+                <div class="input-group">
+                    <div class="color-field">
+                        <label>Foreground Color (Text)</label>
+                        <div class="color-input-wrapper">
+                            <input type="color" id="fgColor" value="#00f0ff" oninput="updateContrast()">
+                            <input type="text" id="fgHex" value="#00f0ff" class="hex-input" oninput="syncColor('fg')">
+                        </div>
+                    </div>
+                    <div class="color-field">
+                        <label>Background Color</label>
+                        <div class="color-input-wrapper">
+                            <input type="color" id="bgColor" value="#0f1629" oninput="updateContrast()">
+                            <input type="text" id="bgHex" value="#0f1629" class="hex-input" oninput="syncColor('bg')">
+                        </div>
+                    </div>
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <h1 id="ratioDisplay" style="font-size: 3rem; color: var(--primary);">0.00:1</h1>
+                        <p class="widget-text">Contrast Ratio</p>
+                    </div>
+                </div>
+
+                <div class="preview-pane">
+                    <div id="sampleBox" class="sample-box">
+                        <h3 style="margin-bottom: 0.5rem;">Large Text Sample</h3>
+                        <p>This is a preview of how your text colors look against the background.</p>
+                    </div>
+
+                    <div class="results-box">
+                        <div class="result-item">
+                            <div class="widget-text">WCAG AA (Normal)</div>
+                            <div id="aaNormal" class="status-badge fail">Fail</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="widget-text">WCAG AA (Large)</div>
+                            <div id="aaLarge" class="status-badge fail">Fail</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="widget-text">WCAG AAA (Normal)</div>
+                            <div id="aaaNormal" class="status-badge fail">Fail</div>
+                        </div>
+                        <div class="result-item">
+                            <div class="widget-text">WCAG AAA (Large)</div>
+                            <div id="aaaLarge" class="status-badge fail">Fail</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="info-section" style="background: var(--bg-darker); padding: 5rem 0; border-top: 1px solid var(--border);">
+        <div class="container" style="max-width: 800px;">
+            <h2 class="section-title" style="text-align: left;">Understanding Contrast Ratios</h2>
+            <p class="widget-text">
+                The Web Content Accessibility Guidelines (WCAG) are a set of recommendations for making Web content more accessible. To ensure readability, text must have sufficient contrast against its background.
+            </p>
+            
+            
+
+            <h3 style="color: var(--primary); margin-top: 2rem;">Compliance Levels:</h3>
+            <ul class="widget-text" style="list-style: disc; padding-left: 1.5rem; margin-top: 1rem;">
+                <li><strong>Level AA:</strong> Requires a contrast ratio of at least 4.5:1 for normal text and 3:1 for large text (18pt or 14pt bold).</li>
+                <li><strong>Level AAA:</strong> The highest standard, requiring a ratio of 7:1 for normal text and 4.5:1 for large text.</li>
+            </ul>
+
+            <h3 style="color: var(--primary); margin-top: 2rem;">How to Use</h3>
+            <p class="widget-text">
+                1. Use the color pickers or enter Hex codes for your text (Foreground) and Background.<br>
+                2. The tool automatically calculates the ratio based on the relative luminance of each color.<br>
+                3. Aim for at least "AA" status to ensure your mobile site remains readable in high-glare environments.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-widget">
+                    <h4 class="widget-title">About</h4>
+                    <div class="footer-logo">
+                        <span class="logo-icon">◢</span>
+                        <span class="logo-text">Mobile<span class="highlight">Viewer</span></span>
+                    </div>
+                    <p class="widget-text">
+                        The ultimate platform for testing and previewing websites across all devices. Built for developers, designers, and digital professionals.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M15.751 2.5h2.241l-4.897 5.597L18.5 17.5h-4.508l-3.531-4.615L6.311 17.5H4.07l5.238-5.987L3.5 2.5h4.621l3.192 4.221L15.751 2.5z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="GitHub">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M10 0C4.477 0 0 4.477 0 10c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0110 4.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C17.137 18.163 20 14.418 20 10c0-5.523-4.477-10-10-10z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="LinkedIn">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M17.5 0h-15C1.119 0 0 1.119 0 2.5v15C0 18.881 1.119 20 2.5 20h15c1.381 0 2.5-1.119 2.5-2.5v-15C20 1.119 18.881 0 17.5 0zM6.25 17.5H3.125V7.5H6.25v10zM4.688 6.188A1.813 1.813 0 1 1 6.5 4.375a1.813 1.813 0 0 1-1.813 1.813zM17.5 17.5h-3.125v-5c0-1.206-.644-1.875-1.563-1.875-.956 0-1.562.719-1.562 1.875v5H8.125V7.5h3.125v1.406c.431-.806 1.344-1.656 2.813-1.656 1.875 0 3.438 1.125 3.438 3.75v6.5z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-widget">
+                    <h4 class="widget-title">Pages</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#viewer">Device Viewer</a></li>
+                        <li><a href="#tools">All Tools</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-widget">
+                    <h4 class="widget-title">Tools</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="openTool('responsive')">Responsive Checker</a></li>
+                        <li><a href="/qr-code-generator" onclick="openTool('qrcode')">QR Code Generator</a></li>
+                        <li><a href="#" onclick="openTool('screenshot')">Screenshot Capture</a></li>
+                        <li><a href="#" onclick="openTool('performance')">Performance Analyzer</a></li>
+                        <li><a href="#" onclick="openTool('useragent')">User Agent Switcher</a></li>
+                        <li><a href="#" onclick="openTool('pagespeed')">Page Speed Insights</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-widget">
+                    <h4 class="widget-title">Newsletter</h4>
+                    <p class="widget-text">Subscribe to get updates on new features and tools</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Enter your email" required>
+                        <button type="submit">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <path d="M7.5 5L12.5 10L7.5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 Mobile Viewer. All rights reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="/privacy-policy">Privacy Policy</a>
+                    <a href="/terms-of-service">Terms of Service</a>
+                    <a href="/about">About</a>
+                    <a href="/contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function hexToRgb(hex) {
+            const r = parseInt(hex.slice(1, 3), 16) / 255;
+            const g = parseInt(hex.slice(3, 5), 16) / 255;
+            const b = parseInt(hex.slice(5, 7), 16) / 255;
+            return [r, g, b].map(v => v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4));
+        }
+
+        function getLuminance(hex) {
+            const [r, g, b] = hexToRgb(hex);
+            return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+        }
+
+        function syncColor(type) {
+            const hexInput = document.getElementById(type + 'Hex');
+            const colorInput = document.getElementById(type + 'Color');
+            if (/^#[0-9A-F]{6}$/i.test(hexInput.value)) {
+                colorInput.value = hexInput.value;
+                updateContrast();
+            }
+        }
+
+        function updateContrast() {
+            const fg = document.getElementById('fgColor').value;
+            const bg = document.getElementById('bgColor').value;
+            
+            document.getElementById('fgHex').value = fg.toUpperCase();
+            document.getElementById('bgHex').value = bg.toUpperCase();
+
+            const lum1 = getLuminance(fg);
+            const lum2 = getLuminance(bg);
+            
+            const ratio = (Math.max(lum1, lum2) + 0.05) / (Math.min(lum1, lum2) + 0.05);
+            
+            document.getElementById('ratioDisplay').innerText = ratio.toFixed(2) + ':1';
+            
+            // Update Preview
+            const sample = document.getElementById('sampleBox');
+            sample.style.backgroundColor = bg;
+            sample.style.color = fg;
+
+            // Check Compliance
+            updateStatus('aaNormal', ratio >= 4.5);
+            updateStatus('aaLarge', ratio >= 3);
+            updateStatus('aaaNormal', ratio >= 7);
+            updateStatus('aaaLarge', ratio >= 4.5);
+        }
+
+        function updateStatus(id, passed) {
+            const el = document.getElementById(id);
+            el.innerText = passed ? 'Pass' : 'Fail';
+            el.className = 'status-badge ' + (passed ? 'pass' : 'fail');
+        }
+
+        // Initialize
+        updateContrast();
+    </script>
+</body>
+</html>
