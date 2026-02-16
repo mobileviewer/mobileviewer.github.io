@@ -9,18 +9,6 @@ function scrollToViewer() {
       behavior: "smooth",
     })
   }
-
-function loadComponent(id, file) {
-    fetch(file)
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById(id).innerHTML = data;
-        });
-}
-
-// Load the components
-loadComponent('header-placeholder', 'header.html');
-loadComponent('footer-placeholder', 'footer.html');
  
   // Focus on URL input after scroll
   setTimeout(() => {
