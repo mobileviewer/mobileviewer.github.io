@@ -21,7 +21,7 @@ function loadComponent(id, file) {
 // Load the components
 loadComponent('header-placeholder', 'header.html');
 loadComponent('footer-placeholder', 'footer.html');
-}  
+ 
   // Focus on URL input after scroll
   setTimeout(() => {
     const urlInput = document.getElementById("urlInput");
