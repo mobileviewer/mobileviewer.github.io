@@ -1,99 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9759808041159779" crossorigin="anonymous"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MBJB77SQ0K"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-MBJB77SQ0K');
+    </script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Screenshot Capture - Mobile Viewer</title>
-    <meta name="description" content="Capture screenshots of any website in mobile or desktop view. Free website screenshot tool.">
-    <meta name="keywords" content="screenshot tool, website screenshot, capture website, screen capture">
+    <title>Screenshot Capture - Website Screen Capture Tool | Mobile Viewer</title>
+    
+    <meta name="description" content="Capture high-quality screenshots of any website across different device resolutions. Download mobile, tablet, or desktop website previews instantly.">
+    <meta name="keywords" content="website screenshot, capture website, screen capture tool, mobile screenshot simulator, desktop preview capture, web design tool">
+    <meta name="author" content="Mobile Viewer">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://mobileviewer.github.io/screenshot.html">
-    
-    <meta property="og:title" content="Screenshot Capture - Mobile Viewer">
-    <meta property="og:description" content="Capture screenshots of any website in mobile or desktop view">
-    <meta property="og:url" content="https://mobileviewer.github.io/screenshot.html">
+    <link rel="canonical" href="https://mobileviewer.github.io/screenshot">
+
     <meta property="og:type" content="website">
-    
+    <meta property="og:url" content="https://mobileviewer.github.io/screenshot">
+    <meta property="og:title" content="Screenshot Capture - Website Screen Capture Tool">
+    <meta property="og:description" content="Easily generate and download website screenshots for different device sizes.">
+    <meta property="og:image" content="https://mobileviewer.github.io/social-preview.jpg">
+
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Tool-specific Styles */
+        .screenshot-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .screenshot-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+        }
+        .option-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        .select-input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .screenshot-preview {
+            margin-top: 2rem;
+            min-height: 400px;
+            background: var(--bg-card);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+        .screenshot-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .loading-state {
+            color: var(--primary);
+            font-weight: bold;
+        }
+    </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Screenshot Capture Tool",
+      "url": "https://mobileviewer.github.io/screenshot",
+      "description": "A web tool that allows users to capture and download screenshots of websites in various device dimensions.",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
 </head>
 <body>
-    <div class="cursor-glow"></div>
-    <div class="floating-orbs">
-        <div class="orb"></div>
-        <div class="orb"></div>
-        <div class="orb"></div>
-    </div>
+    <div id="header-placeholder"></div>
 
-    <nav class="navbar">
+    <section class="viewer-section" style="padding-top: 120px;">
         <div class="container">
-            <a href="index.html" class="logo">Mobile<span class="gradient-text">Viewer</span></a>
-            <a href="index.html" class="nav-link">← Back to Home</a>
-        </div>
-    </nav>
-
-    <main class="tool-page">
-        <div class="container">
-            <h1 class="page-title gradient-text">Screenshot Capture</h1>
-            <p class="page-subtitle">Capture screenshots of any website in different device views</p>
+            <div class="section-header">
+                <span class="section-badge">Visual Audit</span>
+                <h2 class="section-title">Screenshot Capture</h2>
+                <p class="section-description">Generate high-resolution previews for your design portfolio or bug reports.</p>
+            </div>
 
             <div class="screenshot-container">
-                <div class="screenshot-controls">
-                    <input type="url" id="screenshotUrl" class="url-input" placeholder="Enter website URL">
-                    
+                <div class="viewer-card">
+                    <div class="viewer-controls">
+                        <input type="text" id="screenshotUrl" placeholder="Enter URL (e.g., https://example.com)" class="url-input">
+                        <button class="load-button" onclick="captureScreenshot()">Capture Screen</button>
+                    </div>
+
                     <div class="screenshot-options">
-                        <label>
-                            Device:
-                            <select id="deviceType" class="qr-select">
+                        <div class="option-group">
+                            <label>Device Size</label>
+                            <select id="deviceType" class="select-input">
                                 <option value="desktop">Desktop (1920x1080)</option>
                                 <option value="tablet">Tablet (768x1024)</option>
                                 <option value="mobile">Mobile (375x667)</option>
                             </select>
-                        </label>
-                        
-                        <label>
-                            Format:
-                            <select id="imageFormat" class="qr-select">
+                        </div>
+                        <div class="option-group">
+                            <label>Image Format</label>
+                            <select id="imageFormat" class="select-input">
                                 <option value="png">PNG</option>
                                 <option value="jpg">JPG</option>
                             </select>
-                        </label>
+                        </div>
                     </div>
 
-                    <button id="captureBtn" class="btn btn-primary">Capture Screenshot</button>
-                </div>
-
-                <div class="screenshot-preview">
-                    <div id="screenshotResult" class="screenshot-result">
-                        <p class="qr-placeholder">Enter a URL and click Capture Screenshot</p>
+                    <div id="screenshotResult" class="screenshot-preview">
+                        <p class="widget-text">Preview will appear here after capture</p>
                     </div>
-                    <button id="downloadScreenshot" class="btn btn-secondary" style="display: none;">Download Screenshot</button>
+
+                    <div style="text-align: center; margin-top: 1.5rem;">
+                        <button id="downloadScreenshot" class="load-button" style="display: none; margin: 0 auto; background: var(--secondary);">Download Image</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </main>
+    </section>
 
-    <footer class="footer">
-        <div class="container footer-content">
-            <div class="footer-section">
-                <h3>About</h3>
-                <p>Mobile Viewer - Test websites across all devices</p>
-            </div>
-            <div class="footer-section">
-                <p>&copy; 2025 Mobile Viewer. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <div id="footer-placeholder"></div>
 
     <script src="script.js"></script>
     <script>
         const screenshotUrl = document.getElementById('screenshotUrl');
         const deviceType = document.getElementById('deviceType');
         const imageFormat = document.getElementById('imageFormat');
-        const captureBtn = document.getElementById('captureBtn');
         const screenshotResult = document.getElementById('screenshotResult');
         const downloadScreenshot = document.getElementById('downloadScreenshot');
 
-        captureBtn.addEventListener('click', captureScreenshot);
         screenshotUrl.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') captureScreenshot();
         });
@@ -117,12 +180,14 @@
             const size = dimensions[deviceType.value];
             const format = imageFormat.value;
             
+            // Note: Replace 'demo' with your actual API key if using screenshotmachine
             const screenshotApiUrl = `https://api.screenshotmachine.com/?key=demo&url=${encodeURIComponent(url)}&dimension=${size}&format=${format}`;
             
             screenshotResult.innerHTML = `
                 <div class="loading-state">Capturing screenshot...</div>
                 <img src="${screenshotApiUrl}" alt="Website Screenshot" class="screenshot-image" onload="this.previousElementSibling.style.display='none'">
             `;
+            
             downloadScreenshot.style.display = 'block';
             
             downloadScreenshot.onclick = () => {
