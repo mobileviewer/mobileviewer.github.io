@@ -1,21 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9759808041159779"
-     crossorigin="anonymous"></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MBJB77SQ0K"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-MBJB77SQ0K');
-</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9759808041159779" crossorigin="anonymous"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MBJB77SQ0K"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-MBJB77SQ0K');
+    </script>
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accessibility Contrast Checker - WCAG Compliance Tool | Mobile Viewer</title>
+    
+    <meta name="description" content="Analyze color contrast ratios between foreground and background elements to ensure WCAG 2.1 accessibility compliance. Perfect for web developers and designers.">
+    <meta name="keywords" content="contrast checker, accessibility tool, WCAG compliance, color contrast, web accessibility, mobile viewer tools">
+    <meta name="author" content="Mobile Viewer">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mobileviewer.github.io/accessibility-contrast-checker">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mobileviewer.github.io/accessibility-contrast-checker">
+    <meta property="og:title" content="Accessibility Contrast Checker - WCAG Compliance Tool">
+    <meta property="og:description" content="Ensure your website is readable and accessible with our real-time contrast ratio calculator.">
+    <meta property="og:image" content="https://mobileviewer.github.io/social-preview.jpg">
+
     <link rel="stylesheet" href="styles.css">
     <style>
         /* Tool-specific Styles */
@@ -25,30 +35,23 @@
             gap: 2rem;
             margin-top: 2rem;
         }
-
         .input-group {
             background: var(--bg-card);
             padding: 2rem;
             border-radius: 16px;
             border: 1px solid var(--border);
         }
-
-        .color-field {
-            margin-bottom: 1.5rem;
-        }
-
+        .color-field { margin-bottom: 1.5rem; }
         .color-field label {
             display: block;
             margin-bottom: 0.5rem;
             color: var(--text-secondary);
         }
-
         .color-input-wrapper {
             display: flex;
             gap: 1rem;
             align-items: center;
         }
-
         input[type="color"] {
             width: 50px;
             height: 50px;
@@ -57,7 +60,6 @@
             cursor: pointer;
             background: none;
         }
-
         .hex-input {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border);
@@ -67,7 +69,6 @@
             flex-grow: 1;
             font-family: monospace;
         }
-
         .preview-pane {
             background: var(--bg-card);
             padding: 2rem;
@@ -77,7 +78,6 @@
             flex-direction: column;
             gap: 1.5rem;
         }
-
         .sample-box {
             padding: 2rem;
             border-radius: 12px;
@@ -85,20 +85,17 @@
             border: 1px solid var(--border);
             transition: all 0.3s ease;
         }
-
         .results-box {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 1rem;
         }
-
         .result-item {
             padding: 1rem;
             border-radius: 8px;
             background: rgba(255, 255, 255, 0.05);
             text-align: center;
         }
-
         .status-badge {
             display: inline-block;
             padding: 4px 12px;
@@ -107,10 +104,8 @@
             font-weight: bold;
             margin-top: 5px;
         }
-
         .pass { background: #00c853; color: white; }
         .fail { background: #ff5252; color: white; }
-
         @media (max-width: 768px) {
             .checker-grid { grid-template-columns: 1fr; }
         }
@@ -134,8 +129,7 @@
     </script>
 </head>
 <body>    
-<!-- Navigation -->
-<div id="header-placeholder"></div>
+    <div id="header-placeholder"></div>
     
     <section class="viewer-section" style="padding-top: 120px;">
         <div class="container">
@@ -151,14 +145,14 @@
                         <label>Foreground Color (Text)</label>
                         <div class="color-input-wrapper">
                             <input type="color" id="fgColor" value="#00f0ff" oninput="updateContrast()">
-                            <input type="text" id="fgHex" value="#00f0ff" class="hex-input" oninput="syncColor('fg')">
+                            <input type="text" id="fgHex" value="#00F0FF" class="hex-input" oninput="syncColor('fg')">
                         </div>
                     </div>
                     <div class="color-field">
                         <label>Background Color</label>
                         <div class="color-input-wrapper">
                             <input type="color" id="bgColor" value="#0f1629" oninput="updateContrast()">
-                            <input type="text" id="bgHex" value="#0f1629" class="hex-input" oninput="syncColor('bg')">
+                            <input type="text" id="bgHex" value="#0F1629" class="hex-input" oninput="syncColor('bg')">
                         </div>
                     </div>
                     <div style="text-align: center; margin-top: 2rem;">
@@ -200,29 +194,20 @@
         <div class="container" style="max-width: 800px;">
             <h2 class="section-title" style="text-align: left;">Understanding Contrast Ratios</h2>
             <p class="widget-text">
-                The Web Content Accessibility Guidelines (WCAG) are a set of recommendations for making Web content more accessible. To ensure readability, text must have sufficient contrast against its background.
+                The Web Content Accessibility Guidelines (WCAG) ensure readability by requiring text to have sufficient contrast against its background.
             </p>
-            
-            
 
             <h3 style="color: var(--primary); margin-top: 2rem;">Compliance Levels:</h3>
             <ul class="widget-text" style="list-style: disc; padding-left: 1.5rem; margin-top: 1rem;">
-                <li><strong>Level AA:</strong> Requires a contrast ratio of at least 4.5:1 for normal text and 3:1 for large text (18pt or 14pt bold).</li>
-                <li><strong>Level AAA:</strong> The highest standard, requiring a ratio of 7:1 for normal text and 4.5:1 for large text.</li>
+                <li><strong>Level AA:</strong> Ratio of 4.5:1 for normal text and 3:1 for large text.</li>
+                <li><strong>Level AAA:</strong> Ratio of 7:1 for normal text and 4.5:1 for large text.</li>
             </ul>
-
-            <h3 style="color: var(--primary); margin-top: 2rem;">How to Use</h3>
-            <p class="widget-text">
-                1. Use the color pickers or enter Hex codes for your text (Foreground) and Background.<br>
-                2. The tool automatically calculates the ratio based on the relative luminance of each color.<br>
-                3. Aim for at least "AA" status to ensure your mobile site remains readable in high-glare environments.
-            </p>
         </div>
     </section>
 
-    <!-- Footer -->
     <div id="footer-placeholder"></div>
 
+    <script src="script.js"></script>
     <script>
         function hexToRgb(hex) {
             const r = parseInt(hex.slice(1, 3), 16) / 255;
@@ -254,17 +239,14 @@
 
             const lum1 = getLuminance(fg);
             const lum2 = getLuminance(bg);
-            
             const ratio = (Math.max(lum1, lum2) + 0.05) / (Math.min(lum1, lum2) + 0.05);
             
             document.getElementById('ratioDisplay').innerText = ratio.toFixed(2) + ':1';
             
-            // Update Preview
             const sample = document.getElementById('sampleBox');
             sample.style.backgroundColor = bg;
             sample.style.color = fg;
 
-            // Check Compliance
             updateStatus('aaNormal', ratio >= 4.5);
             updateStatus('aaLarge', ratio >= 3);
             updateStatus('aaaNormal', ratio >= 7);
@@ -273,12 +255,13 @@
 
         function updateStatus(id, passed) {
             const el = document.getElementById(id);
-            el.innerText = passed ? 'Pass' : 'Fail';
-            el.className = 'status-badge ' + (passed ? 'pass' : 'fail');
+            if (el) {
+                el.innerText = passed ? 'Pass' : 'Fail';
+                el.className = 'status-badge ' + (passed ? 'pass' : 'fail');
+            }
         }
 
-        // Initialize
-        updateContrast();
+        window.onload = updateContrast;
     </script>
 </body>
 </html>
