@@ -1,214 +1,148 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9759808041159779"
-     crossorigin="anonymous"></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MBJB77SQ0K"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-MBJB77SQ0K');
-</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9759808041159779" crossorigin="anonymous"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MBJB77SQ0K"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-MBJB77SQ0K');
+    </script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Speed Insights - Mobile Viewer</title>
-    <meta name="description" content="Test your website speed and get optimization recommendations. Powered by Google PageSpeed Insights.">
-    <meta name="keywords" content="page speed, speed test, website optimization, performance insights">
+    <title>Page Speed Insights - Website Performance Tester | Mobile Viewer</title>
+    
+    <meta name="description" content="Analyze your website's performance and Core Web Vitals using Page Speed Insights. Get real-time speed scores and optimization tips for mobile and desktop.">
+    <meta name="keywords" content="page speed, performance test, website speed checker, core web vitals, LCP, FID, CLS, mobile speed test, website optimization">
+    <meta name="author" content="Mobile Viewer">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://mobileviewer.github.io/page-speed.html">
-    
-    <meta property="og:title" content="Page Speed Insights - Mobile Viewer">
-    <meta property="og:description" content="Test your website speed and get optimization recommendations">
-    <meta property="og:url" content="https://mobileviewer.github.io/page-speed.html">
+    <link rel="canonical" href="https://mobileviewer.github.io/page-speed">
+
     <meta property="og:type" content="website">
-    
+    <meta property="og:url" content="https://mobileviewer.github.io/page-speed">
+    <meta property="og:title" content="Page Speed Insights - Website Performance Tester">
+    <meta property="og:description" content="Get actionable insights into your website's loading speed and user experience metrics.">
+    <meta property="og:image" content="https://mobileviewer.github.io/social-preview.jpg">
+
     <link rel="stylesheet" href="styles.css">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Page Speed Insights Tool",
+      "url": "https://mobileviewer.github.io/page-speed",
+      "description": "Analyze website speed and get optimization recommendations based on Google PageSpeed Insights data.",
+      "applicationCategory": "DeveloperApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+
+    <style>
+        .speed-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .device-toggle {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .speed-results {
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            display: none;
+        }
+
+        .metrics-explanation {
+            text-align: left;
+            margin-top: 2rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 12px;
+        }
+
+        .metric-info { margin-bottom: 1rem; }
+        .metric-info ul { padding-left: 1.5rem; margin-top: 0.5rem; }
+    </style>
 </head>
 <body>
-    <div class="cursor-glow"></div>
-    <div class="floating-orbs">
-        <div class="orb"></div>
-        <div class="orb"></div>
-        <div class="orb"></div>
-    </div>
+    <div id="header-placeholder"></div>
 
-    <nav class="navbar">
+    <section class="viewer-section" style="padding-top: 120px;">
         <div class="container">
-            <a href="index.html" class="logo">Mobile<span class="gradient-text">Viewer</span></a>
-            <a href="index.html" class="nav-link">← Back to Home</a>
-        </div>
-    </nav>
+            <div class="section-header">
+                <span class="section-badge">Performance</span>
+                <h2 class="section-title">Page Speed Insights</h2>
+                <p class="section-description">Analyze your site's performance metrics and Core Web Vitals.</p>
+            </div>
 
-    <main class="tool-page">
-        <div class="container">
-            <h1 class="page-title gradient-text">Page Speed Insights</h1>
-            <p class="page-subtitle">Test your website speed and performance</p>
-
-            <div class="page-speed-container">
-                <div class="tool-controls">
-                    <input type="url" id="speedUrl" class="url-input" placeholder="Enter website URL to test">
-                    <button id="testSpeedBtn" class="btn btn-primary">Test Speed</button>
+            <div class="speed-container">
+                <input type="text" id="speedUrl" placeholder="Enter your website URL (e.g. example.com)" class="url-input" style="width: 100%;">
+                
+                <div class="device-toggle">
+                    <button class="toggle-btn active" onclick="setDevice('mobile')" id="mobileBtn">Mobile</button>
+                    <button class="toggle-btn" onclick="setDevice('desktop')" id="desktopBtn">Desktop</button>
                 </div>
 
-                <div class="speed-options">
-                    <button class="device-btn active" data-device="mobile">Mobile</button>
-                    <button class="device-btn" data-device="desktop">Desktop</button>
-                </div>
+                <button class="load-button" onclick="analyzeSpeed()" style="width: 100%;">Analyze Performance</button>
 
                 <div id="speedResults" class="speed-results">
-                    <div class="speed-info">
-                        <h3>About Page Speed Testing</h3>
-                        <p>Page Speed Insights analyzes your website's performance on mobile and desktop devices. It provides:</p>
-                        <ul>
-                            <li>Performance score (0-100)</li>
-                            <li>Core Web Vitals metrics</li>
-                            <li>Optimization opportunities</li>
-                            <li>Diagnostic recommendations</li>
-                        </ul>
-                        <p>Enter a URL above to start testing with Google PageSpeed Insights.</p>
                     </div>
-                </div>
             </div>
         </div>
-    </main>
+    </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-widget">
-                    <h4 class="widget-title">About</h4>
-                    <div class="footer-logo">
-                        <span class="logo-icon">◢</span>
-                        <span class="logo-text">Mobile<span class="highlight">Viewer</span></span>
-                    </div>
-                    <p class="widget-text">
-                        The ultimate platform for testing and previewing websites across all devices. Built for developers, designers, and digital professionals.
-                    </p>
-                    <div class="social-links">
-                        <a href="#" aria-label="Twitter">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M15.751 2.5h2.241l-4.897 5.597L18.5 17.5h-4.508l-3.531-4.615L6.311 17.5H4.07l5.238-5.987L3.5 2.5h4.621l3.192 4.221L15.751 2.5z"/>
-                            </svg>
-                        </a>
-                        <a href="#" aria-label="GitHub">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M10 0C4.477 0 0 4.477 0 10c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0110 4.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C17.137 18.163 20 14.418 20 10c0-5.523-4.477-10-10-10z"/>
-                            </svg>
-                        </a>
-                        <a href="#" aria-label="LinkedIn">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M17.5 0h-15C1.119 0 0 1.119 0 2.5v15C0 18.881 1.119 20 2.5 20h15c1.381 0 2.5-1.119 2.5-2.5v-15C20 1.119 18.881 0 17.5 0zM6.25 17.5H3.125V7.5H6.25v10zM4.688 6.188A1.813 1.813 0 1 1 6.5 4.375a1.813 1.813 0 0 1-1.813 1.813zM17.5 17.5h-3.125v-5c0-1.206-.644-1.875-1.563-1.875-.956 0-1.562.719-1.562 1.875v5H8.125V7.5h3.125v1.406c.431-.806 1.344-1.656 2.813-1.656 1.875 0 3.438 1.125 3.438 3.75v6.5z"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="footer-widget">
-                    <h4 class="widget-title">Pages</h4>
-                    <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#viewer">Device Viewer</a></li>
-                        <li><a href="#tools">All Tools</a></li>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#how-it-works">How It Works</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-widget">
-                    <h4 class="widget-title">Tools</h4>
-                    <ul class="footer-links">
-                        <li><a href="/responsive-viewport-resizer" onclick="openTool('responsive')">Responsive Viewport Resizer</a></li>
-                        <li><a href="/qr-code-generator" onclick="openTool('qrcode')">QR Code Generator</a></li>
-                        <li><a href="/website-screenshot-capturer" onclick="openTool('screenshot')">Website Screenshot Capturer</a></li>
-                        <li><a href="/accessibility-contrast-checker" onclick="openTool('performance')">Accessibility Contrast Checker</a></li>
-                        <li><a href="/user-agent-switcher" onclick="openTool('useragent')">User Agent Switcher</a></li>
-                        <li><a href="/multi-device-preview" onclick="openTool('pagespeed')">Multi-Device Preview Grid</a></li>
-                        <li><a href="/breakpoint-tester-bookmarklet" onclick="openTool('useragent')">Breakpoint Tester Bookmarklet</a></li>
-                        <li><a href="/offline-mode-tester" onclick="openTool('pagespeed')">Offline Mode Tester</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-widget">
-                    <h4 class="widget-title">Newsletter</h4>
-                    <p class="widget-text">Subscribe to get updates on new features and tools</p>
-                    <form class="newsletter-form">
-                        <input type="email" placeholder="Enter your email" required>
-                        <button type="submit">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                <path d="M7.5 5L12.5 10L7.5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
-                    </form>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2025 Mobile Viewer. All rights reserved.</p>
-                <div class="footer-bottom-links">
-                    <a href="/privacy-policy">Privacy Policy</a>
-                    <a href="/terms-of-service">Terms of Service</a>
-                    <a href="/about">About</a>
-                    <a href="/contact">Contact</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <div id="footer-placeholder"></div>
 
     <script src="script.js"></script>
     <script>
-        const speedUrl = document.getElementById('speedUrl');
-        const testSpeedBtn = document.getElementById('testSpeedBtn');
-        const speedResults = document.getElementById('speedResults');
-        const deviceBtns = document.querySelectorAll('.device-btn');
         let selectedDevice = 'mobile';
 
-        deviceBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                deviceBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                selectedDevice = btn.getAttribute('data-device');
-            });
-        });
+        function setDevice(device) {
+            selectedDevice = device;
+            document.getElementById('mobileBtn').classList.toggle('active', device === 'mobile');
+            document.getElementById('desktopBtn').classList.toggle('active', device === 'desktop');
+        }
 
-        testSpeedBtn.addEventListener('click', testSpeed);
-        speedUrl.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') testSpeed();
-        });
-
-        function testSpeed() {
-            let url = speedUrl.value.trim();
+        function analyzeSpeed() {
+            const url = document.getElementById('speedUrl').value.trim();
             if (!url) {
-                alert('Please enter a URL');
+                alert("Please enter a URL");
                 return;
             }
-            if (!url.startsWith('http://') && !url.startsWith('https://')) {
-                url = 'https://' + url;
-            }
 
-            speedResults.innerHTML = `
-                <div class="loading-state">
-                    <p>Analyzing page speed...</p>
-                    <p>This may take 30-60 seconds</p>
-                </div>
-            `;
-
-            // Using Google PageSpeed Insights
-            const psiUrl = `https://pagespeed.web.dev/analysis?url=${encodeURIComponent(url)}&form_factor=${selectedDevice.toUpperCase()}`;
+            const resultsDiv = document.getElementById('speedResults');
+            resultsDiv.style.display = 'block';
             
-            // Redirect to PSI in new tab
+            // Generate Google PageSpeed Insights URL
+            const psiUrl = `https://pagespeed.web.dev/report?url=${encodeURIComponent(url)}&strategy=${selectedDevice}`;
+            
             window.open(psiUrl, '_blank');
 
-            speedResults.innerHTML = `
-                <div class="speed-redirect-info">
-                    <h3>Testing in Progress</h3>
+            resultsDiv.innerHTML = `
+                <div class="log-entry">
+                    <h3 style="color: var(--primary); margin-bottom: 1rem;">Analysis Started</h3>
                     <p>We've opened Google PageSpeed Insights in a new tab to analyze your website.</p>
                     <p>Device: <strong>${selectedDevice.charAt(0).toUpperCase() + selectedDevice.slice(1)}</strong></p>
                     <p>URL: <strong>${url}</strong></p>
-                    <a href="${psiUrl}" target="_blank" class="btn btn-primary">Open PageSpeed Insights Again</a>
+                    <a href="${psiUrl}" target="_blank" class="load-button" style="display: inline-block; margin-top: 1rem; text-decoration: none;">Open Report Again</a>
                     
                     <div class="metrics-explanation">
                         <h4>Understanding the Results</h4>
