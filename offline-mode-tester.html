@@ -1,20 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9759808041159779"
-     crossorigin="anonymous"></script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MBJB77SQ0K"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-MBJB77SQ0K');
-</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9759808041159779" crossorigin="anonymous"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MBJB77SQ0K"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-MBJB77SQ0K');
+    </script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Offline Mode Tester - PWA & Cache Simulator | Mobile Viewer</title>
+    
+    <meta name="description" content="Simulate network disconnections and test how your website or PWA handles offline states. Perfect for testing Service Workers, caching strategies, and offline UI.">
+    <meta name="keywords" content="offline mode tester, PWA testing, network simulator, service worker tester, cache simulation, web development tool, offline UI audit">
+    <meta name="author" content="Mobile Viewer">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mobileviewer.github.io/offline-mode-tester">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mobileviewer.github.io/offline-mode-tester">
+    <meta property="og:title" content="Offline Mode Tester - PWA & Cache Simulator">
+    <meta property="og:description" content="Test your website's resilience by simulating instant network cuts and offline environments.">
+    <meta property="og:image" content="https://mobileviewer.github.io/social-preview.jpg">
+
     <link rel="stylesheet" href="styles.css">
     <style>
         /* Specific Offline Tester Styles */
@@ -43,14 +54,13 @@
             box-shadow: 0 0 10px #ff5252;
         }
 
-        .offline-iframe-wrapper {
+        .test-container {
             position: relative;
-            width: 100%;
             height: 600px;
-            background: #000;
+            background: #fff;
             border-radius: 16px;
             overflow: hidden;
-            border: 2px solid var(--border);
+            border: 1px solid var(--border);
         }
 
         .offline-overlay {
@@ -59,50 +69,38 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(5, 8, 20, 0.9);
+            background: rgba(5, 8, 20, 0.95);
             display: none;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            z-index: 5;
+            z-index: 100;
+            color: white;
             text-align: center;
             padding: 2rem;
         }
 
-        .offline-overlay.active {
-            display: flex;
-        }
-
-        .offline-icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            color: var(--text-secondary);
-        }
-
-        iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            transition: opacity 0.3s ease;
-        }
-
-        .iframe-hidden {
-            opacity: 0.1;
-            pointer-events: none;
-        }
+        .offline-overlay.active { display: flex; }
 
         .log-container {
             margin-top: 2rem;
             background: #050814;
-            border-radius: 8px;
+            border: 1px solid var(--border);
+            border-radius: 12px;
             padding: 1rem;
+            height: 200px;
+            overflow-y: auto;
             font-family: monospace;
             font-size: 0.85rem;
-            color: var(--primary);
-            height: 150px;
-            overflow-y: auto;
-            border: 1px solid var(--border);
         }
+
+        .log-entry {
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .iframe-hidden { visibility: hidden; }
     </style>
 
     <script type="application/ld+json">
@@ -111,7 +109,7 @@
       "@type": "WebApplication",
       "name": "Offline Mode Tester",
       "url": "https://mobileviewer.github.io/offline-mode-tester",
-      "description": "Simulate network disconnection and offline states to test PWA service workers and caching mechanisms on web applications.",
+      "description": "Simulate network disconnections and test how your website or PWA handles offline states.",
       "applicationCategory": "DeveloperApplication",
       "operatingSystem": "Any",
       "offers": {
@@ -123,172 +121,63 @@
     </script>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container">
-            <a href="index.html" class="logo">
-                <span class="logo-icon">◢</span>
-                <span class="logo-text">Mobile<span class="highlight">Viewer</span></span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="index.html#home">Home</a></li>
-                <li><a href="index.html#tools">Tools</a></li>
-                <li><a href="index.html#features">Features</a></li>
-            </ul>
-            <button class="cta-button">Get Started</button>
-        </div>
-    </nav>
+    <div id="header-placeholder"></div>
 
     <section class="viewer-section" style="padding-top: 120px;">
         <div class="container">
             <div class="section-header">
-                <span class="section-badge">PWA Testing</span>
-                <h2 class="section-title">Offline Simulator</h2>
-                <p class="section-description">Test how your site behaves when the connection drops.</p>
+                <span class="section-badge">Network Simulator</span>
+                <h2 class="section-title">Offline Mode Tester</h2>
+                <p class="section-description">Test your Progressive Web App's resilience in unstable environments.</p>
             </div>
 
             <div class="viewer-card">
                 <div class="viewer-controls">
-                    <input type="text" id="offlineUrl" placeholder="Enter URL (e.g., https://myapp.com)" class="url-input">
-                    <button class="load-button" onclick="loadUrl()">Load App</button>
+                    <input type="text" id="offlineUrl" placeholder="Enter URL (e.g., https://example.com)" class="url-input">
+                    <button class="load-button" onclick="loadUrl()">Load & Test</button>
                 </div>
 
                 <div class="status-panel">
                     <div id="statusDot" class="status-dot"></div>
-                    <span id="statusText">Network State: <strong>Online</strong></span>
-                    <button class="secondary-button" style="margin-left: auto;" onclick="toggleNetwork()">Toggle Offline Mode</button>
+                    <span id="statusText" class="widget-text">Network State: <strong>Online</strong></span>
+                    <button class="toggle-btn" style="margin-left: 1rem;" onclick="toggleNetwork()">Toggle Connection</button>
                 </div>
 
-                <div class="offline-iframe-wrapper">
+                <div class="test-container">
                     <div id="offlineOverlay" class="offline-overlay">
-                        <div class="offline-icon">📶🚫</div>
-                        <h3>You are currently offline</h3>
-                        <p class="widget-text">This simulates a total network failure. If your PWA is configured correctly with a Service Worker, you should still see cached content below.</p>
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-bottom: 1rem; color: #ff5252;">
+                            <line x1="1" y1="1" x2="23" y2="23"></line>
+                            <path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55"></path>
+                            <path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39"></path>
+                            <path d="M10.71 5.05A16 16 0 0 1 22.58 9"></path>
+                            <path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88"></path>
+                            <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+                            <line x1="12" y1="20" x2="12.01" y2="20"></line>
+                        </svg>
+                        <h3>No Internet Connection</h3>
+                        <p class="widget-text">The simulated network has been severed. Testing offline cache...</p>
                     </div>
-                    <iframe id="testIframe" src="about:blank"></iframe>
+                    <iframe id="testIframe" src="about:blank" style="width: 100%; height: 100%; border: none;"></iframe>
                 </div>
 
-                <div id="eventLog" class="log-container">
-                    > System initialized. Ready to test network states...
+                <div class="log-container" id="logEntries">
+                    <div class="log-entry" style="color: var(--primary);">[System] Network Monitor initialized...</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="info-section" style="background: var(--bg-darker); padding: 5rem 0; border-top: 1px solid var(--border);">
-        <div class="container" style="max-width: 800px;">
-            <h2 class="section-title" style="text-align: left;">Testing Progressive Web Apps</h2>
-            <p class="widget-text">
-                Offline capability is a core pillar of Progressive Web Apps. This simulator helps you verify that your application provides a graceful fallback when a user loses their data connection.
-            </p>
+    <div id="footer-placeholder"></div>
 
-            
-
-            <h3 style="color: var(--primary); margin-top: 2rem;">How to Test Offline Behavior:</h3>
-            <ul class="widget-text" style="list-style: decimal; padding-left: 1.5rem; margin-top: 1rem;">
-                <li><strong>Load your URL:</strong> Ensure your site has a registered Service Worker.</li>
-                <li><strong>Allow Caching:</strong> Navigate through your site while "Online" to let the Service Worker cache the assets.</li>
-                <li><strong>Go Offline:</strong> Click the "Toggle Offline Mode" button. This tool will simulate a network break.</li>
-                <li><strong>Verify:</strong> Attempt to refresh or navigate within the frame. If the site disappears or shows a generic browser error, your offline caching is not configured correctly.</li>
-            </ul>
-
-            <h3 style="color: var(--primary); margin-top: 2rem;">Common Caching Strategies</h3>
-            <p class="widget-text">
-                <strong>Cache-First:</strong> Checks the cache for assets before attempting the network. Best for static assets like CSS and Icons.<br>
-                <strong>Network-First:</strong> Attempts to get the latest data from the server, falling back to cache if the network is unavailable. Best for dynamic content.
-            </p>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-widget">
-                    <h4 class="widget-title">About</h4>
-                    <div class="footer-logo">
-                        <span class="logo-icon">◢</span>
-                        <span class="logo-text">Mobile<span class="highlight">Viewer</span></span>
-                    </div>
-                    <p class="widget-text">
-                        The ultimate platform for testing and previewing websites across all devices. Built for developers, designers, and digital professionals.
-                    </p>
-                    <div class="social-links">
-                        <a href="#" aria-label="Twitter">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M15.751 2.5h2.241l-4.897 5.597L18.5 17.5h-4.508l-3.531-4.615L6.311 17.5H4.07l5.238-5.987L3.5 2.5h4.621l3.192 4.221L15.751 2.5z"/>
-                            </svg>
-                        </a>
-                        <a href="#" aria-label="GitHub">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M10 0C4.477 0 0 4.477 0 10c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0110 4.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C17.137 18.163 20 14.418 20 10c0-5.523-4.477-10-10-10z"/>
-                            </svg>
-                        </a>
-                        <a href="#" aria-label="LinkedIn">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                                <path d="M17.5 0h-15C1.119 0 0 1.119 0 2.5v15C0 18.881 1.119 20 2.5 20h15c1.381 0 2.5-1.119 2.5-2.5v-15C20 1.119 18.881 0 17.5 0zM6.25 17.5H3.125V7.5H6.25v10zM4.688 6.188A1.813 1.813 0 1 1 6.5 4.375a1.813 1.813 0 0 1-1.813 1.813zM17.5 17.5h-3.125v-5c0-1.206-.644-1.875-1.563-1.875-.956 0-1.562.719-1.562 1.875v5H8.125V7.5h3.125v1.406c.431-.806 1.344-1.656 2.813-1.656 1.875 0 3.438 1.125 3.438 3.75v6.5z"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="footer-widget">
-                    <h4 class="widget-title">Pages</h4>
-                    <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#viewer">Device Viewer</a></li>
-                        <li><a href="#tools">All Tools</a></li>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#how-it-works">How It Works</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-widget">
-                    <h4 class="widget-title">Tools</h4>
-                    <ul class="footer-links">
-                        <li><a href="/responsive-viewport-resizer" onclick="openTool('responsive')">Responsive Viewport Resizer</a></li>
-                        <li><a href="/qr-code-generator" onclick="openTool('qrcode')">QR Code Generator</a></li>
-                        <li><a href="/website-screenshot-capturer" onclick="openTool('screenshot')">Website Screenshot Capturer</a></li>
-                        <li><a href="/accessibility-contrast-checker" onclick="openTool('performance')">Accessibility Contrast Checker</a></li>
-                        <li><a href="/user-agent-switcher" onclick="openTool('useragent')">User Agent Switcher</a></li>
-                        <li><a href="/multi-device-preview" onclick="openTool('pagespeed')">Multi-Device Preview Grid</a></li>
-                        <li><a href="/breakpoint-tester-bookmarklet" onclick="openTool('useragent')">Breakpoint Tester Bookmarklet</a></li>
-                        <li><a href="/offline-mode-tester" onclick="openTool('pagespeed')">Offline Mode Tester</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-widget">
-                    <h4 class="widget-title">Newsletter</h4>
-                    <p class="widget-text">Subscribe to get updates on new features and tools</p>
-                    <form class="newsletter-form">
-                        <input type="email" placeholder="Enter your email" required>
-                        <button type="submit">
-                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                                <path d="M7.5 5L12.5 10L7.5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </button>
-                    </form>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2025 Mobile Viewer. All rights reserved.</p>
-                <div class="footer-bottom-links">
-                    <a href="/privacy-policy">Privacy Policy</a>
-                    <a href="/terms-of-service">Terms of Service</a>
-                    <a href="/about">About</a>
-                    <a href="/contact">Contact</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
+    <script src="script.js"></script>
     <script>
         let isOffline = false;
 
         function log(message) {
-            const container = document.getElementById('eventLog');
+            const container = document.getElementById('logEntries');
             const entry = document.createElement('div');
-            entry.textContent = `> [${new Date().toLocaleTimeString()}] ${message}`;
+            entry.className = 'log-entry';
+            entry.innerHTML = `<span style="color: var(--text-secondary)">[${new Date().toLocaleTimeString()}]</span> ${message}`;
             container.prepend(entry);
         }
 
