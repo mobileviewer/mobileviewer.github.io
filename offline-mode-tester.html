@@ -167,6 +167,31 @@
         </div>
     </section>
 
+    <section class="info-section" style="background: var(--bg-darker); padding: 5rem 0; border-top: 1px solid var(--border);">
+        <div class="container" style="max-width: 800px;">
+            <h2 class="section-title" style="text-align: left;">Testing Progressive Web Apps</h2>
+            <p class="widget-text">
+                Offline capability is a core pillar of Progressive Web Apps. This simulator helps you verify that your application provides a graceful fallback when a user loses their data connection.
+            </p>
+
+            
+
+            <h3 style="color: var(--primary); margin-top: 2rem;">How to Test Offline Behavior:</h3>
+            <ul class="widget-text" style="list-style: decimal; padding-left: 1.5rem; margin-top: 1rem;">
+                <li><strong>Load your URL:</strong> Ensure your site has a registered Service Worker.</li>
+                <li><strong>Allow Caching:</strong> Navigate through your site while "Online" to let the Service Worker cache the assets.</li>
+                <li><strong>Go Offline:</strong> Click the "Toggle Offline Mode" button. This tool will simulate a network break.</li>
+                <li><strong>Verify:</strong> Attempt to refresh or navigate within the frame. If the site disappears or shows a generic browser error, your offline caching is not configured correctly.</li>
+            </ul>
+
+            <h3 style="color: var(--primary); margin-top: 2rem;">Common Caching Strategies</h3>
+            <p class="widget-text">
+                <strong>Cache-First:</strong> Checks the cache for assets before attempting the network. Best for static assets like CSS and Icons.<br>
+                <strong>Network-First:</strong> Attempts to get the latest data from the server, falling back to cache if the network is unavailable. Best for dynamic content.
+            </p>
+        </div>
+    </section>
+
     <div id="footer-placeholder"></div>
 
     <script src="script.js"></script>
