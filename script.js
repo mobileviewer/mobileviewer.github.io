@@ -81,6 +81,10 @@ function loadURL() {
     return;
   }
 
+  // Add cache-busting query parameter to force fresh load
+  const separator = url.includes('?') ? '&' : '?';
+  const cacheBustUrl = `${url}${separator}_cache_bust=${Date.now()}`;
+
   const loadingOverlay = currentDevice === "mobile" 
     ? document.getElementById("mobileLoading") 
     : document.getElementById("desktopLoading");
@@ -97,7 +101,7 @@ function loadURL() {
   }
 
   if (iframe) {
-    iframe.src = url;
+    iframe.src = cacheBustUrl;
 
     setTimeout(() => {
       if (loadingOverlay) loadingOverlay.classList.remove("show");
