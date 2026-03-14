@@ -1,186 +1,1869 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9759808041159779" crossorigin="anonymous"></script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MBJB77SQ0K"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-MBJB77SQ0K');
-    </script>
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Viewport Resizer - Test Breakpoints | Mobile Viewer</title>
-    
-    <meta name="description" content="Test your website's responsiveness with our interactive Viewport Resizer. Quickly switch between common device resolutions or set custom dimensions to find design breakpoints.">
-    <meta name="keywords" content="viewport resizer, responsive design tester, screen size simulator, web design tool, breakpoint tester, mobile responsive checker">
-    <meta name="author" content="Mobile Viewer">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://mobileviewer.github.io/responsive-viewport-resizer">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Viewport Resizer — Free CSS Breakpoint & Screen Size Testing Tool</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%2300F0FF'/><text x='50%' y='55%' font-size='18' text-anchor='middle' dominant-baseline='middle' fill='%23000'>⇔</text></svg>">
 
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://mobileviewer.github.io/responsive-viewport-resizer">
-    <meta property="og:title" content="Responsive Viewport Resizer - Test Breakpoints & Resolutions">
-    <meta property="og:description" content="An interactive tool to simulate various screen resolutions and test website responsiveness in real-time.">
-    <meta property="og:image" content="https://mobileviewer.github.io/social-preview.jpg">
+  <!-- Primary SEO -->
+  <meta name="description" content="Responsive Viewport Resizer is a free tool to test CSS breakpoints, drag-resize your browser viewport, and preview any website at exact pixel dimensions. No install needed.">
+  <meta name="keywords" content="responsive viewport resizer, viewport resizer, css breakpoint tester, responsive design tester, screen size tester, drag resize viewport, responsive checker, browser viewport tool, test website breakpoints, responsive web design tool">
+  <meta name="author" content="Mobile Viewer">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://mobileviewer.github.io/responsive-viewport-resizer">
 
-    <link rel="stylesheet" href="styles.css">
-    
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Responsive Viewport Resizer",
-      "url": "https://mobileviewer.github.io/responsive-viewport-resizer",
-      "description": "A web-based tool allowing developers to resize the browser viewport to specific dimensions for responsive design testing.",
-      "applicationCategory": "DeveloperApplication",
-      "operatingSystem": "Any",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
+  <!-- Open Graph -->
+  <meta property="og:title" content="Responsive Viewport Resizer — Free CSS Breakpoint & Screen Size Testing Tool">
+  <meta property="og:description" content="Drag-resize any website preview to instantly test responsive breakpoints and layouts. Free, browser-based, no install.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mobileviewer.github.io/responsive-viewport-resizer">
+  <meta property="og:image" content="https://mobileviewer.github.io/og-image-viewport-resizer.jpg">
+  <meta property="og:site_name" content="Mobile Viewer">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Responsive Viewport Resizer — Free Breakpoint Testing Tool">
+  <meta name="twitter:description" content="Drag-resize your viewport to test CSS breakpoints and responsive layouts instantly.">
+  <meta name="twitter:image" content="https://mobileviewer.github.io/twitter-image-viewport-resizer.jpg">
+  <meta name="twitter:site" content="@mobileviewer">
+
+  <!-- Schema: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Responsive Viewport Resizer",
+    "url": "https://mobileviewer.github.io/responsive-viewport-resizer",
+    "description": "A free browser-based tool to drag-resize your viewport and test responsive CSS breakpoints at any screen dimension. Includes preset sizes, live dimension readout, orientation toggle, and snap guides.",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires a modern web browser.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    },
+    "author": { "@type": "Organization", "name": "Mobile Viewer", "url": "https://mobileviewer.github.io/" },
+    "featureList": [
+      "Drag-to-resize interactive viewport preview",
+      "Live pixel dimension readout (width × height)",
+      "CSS breakpoint snap guides",
+      "20+ device presets (iPhone, Android, iPad, Desktop)",
+      "Orientation toggle (portrait / landscape)",
+      "Custom width and height input",
+      "Zoom controls",
+      "URL loading with iframe preview",
+      "Breakpoint ruler overlay",
+      "Copy dimensions to clipboard"
+    ]
+  }
+  </script>
+
+  <!-- Schema: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a Responsive Viewport Resizer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A Responsive Viewport Resizer is a browser-based tool that lets you drag the edges of a website preview to resize it to any width or height. This lets you visually test how your website's layout responds at different screen sizes and CSS breakpoints without needing physical devices."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I test CSS breakpoints with this tool?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Enter your website URL, click Load, then drag the right edge or bottom edge of the preview frame to resize it. The tool shows live width and height dimensions and highlights common CSS breakpoints (320px, 375px, 480px, 768px, 1024px, 1280px, 1440px) so you can snap to them precisely."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is the Responsive Viewport Resizer free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The tool is completely free with no registration, no download, and no usage limits. All features including drag-resize, preset sizes, breakpoint guides, orientation toggle, and zoom are available at no cost."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What breakpoints does the resizer show?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The resizer includes snap markers for the most common CSS breakpoints: 320px (small mobile), 375px (iPhone SE), 480px (large mobile), 768px (tablet portrait), 1024px (tablet landscape / small desktop), 1280px (standard desktop), and 1440px (large desktop)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I test a localhost URL with the Viewport Resizer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. You can load any URL including http://localhost:3000 or local IP addresses. Make sure the server is running and accessible from your browser. Note that some websites block iframe embedding using X-Frame-Options headers."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between a Viewport Resizer and a Device Simulator?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A device simulator shows your site in a fixed device frame at a preset resolution. A viewport resizer gives you free, continuous drag control over the exact pixel dimensions, making it ideal for finding the exact pixel at which your layout breaks. Both tools complement each other for thorough responsive testing."
+        }
       }
+    ]
+  }
+  </script>
+
+  <!-- Schema: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mobileviewer.github.io/" },
+      { "@type": "ListItem", "position": 2, "name": "Tools", "item": "https://mobileviewer.github.io/#tools" },
+      { "@type": "ListItem", "position": 3, "name": "Responsive Viewport Resizer", "item": "https://mobileviewer.github.io/responsive-viewport-resizer" }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+
+  <style>
+    /* ═══════════════════════════════════════════
+       DESIGN TOKENS & RESET
+    ═══════════════════════════════════════════ */
+    :root {
+      --bg:        #0a0b0f;
+      --bg-card:   #111318;
+      --bg-glass:  rgba(255,255,255,0.04);
+      --border:    rgba(255,255,255,0.08);
+      --border-hi: rgba(255,255,255,0.15);
+      --cyan:      #00F0FF;
+      --violet:    #7B61FF;
+      --green:     #00FF94;
+      --amber:     #FFB800;
+      --red:       #FF4D6D;
+      --text-1:    #f0f2f5;
+      --text-2:    #8892a4;
+      --text-3:    #4d5566;
+      --radius:    16px;
+      --radius-sm: 10px;
+      --shadow-lg: 0 24px 80px rgba(0,0,0,0.6);
+      --font-head: 'Syne', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --grad: linear-gradient(135deg, var(--cyan), var(--violet));
     }
-    </script>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text-1);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { color: var(--cyan); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    button { cursor: pointer; font-family: inherit; }
+    code {
+      background: rgba(0,240,255,0.08);
+      color: var(--cyan);
+      padding: 2px 7px;
+      border-radius: 5px;
+      font-size: 0.875em;
+      font-family: 'Courier New', monospace;
+    }
 
-    <style>
-        /* Tool-specific Styles */
-        .resizer-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
+    /* ═══════════════════════════════════════════
+       LAYOUT
+    ═══════════════════════════════════════════ */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-        .viewport-wrapper {
-            position: relative;
-            background: #fff;
-            border: 8px solid #333;
-            border-radius: 12px;
-            overflow: hidden;
-            transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1), height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
-            max-width: 100%;
-        }
+    /* ═══════════════════════════════════════════
+       NAV
+    ═══════════════════════════════════════════ */
+    .site-nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(10,11,15,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo {
+      font-family: var(--font-head);
+      font-size: 1.15rem; font-weight: 700;
+      color: var(--text-1);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .nav-logo-icon {
+      width: 32px; height: 32px;
+      background: var(--grad);
+      border-radius: 8px;
+      display: grid; place-items: center;
+      font-size: 1rem;
+    }
+    .nav-links { display: flex; gap: 24px; align-items: center; }
+    .nav-links a {
+      color: var(--text-2); font-size: 0.9rem; font-weight: 500;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--text-1); text-decoration: none; }
+    .nav-cta {
+      background: var(--grad);
+      color: #000 !important;
+      padding: 8px 20px;
+      border-radius: 8px;
+      font-weight: 600 !important;
+    }
+    @media (max-width: 640px) { .nav-links { display: none; } }
 
-        .viewport-wrapper iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            background: white;
-        }
+    /* ═══════════════════════════════════════════
+       HERO
+    ═══════════════════════════════════════════ */
+    .hero {
+      position: relative;
+      padding: 100px 0 80px;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; pointer-events: none; z-index: 0;
+    }
+    .grid-overlay {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .glow-orb {
+      position: absolute; border-radius: 50%;
+      filter: blur(100px); opacity: .35;
+    }
+    .orb-1 { width: 500px; height: 500px; background: var(--violet); top: -150px; left: -100px; }
+    .orb-2 { width: 400px; height: 400px; background: var(--cyan); top: 50px; right: -80px; opacity: .2; }
+    .hero .container { position: relative; z-index: 1; }
+    .hero-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    @media (max-width: 900px) { .hero-layout { grid-template-columns: 1fr; } }
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(0,240,255,0.07);
+      border: 1px solid rgba(0,240,255,0.2);
+      color: var(--cyan); font-size: 0.8rem; font-weight: 600;
+      padding: 6px 14px; border-radius: 100px;
+      margin-bottom: 24px; letter-spacing: .03em;
+    }
+    .badge-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--cyan);
+      box-shadow: 0 0 8px var(--cyan);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+    .hero-title {
+      font-family: var(--font-head);
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      font-weight: 800; line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .gradient-text {
+      background: var(--grad);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-desc {
+      color: var(--text-2); font-size: 1.05rem;
+      line-height: 1.7; margin-bottom: 36px;
+      max-width: 520px;
+    }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 44px; }
+    .primary-button {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--grad);
+      color: #000; font-weight: 700; font-size: 0.95rem;
+      padding: 14px 28px; border-radius: var(--radius-sm);
+      border: none; transition: opacity .2s, transform .2s;
+    }
+    .primary-button:hover { opacity: .9; transform: translateY(-2px); }
+    .secondary-button {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--bg-glass);
+      color: var(--text-1); font-weight: 500; font-size: 0.95rem;
+      padding: 14px 24px; border-radius: var(--radius-sm);
+      border: 1px solid var(--border-hi); transition: border-color .2s, transform .2s;
+    }
+    .secondary-button:hover { border-color: var(--cyan); transform: translateY(-2px); text-decoration: none; }
+    .stats {
+      display: flex; gap: 0; flex-wrap: wrap;
+      background: var(--bg-glass);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+    }
+    .stat-item {
+      padding: 16px 28px; flex: 1; min-width: 100px;
+      text-align: center;
+    }
+    .stat-item + .stat-item { border-left: 1px solid var(--border); }
+    .stat-number {
+      font-family: var(--font-head);
+      font-size: 1.4rem; font-weight: 700;
+      color: var(--cyan);
+    }
+    .stat-label { font-size: 0.75rem; color: var(--text-2); margin-top: 2px; }
 
-        .dimension-label {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            background: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-family: monospace;
-            pointer-events: none;
-        }
+    /* Hero Visual — animated resizer mockup */
+    .hero-visual { display: flex; justify-content: center; align-items: center; }
+    .resizer-mockup {
+      position: relative;
+      width: 340px; height: 220px;
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-hi);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+    .mockup-header {
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+    }
+    .m-dot { width: 8px; height: 8px; border-radius: 50%; }
+    .m-dot.r { background: #FF5F57; }
+    .m-dot.y { background: #FEBC2E; }
+    .m-dot.g { background: #28C840; }
+    .mockup-url {
+      flex: 1; height: 20px; border-radius: 4px;
+      background: rgba(255,255,255,0.06);
+      margin-left: 6px;
+    }
+    .mockup-body { padding: 14px; display: flex; flex-direction: column; gap: 8px; }
+    .mockup-line { height: 8px; border-radius: 4px; background: rgba(255,255,255,0.06); }
+    .mockup-line.w-full { width: 100%; }
+    .mockup-line.w-3q  { width: 75%; }
+    .mockup-line.w-half{ width: 50%; }
+    .mockup-block { height: 40px; border-radius: 8px; background: rgba(0,240,255,0.07); border: 1px solid rgba(0,240,255,0.12); margin-top: 4px; }
 
-        .resizer-controls {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.8rem;
-            margin-bottom: 2rem;
-        }
-    </style>
+    /* drag handle */
+    .mockup-handle {
+      position: absolute; right: -6px; top: 50%; transform: translateY(-50%);
+      width: 12px; height: 48px;
+      background: var(--grad);
+      border-radius: 6px;
+      cursor: ew-resize;
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+      box-shadow: 0 0 20px rgba(0,240,255,0.5);
+    }
+    .mockup-handle span { width: 3px; height: 3px; border-radius: 50%; background: #000; }
+
+    /* floating dim badge */
+    .mockup-dim {
+      position: absolute; bottom: 10px; right: 16px;
+      background: rgba(0,240,255,0.12);
+      border: 1px solid rgba(0,240,255,0.25);
+      color: var(--cyan);
+      font-family: 'Courier New', monospace;
+      font-size: 0.75rem; font-weight: 600;
+      padding: 4px 10px; border-radius: 6px;
+    }
+    /* breakpoint ruler */
+    .mockup-ruler {
+      position: absolute; top: 40px; left: 0; right: 0; height: 18px;
+      background: rgba(123,97,255,0.08);
+      border-bottom: 1px solid rgba(123,97,255,0.2);
+      display: flex; align-items: center; padding: 0 8px;
+      gap: 0;
+      overflow: hidden;
+    }
+    .ruler-tick {
+      flex: 1; height: 8px;
+      border-left: 1px solid rgba(255,255,255,0.1);
+      font-size: 0px;
+    }
+    .ruler-tick.major { border-left-color: rgba(0,240,255,0.4); }
+
+    /* ═══════════════════════════════════════════
+       TRUST BAR
+    ═══════════════════════════════════════════ */
+    .trust-bar {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 18px 0;
+    }
+    .trust-bar-inner {
+      display: flex; align-items: center; gap: 20px; flex-wrap: wrap; justify-content: center;
+    }
+    .trust-label { color: var(--text-3); font-size: 0.8rem; font-weight: 500; white-space: nowrap; }
+    .trust-logos { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: center; }
+    .trust-logo { color: var(--text-2); font-size: 0.85rem; font-weight: 500; }
+    .trust-sep { color: var(--text-3); }
+    
+
+    /* ═══════════════════════════════════════════
+       TOOL SECTION
+    ═══════════════════════════════════════════ */
+    .tool-section { padding: 80px 0; }
+
+    .tool-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* URL Bar */
+    .tool-controls {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+    }
+    .url-bar-wrapper {
+      flex: 1; min-width: 240px;
+      display: flex; align-items: center;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border-hi);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      transition: border-color .2s;
+    }
+    .url-bar-wrapper:focus-within { border-color: var(--cyan); }
+    .url-protocol {
+      padding: 0 10px;
+      border-right: 1px solid var(--border);
+    }
+    .url-protocol select {
+      background: transparent; color: var(--text-2);
+      border: none; font-size: 0.85rem;
+      cursor: pointer; outline: none;
+      font-family: var(--font-body);
+    }
+    .url-input {
+      flex: 1; padding: 11px 14px;
+      background: transparent; color: var(--text-1);
+      border: none; outline: none;
+      font-size: 0.95rem; font-family: var(--font-body);
+    }
+    .url-input::placeholder { color: var(--text-3); }
+    .load-btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--grad);
+      color: #000; font-weight: 700; font-size: 0.9rem;
+      padding: 11px 22px;
+      border: none; border-radius: var(--radius-sm);
+      transition: opacity .2s, transform .15s;
+      white-space: nowrap;
+    }
+    .load-btn:hover { opacity: .9; transform: translateY(-1px); }
+
+    /* Advanced Controls */
+    .advanced-row {
+      padding: 14px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex; gap: 16px; align-items: center; flex-wrap: wrap;
+      background: rgba(255,255,255,0.015);
+    }
+    .adv-group { display: flex; flex-direction: column; gap: 4px; }
+    .adv-label { font-size: 0.72rem; font-weight: 600; color: var(--text-3); text-transform: uppercase; letter-spacing: .05em; }
+    .adv-select, .adv-input {
+      background: var(--bg-glass);
+      border: 1px solid var(--border);
+      color: var(--text-1);
+      border-radius: 8px;
+      padding: 7px 10px;
+      font-size: 0.85rem;
+      font-family: var(--font-body);
+      outline: none;
+      transition: border-color .2s;
+    }
+    .adv-select:hover, .adv-input:hover { border-color: var(--border-hi); }
+    .adv-select:focus, .adv-input:focus { border-color: var(--cyan); }
+    .custom-w-h { display: flex; align-items: center; gap: 6px; }
+    .custom-w-h input { width: 72px; }
+    .custom-w-h span { color: var(--text-3); font-size: 0.9rem; }
+    .adv-btn {
+      background: var(--bg-glass);
+      border: 1px solid var(--border);
+      color: var(--text-2);
+      border-radius: 8px;
+      padding: 7px 14px;
+      font-size: 0.85rem;
+      font-family: var(--font-body);
+      display: flex; align-items: center; gap: 6px;
+      transition: border-color .2s, color .2s;
+    }
+    .adv-btn:hover { border-color: var(--cyan); color: var(--text-1); }
+    .adv-btn.active { border-color: var(--cyan); color: var(--cyan); background: rgba(0,240,255,0.07); }
+    .zoom-group { display: flex; align-items: center; gap: 0; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+    .zoom-btn {
+      background: var(--bg-glass); border: none; color: var(--text-2);
+      padding: 7px 12px; font-size: 1.1rem;
+      transition: background .15s, color .15s;
+    }
+    .zoom-btn:hover { background: rgba(255,255,255,0.08); color: var(--text-1); }
+    .zoom-value { padding: 7px 12px; font-size: 0.82rem; color: var(--text-2); border-left: 1px solid var(--border); border-right: 1px solid var(--border); min-width: 52px; text-align: center; background: var(--bg-glass); }
+
+    /* Status Bar */
+    .status-bar {
+      padding: 9px 24px;
+      border-bottom: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;
+      background: rgba(255,255,255,0.01);
+    }
+    .status-left { display: flex; align-items: center; gap: 10px; }
+    .status-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--text-3);
+      transition: background .3s;
+    }
+    .status-dot.loaded { background: var(--green); box-shadow: 0 0 6px var(--green); }
+    .status-dot.loading { background: var(--amber); animation: pulse 1s ease infinite; }
+    .status-text { font-size: 0.82rem; color: var(--text-2); }
+    .status-right { display: flex; align-items: center; gap: 16px; }
+    .dim-badge {
+      font-family: 'Courier New', monospace;
+      font-size: 0.8rem; font-weight: 700;
+      color: var(--cyan);
+      background: rgba(0,240,255,0.08);
+      border: 1px solid rgba(0,240,255,0.2);
+      padding: 3px 10px; border-radius: 6px;
+      min-width: 100px; text-align: center;
+    }
+    .copy-dim-btn {
+      background: none; border: none;
+      color: var(--text-3); font-size: 0.78rem;
+      padding: 3px 8px;
+      border-radius: 5px;
+      transition: color .2s, background .2s;
+    }
+    .copy-dim-btn:hover { color: var(--cyan); background: rgba(0,240,255,0.07); }
+    .bp-label {
+      font-size: 0.78rem; font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 6px;
+      border: 1px solid transparent;
+    }
+    .bp-mobile  { color: #FF4D6D; border-color: rgba(255,77,109,0.25); background: rgba(255,77,109,0.08); }
+    .bp-tablet  { color: var(--amber); border-color: rgba(255,184,0,0.25); background: rgba(255,184,0,0.08); }
+    .bp-desktop { color: var(--green); border-color: rgba(0,255,148,0.25); background: rgba(0,255,148,0.08); }
+
+    /* Resizer Stage */
+    .resizer-stage {
+      position: relative;
+      padding: 24px;
+      background: repeating-conic-gradient(rgba(255,255,255,0.015) 0% 25%, transparent 0% 50%) 0 0 / 20px 20px;
+      min-height: 500px;
+      overflow: hidden;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+
+    /* The resizable preview wrapper */
+    .preview-wrapper {
+      position: relative;
+      display: inline-flex;
+      flex-direction: column;
+      min-width: 220px;
+      min-height: 200px;
+    }
+
+    /* Breakpoint ruler */
+    .bp-ruler {
+      position: relative;
+      height: 22px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border);
+      border-bottom: none;
+      border-radius: 6px 6px 0 0;
+      overflow: hidden;
+    }
+    .bp-ruler-inner { position: relative; width: 100%; height: 100%; }
+    .bp-tick {
+      position: absolute; top: 0; height: 100%;
+      border-left: 1px dashed rgba(123,97,255,0.35);
+      display: flex; align-items: center;
+      padding-left: 4px;
+    }
+    .bp-tick span { font-size: 0.6rem; color: var(--violet); font-family: monospace; white-space: nowrap; }
+
+    /* iframe container */
+    .preview-box {
+      position: relative;
+      flex: 1;
+      border: 1.5px solid var(--border-hi);
+      border-radius: 0 0 6px 6px;
+      overflow: hidden;
+      background: #fff;
+      transition: border-color .2s;
+      min-height: 400px;
+    }
+    .preview-box.has-url { border-color: var(--cyan); box-shadow: 0 0 0 1px rgba(0,240,255,0.15), 0 16px 60px rgba(0,0,0,0.5); }
+
+    #previewIframe {
+      width: 100%; height: 100%;
+      border: none; display: block;
+    }
+    .preview-empty {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 14px;
+      background: var(--bg-card);
+      color: var(--text-3);
+    }
+    .preview-empty svg { opacity: .4; }
+    .preview-empty p { font-size: 0.9rem; }
+    .preview-loading {
+      position: absolute; inset: 0;
+      display: none;
+      flex-direction: column;
+      align-items: center; justify-content: center; gap: 14px;
+      background: var(--bg-card);
+      color: var(--text-2);
+    }
+    .preview-loading.active { display: flex; }
+    .spinner {
+      width: 36px; height: 36px;
+      border: 3px solid rgba(0,240,255,0.15);
+      border-top-color: var(--cyan);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Drag handles */
+    .drag-right {
+      position: absolute; right: -10px; top: 24px;
+      width: 20px; height: calc(100% - 24px);
+      cursor: ew-resize;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 10;
+    }
+    .drag-right-inner {
+      width: 6px; height: 48px;
+      background: var(--grad);
+      border-radius: 3px;
+      box-shadow: 0 0 12px rgba(0,240,255,0.4);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+      transition: transform .15s;
+    }
+    .drag-right:hover .drag-right-inner { transform: scaleX(1.5); }
+    .drag-right-inner span { width: 2px; height: 2px; border-radius: 50%; background: #000; }
+
+    .drag-bottom {
+      position: absolute; bottom: -10px; left: 0; right: 10px;
+      height: 20px;
+      cursor: ns-resize;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 10;
+    }
+    .drag-bottom-inner {
+      width: 48px; height: 6px;
+      background: var(--grad);
+      border-radius: 3px;
+      box-shadow: 0 0 12px rgba(0,240,255,0.4);
+      display: flex; align-items: center; justify-content: center; gap: 3px;
+      transition: transform .15s;
+    }
+    .drag-bottom:hover .drag-bottom-inner { transform: scaleY(1.5); }
+    .drag-bottom-inner span { width: 2px; height: 2px; border-radius: 50%; background: #000; }
+
+    /* snap flash */
+    .snap-flash {
+      position: absolute; inset: 0;
+      border: 2px solid var(--cyan);
+      border-radius: 5px;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity .15s;
+    }
+    .snap-flash.active { opacity: 1; }
+
+    /* Breakpoint snaps indicator */
+    .snap-indicators {
+      position: absolute; top: 0; left: 24px;
+      display: flex; gap: 0;
+      pointer-events: none; z-index: 5;
+      height: 500px;
+    }
+    .snap-line {
+      position: absolute; top: 0; bottom: 0;
+      width: 1px; background: rgba(123,97,255,0.25);
+      border-left: 1px dashed rgba(123,97,255,0.35);
+    }
+
+    /* ═══════════════════════════════════════════
+       WHY SECTION
+    ═══════════════════════════════════════════ */
+    .why-section { padding: 80px 0; }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .why-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      transition: border-color .2s, transform .2s;
+    }
+    .why-card:hover { border-color: var(--border-hi); transform: translateY(-3px); }
+    .why-card--large { grid-column: span 1; }
+    .why-icon {
+      width: 48px; height: 48px;
+      background: rgba(0,240,255,0.08);
+      border: 1px solid rgba(0,240,255,0.15);
+      border-radius: 12px;
+      display: grid; place-items: center;
+      color: var(--cyan);
+      margin-bottom: 16px;
+    }
+    .why-number {
+      font-family: var(--font-head);
+      font-size: 2.2rem; font-weight: 800;
+      color: var(--cyan); margin-bottom: 8px;
+    }
+    .why-card h3 {
+      font-family: var(--font-head);
+      font-size: 1.05rem; font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .why-card p { color: var(--text-2); font-size: 0.9rem; line-height: 1.65; }
+
+    /* ═══════════════════════════════════════════
+       FEATURES GRID
+    ═══════════════════════════════════════════ */
+    .features-section { padding: 80px 0; }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .feature-card {
+      background: var(--bg-card);
+      padding: 32px;
+      transition: background .2s;
+    }
+    .feature-card:hover { background: rgba(255,255,255,0.03); }
+    .feature-number {
+      font-family: var(--font-head);
+      font-size: 0.75rem; font-weight: 700;
+      color: var(--cyan); letter-spacing: .08em;
+      margin-bottom: 12px;
+    }
+    .feature-card h3 {
+      font-family: var(--font-head);
+      font-size: 1rem; font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .feature-card p { color: var(--text-2); font-size: 0.88rem; line-height: 1.65; }
+
+    /* ═══════════════════════════════════════════
+       HOW IT WORKS
+    ═══════════════════════════════════════════ */
+    .how-section { padding: 80px 0; }
+    .how-steps {
+      display: flex; align-items: flex-start;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+    }
+    .how-step {
+      flex: 1; min-width: 220px; max-width: 280px;
+      text-align: center; padding: 32px 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      transition: border-color .2s;
+    }
+    .how-step:hover { border-color: var(--border-hi); }
+    .how-step-icon {
+      width: 64px; height: 64px; border-radius: 16px;
+      background: rgba(0,240,255,0.07);
+      border: 1px solid rgba(0,240,255,0.15);
+      color: var(--cyan);
+      display: grid; place-items: center;
+      margin: 0 auto 14px;
+    }
+    .how-step-num {
+      font-family: var(--font-head);
+      font-size: 0.75rem; font-weight: 700;
+      color: var(--cyan); letter-spacing: .08em;
+      margin-bottom: 8px;
+    }
+    .how-step h3 {
+      font-family: var(--font-head);
+      font-size: 1.05rem; font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .how-step p { color: var(--text-2); font-size: 0.88rem; line-height: 1.65; }
+    .how-arrow {
+      align-self: center;
+      padding: 0 12px;
+      color: var(--text-3);
+      opacity: .5;
+    }
+    @media (max-width: 700px) { .how-arrow { display: none; } }
+
+    /* ═══════════════════════════════════════════
+       DESCRIPTION SECTION
+    ═══════════════════════════════════════════ */
+    .desc-section { padding: 80px 0; }
+    .desc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+    @media (max-width: 768px) { .desc-grid { grid-template-columns: 1fr; } }
+    .desc-content h2 {
+      font-family: var(--font-head);
+      font-size: 2rem; font-weight: 800;
+      margin-bottom: 20px;
+    }
+    .desc-content p {
+      color: var(--text-2); font-size: 0.95rem;
+      line-height: 1.75; margin-bottom: 16px;
+    }
+    .desc-list {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 12px;
+      margin-top: 24px;
+    }
+    .desc-list li {
+      display: flex; align-items: flex-start; gap: 12px;
+      color: var(--text-2); font-size: 0.92rem;
+    }
+    .desc-list li::before {
+      content: '';
+      flex-shrink: 0;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: rgba(0,240,255,0.1);
+      border: 1px solid rgba(0,240,255,0.3);
+      margin-top: 2px;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 9l3 3 5-5' stroke='%2300F0FF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-size: contain;
+    }
+    .desc-aside {
+      display: flex; flex-direction: column; gap: 20px;
+    }
+    .aside-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+    .aside-card h4 {
+      font-family: var(--font-head); font-size: 0.95rem; font-weight: 700;
+      margin-bottom: 8px; color: var(--cyan);
+    }
+    .aside-card p { color: var(--text-2); font-size: 0.87rem; line-height: 1.65; }
+
+    /* breakpoint table */
+    .bp-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 8px; }
+    .bp-table th {
+      text-align: left; padding: 8px 10px;
+      color: var(--text-3); font-weight: 600; font-size: 0.75rem;
+      text-transform: uppercase; letter-spacing: .05em;
+      border-bottom: 1px solid var(--border);
+    }
+    .bp-table td { padding: 8px 10px; color: var(--text-2); border-bottom: 1px solid rgba(255,255,255,0.04); }
+    .bp-table tr:last-child td { border-bottom: none; }
+    .bp-table .bp-name { font-weight: 600; color: var(--text-1); }
+    .bp-table .bp-px { font-family: monospace; color: var(--cyan); }
+
+    /* ═══════════════════════════════════════════
+       FAQ
+    ═══════════════════════════════════════════ */
+    .faq-section { padding: 80px 0; }
+    .faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 0; }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+    .faq-item:first-child { border-top: 1px solid var(--border); }
+    .faq-q {
+      width: 100%; text-align: left;
+      background: none; border: none; color: var(--text-1);
+      font-family: var(--font-body); font-size: 0.97rem; font-weight: 600;
+      padding: 22px 0;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+      transition: color .2s;
+    }
+    .faq-q:hover { color: var(--cyan); }
+    .faq-chevron {
+      color: var(--text-3); font-size: 1.2rem;
+      flex-shrink: 0;
+      transition: transform .25s;
+    }
+    .faq-q[aria-expanded="true"] .faq-chevron { transform: rotate(180deg); color: var(--cyan); }
+    .faq-a {
+      max-height: 0; overflow: hidden;
+      transition: max-height .3s ease;
+    }
+    .faq-a.open { max-height: 400px; }
+    .faq-a p {
+      padding: 0 0 20px;
+      color: var(--text-2); font-size: 0.92rem; line-height: 1.75;
+    }
+
+    /* ═══════════════════════════════════════════
+       CTA
+    ═══════════════════════════════════════════ */
+    .cta-section { padding: 80px 0; }
+    .cta-card {
+      position: relative; overflow: hidden;
+      background: var(--bg-card);
+      border: 1px solid var(--border-hi);
+      border-radius: 24px;
+      padding: 60px 40px;
+      text-align: center;
+    }
+    .cta-glow {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(0,240,255,0.1), transparent);
+      pointer-events: none;
+    }
+    .cta-badge {
+      display: inline-block;
+      background: rgba(0,240,255,0.07);
+      border: 1px solid rgba(0,240,255,0.18);
+      color: var(--cyan); font-size: 0.78rem; font-weight: 700;
+      padding: 5px 16px; border-radius: 100px;
+      letter-spacing: .06em; text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .cta-title {
+      font-family: var(--font-head);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 800;
+      margin-bottom: 14px; position: relative;
+    }
+    .cta-desc { color: var(--text-2); font-size: 1rem; max-width: 520px; margin: 0 auto 32px; }
+    .cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .cta-secondary {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--text-2); font-size: 0.9rem; font-weight: 500;
+      padding: 13px 24px;
+      border: 1px solid var(--border-hi); border-radius: var(--radius-sm);
+      transition: color .2s, border-color .2s;
+    }
+    .cta-secondary:hover { color: var(--text-1); border-color: var(--cyan); text-decoration: none; }
+
+    
+
+    /* ═══════════════════════════════════════════
+       TOAST
+    ═══════════════════════════════════════════ */
+    .toast {
+      position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(80px);
+      background: var(--bg-card);
+      border: 1px solid var(--border-hi);
+      color: var(--text-1); font-size: 0.88rem;
+      padding: 12px 22px; border-radius: 10px;
+      box-shadow: var(--shadow-lg);
+      z-index: 9999;
+      transition: transform .3s ease;
+      white-space: nowrap;
+    }
+    .toast.show { transform: translateX(-50%) translateY(0); }
+  </style>
 </head>
 <body>
-    <div id="header-placeholder"></div>
 
-    <section class="viewer-section" style="padding-top: 120px;">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-badge">Layout Tool</span>
-                <h2 class="section-title">Viewport Resizer</h2>
-                <p class="section-description">Manually adjust dimensions or choose presets to audit your responsive breakpoints.</p>
-            </div>
+<!-- Header Component -->
+  <div id="header-placeholder"></div>
 
-            <div class="viewer-card">
-                <div class="viewer-controls">
-                    <input type="text" id="resizerUrl" placeholder="Enter URL (e.g., https://example.com)" class="url-input">
-                    <button class="load-button" onclick="updateIframeUrl()">Update Viewport</button>
-                </div>
-
-                <div class="resizer-controls">
-                    <button class="toggle-btn" onclick="resizeViewport(375, 667)">iPhone SE</button>
-                    <button class="toggle-btn" onclick="resizeViewport(414, 896)">iPhone 11</button>
-                    <button class="toggle-btn" onclick="resizeViewport(768, 1024)">iPad</button>
-                    <button class="toggle-btn" onclick="resizeViewport(1024, 1366)">iPad Pro</button>
-                    <button class="toggle-btn" onclick="resizeViewport(1280, 800)">Laptop</button>
-                    <button class="toggle-btn active" onclick="resizeViewport('100%', 600)">Full Width</button>
-                </div>
-
-                <div class="resizer-container">
-                    <div id="viewportWrapper" class="viewport-wrapper" style="width: 100%; height: 600px;">
-                        <iframe id="resizerIframe" src="about:blank"></iframe>
-                        <div id="dimLabel" class="dimension-label">100% x 600</div>
-                    </div>
-                </div>
-            </div>
+<!-- ══════════════════════ HERO ══════════════════════ -->
+<section id="home" class="hero" aria-label="Hero">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="grid-overlay"></div>
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+  </div>
+  <div class="container">
+    <div class="hero-layout">
+      <div class="hero-text">
+        <span class="badge">
+          <span class="badge-dot"></span>
+          Free Responsive Testing — No Install
+        </span>
+        <h1 class="hero-title">
+          Drag, resize &amp; test your<br>
+          <span class="gradient-text">responsive breakpoints</span>
+        </h1>
+        <p class="hero-desc">
+          The professional viewport resizer for developers and designers. Drag any edge to a custom pixel width, snap to CSS breakpoints, and verify your responsive layouts in real-time — instantly.
+        </p>
+        <div class="hero-actions">
+          <button class="primary-button" onclick="document.getElementById('resizer').scrollIntoView({behavior:'smooth'})" aria-label="Launch Viewport Resizer">
+            <span>Launch Resizer</span>
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7.5 5L12.5 10L7.5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <a href="#how-it-works" class="secondary-button">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M10 7v4M10 13h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            How it works
+          </a>
         </div>
-    </section>
-
-    <section class="info-section">
-        <div class="container">
-            <div class="content-block">
-                <h2 class="section-title">About the Resizer</h2>
-                <p class="widget-text">
-                    The Responsive Viewport Resizer is an essential tool for front-end developers and UI/UX designers. It allows you to visualize how your web application behaves at specific pixel widths, ensuring that media queries and fluid layouts work perfectly across the entire device spectrum.
-                </p>
-
-                <h3>How to use this tool:</h3>
-                <ul class="widget-text" style="list-style: decimal; padding-left: 1.5rem;">
-                    <li><strong>Enter your URL:</strong> Paste the full web address (including https://) into the input field and click "Load".</li>
-                    <li><strong>Select a Preset:</strong> Use the quick-action buttons to instantly switch between common device sizes.</li>
-                    <li><strong>Verify Breakpoints:</strong> Watch how elements stack, navigation menus change, and images scale as the viewport transforms.</li>
-                    <li><strong>Custom Testing:</strong> If a site prevents iframe loading (X-Frame-Options), ensure you are testing a site that allows embedding or use our "Mobile Viewer" home tool for advanced simulation.</li>
-                </ul>
-
-                <h3>Why Test Breakpoints?</h3>
-                <p class="widget-text">
-                    Modern web traffic is split across thousands of different screen resolutions. By testing specifically at 768px (Tablet) or 375px (Mobile), you can identify "layout breaks" where text might overflow or buttons might become too small to click.
-                </p>
-            </div>
+        <div class="stats" aria-label="Tool statistics">
+          <div class="stat-item">
+            <div class="stat-number">7</div>
+            <div class="stat-label">Breakpoints</div>
+          </div>
+          <div class="stat-item" style="border-left:1px solid var(--border)">
+            <div class="stat-number">20+</div>
+            <div class="stat-label">Device Presets</div>
+          </div>
+          <div class="stat-item" style="border-left:1px solid var(--border)">
+            <div class="stat-number">Free</div>
+            <div class="stat-label">Forever</div>
+          </div>
+          <div class="stat-item" style="border-left:1px solid var(--border)">
+            <div class="stat-number">Live</div>
+            <div class="stat-label">Preview</div>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <div id="footer-placeholder"></div>
+      <!-- Hero Visual -->
+      <div class="hero-visual" aria-hidden="true">
+        <div class="resizer-mockup">
+          <div class="mockup-header">
+            <div class="m-dot r"></div>
+            <div class="m-dot y"></div>
+            <div class="m-dot g"></div>
+            <div class="mockup-url"></div>
+          </div>
+          <div class="mockup-ruler">
+            <div class="mockup-ruler-inner" id="mockupRuler"></div>
+          </div>
+          <div class="mockup-body">
+            <div class="mockup-line w-full"></div>
+            <div class="mockup-line w-3q"></div>
+            <div class="mockup-line w-half"></div>
+            <div class="mockup-block"></div>
+            <div class="mockup-line w-full"></div>
+            <div class="mockup-line w-3q"></div>
+          </div>
+          <div class="mockup-handle">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="mockup-dim" id="mockupDim">768 × 480</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <script src="script.js"></script>
-    <script>
-        function updateIframeUrl() {
-            const url = document.getElementById('resizerUrl').value;
-            const iframe = document.getElementById('resizerIframe');
-            if(url) {
-                iframe.src = url.startsWith('http') ? url : 'https://' + url;
-            }
+<!-- ══════════════════════ TRUST BAR ══════════════════════ -->
+<div class="trust-bar" aria-label="Used by professionals">
+  <div class="container trust-bar-inner">
+    <span class="trust-label">Used by teams at</span>
+    <div class="trust-logos" aria-hidden="true">
+      <span class="trust-logo">Frontend Devs</span>
+      <span class="trust-sep">·</span>
+      <span class="trust-logo">UX Designers</span>
+      <span class="trust-sep">·</span>
+      <span class="trust-logo">QA Engineers</span>
+      <span class="trust-sep">·</span>
+      <span class="trust-logo">Agencies</span>
+      <span class="trust-sep">·</span>
+      <span class="trust-logo">Freelancers</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════ TOOL ══════════════════════ -->
+<section id="resizer" class="tool-section" aria-labelledby="tool-heading">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge">Core Tool</span>
+      <h2 class="section-title" id="tool-heading">Responsive Viewport <span class="gradient-text">Resizer</span></h2>
+      <p class="section-description">Enter a URL, then drag the edges to test any breakpoint — or choose from 20+ device presets</p>
+    </div>
+
+    <div class="tool-card">
+      <!-- URL BAR -->
+      <div class="tool-controls">
+        <div class="url-bar-wrapper">
+          <div class="url-protocol">
+            <select id="protocolSelect" aria-label="Select protocol">
+              <option value="https://">https://</option>
+              <option value="http://">http://</option>
+            </select>
+          </div>
+          <input type="text" id="urlInput" class="url-input" placeholder="example.com" aria-label="Enter website URL" autocomplete="url" spellcheck="false">
+        </div>
+        <button class="load-btn" onclick="loadURL()" aria-label="Load website in resizer">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1v8M5 6l3 3 3-3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 11v2a1 1 0 001 1h10a1 1 0 001-1v-2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          Load
+        </button>
+      </div>
+
+      <!-- ADVANCED ROW -->
+      <div class="advanced-row">
+        <div class="adv-group">
+          <label for="presetSelect" class="adv-label">Device Preset</label>
+          <select id="presetSelect" class="adv-select" onchange="applyPreset()" aria-label="Select device preset">
+            <optgroup label="📱 iPhone">
+              <option value="390x844">iPhone 15 / 15 Pro (390×844)</option>
+              <option value="430x932">iPhone 15 Pro Max (430×932)</option>
+              <option value="375x812">iPhone 13 mini (375×812)</option>
+              <option value="375x667">iPhone SE (375×667)</option>
+            </optgroup>
+            <optgroup label="🤖 Android">
+              <option value="360x800">Samsung Galaxy S23 (360×800)</option>
+              <option value="412x915">Google Pixel 8 (412×915)</option>
+              <option value="384x854">OnePlus 12 (384×854)</option>
+            </optgroup>
+            <optgroup label="📟 Tablet">
+              <option value="768x1024" selected>iPad (768×1024)</option>
+              <option value="834x1194">iPad Pro 11" (834×1194)</option>
+              <option value="1024x1366">iPad Pro 12.9" (1024×1366)</option>
+              <option value="800x1280">Android Tablet (800×1280)</option>
+            </optgroup>
+            <optgroup label="🖥 Desktop">
+              <option value="1280x800">Laptop HD (1280×800)</option>
+              <option value="1366x768">Laptop FHD (1366×768)</option>
+              <option value="1440x900">Desktop 1440 (1440×900)</option>
+              <option value="1920x1080">Full HD (1920×1080)</option>
+            </optgroup>
+            <optgroup label="📐 Breakpoints">
+              <option value="320x568">320px — Small Mobile</option>
+              <option value="375x667">375px — Mobile</option>
+              <option value="480x854">480px — Large Mobile</option>
+              <option value="768x1024">768px — Tablet (md)</option>
+              <option value="1024x768">1024px — Desktop (lg)</option>
+              <option value="1280x800">1280px — Desktop (xl)</option>
+              <option value="1440x900">1440px — Desktop (2xl)</option>
+            </optgroup>
+            <option value="custom">✏️ Custom…</option>
+          </select>
+        </div>
+
+        <div class="adv-group" id="customGroup" style="display:none">
+          <label class="adv-label">Custom Size (px)</label>
+          <div class="custom-w-h">
+            <input type="number" id="customW" class="adv-input" placeholder="W" min="200" max="2560" aria-label="Custom width">
+            <span>×</span>
+            <input type="number" id="customH" class="adv-input" placeholder="H" min="200" max="1600" aria-label="Custom height">
+            <button class="adv-btn" onclick="applyCustom()" aria-label="Apply custom size">Apply</button>
+          </div>
+        </div>
+
+        <div class="adv-group">
+          <label class="adv-label">Orientation</label>
+          <button class="adv-btn" id="orientBtn" onclick="toggleOrient()" aria-label="Toggle orientation">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 3h10v10H3z" stroke="currentColor" stroke-width="1.5" rx="1"/></svg>
+            <span id="orientLabel">Portrait</span>
+          </button>
+        </div>
+
+        <div class="adv-group">
+          <label class="adv-label">Zoom</label>
+          <div class="zoom-group">
+            <button class="zoom-btn" onclick="adjustZoom(-10)" aria-label="Zoom out">−</button>
+            <div class="zoom-value" id="zoomValue">100%</div>
+            <button class="zoom-btn" onclick="adjustZoom(10)" aria-label="Zoom in">+</button>
+          </div>
+        </div>
+
+        <div class="adv-group">
+          <label class="adv-label">Snap Guide</label>
+          <button class="adv-btn" id="snapBtn" onclick="toggleSnap()" aria-label="Toggle breakpoint snap guides">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M4 2v12M8 2v12M12 2v12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span id="snapLabel">On</span>
+          </button>
+        </div>
+
+        <div class="adv-group">
+          <label class="adv-label">Actions</label>
+          <div style="display:flex;gap:6px">
+            <button class="adv-btn" onclick="refreshIframe()" title="Refresh" aria-label="Refresh preview">
+              <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7a6 6 0 1011.6-2.1M1 7V3m0 4H5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button class="adv-btn" onclick="openNewTab()" title="Open in new tab" aria-label="Open in new tab">
+              <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M6 2H2a1 1 0 00-1 1v9a1 1 0 001 1h9a1 1 0 001-1V8M8 1h5v5M12 2L6 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- STATUS BAR -->
+      <div class="status-bar">
+        <div class="status-left">
+          <div class="status-dot" id="statusDot"></div>
+          <span class="status-text" id="statusText">Enter a URL above and click Load to preview</span>
+        </div>
+        <div class="status-right">
+          <span class="bp-label" id="bpLabel"></span>
+          <div class="dim-badge" id="dimBadge">768 × 400 px</div>
+          <button class="copy-dim-btn" onclick="copyDimensions()" title="Copy dimensions" aria-label="Copy dimensions to clipboard">
+            <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true" style="vertical-align:middle;margin-right:3px"><rect x="4" y="4" width="8" height="8" rx="1" stroke="currentColor" stroke-width="1.3"/><path d="M2 10V2h8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            Copy
+          </button>
+        </div>
+      </div>
+
+      <!-- RESIZER STAGE -->
+      <div class="resizer-stage" id="resizerStage">
+        <div class="preview-wrapper" id="previewWrapper">
+          <!-- Ruler -->
+          <div class="bp-ruler" id="bpRuler">
+            <div class="bp-ruler-inner" id="bpRulerInner"></div>
+          </div>
+          <!-- Preview Box -->
+          <div class="preview-box" id="previewBox" style="width:768px;height:400px">
+            <iframe id="previewIframe" src="" title="Website preview" allow="fullscreen" scrolling="yes" style="display:none"></iframe>
+            <div class="preview-empty" id="previewEmpty">
+              <svg width="52" height="52" viewBox="0 0 52 52" fill="none" aria-hidden="true">
+                <rect x="6" y="6" width="40" height="32" rx="4" stroke="currentColor" stroke-width="2"/>
+                <path d="M6 12h40M20 44h12M26 38v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M18 24h6M18 29h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity=".4"/>
+              </svg>
+              <p>Enter a URL and click <strong>Load</strong></p>
+            </div>
+            <div class="preview-loading" id="previewLoading">
+              <div class="spinner"></div>
+              <p>Loading preview…</p>
+            </div>
+            <div class="snap-flash" id="snapFlash"></div>
+          </div>
+          <!-- Drag Right -->
+          <div class="drag-right" id="dragRight" aria-label="Drag to resize width" role="slider" aria-valuemin="200" aria-valuemax="2560">
+            <div class="drag-right-inner"><span></span><span></span><span></span></div>
+          </div>
+          <!-- Drag Bottom -->
+          <div class="drag-bottom" id="dragBottom" aria-label="Drag to resize height" role="slider" aria-valuemin="200" aria-valuemax="1600">
+            <div class="drag-bottom-inner"><span></span><span></span><span></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ WHY SECTION ══════════════════════ -->
+<section class="why-section" aria-labelledby="why-heading">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge">The Strategy</span>
+      <h2 class="section-title" id="why-heading">Why Use a <span class="gradient-text">Viewport Resizer</span></h2>
+      <p class="section-description">Device simulators show fixed sizes. A viewport resizer lets you drag to any pixel — finding the exact point your layout breaks.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 4C9.373 4 4 9.373 4 16s5.373 12 12 12 12-5.373 12-12S22.627 4 16 4z" stroke="currentColor" stroke-width="2"/><path d="M10 16h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M16 10v12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <div class="why-number">63%</div>
+        <h3>Mobile Traffic</h3>
+        <p>Over 63% of web traffic is mobile. Your CSS must hold up from 320px to 1920px — and dragging the viewport is the fastest way to verify it does.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="4" y="8" width="24" height="16" rx="2" stroke="currentColor" stroke-width="2"/><path d="M4 14h24" stroke="currentColor" stroke-width="2"/></svg>
+        </div>
+        <h3>Find Exact Breakpoints</h3>
+        <p>Drag the handle until a layout element wraps, overflows, or collapses — you'll see the exact pixel width where a new media query is needed.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M6 6h20M6 12h14M6 18h20M6 24h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Catch Layout Breaks</h3>
+        <p>Spot text overflow, images exceeding container width, broken nav menus, and collapsed grids before your users ever see them.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="2"/><path d="M16 10v7l4 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Faster Than DevTools</h3>
+        <p>No need to open browser developer tools. Just drag. The live dimension readout updates in real-time, making iteration as fast as clicking.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ FEATURES ══════════════════════ -->
+<section id="features" class="features-section" aria-labelledby="features-heading">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge">What's Included</span>
+      <h2 class="section-title" id="features-heading">Powerful Features for <span class="gradient-text">Every Workflow</span></h2>
+      <p class="section-description">Built for frontend developers, UI designers, and QA engineers who demand precision</p>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-number">01</div>
+        <h3>Drag-to-Resize</h3>
+        <p>Grab the right or bottom handle to resize the preview window freely at any pixel dimension between 200px and 2560px.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-number">02</div>
+        <h3>Live Dimension Readout</h3>
+        <p>The current width × height updates in real-time as you drag, so you always know the exact viewport size you're testing.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-number">03</div>
+        <h3>Breakpoint Snap Guides</h3>
+        <p>Enable snap guides to lock onto standard CSS breakpoints — 320, 375, 480, 768, 1024, 1280, and 1440px — with a visual flash indicator.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-number">04</div>
+        <h3>Breakpoint Ruler</h3>
+        <p>A pixel ruler above the preview marks every major CSS breakpoint as you resize, so you know exactly where your media queries fire.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-number">05</div>
+        <h3>20+ Device Presets</h3>
+        <p>Jump directly to exact device viewport sizes: iPhone 15, Samsung Galaxy S23, iPad Pro, and all standard desktop resolutions.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-number">06</div>
+        <h3>Orientation Toggle</h3>
+        <p>Swap width and height to simulate landscape vs portrait mode with a single click — essential for tablet and mobile layout testing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ HOW IT WORKS ══════════════════════ -->
+<section id="how-it-works" class="how-section" aria-labelledby="how-heading">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge">Simple Process</span>
+      <h2 class="section-title" id="how-heading">Up and Running in <span class="gradient-text">3 Seconds</span></h2>
+      <p class="section-description">No setup, no learning curve — just paste, load, and drag</p>
+    </div>
+    <div class="how-steps">
+      <div class="how-step">
+        <div class="how-step-icon">
+          <svg width="36" height="36" viewBox="0 0 40 40" fill="none" aria-hidden="true"><rect x="8" y="8" width="24" height="24" rx="4" stroke="currentColor" stroke-width="2.5"/><path d="M14 16h12M14 20h8M14 24h12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="how-step-num">01</div>
+        <h3>Paste Your URL</h3>
+        <p>Type or paste any live URL — including <code>localhost</code> or staging URLs — into the input bar and click Load.</p>
+      </div>
+      <div class="how-arrow" aria-hidden="true">
+        <svg width="40" height="16" viewBox="0 0 48 20" fill="none"><path d="M0 10h46M40 3l8 7-8 7" stroke="url(#arr1)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="arr1" x1="0" y1="10" x2="48" y2="10" gradientUnits="userSpaceOnUse"><stop stop-color="#00F0FF"/><stop offset="1" stop-color="#7B61FF"/></linearGradient></defs></svg>
+      </div>
+      <div class="how-step">
+        <div class="how-step-icon">
+          <svg width="36" height="36" viewBox="0 0 40 40" fill="none" aria-hidden="true"><rect x="8" y="10" width="24" height="20" rx="2" stroke="currentColor" stroke-width="2.5"/><path d="M20 6v4M14 34h12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M32 20h4M4 20h4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+        </div>
+        <div class="how-step-num">02</div>
+        <h3>Drag to Resize</h3>
+        <p>Grab the right or bottom handle and drag to any width. Watch the dimension badge update live and the breakpoint ruler react.</p>
+      </div>
+      <div class="how-arrow" aria-hidden="true">
+        <svg width="40" height="16" viewBox="0 0 48 20" fill="none"><path d="M0 10h46M40 3l8 7-8 7" stroke="url(#arr2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="arr2" x1="0" y1="10" x2="48" y2="10" gradientUnits="userSpaceOnUse"><stop stop-color="#00F0FF"/><stop offset="1" stop-color="#7B61FF"/></linearGradient></defs></svg>
+      </div>
+      <div class="how-step">
+        <div class="how-step-icon">
+          <svg width="36" height="36" viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="20" cy="20" r="13" stroke="currentColor" stroke-width="2.5"/><path d="M14 20l5 5 8-9" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="how-step-num">03</div>
+        <h3>Fix &amp; Confirm</h3>
+        <p>Spot the layout issue, update your CSS, click refresh to reload, and drag back to confirm the fix. Repeat until pixel-perfect.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ DESCRIPTION ══════════════════════ -->
+<section class="desc-section" aria-labelledby="desc-heading">
+  <div class="container">
+    <div class="desc-grid">
+      <div class="desc-content">
+        <span class="section-badge" style="margin-bottom:20px;display:inline-block">About This Tool</span>
+        <h2 id="desc-heading">What Is a <span class="gradient-text">Responsive Viewport Resizer</span>?</h2>
+        <p>
+          A Responsive Viewport Resizer is a browser-based tool that lets you interactively resize a website preview window to any pixel width and height. Unlike a device simulator — which shows your site in a fixed phone or tablet frame — a viewport resizer gives you continuous drag control so you can find the <em>exact pixel</em> at which your layout breaks.
+        </p>
+        <p>
+          This is especially useful when you're refining CSS breakpoints, checking that your <code>@media</code> queries fire at the right thresholds, and verifying that flexbox and CSS Grid layouts adapt correctly across the full spectrum of screen sizes. With this tool you can test everything from 320px compact mobile all the way up to 1920px widescreen desktop.
+        </p>
+        <ul class="desc-list">
+          <li>Drag handles for free-form resize — no fixed frame</li>
+          <li>Live pixel readout shows dimensions as you drag</li>
+          <li>Snap guides lock to standard CSS breakpoints</li>
+          <li>Breakpoint ruler overlay marks media query thresholds</li>
+          <li>20+ device presets for instant size jumps</li>
+          <li>Works with any live URL including localhost</li>
+          <li>100% free, no install, no sign-up</li>
+        </ul>
+      </div>
+
+      <div class="desc-aside">
+        <div class="aside-card">
+          <h4>Standard CSS Breakpoints</h4>
+          <table class="bp-table" aria-label="Standard CSS breakpoints reference">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Width</th>
+                <th>Framework</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td class="bp-name">xs / Small Mobile</td><td class="bp-px">320px</td><td>—</td></tr>
+              <tr><td class="bp-name">Mobile</td><td class="bp-px">375px</td><td>—</td></tr>
+              <tr><td class="bp-name">sm</td><td class="bp-px">640px</td><td>Tailwind</td></tr>
+              <tr><td class="bp-name">md</td><td class="bp-px">768px</td><td>Bootstrap / Tailwind</td></tr>
+              <tr><td class="bp-name">lg</td><td class="bp-px">1024px</td><td>Bootstrap / Tailwind</td></tr>
+              <tr><td class="bp-name">xl</td><td class="bp-px">1280px</td><td>Bootstrap / Tailwind</td></tr>
+              <tr><td class="bp-name">2xl</td><td class="bp-px">1440px</td><td>Tailwind</td></tr>
+              <tr><td class="bp-name">Full HD</td><td class="bp-px">1920px</td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="aside-card">
+          <h4>When to Use a Viewport Resizer vs Device Simulator</h4>
+          <p>Use this <strong>Viewport Resizer</strong> when you need to find the exact breakpoint pixel or test a range of widths continuously. Use a <strong>Device Simulator</strong> (like our <a href="/">Mobile Viewer</a>) when you need to see your site in a realistic device frame — useful for client presentations and verifying device-specific features.</p>
+        </div>
+
+        <div class="aside-card">
+          <h4>Why Some URLs Won't Load</h4>
+          <p>Websites that set <code>X-Frame-Options: DENY</code> or a restrictive <code>Content-Security-Policy</code> will block loading inside an iframe. This is a server-side security header on the target website, not a limitation of this tool. For sites you own, you can relax the <code>frame-ancestors</code> CSP directive during development.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ FAQ ══════════════════════ -->
+<section id="faq" class="faq-section" aria-labelledby="faq-heading">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge">FAQ</span>
+      <h2 class="section-title" id="faq-heading">Frequently Asked Questions</h2>
+      <p class="section-description">Everything you need to know about the Responsive Viewport Resizer</p>
+    </div>
+    <div class="faq-list" role="list">
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+          What is a Responsive Viewport Resizer?
+          <span class="faq-chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="faq-a">
+          <p>A Responsive Viewport Resizer is a browser tool that lets you drag the edges of a website preview to resize it to any width or height. This gives you continuous, pixel-level control to test how your website layout responds at different screen sizes and find the exact pixel at which your CSS media queries need to fire.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+          How do I test CSS breakpoints with this tool?
+          <span class="faq-chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="faq-a">
+          <p>Enter your URL and click Load, then drag the right edge of the preview window. The live dimension badge shows your current width in real-time. Enable Snap Guides to have the handle snap to common CSS breakpoints — 320, 375, 480, 768, 1024, 1280, and 1440px — with a visual highlight when you hit one. The breakpoint ruler above the frame also marks these thresholds visually.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+          Is this tool completely free?
+          <span class="faq-chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="faq-a">
+          <p>Yes — 100% free with no registration, no paywall, and no premium tier. All features including drag-resize, snap guides, breakpoint ruler, device presets, and orientation toggle are available to everyone at no cost.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+          What breakpoints does the snap guide support?
+          <span class="faq-chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="faq-a">
+          <p>The snap guides cover seven standard breakpoints: <strong>320px</strong> (small mobile), <strong>375px</strong> (iPhone SE / common mobile), <strong>480px</strong> (large mobile), <strong>768px</strong> (Bootstrap / Tailwind <code>md</code>), <strong>1024px</strong> (Bootstrap / Tailwind <code>lg</code>), <strong>1280px</strong> (Tailwind <code>xl</code>), and <strong>1440px</strong> (Tailwind <code>2xl</code>).</p>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+          Can I test a localhost or staging server URL?
+          <span class="faq-chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="faq-a">
+          <p>Yes. You can load any URL including <code>http://localhost:3000</code>, a local IP like <code>http://192.168.1.10:8080</code>, or a private staging URL. The server just needs to be accessible from your browser's current network. Note that the server must not block iframe embedding via <code>X-Frame-Options</code> headers.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+          What's the difference between a Viewport Resizer and a Device Simulator?
+          <span class="faq-chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="faq-a">
+          <p>A <strong>device simulator</strong> (like our Mobile Viewer) shows your website inside a fixed-size, realistic device frame — great for client presentations and checking device-specific layouts at a glance. A <strong>viewport resizer</strong> gives you continuous drag control to freely move between any pixel dimension — better for developers who need to pinpoint the exact breakpoint where a layout fails. Both tools complement each other for complete responsive testing.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+          Why doesn't my website load in the resizer?
+          <span class="faq-chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="faq-a">
+          <p>Some websites block loading inside iframes via the <code>X-Frame-Options</code> HTTP header (set to <code>DENY</code> or <code>SAMEORIGIN</code>) or via a restrictive <code>Content-Security-Policy: frame-ancestors</code> directive. This is a security setting on the target website's server — not a bug in this tool. For your own site, you can relax the <code>frame-ancestors</code> directive to <code>*</code> or your specific testing domain during development, then restore it for production.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════ CTA ══════════════════════ -->
+<section class="cta-section" aria-label="Call to action">
+  <div class="container">
+    <div class="cta-card">
+      <div class="cta-glow" aria-hidden="true"></div>
+      <div class="cta-badge">Free · No Sign-up · Instant</div>
+      <h2 class="cta-title">Start testing your responsive breakpoints now</h2>
+      <p class="cta-desc">Join developers and designers who use Mobile Viewer tools to build pixel-perfect responsive websites</p>
+      <div class="cta-actions">
+        <button class="primary-button" onclick="document.getElementById('resizer').scrollIntoView({behavior:'smooth'})" aria-label="Scroll to Viewport Resizer tool">
+          <span>Launch Resizer</span>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7.5 5L12.5 10L7.5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <a href="/" class="cta-secondary">Explore all tools →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer Component -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Scripts -->
+  <script src="header.js"></script>
+  <script src="footer.js"></script>
+  <script src="script.js"></script>
+
+<!-- ══════════════════════ SCRIPTS ══════════════════════ -->
+<script>
+  /* ─── Constants ─── */
+  const SNAP_POINTS = [320, 375, 480, 768, 1024, 1280, 1440];
+  const SNAP_THRESHOLD = 12;
+  const MIN_W = 220, MAX_W = 2200;
+  const MIN_H = 200, MAX_H = 1400;
+
+  /* ─── State ─── */
+  let currentW = 768, currentH = 400;
+  let snapEnabled = true;
+  let zoomLevel = 100;
+  let currentUrl = '';
+
+  /* ─── DOM ─── */
+  const previewBox = document.getElementById('previewBox');
+  const previewIframe = document.getElementById('previewIframe');
+  const previewEmpty = document.getElementById('previewEmpty');
+  const previewLoading = document.getElementById('previewLoading');
+  const dimBadge = document.getElementById('dimBadge');
+  const bpLabel = document.getElementById('bpLabel');
+  const statusDot = document.getElementById('statusDot');
+  const statusText = document.getElementById('statusText');
+  const snapFlash = document.getElementById('snapFlash');
+  const bpRulerInner = document.getElementById('bpRulerInner');
+  const previewWrapper = document.getElementById('previewWrapper');
+
+  /* ─── Init ─── */
+  setSize(768, 400);
+  updateRuler();
+
+  /* ─── Size ─── */
+  function setSize(w, h, noSnap) {
+    w = Math.round(Math.max(MIN_W, Math.min(MAX_W, w)));
+    h = Math.round(Math.max(MIN_H, Math.min(MAX_H, h)));
+
+    if (!noSnap && snapEnabled) {
+      for (const sp of SNAP_POINTS) {
+        if (Math.abs(w - sp) <= SNAP_THRESHOLD) {
+          if (w !== sp) { flashSnap(); }
+          w = sp;
+          break;
         }
+      }
+    }
 
-        function resizeViewport(w, h) {
-            const wrapper = document.getElementById('viewportWrapper');
-            const label = document.getElementById('dimLabel');
-            
-            // Remove active state from all buttons
-            document.querySelectorAll('.resizer-controls .toggle-btn').forEach(btn => btn.classList.remove('active'));
-            // Add active state to clicked button if event exists (triggered via click)
-            if (event) event.target.classList.add('active');
+    currentW = w; currentH = h;
+    previewBox.style.width  = w + 'px';
+    previewBox.style.height = h + 'px';
+    updateDimBadge();
+    updateBpLabel();
+    updateRuler();
+    updateMockupDim(w, h);
+  }
 
-            wrapper.style.width = typeof w === 'number' ? w + 'px' : w;
-            wrapper.style.height = h + 'px';
-            
-            label.innerText = (typeof w === 'number' ? w : wrapper.offsetWidth) + ' x ' + h;
-        }
-    </script>
+  function updateDimBadge() {
+    dimBadge.textContent = currentW + ' × ' + currentH + ' px';
+    document.querySelector('[id="dimBadge"]').setAttribute('aria-label', currentW + ' by ' + currentH + ' pixels');
+  }
+
+  function updateBpLabel() {
+    const w = currentW;
+    let label = '', cls = '';
+    if (w < 640)       { label = 'Mobile';  cls = 'bp-mobile'; }
+    else if (w < 1024) { label = 'Tablet';  cls = 'bp-tablet'; }
+    else               { label = 'Desktop'; cls = 'bp-desktop'; }
+
+    const exact = SNAP_POINTS.find(p => p === w);
+    if (exact) label += ' · ' + exact + 'px';
+
+    bpLabel.textContent = label;
+    bpLabel.className = 'bp-label ' + cls;
+  }
+
+  function updateRuler() {
+    bpRulerInner.innerHTML = '';
+    const total = currentW;
+    SNAP_POINTS.forEach(bp => {
+      if (bp <= total) {
+        const pct = (bp / total * 100).toFixed(2);
+        const tick = document.createElement('div');
+        tick.className = 'bp-tick';
+        tick.style.left = pct + '%';
+        tick.innerHTML = '<span>' + bp + '</span>';
+        bpRulerInner.appendChild(tick);
+      }
+    });
+  }
+
+  function updateMockupDim(w, h) {
+    const d = document.getElementById('mockupDim');
+    if (d) d.textContent = w + ' × ' + h;
+  }
+
+  function flashSnap() {
+    snapFlash.classList.add('active');
+    clearTimeout(flashSnap._t);
+    snapFlash._t = setTimeout(() => snapFlash.classList.remove('active'), 300);
+  }
+
+  /* ─── Load URL ─── */
+  function loadURL() {
+    const proto = document.getElementById('protocolSelect').value;
+    const raw   = document.getElementById('urlInput').value.trim();
+    if (!raw) { showToast('Please enter a URL first'); return; }
+
+    const url = raw.startsWith('http') ? raw : proto + raw;
+    currentUrl = url;
+
+    previewEmpty.style.display = 'none';
+    previewIframe.style.display = 'none';
+    previewLoading.classList.add('active');
+    previewBox.classList.add('has-url');
+    statusDot.className = 'status-dot loading';
+    statusText.textContent = 'Loading ' + url + '…';
+
+    previewIframe.src = '';
+    setTimeout(() => {
+      previewIframe.src = url;
+      previewIframe.onload = () => {
+        previewLoading.classList.remove('active');
+        previewIframe.style.display = 'block';
+        statusDot.className = 'status-dot loaded';
+        statusText.textContent = 'Loaded: ' + url;
+      };
+      previewIframe.onerror = () => {
+        previewLoading.classList.remove('active');
+        statusDot.className = 'status-dot';
+        statusText.textContent = 'Could not load: ' + url;
+      };
+    }, 80);
+  }
+
+  document.getElementById('urlInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') loadURL();
+  });
+
+  function refreshIframe() {
+    if (!currentUrl) { showToast('Load a URL first'); return; }
+    previewIframe.src = previewIframe.src;
+  }
+
+  function openNewTab() {
+    if (!currentUrl) { showToast('Load a URL first'); return; }
+    window.open(currentUrl, '_blank');
+  }
+
+  /* ─── Presets ─── */
+  function applyPreset() {
+    const val = document.getElementById('presetSelect').value;
+    const cg = document.getElementById('customGroup');
+    if (val === 'custom') { cg.style.display = 'flex'; return; }
+    cg.style.display = 'none';
+    const [w, h] = val.split('x').map(Number);
+    setSize(w, h, true);
+  }
+
+  function applyCustom() {
+    const w = parseInt(document.getElementById('customW').value) || currentW;
+    const h = parseInt(document.getElementById('customH').value) || currentH;
+    setSize(w, h, true);
+  }
+
+  /* ─── Orientation ─── */
+  function toggleOrient() {
+    setSize(currentH, currentW, true);
+    const lbl = document.getElementById('orientLabel');
+    lbl.textContent = lbl.textContent === 'Portrait' ? 'Landscape' : 'Portrait';
+    // sync select
+    const sel = document.getElementById('presetSelect');
+    sel.value = 'custom';
+    document.getElementById('customGroup').style.display = 'none';
+  }
+
+  /* ─── Zoom ─── */
+  function adjustZoom(delta) {
+    zoomLevel = Math.max(25, Math.min(200, zoomLevel + delta));
+    document.getElementById('zoomValue').textContent = zoomLevel + '%';
+    previewIframe.style.transform = 'scale(' + zoomLevel/100 + ')';
+    previewIframe.style.transformOrigin = 'top left';
+    previewIframe.style.width  = (100 / (zoomLevel/100)) + '%';
+    previewIframe.style.height = (100 / (zoomLevel/100)) + '%';
+  }
+
+  /* ─── Snap toggle ─── */
+  function toggleSnap() {
+    snapEnabled = !snapEnabled;
+    const btn = document.getElementById('snapBtn');
+    const lbl = document.getElementById('snapLabel');
+    lbl.textContent = snapEnabled ? 'On' : 'Off';
+    btn.classList.toggle('active', snapEnabled);
+    showToast('Breakpoint snap ' + (snapEnabled ? 'enabled' : 'disabled'));
+  }
+
+  /* ─── Copy dimensions ─── */
+  function copyDimensions() {
+    const text = currentW + 'x' + currentH;
+    navigator.clipboard.writeText(text).then(() => showToast('Copied: ' + text))
+      .catch(() => showToast('Dimensions: ' + text));
+  }
+
+  /* ─── Toast ─── */
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(t._t);
+    t._t = setTimeout(() => t.classList.remove('show'), 2400);
+  }
+
+  /* ─── Drag Right (width) ─── */
+  (function() {
+    const handle = document.getElementById('dragRight');
+    let dragging = false, startX, startW;
+
+    handle.addEventListener('mousedown', e => {
+      dragging = true; startX = e.clientX; startW = currentW;
+      document.body.style.cursor = 'ew-resize';
+      document.body.style.userSelect = 'none';
+      e.preventDefault();
+    });
+    handle.addEventListener('touchstart', e => {
+      dragging = true; startX = e.touches[0].clientX; startW = currentW;
+      e.preventDefault();
+    }, { passive: false });
+
+    document.addEventListener('mousemove', e => {
+      if (!dragging) return;
+      setSize(startW + (e.clientX - startX), currentH);
+    });
+    document.addEventListener('touchmove', e => {
+      if (!dragging) return;
+      setSize(startW + (e.touches[0].clientX - startX), currentH);
+    }, { passive: false });
+
+    document.addEventListener('mouseup',  () => { dragging = false; document.body.style.cursor = ''; document.body.style.userSelect = ''; });
+    document.addEventListener('touchend', () => { dragging = false; });
+  })();
+
+  /* ─── Drag Bottom (height) ─── */
+  (function() {
+    const handle = document.getElementById('dragBottom');
+    let dragging = false, startY, startH;
+
+    handle.addEventListener('mousedown', e => {
+      dragging = true; startY = e.clientY; startH = currentH;
+      document.body.style.cursor = 'ns-resize';
+      document.body.style.userSelect = 'none';
+      e.preventDefault();
+    });
+    handle.addEventListener('touchstart', e => {
+      dragging = true; startY = e.touches[0].clientY; startH = currentH;
+      e.preventDefault();
+    }, { passive: false });
+
+    document.addEventListener('mousemove', e => {
+      if (!dragging) return;
+      setSize(currentW, startH + (e.clientY - startY));
+    });
+    document.addEventListener('touchmove', e => {
+      if (!dragging) return;
+      setSize(currentW, startH + (e.touches[0].clientY - startY));
+    }, { passive: false });
+
+    document.addEventListener('mouseup',  () => { dragging = false; document.body.style.cursor = ''; document.body.style.userSelect = ''; });
+    document.addEventListener('touchend', () => { dragging = false; });
+  })();
+
+  /* ─── FAQ Accordion ─── */
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    // close all
+    document.querySelectorAll('.faq-q').forEach(b => {
+      b.setAttribute('aria-expanded', 'false');
+      b.nextElementSibling.classList.remove('open');
+    });
+    if (!expanded) {
+      btn.setAttribute('aria-expanded', 'true');
+      answer.classList.add('open');
+    }
+  }
+
+  /* ─── Animated hero mockup ─── */
+  (function() {
+    const sizes = [320, 480, 768, 1024, 1280, 480, 768];
+    let i = 0;
+    setInterval(() => {
+      i = (i + 1) % sizes.length;
+      const w = sizes[i];
+      const dim = document.getElementById('mockupDim');
+      if (dim) dim.textContent = w + ' × 480';
+    }, 1800);
+  })();
+</script>
+
 </body>
 </html>
