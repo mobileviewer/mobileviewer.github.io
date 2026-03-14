@@ -23,8 +23,8 @@
     Company: [
       { href: '/about',   label: 'About Us' },
       { href: '/contact', label: 'Contact' },
-      { href: '/privacy', label: 'Privacy Policy' },
-      { href: '/terms',   label: 'Terms of Service' },
+      { href: '/privacy-policy', label: 'Privacy Policy' },
+      { href: '/terms-of-service',   label: 'Terms of Service' },
       { href: '/sitemap.xml', label: 'Sitemap' },
     ],
   };
@@ -88,9 +88,9 @@
     <div class="container footer-bottom-inner">
       <p class="footer-copy">© ${year} Mobile Viewer. All rights reserved. Made for developers, by developers.</p>
       <p class="footer-legal">
-        <a href="/privacy" class="footer-legal-link">Privacy</a>
+        <a href="/privacy-policy" class="footer-legal-link">Privacy</a>
         <span aria-hidden="true">·</span>
-        <a href="/terms" class="footer-legal-link">Terms</a>
+        <a href="/terms-of-service" class="footer-legal-link">Terms</a>
         <span aria-hidden="true">·</span>
         <a href="/sitemap.xml" class="footer-legal-link">Sitemap</a>
       </p>
