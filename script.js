@@ -291,6 +291,40 @@
     }, 12000);
   };
 
+  // Add this to your script to attempt UA spoofing for JS-based detection
+function attemptUASpoof(iframeElement) {
+  try {
+    const mobileUA = "Mozilla/5.0 (iPhone; CPU iPhone OS 16_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1";
+    
+    // We try to override the navigator object inside the iframe
+    Object.defineProperty(iframeElement.contentWindow.navigator, 'userAgent', {
+      get: function () { return mobileUA; },
+      configurable: true
+    });
+    Object.defineProperty(iframeElement.contentWindow.navigator, 'platform', {
+      get: function () { return 'iPhone'; },
+      configurable: true
+    });
+  } catch (err) {
+    // This will fail on cross-origin sites (like Google, Facebook) 
+    // due to browser security, which is normal.
+    console.log("Cross-origin restriction: Could not spoof UA headers.");
+  }
+}
+
+// Update your loadURL function to call this
+function loadURL() {
+  const url = normaliseUrl($('urlInput').value);
+  // ... existing logic ...
+  const iframe = $(state.currentDevice + 'Iframe');
+  iframe.src = url;
+  
+  iframe.onload = () => {
+    attemptUASpoof(iframe);
+    setStatus('Page Loaded');
+  };
+}
+
   // ══════════════════════════════════════════════════════════
   // REFRESH
   // ══════════════════════════════════════════════════════════
