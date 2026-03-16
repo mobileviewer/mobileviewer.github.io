@@ -76,6 +76,21 @@ code {
   border-radius: 4px;
 }
 
+/* Add this to styles.css */
+.iframe-wrapper iframe {
+    max-width: none !important; /* Prevent global resets from squashing it */
+    border: none;
+    background: #fff;
+}
+
+.device-screen {
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: hidden; /* Clips the iframe to the phone body */
+}
+
 /* ── CONTAINER ──────────────────────────────────────────── */
 .container {
   width: 100%;
