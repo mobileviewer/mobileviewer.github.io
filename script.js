@@ -11,7 +11,7 @@
   const state = {
     currentDevice: 'mobile',
     currentUrl: '',
-    zoom: 100,
+    zoom: 80,
     isLandscape: false,
     loaded: false,
     dimensions: { width: 390, height: 844 },
