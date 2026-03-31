@@ -6,8 +6,8 @@
   'use strict';
 
   const NAV_LINKS = [
-    { href: '#viewer',       label: 'Viewer' },
-    { href: '#tools',        label: 'Tools' },
+    { href: '/',       label: 'Home' },
+    { href: '/#tools',        label: 'Tools' },
     { href: '#features',     label: 'Features' },
     { href: '#how-to-guide', label: 'Guide' },
     { href: '#faq',          label: 'FAQ' },
@@ -68,7 +68,7 @@
     </nav>
 
     <div class="header-cta">
-      <a href="#viewer" class="header-cta-btn" onclick="scrollToViewer(); return false;" aria-label="Launch Mobile Viewer">
+      <a href="/#viewer" class="header-cta-btn" onclick="scrollToViewer(); return false;" aria-label="Launch Mobile Viewer">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
           <rect x="4" y="1" width="8" height="14" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
           <path d="M7 12h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
