@@ -3,7 +3,41 @@
    Design direction: Dark-tech precision with cyan/violet accents
    Fonts: Syne (display) + DM Sans (body)
 ═══════════════════════════════════════════════════════════ */
+/* Mobile Dropdown Styles */
+.mobile-nav-item--dropdown {
+  position: relative;
+}
 
+.mobile-dropdown-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.mobile-dropdown-trigger .dropdown-arrow {
+  transition: transform 0.3s ease;
+}
+
+.mobile-dropdown-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 16px;
+}
+
+.mobile-nav-link--sub {
+  padding-left: 32px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.mobile-nav-link--sub:hover {
+  color: var(--text);
+  background: rgba(255,255,255,0.05);
+}
 /* ── CSS VARIABLES ─────────────────────────────────────── */
 :root {
   --primary:      #00F0FF;
