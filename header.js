@@ -11,6 +11,7 @@
     { href: '#features',     label: 'Features' },
     { href: '#how-to-guide', label: 'Guide' },
     { href: '#faq',          label: 'FAQ' },
+    { href: '/blog',          label: 'Blog' },
   ];
 
   const TOOL_DROPDOWN = [
