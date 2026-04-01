@@ -19,6 +19,7 @@
       { href: '#why-mobile',   label: 'Why Mobile Testing Matters' },
       { href: '#faq',          label: 'FAQs' },
       { href: '#features',     label: 'Features' },
+      { href: '/blog',     label: 'Blog' },
     ],
     Company: [
       { href: '/about',   label: 'About Us' },
