@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Blog | Mobile Viewer — Articles on Responsive Design & Mobile Testing</title>
+  <meta name="description" content="Expert articles on mobile testing, responsive design, device viewport differences, SEO checklists, and free tools for modern developers.">
+  <meta name="robots" content="index, follow">
+
+  <!-- Preconnect & Fonts (match main site style) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <style>
+    /* === GLOBAL RESET & VARIABLES (matches main site aesthetic) === */
+    :root {
+      --primary:      #00F0FF;
+      --primary-dim:  rgba(0,240,255,0.15);
+      --secondary:    #7B61FF;
+      --accent:       #FF4FD8;
+      --bg:           #080C12;
+      --bg-dark:      #050810;
+      --bg-card:      #0D1220;
+      --bg-card-2:    #111827;
+      --border:       rgba(255,255,255,0.07);
+      --border-light: rgba(255,255,255,0.12);
+      --text:         #F0F4FF;
+      --text-secondary: rgba(240,244,255,0.6);
+      --text-muted:   rgba(240,244,255,0.35);
+      --radius:       12px;
+      --radius-lg:    20px;
+      --radius-xl:    28px;
+      --shadow:       0 4px 24px rgba(0,0,0,0.4);
+      --shadow-lg:    0 12px 48px rgba(0,0,0,0.6);
+      --shadow-glow:  0 0 40px rgba(0,240,255,0.12);
+      --font-display: 'Syne', sans-serif;
+      --font-body:    'DM Sans', sans-serif;
+      --transition:   0.2s ease;
+      --container:    1240px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* simple header mock (lightweight, no external js) */
+    .blog-header {
+      padding: 32px 0 24px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(8,12,18,0.8);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      background: var(--primary);
+      width: 32px;
+      height: 32px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #000;
+      font-weight: 800;
+      font-family: var(--font-display);
+    }
+
+    .logo-text {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+    .logo-accent { color: var(--primary); }
+
+    .back-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid var(--border);
+      padding: 8px 18px;
+      border-radius: 40px;
+      transition: all var(--transition);
+    }
+    .back-link:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: var(--primary-dim);
+    }
+
+    /* blog hero */
+    .blog-hero {
+      padding: 60px 0 40px;
+      text-align: center;
+    }
+    .blog-badge {
+      display: inline-block;
+      background: var(--primary-dim);
+      border: 1px solid rgba(0,240,255,0.25);
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+    .blog-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      background: linear-gradient(135deg, #FFF, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 16px;
+    }
+    .blog-hero p {
+      color: var(--text-secondary);
+      max-width: 640px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+    }
+
+    /* === ARTICLE GRID (cards) === */
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 32px;
+      margin: 40px 0 80px;
+    }
+
+    .article-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+      display: flex;
+      flex-direction: column;
+      backdrop-filter: blur(2px);
+    }
+
+    .article-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(0,240,255,0.3);
+      box-shadow: 0 20px 36px rgba(0,0,0,0.5), 0 0 0 1px rgba(0,240,255,0.1);
+    }
+
+    /* featured image placeholder — you can later replace with actual images */
+    .card-image {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(145deg, #111827, #050810);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* gradient accent + optional icon for visual placeholder */
+    .img-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      color: var(--primary-dim);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+    .img-placeholder svg {
+      opacity: 0.6;
+      transition: opacity 0.2s;
+    }
+    .article-card:hover .img-placeholder svg {
+      opacity: 1;
+    }
+
+    /* content area */
+    .card-content {
+      padding: 24px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-category {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--primary);
+      background: var(--primary-dim);
+      padding: 3px 10px;
+      border-radius: 30px;
+      width: fit-content;
+      margin-bottom: 16px;
+    }
+
+    .card-title {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    .card-excerpt {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 20px;
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .read-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--primary);
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.85rem;
+      border-bottom: 1px solid transparent;
+      transition: gap 0.2s, border-color 0.2s;
+      width: fit-content;
+    }
+    .read-more:hover {
+      gap: 12px;
+      border-bottom-color: var(--primary);
+    }
+
+    /* footer minimal (matching style) */
+    .blog-footer {
+      border-top: 1px solid var(--border);
+      padding: 48px 0 32px;
+      margin-top: 20px;
+      background: var(--bg-dark);
+    }
+    .footer-flex {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .copyright {
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+    .footer-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+
+    @media (max-width: 700px) {
+      .container { padding: 0 20px; }
+      .articles-grid { grid-template-columns: 1fr; }
+      .card-title { font-size: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header Component -->
+  <div id="header-placeholder"></div>
+
+<main>
+  <div class="container">
+    <div class="blog-hero">
+      <div class="blog-badge">Insights & tutorials</div>
+      <h1>Responsive Design & <br>Mobile Testing Blog</h1>
+      <p>Actionable articles, SEO checklists, device viewport comparisons —<br> sharpen your mobile-first skills.</p>
+    </div>
+
+    <!-- ARTICLE GRID: 6 cards with featured image placeholders (you can add real images later) -->
+    <div class="articles-grid">
+      
+      <!-- 1. How to Test Responsive Design Without Buying 20 Phones -->
+      <article class="article-card">
+        <div class="card-image">
+          <div class="img-placeholder">
+            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/><path d="M9 5h6"/></svg>
+            <span>📱 device simulator</span>
+          </div>
+        </div>
+        <div class="card-content">
+          <span class="card-category">Responsive Testing</span>
+          <h2 class="card-title">How to Test Responsive Design Without Buying 20 Phones</h2>
+          <p class="card-excerpt">Discover smart strategies: browser DevTools, cloud emulators, viewport presets, and live QR scanning — all without spending thousands on physical devices.</p>
+          <a href="#" class="read-more" onclick="alert('Full article coming soon — stay tuned! 🚀'); return false;">Read full story <span>→</span></a>
+        </div>
+      </article>
+
+      <!-- 2. Mobile SEO Checklist 2026: 15 Things Most Sites Still Get Wrong -->
+      <article class="article-card">
+        <div class="card-image">
+          <div class="img-placeholder">
+            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polygon points="7 10 12 15 17 10 12 5 7 10"/><line x1="12" y1="15" x2="12" y2="5"/></svg>
+            <span>🔍 SEO radar</span>
+          </div>
+        </div>
+        <div class="card-content">
+          <span class="card-category">SEO & Rankings</span>
+          <h2 class="card-title">Mobile SEO Checklist 2026: 15 Things Most Sites Still Get Wrong</h2>
+          <p class="card-excerpt">From tap targets to Core Web Vitals, font scaling, viewport meta, and mobile interstitials — avoid penalties and boost your mobile rankings now.</p>
+          <a href="#" class="read-more" onclick="alert('Complete SEO checklist will be published soon! 📈'); return false;">Read full story <span>→</span></a>
+        </div>
+      </article>
+
+      <!-- 3. iPhone 15 vs Galaxy S23 Viewport Differences Every Developer Should Know -->
+      <article class="article-card">
+        <div class="card-image">
+          <div class="img-placeholder">
+            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 8h6M9 12h4M9 16h2"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
+            <span>📲 viewport guide</span>
+          </div>
+        </div>
+        <div class="card-content">
+          <span class="card-category">Device Comparisons</span>
+          <h2 class="card-title">iPhone 15 vs Galaxy S23 Viewport Differences Every Developer Should Know</h2>
+          <p class="card-excerpt">How logical resolutions, safe area insets, and notch/ camera cutouts impact CSS layouts. Ensure pixel-perfect designs across iOS and Android flagships.</p>
+          <a href="#" class="read-more" onclick="alert('Detailed viewport analysis coming — get ready!'); return false;">Read full story <span>→</span></a>
+        </div>
+      </article>
+
+      <!-- 4. Why 63% of Your Traffic Is Mobile (and How to Fix Bad Experiences) -->
+      <article class="article-card">
+        <div class="card-image">
+          <div class="img-placeholder">
+            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v4M12 18v4M4 4l2 2M18 4l-2 2M4 20l2-2M18 20l-2-2"/><circle cx="12" cy="12" r="4"/><path d="M4 12h4M16 12h4"/></svg>
+            <span>📊 mobile traffic</span>
+          </div>
+        </div>
+        <div class="card-content">
+          <span class="card-category">UX Optimization</span>
+          <h2 class="card-title">Why 63% of Your Traffic Is Mobile (and How to Fix Bad Experiences)</h2>
+          <p class="card-excerpt">Learn how to fix layout shifts, touch unfriendly elements, and slow load times — turning mobile visitors into loyal customers.</p>
+          <a href="#" class="read-more" onclick="alert('Deep dive on mobile UX soon — stay tuned!'); return false;">Read full story <span>→</span></a>
+        </div>
+      </article>
+
+      <!-- 5. Best Free Tools for Mobile Testing in 2026 -->
+      <article class="article-card">
+        <div class="card-image">
+          <div class="img-placeholder">
+            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h4"/><circle cx="16" cy="15" r="1"/></svg>
+            <span>🛠️ free toolkit</span>
+          </div>
+        </div>
+        <div class="card-content">
+          <span class="card-category">Tools & Resources</span>
+          <h2 class="card-title">Best Free Tools for Mobile Testing in 2026</h2>
+          <p class="card-excerpt">From Mobile Viewer itself to browser extensions, real device cloud trials, accessibility checkers, and performance analyzers — all 100% free.</p>
+          <a href="#" class="read-more" onclick="alert('We’re curating the ultimate free tools list — article coming soon!'); return false;">Read full story <span>→</span></a>
+        </div>
+      </article>
+
+      <!-- 6. How to Use QR Codes for Instant Client Mobile Previews -->
+      <article class="article-card">
+        <div class="card-image">
+          <div class="img-placeholder">
+            <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+            <span>📸 QR magic</span>
+          </div>
+        </div>
+        <div class="card-content">
+          <span class="card-category">Workflow Hacks</span>
+          <h2 class="card-title">How to Use QR Codes for Instant Client Mobile Previews</h2>
+          <p class="card-excerpt">Streamline client feedback: generate QR codes for staging sites, let stakeholders test on real devices in seconds, and reduce back-and-forth emails.</p>
+          <a href="#" class="read-more" onclick="alert('QR-powered workflow tips — stay tuned for full article!'); return false;">Read full story <span>→</span></a>
+        </div>
+      </article>
+
+    </div>    
+</main>
+
+<!-- Footer Component -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Scripts -->
+  <script src="header.js"></script>
+  <script src="footer.js"></script>
+
+<!-- optional smooth scroll / tiny interactive note -->
+<script>
+  // placeholder for future dynamic content
+  console.log("Blog page ready — article cards with placeholder featured images. Replace .card-image content with real images anytime.");
+</script>
+</body>
+</html>
