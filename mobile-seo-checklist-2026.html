@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mobile SEO Checklist 2026: 15 Things Most Sites Still Get Wrong — Mobile Viewer Blog</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+
+  <!-- SEO -->
+  <meta name="description" content="The definitive mobile SEO checklist for 2026. Core Web Vitals, mobile-first indexing, tap targets, structured data, and 15 common mistakes developers still make.">
+  <meta name="keywords" content="mobile SEO checklist 2026, mobile-first indexing, core web vitals, mobile SEO, LCP, CLS, FID, INP, mobile site optimization">
+  <meta name="author" content="Mobile Viewer">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://mobileviewer.github.io/mobile-seo-checklist-2026">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Mobile SEO Checklist 2026: 15 Things Most Sites Still Get Wrong">
+  <meta property="og:description" content="The definitive mobile SEO audit list for 2026 covering Core Web Vitals, mobile-first indexing, tap targets, and structured data.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://mobileviewer.github.io/mobile-seo-checklist-2026">
+  <meta property="og:site_name" content="Mobile Viewer">
+
+  <!-- Schema: Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Mobile SEO Checklist 2026: 15 Things Most Sites Still Get Wrong",
+    "description": "The definitive mobile SEO audit list for 2026 covering Core Web Vitals, mobile-first indexing, tap targets, and structured data.",
+    "author": { "@type": "Organization", "name": "Mobile Viewer" },
+    "publisher": { "@type": "Organization", "name": "Mobile Viewer", "url": "https://mobileviewer.github.io/" },
+    "datePublished": "2026-04-01",
+    "dateModified": "2026-04-01"
+  }
+  </script>
+
+  <!-- Schema: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is mobile-first indexing?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Mobile-first indexing means Google primarily uses the mobile version of your site's content and markup to rank and index pages. If your mobile site is missing content that exists on your desktop version, that content won't be indexed or ranked. As of 2024, all websites are indexed mobile-first." }
+      },
+      {
+        "@type": "Question",
+        "name": "What Core Web Vitals scores do I need for good mobile SEO?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Google's thresholds for 'good' ratings are: LCP under 2.5 seconds, INP under 200 milliseconds, and CLS under 0.1. These are measured on real mobile users via Chrome User Experience Report (CrUX) data, not just lab conditions." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I check if my site passes mobile SEO requirements?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Use Google Search Console's Mobile Usability report for mobile-first indexing issues, PageSpeed Insights for Core Web Vitals, and Mobile Viewer's responsive checker to visually audit your site at real device viewports." }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary:      #00F0FF;
+      --primary-dim:  rgba(0,240,255,0.15);
+      --secondary:    #7B61FF;
+      --accent:       #FF4FD8;
+      --bg:           #080C12;
+      --bg-dark:      #050810;
+      --bg-card:      #0D1220;
+      --bg-card-2:    #111827;
+      --border:       rgba(255,255,255,0.07);
+      --border-light: rgba(255,255,255,0.12);
+      --text:         #F0F4FF;
+      --text-secondary: rgba(240,244,255,0.6);
+      --text-muted:   rgba(240,244,255,0.35);
+      --radius:       12px;
+      --radius-lg:    20px;
+      --header-h:     70px;
+      --container:    1240px;
+      --font-display: 'Syne', sans-serif;
+      --font-body:    'DM Sans', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 24px); -webkit-text-size-adjust: 100%; }
+    body { font-family: var(--font-body); font-size: 16px; line-height: 1.7; color: var(--text); background: var(--bg); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+    ul { list-style: none; }
+    code { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.85em; background: rgba(0,240,255,0.08); color: var(--primary); padding: 2px 6px; border-radius: 4px; }
+    img { display: block; max-width: 100%; }
+
+    .container { width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+
+    /* ── HEADER ── */
+    .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; height: var(--header-h); background: rgba(8,12,18,0.85); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); border-bottom: 1px solid var(--border); }
+    .header-inner { max-width: var(--container); margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; gap: 2rem; }
+    .header-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+    .logo-text { font-family: var(--font-display); font-size: 1.15rem; font-weight: 800; letter-spacing: -0.02em; color: var(--text); }
+    .logo-accent { color: var(--primary); }
+    .header-nav { margin-left: auto; }
+    .nav-list { display: flex; align-items: center; gap: 4px; list-style: none; }
+    .nav-link { display: flex; align-items: center; padding: 6px 14px; border-radius: 8px; font-size: 0.92rem; font-weight: 500; color: var(--text-secondary); text-decoration: none; transition: color 0.2s, background 0.2s; }
+    .nav-link:hover { color: var(--text); background: rgba(255,255,255,0.06); }
+    .header-cta-btn { display: flex; align-items: center; gap: 8px; padding: 9px 18px; background: var(--primary); color: #000; font-size: 0.875rem; font-weight: 700; border-radius: 8px; text-decoration: none; transition: all 0.2s; flex-shrink: 0; }
+    .header-cta-btn:hover { background: #29f5ff; transform: translateY(-1px); box-shadow: 0 4px 20px rgba(0,240,255,0.3); }
+
+    /* ── BLOG HERO ── */
+    .blog-hero { padding: calc(var(--header-h) + 80px) 0 80px; position: relative; overflow: hidden; }
+    .blog-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(123,97,255,0.07) 0%, transparent 70%); pointer-events: none; }
+    .blog-hero-inner { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    .blog-breadcrumb { display: flex; align-items: center; gap: 8px; margin-bottom: 2rem; font-size: 0.85rem; color: var(--text-muted); }
+    .blog-breadcrumb a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .blog-breadcrumb a:hover { color: var(--primary); }
+    .blog-category { display: inline-block; font-family: var(--font-display); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--secondary); background: rgba(123,97,255,0.15); border: 1px solid rgba(123,97,255,0.3); padding: 5px 14px; border-radius: 100px; margin-bottom: 1.5rem; }
+    .blog-hero-title { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; }
+    .gradient-text { background: linear-gradient(90deg, var(--secondary), var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .blog-hero-desc { font-size: 1.15rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 2rem; max-width: 700px; }
+    .blog-meta { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .blog-meta-item { display: flex; align-items: center; gap: 6px; font-size: 0.875rem; color: var(--text-muted); }
+    .blog-meta-item svg { color: var(--secondary); flex-shrink: 0; }
+    .blog-divider { width: 100%; height: 1px; background: var(--border); margin: 3rem 0; }
+
+    /* ── LAYOUT ── */
+    .blog-layout { max-width: 1100px; margin: 0 auto; padding: 0 24px 100px; display: grid; grid-template-columns: 1fr 300px; gap: 60px; align-items: start; }
+
+    /* ── SIDEBAR ── */
+    .blog-sidebar { position: sticky; top: calc(var(--header-h) + 32px); }
+    .toc-card { background: var(--bg-card); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 28px; }
+    .toc-title { font-family: var(--font-display); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; }
+    .toc-list { display: flex; flex-direction: column; gap: 4px; list-style: none; }
+    .toc-list li a { display: block; padding: 6px 10px; border-radius: 6px; font-size: 0.875rem; color: var(--text-secondary); text-decoration: none; transition: color 0.2s, background 0.2s; border-left: 2px solid transparent; }
+    .toc-list li a:hover { color: var(--secondary); background: rgba(123,97,255,0.1); border-left-color: var(--secondary); }
+    .toc-list li.toc-sub a { padding-left: 22px; font-size: 0.825rem; }
+    .sidebar-tool-card { background: var(--bg-card); border: 1px solid rgba(123,97,255,0.2); border-radius: var(--radius-lg); padding: 24px; margin-top: 20px; }
+    .sidebar-tool-card h4 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .sidebar-tool-card p { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 16px; line-height: 1.6; }
+    .sidebar-btn { display: block; text-align: center; padding: 10px 16px; background: var(--primary); color: #000; font-weight: 700; font-size: 0.875rem; border-radius: 8px; text-decoration: none; transition: all 0.2s; }
+    .sidebar-btn:hover { background: #29f5ff; transform: translateY(-1px); }
+    .sidebar-btn-outline { display: block; text-align: center; padding: 10px 16px; border: 1px solid var(--border-light); color: var(--text-secondary); font-size: 0.875rem; border-radius: 8px; text-decoration: none; transition: all 0.2s; margin-top: 8px; }
+    .sidebar-btn-outline:hover { border-color: var(--secondary); color: var(--secondary); }
+
+    /* ── ARTICLE ── */
+    .blog-content h2 { font-family: var(--font-display); font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 700; margin: 3rem 0 1rem; color: var(--text); scroll-margin-top: calc(var(--header-h) + 32px); }
+    .blog-content h3 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; margin: 2rem 0 0.75rem; color: var(--text); scroll-margin-top: calc(var(--header-h) + 32px); }
+    .blog-content p { margin-bottom: 1.25rem; color: var(--text-secondary); font-size: 1.02rem; }
+    .blog-content p strong { color: var(--text); font-weight: 600; }
+    .blog-content ul, .blog-content ol { padding-left: 1.5rem; margin-bottom: 1.5rem; color: var(--text-secondary); font-size: 1.02rem; }
+    .blog-content ul { list-style: disc; }
+    .blog-content ol { list-style: decimal; }
+    .blog-content li { margin-bottom: 0.5rem; }
+    .blog-content a { color: var(--primary); text-decoration: underline; text-underline-offset: 3px; transition: opacity 0.2s; }
+    .blog-content a:hover { opacity: 0.8; }
+
+    /* Numbered checklist items */
+    .checklist-item { display: flex; gap: 20px; align-items: flex-start; margin: 1.5rem 0; padding: 24px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); transition: border-color 0.2s; }
+    .checklist-item:hover { border-color: rgba(123,97,255,0.25); }
+    .checklist-num { flex-shrink: 0; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: rgba(123,97,255,0.15); border: 1px solid rgba(123,97,255,0.3); border-radius: 10px; font-family: var(--font-display); font-size: 0.85rem; font-weight: 800; color: var(--secondary); }
+    .checklist-body { flex: 1; }
+    .checklist-body h3 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: 6px; margin-top: 0; }
+    .checklist-body p { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 8px; line-height: 1.6; }
+    .checklist-body code { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.82em; background: rgba(0,240,255,0.08); color: var(--primary); padding: 2px 6px; border-radius: 4px; }
+    .severity { display: inline-flex; align-items: center; gap: 5px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; padding: 3px 8px; border-radius: 100px; }
+    .severity-critical { background: rgba(255,79,216,0.12); color: var(--accent); border: 1px solid rgba(255,79,216,0.25); }
+    .severity-high { background: rgba(255,149,0,0.12); color: #FF9500; border: 1px solid rgba(255,149,0,0.25); }
+    .severity-medium { background: rgba(123,97,255,0.12); color: var(--secondary); border: 1px solid rgba(123,97,255,0.25); }
+
+    /* Callout boxes */
+    .callout { background: var(--bg-card); border: 1px solid var(--border-light); border-left: 3px solid var(--primary); border-radius: var(--radius); padding: 20px 24px; margin: 2rem 0; }
+    .callout-warn { border-left-color: #FF4FD8; background: rgba(255,79,216,0.04); border-color: rgba(255,79,216,0.2); }
+    .callout-seo { border-left-color: var(--secondary); background: rgba(123,97,255,0.04); border-color: rgba(123,97,255,0.2); }
+    .callout-label { font-family: var(--font-display); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--primary); margin-bottom: 8px; }
+    .callout-seo .callout-label { color: var(--secondary); }
+    .callout-warn .callout-label { color: var(--accent); }
+    .callout p { margin-bottom: 0; color: var(--text-secondary); }
+
+    /* Inlink banner */
+    .inlink-banner { display: flex; align-items: center; gap: 20px; background: linear-gradient(135deg, rgba(123,97,255,0.06), rgba(0,240,255,0.06)); border: 1px solid rgba(123,97,255,0.2); border-radius: var(--radius-lg); padding: 24px 28px; margin: 2.5rem 0; }
+    .inlink-banner-icon { flex-shrink: 0; width: 48px; height: 48px; background: rgba(123,97,255,0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--secondary); }
+    .inlink-banner-body h4 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+    .inlink-banner-body p { font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 12px; }
+    .inlink-banner-body a { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; background: var(--secondary); color: #fff; font-size: 0.85rem; font-weight: 700; border-radius: 8px; text-decoration: none; transition: all 0.2s; }
+    .inlink-banner-body a:hover { background: #9378FF; }
+
+    /* Score card grid */
+    .score-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 2rem 0; }
+    .score-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; text-align: center; }
+    .score-metric { font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; margin-bottom: 4px; }
+    .score-metric.green { color: #34D399; }
+    .score-metric.orange { color: #FF9500; }
+    .score-metric.red { color: var(--accent); }
+    .score-label { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.4; }
+    .score-abbr { font-size: 0.75rem; font-weight: 700; color: var(--text-muted); display: block; margin-top: 2px; }
+
+    /* Comparison table */
+    .comparison-table { width: 100%; border-collapse: collapse; margin: 2rem 0; font-size: 0.9rem; }
+    .comparison-table th { font-family: var(--font-display); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); padding: 12px 16px; border-bottom: 1px solid var(--border-light); text-align: left; }
+    .comparison-table td { padding: 14px 16px; border-bottom: 1px solid var(--border); color: var(--text-secondary); vertical-align: top; }
+    .comparison-table tr:hover td { background: rgba(255,255,255,0.02); }
+    .badge-yes { color: #34D399; font-weight: 600; }
+    .badge-partial { color: #FF9500; font-weight: 600; }
+    .badge-no { color: var(--accent); font-weight: 600; }
+
+    /* Section badge + title */
+    .section-badge { display: inline-block; font-family: var(--font-display); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--secondary); background: rgba(123,97,255,0.15); border: 1px solid rgba(123,97,255,0.3); padding: 5px 14px; border-radius: 100px; margin-bottom: 1.25rem; }
+    .section-title { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 700; line-height: 1.15; margin-bottom: 1rem; }
+    .section-description { font-size: 1.05rem; color: var(--text-secondary); max-width: 600px; line-height: 1.7; margin-bottom: 3rem; }
+
+    /* FAQ */
+    .faq-section { padding: 80px 0; background: var(--bg-dark); border-top: 1px solid var(--border); }
+    .faq-inner { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    .faq-list { display: flex; flex-direction: column; gap: 12px; }
+    .faq-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .faq-q { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 24px; font-size: 1rem; font-weight: 500; color: var(--text); text-align: left; transition: color 0.2s; }
+    .faq-q:hover { color: var(--secondary); }
+    .faq-chevron { font-size: 1.2rem; transition: transform 0.3s; color: var(--text-muted); flex-shrink: 0; }
+    .faq-q[aria-expanded="true"] .faq-chevron { transform: rotate(180deg); color: var(--secondary); }
+    .faq-a { display: none; padding: 0 24px 20px; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; border-top: 1px solid var(--border); padding-top: 16px; }
+    .faq-a.is-open { display: block; }
+
+    /* Related */
+    .related-section { padding: 80px 0; border-top: 1px solid var(--border); }
+    .related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 3rem; }
+    .related-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; text-decoration: none; transition: border-color 0.2s, transform 0.2s; display: block; }
+    .related-card:hover { border-color: rgba(123,97,255,0.3); transform: translateY(-3px); }
+    .related-card-cat { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--secondary); margin-bottom: 10px; }
+    .related-card h3 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: 8px; line-height: 1.4; }
+    .related-card p { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; }
+
+    /* CTA */
+    .cta-section { padding: 80px 0; }
+    .cta-card { position: relative; background: var(--bg-card); border: 1px solid rgba(123,97,255,0.2); border-radius: 28px; padding: 72px 40px; text-align: center; overflow: hidden; }
+    .cta-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 600px; height: 300px; background: radial-gradient(ellipse, rgba(123,97,255,0.07) 0%, transparent 70%); pointer-events: none; }
+    .cta-badge { display: inline-block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--secondary); margin-bottom: 1.5rem; }
+    .cta-title { font-family: var(--font-display); font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; margin-bottom: 1rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+    .cta-description { font-size: 1.05rem; color: var(--text-secondary); margin-bottom: 2.5rem; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .cta-actions { display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; }
+    .cta-large-button { display: inline-flex; align-items: center; gap: 10px; padding: 16px 36px; background: var(--primary); color: #000; font-family: var(--font-display); font-size: 1rem; font-weight: 800; border-radius: 12px; text-decoration: none; transition: all 0.2s; }
+    .cta-large-button:hover { background: #29f5ff; transform: translateY(-2px); box-shadow: 0 10px 40px rgba(0,240,255,0.35); }
+    .cta-secondary-link { font-size: 0.9rem; font-weight: 600; color: var(--text-secondary); text-decoration: none; border-bottom: 1px solid var(--border-light); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
+    .cta-secondary-link:hover { color: var(--text); border-color: var(--text-secondary); }
+
+    /* Footer */
+    .site-footer { background: var(--bg-dark); border-top: 1px solid var(--border); padding: 48px 0 24px; }
+    .footer-bottom-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-copy, .footer-legal { font-size: 0.8rem; color: var(--text-muted); }
+    .footer-legal { display: flex; align-items: center; gap: 10px; }
+    .footer-legal-link { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .footer-legal-link:hover { color: var(--text-secondary); }
+
+    /* Reading progress */
+    .reading-progress { position: fixed; top: var(--header-h); left: 0; right: 0; height: 2px; z-index: 999; }
+    .reading-progress-bar { height: 100%; background: linear-gradient(90deg, var(--secondary), var(--primary)); width: 0%; transition: width 0.1s; }
+
+    @media (max-width: 900px) {
+      .blog-layout { grid-template-columns: 1fr; gap: 40px; }
+      .blog-sidebar { position: static; }
+      .score-grid { grid-template-columns: repeat(3, 1fr); }
+      .related-grid { grid-template-columns: 1fr; }
+      .header-nav { display: none; }
+    }
+    @media (max-width: 640px) {
+      .container { padding: 0 16px; }
+      .blog-layout { padding: 0 16px 60px; }
+      .blog-hero-inner { padding: 0 16px; }
+      .score-grid { grid-template-columns: 1fr 1fr; }
+      .cta-card { padding: 48px 24px; }
+      .inlink-banner { flex-direction: column; gap: 16px; }
+      .checklist-item { flex-direction: column; gap: 12px; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } html { scroll-behavior: auto; } }
+    :focus-visible { outline: 2px solid var(--secondary); outline-offset: 2px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+
+  <div class="reading-progress" aria-hidden="true">
+    <div class="reading-progress-bar" id="progressBar"></div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a href="/" class="header-logo" aria-label="Mobile Viewer Home">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true" style="color:var(--primary)">
+          <rect x="7" y="2" width="14" height="22" rx="3" stroke="currentColor" stroke-width="2"/>
+          <circle cx="14" cy="20" r="1.5" fill="currentColor"/>
+        </svg>
+        <span class="logo-text">Mobile<span class="logo-accent">Viewer</span></span>
+      </a>
+      <nav class="header-nav" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/#tools" class="nav-link">Tools</a></li>
+          <li><a href="/blog/" class="nav-link" aria-current="page">Blog</a></li>
+        </ul>
+      </nav>
+      <a href="/" class="header-cta-btn">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="4" y="1" width="8" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="12" r="1" fill="currentColor"/></svg>
+        Test Your Site Free
+      </a>
+    </div>
+  </header>
+
+  <!-- BLOG HERO -->
+  <section class="blog-hero" aria-label="Article header">
+    <div class="blog-hero-inner">
+      <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="/blog/">Blog</a>
+        <span aria-hidden="true">›</span>
+        <span>Mobile SEO</span>
+      </nav>
+      <span class="blog-category">SEO &amp; Performance</span>
+      <h1 class="blog-hero-title">Mobile SEO Checklist <span class="gradient-text">2026</span>: 15 Things Most Sites Still Get Wrong</h1>
+      <p class="blog-hero-desc">Google has indexed the web mobile-first for years. Yet the same mistakes appear in audit after audit. This checklist covers every critical mobile SEO factor with clear pass/fail criteria and actionable fixes.</p>
+      <div class="blog-meta">
+        <div class="blog-meta-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v3.5l2 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          15 min read
+        </div>
+        <div class="blog-meta-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M5 1v3M11 1v3M2 7h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          April 1, 2026
+        </div>
+        <div class="blog-meta-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="5" r="2.5" stroke="currentColor" stroke-width="1.5"/><path d="M3 13c0-2.76 2.24-5 5-5s5 2.24 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Mobile SEO, Performance
+        </div>
+      </div>
+      <div class="blog-divider" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- BLOG LAYOUT -->
+  <div class="blog-layout">
+
+    <!-- MAIN CONTENT -->
+    <article class="blog-content" aria-label="Article content">
+
+      <p>Google completed its transition to mobile-first indexing years ago. That means the mobile version of your website is the version that gets crawled, indexed, and ranked — not the desktop version you spent three weeks perfecting. Despite this, the same mobile SEO mistakes appear in technical audits across every industry.</p>
+      <p>This checklist covers all 15 of the most commonly missed mobile SEO factors in 2026, with clear thresholds for pass/fail and specific fixes for each one. Work through it from top to bottom and you'll have a more complete mobile SEO audit than most agencies charge thousands for.</p>
+
+      <!-- ── Core Web Vitals ── -->
+      <h2 id="core-web-vitals">Core Web Vitals: The Non-Negotiables</h2>
+      <p>Core Web Vitals are Google's official set of user experience metrics that directly influence search rankings. They're measured on real mobile users, not in lab conditions. Getting them into the "Good" range on mobile is the single highest-leverage SEO improvement most sites can make.</p>
+
+      <div class="score-grid">
+        <div class="score-card">
+          <div class="score-metric green">&lt; 2.5s</div>
+          <div class="score-label">Largest Contentful Paint</div>
+          <span class="score-abbr">LCP — Good threshold</span>
+        </div>
+        <div class="score-card">
+          <div class="score-metric green">&lt; 200ms</div>
+          <div class="score-label">Interaction to Next Paint</div>
+          <span class="score-abbr">INP — Good threshold</span>
+        </div>
+        <div class="score-card">
+          <div class="score-metric green">&lt; 0.1</div>
+          <div class="score-label">Cumulative Layout Shift</div>
+          <span class="score-abbr">CLS — Good threshold</span>
+        </div>
+      </div>
+
+      <div class="callout callout-seo">
+        <div class="callout-label">📊 SEO Context</div>
+        <p>CWV scores are measured from the Chrome User Experience Report (CrUX) using real user data from the past 28 days. Your PageSpeed Insights lab score is useful for diagnosis, but Google's ranking signal uses field data from actual visitors on mobile connections.</p>
+      </div>
+
+      <!-- ── THE 15 ITEMS ── -->
+      <h2 id="the-checklist">The 15-Point Mobile SEO Checklist</h2>
+
+      <div class="checklist-item">
+        <div class="checklist-num">01</div>
+        <div class="checklist-body">
+          <span class="severity severity-critical">Critical</span>
+          <h3>Viewport Meta Tag is Correct</h3>
+          <p>Every mobile page must have <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code> in the <code>&lt;head&gt;</code>. Missing this causes the browser to render your page at 980px and shrink it — Google's mobile crawler sees broken layout and tiny unreadable text. Also critical: never set <code>user-scalable=no</code> or <code>maximum-scale=1</code> — it blocks accessibility zooming and is flagged in mobile usability reports.</p>
+        </div>
+      </div>
+
+      <div class="checklist-item">
+        <div class="checklist-num">02</div>
+        <div class="checklist-body">
+          <span class="severity severity-critical">Critical</span>
+          <h3>Mobile and Desktop Content Must Match</h3>
+          <p>Under mobile-first indexing, Google indexes the content it sees on mobile. If your responsive design hides sections behind <code>display: none</code> on mobile that are visible on desktop — including headings, body copy, and alt text — that content is not indexed. Audit your mobile CSS to ensure no content important for rankings is conditionally hidden on small screens.</p>
+        </div>
+      </div>
+
+      <div class="checklist-item">
+        <div class="checklist-num">03</div>
+        <div class="checklist-body">
+          <span class="severity severity-critical">Critical</span>
+          <h3>LCP Under 2.5 Seconds on Mobile</h3>
+          <p>The Largest Contentful Paint is almost always an image or a large heading block. On mobile over 4G, this is dramatically harder to achieve than on fiber desktop. Key fixes: preload your LCP image with <code>&lt;link rel="preload"&gt;</code>, use next-gen formats (WebP or AVIF), serve correctly sized images with <code>srcset</code> and <code>sizes</code> attributes, and ensure your LCP element is not lazy-loaded. Check your field data in Google Search Console under Core Web Vitals.</p>
+        </div>
+      </div>
+
+      <div class="checklist-item">
+        <div class="checklist-num">04</div>
+        <div class="checklist-body">
+          <span class="severity severity-critical">Critical</span>
+          <h3>INP Under 200ms (Interaction to Next Paint)</h3>
+          <p>INP replaced FID as a Core Web Vital in March 2024 and is significantly harder to pass. INP measures the delay between any user interaction (tap, click, keyboard input) and the next visual update. Common causes of poor INP on mobile: long JavaScript tasks blocking the main thread, heavy event listeners, and synchronous XHR calls. Fix by breaking up long tasks with <code>scheduler.yield()</code>, deferring non-critical scripts, and auditing third-party tag payloads.</p>
+        </div>
+      </div>
+
+      <div class="checklist-item">
+        <div class="checklist-num">05</div>
+        <div class="checklist-body">
+          <span class="severity severity-critical">Critical</span>
+          <h3>CLS Under 0.1 (No Layout Shifts)</h3>
+          <p>Layout shifts on mobile feel jarring and hurt both UX and rankings. The most common causes: images without explicit <code>width</code> and <code>height</code> attributes, ads injected into content, web fonts causing text reflow, and dynamically injected banners above existing content. Always specify image dimensions, use <code>font-display: swap</code> with size-adjusted fallback fonts, and reserve space for ads using <code>min-height</code>.</p>
+        </div>
+      </div>
+
+      <div class="inlink-banner">
+        <div class="inlink-banner-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <div class="inlink-banner-body">
+          <h4>Check Your Site's Mobile Speed Score</h4>
+          <p>Use Mobile Viewer's Page Speed Insights integration to see your LCP, INP, and CLS scores — and exactly which elements are causing failures.</p>
+          <a href="/?tool=page-speed">Run Speed Test →</a>
+        </div>
+      </div>
+
+      <div class="checklist-item">
+        <div class="checklist-num">06</div>
+        <div class="checklist-body">
+          <span class="severity severity-high">High</span>
+          <h3>Tap Targets Are at Least 44×44px with Adequate Spacing</h3>
+          <p>Google's Mobile Usability report in Search Console explicitly flags "Clickable elements too close together." Tap targets smaller than 44×44 CSS pixels are nearly impossible to accurately tap on phones held at arm's length. Check every link, button, and form element. The most common offenders: inline text links, social share icons, and navigation items in hamburger menus. Add <code>min-height: 44px; min-width: 44px</code> to all interactive elements and ensure at least 8px of space between adjacent targets.</p>
+        </div>
+      </div>
+
+      <div class="checklist-item">
+        <div class="checklist-num">07</div>
+        <div class="checklist-body">
+          <span class="severity severity-high">High</span>
+          <h3>Text Is Readable Without Zooming (Min 16px Body)</h3>
+          <p>Google's mobile usability check flags "Text too small to read" for body text under 12px, but the practical threshold for comfortable reading without zooming is 16px. Check your computed font sizes in DevTools mobile mode. Beyond size, also verify: sufficient contrast ratio (at least 4.5:1 for body text), line height of at least 1.5 for paragraphs, and adequate padding around text blocks to prevent content touching screen edges.</p>
+        </div>
+      </div>
+
+      <div class="checklist-item">
+        <div class="checklist-num">08</div>
+        <div class="checklist-body">
+          <span class="severity severity-high">High</span>
+          <h3>No Horizontal Scrolling at Any Mobile Viewport</h3>
+          <p>Horizontal scroll on mobile is an immediate trust-killer and a confirmed usability signal Google checks. Test your page by dragging DevTools viewport from 360px to 430px — any horizontal overflow indicates a problem. Common causes: fixed-width elements wider than the viewport, unresponsive tables, pre-formatted code blocks without overflow handling, and CSS with <code>width: 100vw</code> not accounting for scrollbar width. Quick diagnostic: add <code>* { outline: 1px solid red; }</code> and look for elements spilling outside the viewport.</p>
+        </div>
+      </div>
+
+      <div class="checklist-item">
+        <div class="checklist-num">09</div>
+        <div class="checklist-body">
+          <span class="severity severity-high">High</span>
+          <h3>Structured Data Is Identical on Mobile and Desktop</h3>
+          <p>If your desktop pages have rich schema markup (Article, Product, FAQ, HowTo, Review, etc.) but your mobile pages serve lighter markup, Google sees stripped schema under mobile-first indexing. This means you lose rich results eligibility — featured snippets, star ratings, FAQ dropdowns, and recipe cards — entirely because of a viewport-conditional script load. Audit your mobile HTML source, not just the rendered DOM, to verify all JSON-LD blocks are present.</p>
+        </div>
+      </div>
+
+      <div class="checklist-item">
+        <div class="checklist-num">10</div>
+        <div class="checklist-body">
+          <span class="severity severity-high">High</span>
+          <h3>Mobile Page Speed: Time to First Byte Under 600ms</h3>
+          <p>TTFB is the server response time before any bytes reach the browser. On mobile networks with higher latency, a slow TTFB compounds all downstream loading delays. Targets: under 200ms is good, under 600ms is acceptable, over 600ms needs urgent attention. Key fixes: use a CDN with edge nodes close to your users, enable HTTP/2 or HTTP/3, review server-side rendering caching strategies, and eliminate unnecessary redirects (especially HTTP → HTTPS redirect chains).</p>
+        </div>
+      </div>
+
+      <div class="checklist-item">
+        <div class="checklist-num">11</div>
+        <div class="checklist-body">
+          <span class="severity severity-medium">Medium</span>
+          <h3>Images Use Next-Gen Formats and Responsive srcset</h3>
+          <p>Serving a 1400px JPEG to a 390px phone viewport wastes bandwidth and slows LCP. Use the <code>srcset</code> and <code>sizes</code> attributes to serve appropriately sized images. Combine with WebP or AVIF format for 25–50% smaller file sizes at equivalent quality. Check: every <code>&lt;img&gt;</code> above the fold should have <code>srcset</code>, every <code>&lt;img&gt;</code> below the fold should have <code>loading="lazy"</code>, and background images should use media queries to serve scaled versions on mobile.</p>
+        </div>
+      </div>
+
+      <div class="checklist-item">
+        <div class="checklist-num">12</div>
+        <div class="checklist-body">
+          <span class="severity severity-medium">Medium</span>
+          <h3>Canonical Tags Match Between Mobile and Desktop</h3>
+          <p>If you run a separate m-dot mobile site (m.example.com) rather than a responsive design, your canonical setup must be flawless. Desktop pages should canonical to themselves; mobile pages must canonical to the corresponding desktop URL. A missing or incorrect canonical on the m-dot version causes indexing confusion and potential duplicate content signals. If you're on a responsive design, this item passes automatically.</p>
+        </div>
+      </div>
+
+      <div class="checklist-item">
+        <div class="checklist-num">13</div>
+        <div class="checklist-body">
+          <span class="severity severity-medium">Medium</span>
+          <h3>Intrusive Interstitials Don't Appear on Mobile Entry</h3>
+          <p>Google's mobile interstitial penalty targets pop-ups and overlays that cover the main content immediately after a user arrives from a search result. Specifically penalized: full-screen popups that require dismissal before content is visible, large banner-style overlays that push content below the fold, and standalone interstitial pages that appear before the page loads. Exceptions: legally required cookie consent, age verification gates, and small banners that use a reasonable amount of screen space.</p>
+        </div>
+      </div>
+
+      <div class="checklist-item">
+        <div class="checklist-num">14</div>
+        <div class="checklist-body">
+          <span class="severity severity-medium">Medium</span>
+          <h3>Mobile-Specific Meta Tags Are Configured</h3>
+          <p>Several meta tags affect mobile experience specifically: <code>theme-color</code> sets the browser chrome color on Android Chrome and Safari (improves PWA feel), <code>apple-mobile-web-app-capable</code> and <code>apple-touch-icon</code> affect iOS homescreen behavior, and <code>format-detection</code> prevents iOS from auto-linking phone numbers in content where you don't want them. While these don't directly drive rankings, they affect user experience signals and return visits.</p>
+        </div>
+      </div>
+
+      <div class="checklist-item">
+        <div class="checklist-num">15</div>
+        <div class="checklist-body">
+          <span class="severity severity-medium">Medium</span>
+          <h3>Internal Links and Navigation Work on Touch</h3>
+          <p>Navigation elements that rely on <code>:hover</code> pseudo-states are inaccessible on touch devices. Dropdown menus, mega menus, and tooltip-style link previews must have touch equivalents. Test every navigation element on a real device or with touch simulation enabled. Also check: breadcrumbs render correctly on small viewports, pagination is accessible and legible, and anchor links account for the fixed header height offset using <code>scroll-padding-top</code>.</p>
+        </div>
+      </div>
+
+      <!-- ── TOOLS ── -->
+      <h2 id="audit-tools">Tools to Run This Audit</h2>
+
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Tool</th>
+            <th>What It Checks</th>
+            <th>Cost</th>
+            <th>Mobile Specific</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Google Search Console</strong></td>
+            <td>Mobile Usability report, Core Web Vitals field data, coverage</td>
+            <td><span class="badge-yes">Free</span></td>
+            <td><span class="badge-yes">Yes</span></td>
+          </tr>
+          <tr>
+            <td><strong>PageSpeed Insights</strong></td>
+            <td>CWV lab + field data, LCP element, improvement suggestions</td>
+            <td><span class="badge-yes">Free</span></td>
+            <td><span class="badge-yes">Yes</span></td>
+          </tr>
+          <tr>
+            <td><strong>Mobile Viewer</strong></td>
+            <td>Visual layout at exact device viewports, tap target visibility</td>
+            <td><span class="badge-yes">Free</span></td>
+            <td><span class="badge-yes">Yes</span></td>
+          </tr>
+          <tr>
+            <td><strong>Screaming Frog</strong></td>
+            <td>Canonical tags, meta tags, structured data, redirect chains</td>
+            <td><span class="badge-partial">Free up to 500 URLs</span></td>
+            <td><span class="badge-partial">Partial</span></td>
+          </tr>
+          <tr>
+            <td><strong>Google Rich Results Test</strong></td>
+            <td>Schema markup validity and rich result eligibility</td>
+            <td><span class="badge-yes">Free</span></td>
+            <td><span class="badge-partial">Partial</span></td>
+          </tr>
+          <tr>
+            <td><strong>Lighthouse CLI</strong></td>
+            <td>Full audit including accessibility, SEO, performance, PWA</td>
+            <td><span class="badge-yes">Free</span></td>
+            <td><span class="badge-yes">Yes</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="inlink-banner">
+        <div class="inlink-banner-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="13" y="3" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="13" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="13" y="13" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.8"/></svg>
+        </div>
+        <div class="inlink-banner-body">
+          <h4>Visually Audit Your Mobile Layout in Seconds</h4>
+          <p>Paste your URL into Mobile Viewer to instantly preview at iPhone 15, Galaxy S23, and tablet viewports. Spot tap target issues, overflow bugs, and hidden content at a glance.</p>
+          <a href="/">Open Mobile Viewer →</a>
+        </div>
+      </div>
+
+      <!-- ── AUDIT PROCESS ── -->
+      <h2 id="recommended-audit-process">Recommended Audit Process</h2>
+      <p>Running all 15 checks in one session is overwhelming. Use this phased approach instead:</p>
+      <ol>
+        <li><strong>Week 1 — Critical items (1–5)</strong>: Fix viewport meta, content parity, and Core Web Vitals. These have the highest ranking impact. Use PageSpeed Insights and Search Console.</li>
+        <li><strong>Week 2 — High priority items (6–10)</strong>: Fix tap targets, text size, horizontal scroll, structured data parity, and TTFB. Use Mobile Viewer to visually verify fixes.</li>
+        <li><strong>Week 3 — Medium priority items (11–15)</strong>: Optimize images, canonicals, interstitials, mobile meta tags, and navigation. Use Screaming Frog for bulk checks.</li>
+        <li><strong>Ongoing — Monthly CWV review</strong>: Check your CrUX field data in Search Console monthly. A new third-party script, a new hero image, or a page template change can shift your scores.</li>
+      </ol>
+
+      <div class="callout callout-warn">
+        <div class="callout-label">⚠️ Common Mistake</div>
+        <p>Don't focus exclusively on your homepage. Google measures Core Web Vitals and mobile usability at the URL level. Your most important landing pages (category pages, product pages, high-traffic blog posts) each need to pass independently.</p>
+      </div>
+
+    </article>
+
+    <!-- SIDEBAR -->
+    <aside class="blog-sidebar" aria-label="Article navigation and tools">
+      <nav class="toc-card" aria-label="Table of contents">
+        <div class="toc-title">Table of Contents</div>
+        <ul class="toc-list">
+          <li><a href="#core-web-vitals">Core Web Vitals</a></li>
+          <li><a href="#the-checklist">The 15-Point Checklist</a></li>
+          <li class="toc-sub"><a href="#the-checklist">1. Viewport Meta Tag</a></li>
+          <li class="toc-sub"><a href="#the-checklist">2. Content Parity</a></li>
+          <li class="toc-sub"><a href="#the-checklist">3. LCP Under 2.5s</a></li>
+          <li class="toc-sub"><a href="#the-checklist">4. INP Under 200ms</a></li>
+          <li class="toc-sub"><a href="#the-checklist">5. CLS Under 0.1</a></li>
+          <li class="toc-sub"><a href="#the-checklist">6. Tap Targets 44px+</a></li>
+          <li class="toc-sub"><a href="#the-checklist">7. Readable Text</a></li>
+          <li class="toc-sub"><a href="#the-checklist">8. No Horizontal Scroll</a></li>
+          <li class="toc-sub"><a href="#the-checklist">9. Structured Data</a></li>
+          <li class="toc-sub"><a href="#the-checklist">10. TTFB Under 600ms</a></li>
+          <li class="toc-sub"><a href="#the-checklist">11–15. More items</a></li>
+          <li><a href="#audit-tools">Audit Tools</a></li>
+          <li><a href="#recommended-audit-process">Audit Process</a></li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-tool-card">
+        <h4>📱 Visual Mobile Audit</h4>
+        <p>See your site exactly as Google's mobile crawler does — at real device viewports, instantly.</p>
+        <a href="/" class="sidebar-btn">Open Mobile Viewer →</a>
+      </div>
+
+      <div class="sidebar-tool-card" style="margin-top:16px">
+        <h4>⚡ Page Speed Test</h4>
+        <p>Check your LCP, INP, and CLS scores against the good/needs improvement/poor thresholds.</p>
+        <a href="/?tool=page-speed" class="sidebar-btn">Run Speed Test →</a>
+        <a href="/blog/test-responsive-design" class="sidebar-btn-outline">🔧 Responsive Testing Guide →</a>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- RELATED POSTS -->
+  <section class="related-section" aria-label="Related articles">
+    <div class="container">
+      <span class="section-badge">Keep Reading</span>
+      <h2 class="section-title">Related Articles</h2>
+      <div class="related-grid">
+        <a href="/blog/test-responsive-design" class="related-card">
+          <div class="related-card-cat">Developer Guide</div>
+          <h3>How to Test Responsive Design Without Buying 20 Phones</h3>
+          <p>A layered testing workflow using free tools — from browser DevTools to QR code real-device checks.</p>
+        </a>
+        <a href="/blog/iphone-15-vs-galaxy-s23-viewport" class="related-card">
+          <div class="related-card-cat">Developer Reference</div>
+          <h3>iPhone 15 vs Galaxy S23 Viewport Differences Every Developer Should Know</h3>
+          <p>Exact viewport dimensions, pixel ratios, safe area insets, and browser quirks compared side by side.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section" aria-labelledby="faq-heading">
+    <div class="faq-inner">
+      <span class="section-badge">FAQ</span>
+      <h2 class="section-title" id="faq-heading">Mobile SEO FAQ</h2>
+      <p class="section-description">Answers to the most common questions about mobile SEO in 2026</p>
+      <div class="faq-list" role="list">
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+            What is mobile-first indexing?
+            <span class="faq-chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>Mobile-first indexing means Google primarily uses the mobile version of your site's content and markup to rank and index pages. If your mobile site is missing content that exists on your desktop version, that content won't be indexed or ranked. As of 2024, all websites are indexed mobile-first with no exceptions.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+            What Core Web Vitals scores do I need for good mobile SEO?
+            <span class="faq-chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>Google's thresholds for "good" ratings are: LCP under 2.5 seconds, INP under 200 milliseconds, and CLS under 0.1. These are measured on real mobile users via Chrome User Experience Report (CrUX) data, not just lab conditions. Even if your lab score passes, poor field data from real users is what affects your rankings.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+            How do I check if my site passes mobile SEO requirements?
+            <span class="faq-chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>Use Google Search Console's Mobile Usability report for mobile-first indexing issues, PageSpeed Insights for Core Web Vitals, and <a href="/">Mobile Viewer's responsive checker</a> to visually audit your site at real device viewports. Check all three tools — they surface different categories of issues and collectively cover all 15 items in this checklist.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+            Does having a mobile-friendly site guarantee better rankings?
+            <span class="faq-chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>A mobile-friendly site is necessary but not sufficient for strong rankings. Mobile usability and Core Web Vitals are ranking factors, but they're best understood as a floor you must clear rather than a differentiator. Once you pass the mobile usability thresholds, content relevance, E-E-A-T signals, and backlink authority become the primary ranking levers. However, a site that fails mobile usability actively loses rankings compared to a passing competitor.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+            What replaced FID in Core Web Vitals?
+            <span class="faq-chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>First Input Delay (FID) was replaced by Interaction to Next Paint (INP) in March 2024. INP is a more comprehensive interactivity metric — it measures the responsiveness of all page interactions throughout a user's session, not just the very first tap. INP is generally harder to optimize than FID because it requires low latency on every interaction, not just the first one.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" aria-label="Call to action">
+    <div class="container">
+      <div class="cta-card">
+        <div class="cta-glow" aria-hidden="true"></div>
+        <div class="cta-badge">Free · No Sign-up · Instant</div>
+        <h2 class="cta-title">Check your site's mobile experience right now</h2>
+        <p class="cta-description">Mobile Viewer gives you an instant visual audit of your site at real device viewports — free, no account needed</p>
+        <div class="cta-actions">
+          <a href="/" class="cta-large-button">
+            Launch Mobile Viewer
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="/#tools" class="cta-secondary-link">Explore all tools →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-bottom-inner">
+        <p class="footer-copy">© 2026 Mobile Viewer. All rights reserved.</p>
+        <nav class="footer-legal" aria-label="Legal navigation">
+          <a href="/privacy" class="footer-legal-link">Privacy Policy</a>
+          <span aria-hidden="true">·</span>
+          <a href="/terms" class="footer-legal-link">Terms of Use</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleFaq(btn) {
+      const answer = btn.nextElementSibling;
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', !isOpen);
+      answer.classList.toggle('is-open', !isOpen);
+    }
+    const progressBar = document.getElementById('progressBar');
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progressBar.style.width = Math.min(progress, 100) + '%';
+    }, { passive: true });
+  </script>
+</body>
+</html>
