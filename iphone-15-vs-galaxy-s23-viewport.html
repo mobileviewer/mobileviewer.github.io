@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iPhone 15 vs Galaxy S23 Viewport Differences Every Developer Should Know — Mobile Viewer Blog</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+
+  <!-- SEO -->
+  <meta name="description" content="A complete developer reference comparing iPhone 15 and Galaxy S23 viewport widths, pixel ratios, safe area insets, browser rendering differences, and CSS quirks.">
+  <meta name="keywords" content="iPhone 15 viewport, Galaxy S23 viewport, device viewport sizes, CSS pixel ratio, safe area inset, mobile viewport comparison, iPhone 15 vs Galaxy S23">
+  <meta name="author" content="Mobile Viewer">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://mobileviewer.github.io/iphone-15-vs-galaxy-s23-viewport">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="iPhone 15 vs Galaxy S23 Viewport Differences Every Developer Should Know">
+  <meta property="og:description" content="Complete developer reference for viewport widths, DPR, safe area insets, and browser quirks between iPhone 15 and Samsung Galaxy S23.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://mobileviewer.github.io/iphone-15-vs-galaxy-s23-viewport">
+  <meta property="og:site_name" content="Mobile Viewer">
+
+  <!-- Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "iPhone 15 vs Galaxy S23 Viewport Differences Every Developer Should Know",
+    "description": "Complete developer reference comparing iPhone 15 and Galaxy S23 viewport dimensions, pixel ratios, safe area insets, and browser-specific CSS quirks.",
+    "author": { "@type": "Organization", "name": "Mobile Viewer" },
+    "publisher": { "@type": "Organization", "name": "Mobile Viewer", "url": "https://mobileviewer.github.io/" },
+    "datePublished": "2026-04-01",
+    "dateModified": "2026-04-01"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the CSS viewport width of the iPhone 15?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The iPhone 15 has a CSS viewport width of 390px in portrait mode. Despite having a physical screen resolution of 2556×1179 pixels, iOS applies a 3× device pixel ratio, resulting in a 390×844px CSS viewport. The iPhone 15 Plus has a 430px wide CSS viewport." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the CSS viewport width of the Samsung Galaxy S23?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The Samsung Galaxy S23 has a CSS viewport width of 360px in portrait mode with a device pixel ratio of 3×. The S23 Ultra is wider at 384px CSS width. The actual physical resolution of the S23 is 2340×1080 pixels." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do iPhone 15 and Galaxy S23 use the same browser engine?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. The iPhone 15 uses WebKit — this is mandatory for all browsers on iOS, including Chrome for iOS. The Galaxy S23 uses Chrome with the Blink rendering engine. This engine difference causes real CSS behavior variations in areas like viewport units, scroll behavior, form styling, and certain CSS property support." }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary:      #00F0FF;
+      --primary-dim:  rgba(0,240,255,0.15);
+      --secondary:    #7B61FF;
+      --accent:       #FF4FD8;
+      --ios:          #00F0FF;
+      --android:      #3DDC84;
+      --android-dim:  rgba(61,220,132,0.15);
+      --bg:           #080C12;
+      --bg-dark:      #050810;
+      --bg-card:      #0D1220;
+      --bg-card-2:    #111827;
+      --border:       rgba(255,255,255,0.07);
+      --border-light: rgba(255,255,255,0.12);
+      --text:         #F0F4FF;
+      --text-secondary: rgba(240,244,255,0.6);
+      --text-muted:   rgba(240,244,255,0.35);
+      --radius:       12px;
+      --radius-lg:    20px;
+      --header-h:     70px;
+      --container:    1240px;
+      --font-display: 'Syne', sans-serif;
+      --font-body:    'DM Sans', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 24px); -webkit-text-size-adjust: 100%; }
+    body { font-family: var(--font-body); font-size: 16px; line-height: 1.7; color: var(--text); background: var(--bg); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+    ul { list-style: none; }
+    code { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.85em; background: rgba(0,240,255,0.08); color: var(--primary); padding: 2px 6px; border-radius: 4px; }
+    pre { background: var(--bg-card); border: 1px solid var(--border-light); border-radius: var(--radius); padding: 20px 24px; overflow-x: auto; margin: 1.5rem 0; }
+    pre code { background: none; padding: 0; font-size: 0.875rem; line-height: 1.7; }
+    img { display: block; max-width: 100%; }
+
+    .container { width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+
+    /* ── HEADER ── */
+    .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; height: var(--header-h); background: rgba(8,12,18,0.85); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); border-bottom: 1px solid var(--border); }
+    .header-inner { max-width: var(--container); margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; gap: 2rem; }
+    .header-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+    .logo-text { font-family: var(--font-display); font-size: 1.15rem; font-weight: 800; letter-spacing: -0.02em; color: var(--text); }
+    .logo-accent { color: var(--primary); }
+    .header-nav { margin-left: auto; }
+    .nav-list { display: flex; align-items: center; gap: 4px; list-style: none; }
+    .nav-link { display: flex; align-items: center; padding: 6px 14px; border-radius: 8px; font-size: 0.92rem; font-weight: 500; color: var(--text-secondary); text-decoration: none; transition: color 0.2s, background 0.2s; }
+    .nav-link:hover { color: var(--text); background: rgba(255,255,255,0.06); }
+    .header-cta-btn { display: flex; align-items: center; gap: 8px; padding: 9px 18px; background: var(--primary); color: #000; font-size: 0.875rem; font-weight: 700; border-radius: 8px; text-decoration: none; transition: all 0.2s; flex-shrink: 0; }
+    .header-cta-btn:hover { background: #29f5ff; transform: translateY(-1px); box-shadow: 0 4px 20px rgba(0,240,255,0.3); }
+
+    /* ── BLOG HERO ── */
+    .blog-hero { padding: calc(var(--header-h) + 80px) 0 80px; position: relative; overflow: hidden; }
+    .blog-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 30% 0%, rgba(0,240,255,0.05) 0%, transparent 60%), radial-gradient(ellipse 60% 50% at 70% 0%, rgba(61,220,132,0.04) 0%, transparent 60%); pointer-events: none; }
+    .blog-hero-inner { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    .blog-breadcrumb { display: flex; align-items: center; gap: 8px; margin-bottom: 2rem; font-size: 0.85rem; color: var(--text-muted); }
+    .blog-breadcrumb a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .blog-breadcrumb a:hover { color: var(--primary); }
+    .blog-category { display: inline-block; font-family: var(--font-display); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--android); background: var(--android-dim); border: 1px solid rgba(61,220,132,0.3); padding: 5px 14px; border-radius: 100px; margin-bottom: 1.5rem; }
+    .blog-hero-title { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; }
+    .gradient-text-ios { background: linear-gradient(90deg, var(--primary), #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .gradient-text-and { background: linear-gradient(90deg, var(--android), #34D399); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .blog-hero-desc { font-size: 1.15rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 2rem; max-width: 700px; }
+    .blog-meta { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .blog-meta-item { display: flex; align-items: center; gap: 6px; font-size: 0.875rem; color: var(--text-muted); }
+    .blog-meta-item svg { color: var(--android); flex-shrink: 0; }
+    .blog-divider { width: 100%; height: 1px; background: var(--border); margin: 3rem 0; }
+
+    /* ── LAYOUT ── */
+    .blog-layout { max-width: 1100px; margin: 0 auto; padding: 0 24px 100px; display: grid; grid-template-columns: 1fr 300px; gap: 60px; align-items: start; }
+
+    /* ── SIDEBAR ── */
+    .blog-sidebar { position: sticky; top: calc(var(--header-h) + 32px); }
+    .toc-card { background: var(--bg-card); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 28px; }
+    .toc-title { font-family: var(--font-display); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; }
+    .toc-list { display: flex; flex-direction: column; gap: 4px; list-style: none; }
+    .toc-list li a { display: block; padding: 6px 10px; border-radius: 6px; font-size: 0.875rem; color: var(--text-secondary); text-decoration: none; transition: color 0.2s, background 0.2s; border-left: 2px solid transparent; }
+    .toc-list li a:hover { color: var(--android); background: var(--android-dim); border-left-color: var(--android); }
+    .toc-list li.toc-sub a { padding-left: 22px; font-size: 0.825rem; }
+    .sidebar-tool-card { background: var(--bg-card); border: 1px solid rgba(61,220,132,0.2); border-radius: var(--radius-lg); padding: 24px; margin-top: 20px; }
+    .sidebar-tool-card h4 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .sidebar-tool-card p { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 16px; line-height: 1.6; }
+    .sidebar-btn { display: block; text-align: center; padding: 10px 16px; background: var(--primary); color: #000; font-weight: 700; font-size: 0.875rem; border-radius: 8px; text-decoration: none; transition: all 0.2s; }
+    .sidebar-btn:hover { background: #29f5ff; transform: translateY(-1px); }
+    .sidebar-btn-outline { display: block; text-align: center; padding: 10px 16px; border: 1px solid var(--border-light); color: var(--text-secondary); font-size: 0.875rem; border-radius: 8px; text-decoration: none; transition: all 0.2s; margin-top: 8px; }
+    .sidebar-btn-outline:hover { border-color: var(--android); color: var(--android); }
+
+    /* ── ARTICLE ── */
+    .blog-content h2 { font-family: var(--font-display); font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 700; margin: 3rem 0 1rem; color: var(--text); scroll-margin-top: calc(var(--header-h) + 32px); }
+    .blog-content h3 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; margin: 2rem 0 0.75rem; color: var(--text); scroll-margin-top: calc(var(--header-h) + 32px); }
+    .blog-content p { margin-bottom: 1.25rem; color: var(--text-secondary); font-size: 1.02rem; }
+    .blog-content p strong { color: var(--text); font-weight: 600; }
+    .blog-content ul, .blog-content ol { padding-left: 1.5rem; margin-bottom: 1.5rem; color: var(--text-secondary); font-size: 1.02rem; }
+    .blog-content ul { list-style: disc; }
+    .blog-content ol { list-style: decimal; }
+    .blog-content li { margin-bottom: 0.5rem; }
+    .blog-content a { color: var(--primary); text-decoration: underline; text-underline-offset: 3px; transition: opacity 0.2s; }
+    .blog-content a:hover { opacity: 0.8; }
+
+    /* Device comparison card */
+    .device-compare { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 2rem 0; }
+    .device-card { background: var(--bg-card); border-radius: var(--radius-lg); padding: 24px; }
+    .device-card-ios { border: 1px solid rgba(0,240,255,0.25); }
+    .device-card-android { border: 1px solid rgba(61,220,132,0.25); }
+    .device-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+    .device-badge { font-family: var(--font-display); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 10px; border-radius: 100px; }
+    .device-badge-ios { background: rgba(0,240,255,0.12); color: var(--ios); border: 1px solid rgba(0,240,255,0.25); }
+    .device-badge-android { background: var(--android-dim); color: var(--android); border: 1px solid rgba(61,220,132,0.25); }
+    .device-card h3 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; margin: 0; }
+    .spec-row { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 0.875rem; }
+    .spec-row:last-child { border-bottom: none; }
+    .spec-label { color: var(--text-muted); flex-shrink: 0; }
+    .spec-value { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.82rem; color: var(--text); font-weight: 600; text-align: right; }
+    .spec-value.ios { color: var(--ios); }
+    .spec-value.and { color: var(--android); }
+
+    /* Full device matrix table */
+    .device-matrix { width: 100%; border-collapse: collapse; margin: 2rem 0; font-size: 0.875rem; }
+    .device-matrix th { font-family: var(--font-display); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); padding: 10px 14px; border-bottom: 1px solid var(--border-light); text-align: left; white-space: nowrap; }
+    .device-matrix td { padding: 12px 14px; border-bottom: 1px solid var(--border); color: var(--text-secondary); vertical-align: middle; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.8rem; }
+    .device-matrix td.device-name { font-family: var(--font-body); font-weight: 600; color: var(--text); }
+    .device-matrix tr:hover td { background: rgba(255,255,255,0.02); }
+    .ios-row { border-left: 2px solid rgba(0,240,255,0.4); }
+    .android-row { border-left: 2px solid rgba(61,220,132,0.4); }
+
+    /* Callout boxes */
+    .callout { background: var(--bg-card); border: 1px solid var(--border-light); border-left: 3px solid var(--primary); border-radius: var(--radius); padding: 20px 24px; margin: 2rem 0; }
+    .callout-ios { border-left-color: var(--ios); background: rgba(0,240,255,0.03); border-color: rgba(0,240,255,0.15); }
+    .callout-android { border-left-color: var(--android); background: rgba(61,220,132,0.03); border-color: rgba(61,220,132,0.15); }
+    .callout-warn { border-left-color: #FF4FD8; background: rgba(255,79,216,0.04); border-color: rgba(255,79,216,0.2); }
+    .callout-label { font-family: var(--font-display); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+    .callout-ios .callout-label { color: var(--ios); }
+    .callout-android .callout-label { color: var(--android); }
+    .callout-warn .callout-label { color: var(--accent); }
+    .callout p { margin-bottom: 0; color: var(--text-secondary); }
+
+    /* Inlink banner */
+    .inlink-banner { display: flex; align-items: center; gap: 20px; background: linear-gradient(135deg, rgba(0,240,255,0.05), rgba(61,220,132,0.05)); border: 1px solid rgba(0,240,255,0.15); border-radius: var(--radius-lg); padding: 24px 28px; margin: 2.5rem 0; }
+    .inlink-banner-icon { flex-shrink: 0; width: 48px; height: 48px; background: var(--primary-dim); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--primary); }
+    .inlink-banner-body h4 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+    .inlink-banner-body p { font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 12px; }
+    .inlink-banner-body a { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; background: var(--primary); color: #000; font-size: 0.85rem; font-weight: 700; border-radius: 8px; text-decoration: none; transition: all 0.2s; }
+    .inlink-banner-body a:hover { background: #29f5ff; }
+
+    /* Code diff */
+    .code-diff { background: var(--bg-card); border: 1px solid var(--border-light); border-radius: var(--radius); padding: 20px 24px; margin: 1.5rem 0; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.85rem; line-height: 1.8; overflow-x: auto; }
+    .code-diff .comment { color: var(--text-muted); }
+    .code-diff .ios-line { color: var(--ios); }
+    .code-diff .and-line { color: var(--android); }
+    .code-diff .neutral { color: var(--text-secondary); }
+    .code-diff .prop { color: #a78bfa; }
+    .code-diff .val { color: #f9a825; }
+    .code-diff .key { color: var(--primary); }
+
+    /* Section badge + title */
+    .section-badge { display: inline-block; font-family: var(--font-display); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--android); background: var(--android-dim); border: 1px solid rgba(61,220,132,0.3); padding: 5px 14px; border-radius: 100px; margin-bottom: 1.25rem; }
+    .section-title { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 700; line-height: 1.15; margin-bottom: 1rem; }
+    .section-description { font-size: 1.05rem; color: var(--text-secondary); max-width: 600px; line-height: 1.7; margin-bottom: 3rem; }
+
+    /* FAQ */
+    .faq-section { padding: 80px 0; background: var(--bg-dark); border-top: 1px solid var(--border); }
+    .faq-inner { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    .faq-list { display: flex; flex-direction: column; gap: 12px; }
+    .faq-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .faq-q { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 24px; font-size: 1rem; font-weight: 500; color: var(--text); text-align: left; transition: color 0.2s; }
+    .faq-q:hover { color: var(--android); }
+    .faq-chevron { font-size: 1.2rem; transition: transform 0.3s; color: var(--text-muted); flex-shrink: 0; }
+    .faq-q[aria-expanded="true"] .faq-chevron { transform: rotate(180deg); color: var(--android); }
+    .faq-a { display: none; padding: 0 24px 20px; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; border-top: 1px solid var(--border); padding-top: 16px; }
+    .faq-a.is-open { display: block; }
+
+    /* Related */
+    .related-section { padding: 80px 0; border-top: 1px solid var(--border); }
+    .related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 3rem; }
+    .related-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; text-decoration: none; transition: border-color 0.2s, transform 0.2s; display: block; }
+    .related-card:hover { border-color: rgba(61,220,132,0.3); transform: translateY(-3px); }
+    .related-card-cat { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--android); margin-bottom: 10px; }
+    .related-card h3 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: 8px; line-height: 1.4; }
+    .related-card p { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; }
+
+    /* CTA */
+    .cta-section { padding: 80px 0; }
+    .cta-card { position: relative; background: var(--bg-card); border: 1px solid rgba(61,220,132,0.15); border-radius: 28px; padding: 72px 40px; text-align: center; overflow: hidden; }
+    .cta-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 600px; height: 300px; background: radial-gradient(ellipse, rgba(61,220,132,0.05) 0%, transparent 70%); pointer-events: none; }
+    .cta-badge { display: inline-block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--android); margin-bottom: 1.5rem; }
+    .cta-title { font-family: var(--font-display); font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; margin-bottom: 1rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+    .cta-description { font-size: 1.05rem; color: var(--text-secondary); margin-bottom: 2.5rem; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .cta-actions { display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; }
+    .cta-large-button { display: inline-flex; align-items: center; gap: 10px; padding: 16px 36px; background: var(--primary); color: #000; font-family: var(--font-display); font-size: 1rem; font-weight: 800; border-radius: 12px; text-decoration: none; transition: all 0.2s; }
+    .cta-large-button:hover { background: #29f5ff; transform: translateY(-2px); box-shadow: 0 10px 40px rgba(0,240,255,0.35); }
+    .cta-secondary-link { font-size: 0.9rem; font-weight: 600; color: var(--text-secondary); text-decoration: none; border-bottom: 1px solid var(--border-light); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
+    .cta-secondary-link:hover { color: var(--text); border-color: var(--text-secondary); }
+
+    /* Footer */
+    .site-footer { background: var(--bg-dark); border-top: 1px solid var(--border); padding: 48px 0 24px; }
+    .footer-bottom-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-copy, .footer-legal { font-size: 0.8rem; color: var(--text-muted); }
+    .footer-legal { display: flex; align-items: center; gap: 10px; }
+    .footer-legal-link { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .footer-legal-link:hover { color: var(--text-secondary); }
+
+    /* Reading progress */
+    .reading-progress { position: fixed; top: var(--header-h); left: 0; right: 0; height: 2px; z-index: 999; }
+    .reading-progress-bar { height: 100%; background: linear-gradient(90deg, var(--ios), var(--android)); width: 0%; transition: width 0.1s; }
+
+    @media (max-width: 900px) {
+      .blog-layout { grid-template-columns: 1fr; gap: 40px; }
+      .blog-sidebar { position: static; }
+      .related-grid { grid-template-columns: 1fr; }
+      .header-nav { display: none; }
+    }
+    @media (max-width: 700px) {
+      .device-compare { grid-template-columns: 1fr; }
+      .device-matrix { display: block; overflow-x: auto; }
+    }
+    @media (max-width: 640px) {
+      .container { padding: 0 16px; }
+      .blog-layout { padding: 0 16px 60px; }
+      .blog-hero-inner { padding: 0 16px; }
+      .cta-card { padding: 48px 24px; }
+      .inlink-banner { flex-direction: column; gap: 16px; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } html { scroll-behavior: auto; } }
+    :focus-visible { outline: 2px solid var(--android); outline-offset: 2px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+
+  <div class="reading-progress" aria-hidden="true">
+    <div class="reading-progress-bar" id="progressBar"></div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a href="/" class="header-logo" aria-label="Mobile Viewer Home">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true" style="color:var(--primary)">
+          <rect x="7" y="2" width="14" height="22" rx="3" stroke="currentColor" stroke-width="2"/>
+          <circle cx="14" cy="20" r="1.5" fill="currentColor"/>
+        </svg>
+        <span class="logo-text">Mobile<span class="logo-accent">Viewer</span></span>
+      </a>
+      <nav class="header-nav" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/#tools" class="nav-link">Tools</a></li>
+          <li><a href="/blog/" class="nav-link" aria-current="page">Blog</a></li>
+        </ul>
+      </nav>
+      <a href="/" class="header-cta-btn">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="4" y="1" width="8" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="12" r="1" fill="currentColor"/></svg>
+        Test Your Site Free
+      </a>
+    </div>
+  </header>
+
+  <!-- BLOG HERO -->
+  <section class="blog-hero" aria-label="Article header">
+    <div class="blog-hero-inner">
+      <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="/blog/">Blog</a>
+        <span aria-hidden="true">›</span>
+        <span>Device Reference</span>
+      </nav>
+      <span class="blog-category">Developer Reference</span>
+      <h1 class="blog-hero-title"><span class="gradient-text-ios">iPhone 15</span> vs <span class="gradient-text-and">Galaxy S23</span> Viewport Differences Every Developer Should Know</h1>
+      <p class="blog-hero-desc">A complete reference comparing viewport dimensions, device pixel ratios, safe area insets, browser engine differences, and CSS quirks between the two most common flagship devices your users are on.</p>
+      <div class="blog-meta">
+        <div class="blog-meta-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v3.5l2 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          14 min read
+        </div>
+        <div class="blog-meta-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M5 1v3M11 1v3M2 7h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          April 1, 2026
+        </div>
+        <div class="blog-meta-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="3" y="4" width="10" height="9" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M6 4V3M10 4V3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          iOS, Android, CSS
+        </div>
+      </div>
+      <div class="blog-divider" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- BLOG LAYOUT -->
+  <div class="blog-layout">
+
+    <!-- MAIN CONTENT -->
+    <article class="blog-content" aria-label="Article content">
+
+      <p>Your site renders identically on the iPhone 15 and Galaxy S23. Or so you think. In reality, these two devices — the dominant flagships on iOS and Android — differ in viewport width, device pixel ratio, safe area insets, scroll behavior, font rendering, and the underlying browser engine handling your CSS. Understanding these differences is what separates sites that look great on both platforms from sites that just "mostly work."</p>
+      <p>This reference covers every viewport-related dimension and browser quirk you need to know, with CSS code you can use immediately.</p>
+
+      <!-- ── SECTION 1: Core Specs ── -->
+      <h2 id="core-viewport-specs">Core Viewport Specifications Side by Side</h2>
+      <p>Let's start with the raw numbers. These are measured values in CSS pixels — what your media queries, <code>vw</code>/<code>vh</code> units, and JavaScript's <code>window.innerWidth</code> actually see.</p>
+
+      <div class="device-compare">
+        <div class="device-card device-card-ios">
+          <div class="device-card-header">
+            <span class="device-badge device-badge-ios">iOS</span>
+            <h3>iPhone 15</h3>
+          </div>
+          <div class="spec-row"><span class="spec-label">CSS Viewport (portrait)</span><span class="spec-value ios">390 × 844px</span></div>
+          <div class="spec-row"><span class="spec-label">CSS Viewport (landscape)</span><span class="spec-value ios">844 × 390px</span></div>
+          <div class="spec-row"><span class="spec-label">Physical Resolution</span><span class="spec-value">2556 × 1179px</span></div>
+          <div class="spec-row"><span class="spec-label">Device Pixel Ratio</span><span class="spec-value ios">3×</span></div>
+          <div class="spec-row"><span class="spec-label">Screen Size</span><span class="spec-value">6.1 inches</span></div>
+          <div class="spec-row"><span class="spec-label">PPI</span><span class="spec-value">460 ppi</span></div>
+          <div class="spec-row"><span class="spec-label">Browser Engine</span><span class="spec-value ios">WebKit</span></div>
+          <div class="spec-row"><span class="spec-label">Safe Area Top</span><span class="spec-value ios">~59px (Dynamic Island)</span></div>
+          <div class="spec-row"><span class="spec-label">Safe Area Bottom</span><span class="spec-value ios">~34px (home indicator)</span></div>
+          <div class="spec-row"><span class="spec-label">Notch / Cutout</span><span class="spec-value">Dynamic Island</span></div>
+        </div>
+        <div class="device-card device-card-android">
+          <div class="device-card-header">
+            <span class="device-badge device-badge-android">Android</span>
+            <h3>Galaxy S23</h3>
+          </div>
+          <div class="spec-row"><span class="spec-label">CSS Viewport (portrait)</span><span class="spec-value and">360 × 780px</span></div>
+          <div class="spec-row"><span class="spec-label">CSS Viewport (landscape)</span><span class="spec-value and">780 × 360px</span></div>
+          <div class="spec-row"><span class="spec-label">Physical Resolution</span><span class="spec-value">2340 × 1080px</span></div>
+          <div class="spec-row"><span class="spec-label">Device Pixel Ratio</span><span class="spec-value and">3×</span></div>
+          <div class="spec-row"><span class="spec-label">Screen Size</span><span class="spec-value">6.1 inches</span></div>
+          <div class="spec-row"><span class="spec-label">PPI</span><span class="spec-value">425 ppi</span></div>
+          <div class="spec-row"><span class="spec-label">Browser Engine</span><span class="spec-value and">Blink (Chrome)</span></div>
+          <div class="spec-row"><span class="spec-label">Safe Area Top</span><span class="spec-value and">~24px (punch-hole)</span></div>
+          <div class="spec-row"><span class="spec-label">Safe Area Bottom</span><span class="spec-value and">~16–24px</span></div>
+          <div class="spec-row"><span class="spec-label">Notch / Cutout</span><span class="spec-value">Centered punch-hole</span></div>
+        </div>
+      </div>
+
+      <div class="callout callout-ios">
+        <div class="callout-label">📱 iOS Note</div>
+        <p>The iPhone 15's CSS viewport is <strong>30px wider</strong> than the Galaxy S23's (390px vs 360px). This 8% width difference is significant enough to cause layout differences at your mobile breakpoints if you've only tested at one device width.</p>
+      </div>
+
+      <!-- ── SECTION 2: Full Matrix ── -->
+      <h2 id="full-device-matrix">Full iPhone 15 and Galaxy S23 Lineup Matrix</h2>
+      <p>The flagship is just one device in each lineup. Here's the complete current lineup for both families so you can target the right widths for your breakpoints:</p>
+
+      <table class="device-matrix">
+        <thead>
+          <tr>
+            <th>Device</th>
+            <th>CSS Width</th>
+            <th>CSS Height</th>
+            <th>DPR</th>
+            <th>Engine</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="ios-row"><td class="device-name">iPhone SE (3rd gen)</td><td>375px</td><td>667px</td><td>2×</td><td>WebKit</td></tr>
+          <tr class="ios-row"><td class="device-name">iPhone 15</td><td>390px</td><td>844px</td><td>3×</td><td>WebKit</td></tr>
+          <tr class="ios-row"><td class="device-name">iPhone 15 Plus</td><td>430px</td><td>932px</td><td>3×</td><td>WebKit</td></tr>
+          <tr class="ios-row"><td class="device-name">iPhone 15 Pro</td><td>393px</td><td>852px</td><td>3×</td><td>WebKit</td></tr>
+          <tr class="ios-row"><td class="device-name">iPhone 15 Pro Max</td><td>430px</td><td>932px</td><td>3×</td><td>WebKit</td></tr>
+          <tr class="android-row"><td class="device-name">Galaxy S23</td><td>360px</td><td>780px</td><td>3×</td><td>Blink</td></tr>
+          <tr class="android-row"><td class="device-name">Galaxy S23+</td><td>360px</td><td>772px</td><td>3×</td><td>Blink</td></tr>
+          <tr class="android-row"><td class="device-name">Galaxy S23 Ultra</td><td>384px</td><td>824px</td><td>3.75×</td><td>Blink</td></tr>
+          <tr class="android-row"><td class="device-name">Galaxy S23 FE</td><td>360px</td><td>780px</td><td>3×</td><td>Blink</td></tr>
+          <tr class="android-row"><td class="device-name">Google Pixel 8</td><td>384px</td><td>832px</td><td>2.625×</td><td>Blink</td></tr>
+          <tr class="android-row"><td class="device-name">Google Pixel 8 Pro</td><td>448px</td><td>998px</td><td>2.625×</td><td>Blink</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout-android">
+        <div class="callout-label">🤖 Android Note</div>
+        <p>Android's DPR values are often non-integer (2.625×, 3.5×, etc.) and can vary by user font scale setting. On Android, users can increase system font size which changes the effective density. Always test with system font set to default <em>and</em> at the largest size.</p>
+      </div>
+
+      <!-- ── SECTION 3: Safe Areas ── -->
+      <h2 id="safe-areas">Safe Area Insets: Dynamic Island vs Punch-Hole</h2>
+      <p>Safe area insets are the CSS environment variables that tell your layout to avoid placing content under hardware cutouts and navigation bars. This is one of the most practically important differences between iOS and Android development.</p>
+
+      <h3 id="ios-safe-areas">iOS Safe Areas (Dynamic Island)</h3>
+      <p>The iPhone 15's Dynamic Island sits at the top center of the screen and pushes the status bar content to the sides. The relevant safe area values in CSS:</p>
+
+      <div class="code-diff">
+        <span class="comment">/* iPhone 15 — Dynamic Island safe areas */</span><br>
+        <span class="neutral">padding-top: </span><span class="val">env(safe-area-inset-top)</span><span class="neutral">;</span><span class="comment">    /* ~59px in portrait */</span><br>
+        <span class="neutral">padding-bottom: </span><span class="val">env(safe-area-inset-bottom)</span><span class="neutral">;</span><span class="comment">  /* ~34px (home bar) */</span><br>
+        <span class="neutral">padding-left: </span><span class="val">env(safe-area-inset-left)</span><span class="neutral">;</span><span class="comment">    /* 0px portrait, ~59px landscape */</span><br>
+        <span class="neutral">padding-right: </span><span class="val">env(safe-area-inset-right)</span><span class="neutral">;</span><span class="comment">   /* 0px portrait, ~59px landscape */</span><br>
+        <br>
+        <span class="comment">/* Full-screen fixed elements need viewport-fit=cover */</span><br>
+        <span class="key">&lt;meta</span> <span class="prop">name</span><span class="neutral">="viewport" </span><span class="prop">content</span><span class="neutral">="</span><span class="val">width=device-width, initial-scale=1.0, viewport-fit=cover</span><span class="neutral">"&gt;</span>
+      </div>
+
+      <h3 id="android-safe-areas">Android Safe Areas (Punch-Hole Camera)</h3>
+      <p>The Galaxy S23's punch-hole camera is centered at the top. Android Chrome exposes safe area insets via the same CSS environment variables, but the values differ significantly:</p>
+
+      <div class="code-diff">
+        <span class="comment">/* Galaxy S23 — Punch-hole safe areas */</span><br>
+        <span class="neutral">padding-top: </span><span class="val">env(safe-area-inset-top)</span><span class="neutral">;</span><span class="comment">    /* ~24px (status bar only) */</span><br>
+        <span class="neutral">padding-bottom: </span><span class="val">env(safe-area-inset-bottom)</span><span class="neutral">;</span><span class="comment">  /* ~16–24px (gesture nav) */</span><br>
+        <span class="neutral">padding-left: </span><span class="val">env(safe-area-inset-left)</span><span class="neutral">;</span><span class="comment">    /* 0px with gesture nav */</span><br>
+        <span class="neutral">padding-right: </span><span class="val">env(safe-area-inset-right)</span><span class="neutral">;</span><span class="comment">   /* 0px with gesture nav */</span><br>
+        <br>
+        <span class="comment">/* Note: Android values change based on navigation mode! */</span><br>
+        <span class="comment">/* Gesture nav: inset-bottom ~16px */</span><br>
+        <span class="comment">/* 3-button nav: inset-bottom = 0 (nav bar is separate) */</span>
+      </div>
+
+      <div class="callout callout-warn">
+        <div class="callout-label">⚠️ Critical Difference</div>
+        <p>On Android, the bottom safe area inset value depends on which navigation mode the user has selected (gesture navigation vs. 3-button navigation). You cannot rely on a fixed value. Always use <code>env(safe-area-inset-bottom)</code> dynamically and never hardcode a pixel value.</p>
+      </div>
+
+      <!-- ── SECTION 4: Browser Engines ── -->
+      <h2 id="browser-engine-differences">Browser Engine Differences: WebKit vs Blink</h2>
+      <p>This is the single most consequential difference between the two devices. <strong>Every browser on iOS — Chrome, Firefox, Edge, DuckDuckGo — uses WebKit</strong>, Apple's engine. The Galaxy S23 runs Chrome with Google's Blink engine. These engines handle CSS differently in ways that cause real visual differences.</p>
+
+      <h3 id="viewport-units">Viewport Units: dvh, svh, lvh</h3>
+      <p>The classic <code>100vh</code> problem — where the mobile browser's collapsible URL bar changes the actual visible height — was a major pain point for years. CSS now provides three new dynamic viewport units to solve it precisely:</p>
+
+      <div class="code-diff">
+        <span class="comment">/* dvh = dynamic viewport height (changes as browser chrome shows/hides) */</span><br>
+        <span class="neutral">height: </span><span class="val">100dvh</span><span class="neutral">;</span><span class="comment">  /* Supported: iOS 15.4+, Android Chrome 108+ ✓ */</span><br>
+        <br>
+        <span class="comment">/* svh = small viewport height (with browser chrome fully shown) */</span><br>
+        <span class="neutral">height: </span><span class="val">100svh</span><span class="neutral">;</span><span class="comment">  /* Safe for 'above fold' layouts */</span><br>
+        <br>
+        <span class="comment">/* lvh = large viewport height (with browser chrome hidden) */</span><br>
+        <span class="neutral">height: </span><span class="val">100lvh</span><span class="neutral">;</span><span class="comment">  /* Use for fullscreen/immersive experiences */</span><br>
+        <br>
+        <span class="comment">/* Fallback for older browsers */</span><br>
+        <span class="neutral">height: </span><span class="val">100vh</span><span class="neutral">;</span><br>
+        <span class="neutral">height: </span><span class="val">100dvh</span><span class="neutral">;</span><span class="comment">  /* Overrides if supported */</span>
+      </div>
+
+      <h3 id="scroll-behavior">Scroll Behavior and Momentum Scrolling</h3>
+      <p>iOS Safari applies momentum scrolling (rubber-band bounce) that Blink does not. If you have a custom scrollable container using <code>overflow-y: scroll</code>, you may notice it feels "sticky" on iPhone. The fix:</p>
+
+      <div class="code-diff">
+        <span class="comment">/* Enable momentum scrolling on iOS for custom scroll containers */</span><br>
+        <span class="neutral">.scroll-container {</span><br>
+        &nbsp;&nbsp;<span class="prop">overflow-y</span><span class="neutral">: </span><span class="val">scroll</span><span class="neutral">;</span><br>
+        &nbsp;&nbsp;<span class="prop">-webkit-overflow-scrolling</span><span class="neutral">: </span><span class="val">touch</span><span class="neutral">;</span><span class="comment">  /* Legacy iOS, still useful */</span><br>
+        &nbsp;&nbsp;<span class="prop">overscroll-behavior</span><span class="neutral">: </span><span class="val">contain</span><span class="neutral">;</span><span class="comment">  /* Prevents parent scroll chain */</span><br>
+        <span class="neutral">}</span>
+      </div>
+
+      <h3 id="input-quirks">Input and Form Styling Quirks</h3>
+      <p>iOS Safari aggressively applies its own styling to form inputs and buttons, often overriding your custom CSS. The Galaxy S23's Chrome is much more compliant with your styles:</p>
+
+      <div class="code-diff">
+        <span class="comment">/* Remove iOS default styling from inputs and buttons */</span><br>
+        <span class="neutral">input, button, select, textarea {</span><br>
+        &nbsp;&nbsp;<span class="prop">-webkit-appearance</span><span class="neutral">: </span><span class="val">none</span><span class="neutral">;</span><br>
+        &nbsp;&nbsp;<span class="prop">appearance</span><span class="neutral">: </span><span class="val">none</span><span class="neutral">;</span><br>
+        &nbsp;&nbsp;<span class="prop">border-radius</span><span class="neutral">: </span><span class="val">0</span><span class="neutral">;</span><span class="comment">  /* iOS adds border-radius to inputs by default */</span><br>
+        <span class="neutral">}</span><br>
+        <br>
+        <span class="comment">/* Prevent iOS from zooming in when an input is focused */</span><br>
+        <span class="neutral">input, select, textarea {</span><br>
+        &nbsp;&nbsp;<span class="prop">font-size</span><span class="neutral">: </span><span class="val">16px</span><span class="neutral">;</span><span class="comment">  /* Never go below 16px or iOS will zoom */</span><br>
+        <span class="neutral">}</span>
+      </div>
+
+      <!-- ── SECTION 5: Media Queries ── -->
+      <h2 id="media-query-strategy">Media Query Strategy for Both Devices</h2>
+      <p>Given the 30px width difference (360px vs 390px), a single mobile breakpoint at <code>768px</code> catches both. But if you need to target each device family specifically:</p>
+
+      <div class="code-diff">
+        <span class="comment">/* Target Galaxy S23 and similar narrow Android phones */</span><br>
+        <span class="neutral">@media (max-width: </span><span class="val">380px</span><span class="neutral">) {</span><br>
+        &nbsp;&nbsp;<span class="comment">/* Styles for 360px viewport width */</span><br>
+        <span class="neutral">}</span><br>
+        <br>
+        <span class="comment">/* Target iPhone 15 and most modern iPhones */</span><br>
+        <span class="neutral">@media (min-width: </span><span class="val">381px</span><span class="neutral">) and (max-width: </span><span class="val">430px</span><span class="neutral">) {</span><br>
+        &nbsp;&nbsp;<span class="comment">/* Styles for 390px–430px viewport width */</span><br>
+        <span class="neutral">}</span><br>
+        <br>
+        <span class="comment">/* Target iOS specifically using WebKit-only property */</span><br>
+        <span class="neutral">@supports (-webkit-touch-callout: none) {</span><br>
+        &nbsp;&nbsp;<span class="comment">/* iOS-only CSS goes here */</span><br>
+        <span class="neutral">}</span><br>
+        <br>
+        <span class="comment">/* High-DPI (Retina) screens — both devices qualify at 3× DPR */</span><br>
+        <span class="neutral">@media (-webkit-min-device-pixel-ratio: </span><span class="val">2</span><span class="neutral">), (min-resolution: </span><span class="val">192dpi</span><span class="neutral">) {</span><br>
+        &nbsp;&nbsp;<span class="comment">/* 2× or higher: use @2x images, SVG preferred */</span><br>
+        <span class="neutral">}</span>
+      </div>
+
+      <div class="inlink-banner">
+        <div class="inlink-banner-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="8" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/><rect x="13" y="7" width="8" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/></svg>
+        </div>
+        <div class="inlink-banner-body">
+          <h4>Preview at Both Viewports Simultaneously</h4>
+          <p>Mobile Viewer lets you load iPhone 15 (390px) and Galaxy S23 (360px) side by side — see layout differences instantly without needing either device.</p>
+          <a href="/?device=iphone-15,galaxy-s23">Compare Now →</a>
+        </div>
+      </div>
+
+      <!-- ── SECTION 6: Image Strategy ── -->
+      <h2 id="image-strategy">Image Strategy for 3× DPR Screens</h2>
+      <p>Both devices use 3× device pixel ratios — meaning every CSS pixel is rendered with 9 physical pixels (3×3). A 100×100px CSS image needs to be 300×300px in physical resolution to look sharp. Here's the correct approach:</p>
+
+      <div class="code-diff">
+        <span class="comment">/* Using srcset for responsive images — works on both devices */</span><br>
+        <span class="key">&lt;img</span><br>
+        &nbsp;&nbsp;<span class="prop">src</span><span class="neutral">="</span><span class="val">hero-390w.jpg</span><span class="neutral">"</span><br>
+        &nbsp;&nbsp;<span class="prop">srcset</span><span class="neutral">="</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="val">hero-360w.jpg 360w</span><span class="neutral">,</span><span class="comment">   /* Galaxy S23 */</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="val">hero-390w.jpg 390w</span><span class="neutral">,</span><span class="comment">   /* iPhone 15 */</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="val">hero-780w.jpg 780w</span><span class="neutral">,</span><span class="comment">   /* 2× renders */</span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="val">hero-1170w.jpg 1170w</span><span class="comment"> /* 3× renders (Retina) */</span><br>
+        &nbsp;&nbsp;<span class="neutral">"</span><br>
+        &nbsp;&nbsp;<span class="prop">sizes</span><span class="neutral">="(max-width: 430px) 100vw, 800px"</span><br>
+        &nbsp;&nbsp;<span class="prop">alt</span><span class="neutral">="Hero image"</span><br>
+        &nbsp;&nbsp;<span class="prop">width</span><span class="neutral">="390"</span><br>
+        &nbsp;&nbsp;<span class="prop">height</span><span class="neutral">="260"</span><span class="comment">   /* Always specify for CLS prevention */</span><br>
+        <span class="key">&gt;</span>
+      </div>
+
+      <!-- ── SECTION 7: Landscape ── -->
+      <h2 id="landscape-differences">Landscape Mode: Where Things Break</h2>
+      <p>In landscape orientation, the viewports flip: the iPhone 15 becomes 844×390px and the Galaxy S23 becomes 780×360px. On iOS, the safe area insets in landscape become significant — up to 59px on the sides to clear the Dynamic Island area. On Android, landscape is generally simpler.</p>
+
+      <p>Key landscape testing points:</p>
+      <ul>
+        <li>Modal dialogs and full-height overlays: in landscape, <code>100vh</code> is very short (360–390px). Content that fits in portrait will be clipped. Use <code>overflow-y: auto</code> on modals and test in landscape explicitly.</li>
+        <li>Video players with fixed aspect ratios: a 16:9 video in landscape at 780px width would be 438px tall — taller than the 360px viewport height on S23. Use <code>max-height</code> constraints.</li>
+        <li>Forms: landscape keyboards leave approximately 200px of visible viewport. If your submit button is at the bottom of a form, it may be entirely obscured.</li>
+      </ul>
+
+      <!-- ── SECTION 8: Testing ── -->
+      <h2 id="testing-both-devices">Testing Both Devices Without Owning Them</h2>
+      <p>You don't need to own an iPhone 15 and a Galaxy S23 to test at their exact viewports. Several approaches give you accurate results:</p>
+
+      <ul>
+        <li><strong>Mobile Viewer</strong> — select the iPhone 15 preset (390px, simulated WebKit) or Galaxy S23 preset (360px) and see your site instantly at the correct viewport dimensions</li>
+        <li><strong>Chrome DevTools</strong> — both devices are in the default device list. Switch between them and watch your layout reflow at the exact CSS widths</li>
+        <li><strong>Safari + Xcode Simulator</strong> — for testing actual WebKit rendering, run an iPhone 15 simulator via Xcode. This is the only tool that truly replicates iOS CSS behavior on macOS without hardware</li>
+        <li><strong>QR Code handoff</strong> — generate a QR code from Mobile Viewer and scan on a borrowed or available iPhone or Android for a real-device sanity check</li>
+      </ul>
+
+      <div class="inlink-banner">
+        <div class="inlink-banner-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="14" width="3" height="3" fill="currentColor"/><rect x="18" y="14" width="3" height="7" fill="currentColor"/><rect x="14" y="18" width="7" height="3" fill="currentColor"/></svg>
+        </div>
+        <div class="inlink-banner-body">
+          <h4>Send to a Real Device in One Scan</h4>
+          <p>Mobile Viewer's QR Code Generator creates an instant scan link for your URL. Real-device test in under 30 seconds.</p>
+          <a href="/?tool=qr-generator">Generate QR Code →</a>
+        </div>
+      </div>
+
+      <!-- ── SECTION 9: Quick Reference ── -->
+      <h2 id="quick-reference-cheatsheet">Quick Reference Cheatsheet</h2>
+
+      <table class="device-matrix">
+        <thead>
+          <tr>
+            <th>Property</th>
+            <th>iPhone 15</th>
+            <th>Galaxy S23</th>
+            <th>Developer Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="device-name">CSS Viewport Width</td>
+            <td>390px</td>
+            <td>360px</td>
+            <td>Test at both 360 and 390</td>
+          </tr>
+          <tr>
+            <td class="device-name">Device Pixel Ratio</td>
+            <td>3×</td>
+            <td>3×</td>
+            <td>Serve 3× images for both</td>
+          </tr>
+          <tr>
+            <td class="device-name">Browser Engine</td>
+            <td>WebKit</td>
+            <td>Blink</td>
+            <td>Test on both; use @supports</td>
+          </tr>
+          <tr>
+            <td class="device-name">Safe Area Top</td>
+            <td>~59px</td>
+            <td>~24px</td>
+            <td>Use env(safe-area-inset-top)</td>
+          </tr>
+          <tr>
+            <td class="device-name">Safe Area Bottom</td>
+            <td>~34px</td>
+            <td>~16–24px</td>
+            <td>Use env(safe-area-inset-bottom)</td>
+          </tr>
+          <tr>
+            <td class="device-name">Input Zoom on Focus</td>
+            <td>Yes (&lt;16px)</td>
+            <td>No</td>
+            <td>Set font-size: 16px on inputs</td>
+          </tr>
+          <tr>
+            <td class="device-name">Momentum Scroll</td>
+            <td>Yes (native)</td>
+            <td>No (Blink scroll)</td>
+            <td>Use -webkit-overflow-scrolling</td>
+          </tr>
+          <tr>
+            <td class="device-name">dvh Support</td>
+            <td>iOS 15.4+</td>
+            <td>Chrome 108+</td>
+            <td>Use dvh with vh fallback</td>
+          </tr>
+          <tr>
+            <td class="device-name">Default Input Styling</td>
+            <td>Heavy (WebKit)</td>
+            <td>Minimal</td>
+            <td>Use -webkit-appearance: none</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </article>
+
+    <!-- SIDEBAR -->
+    <aside class="blog-sidebar" aria-label="Article navigation and tools">
+      <nav class="toc-card" aria-label="Table of contents">
+        <div class="toc-title">Table of Contents</div>
+        <ul class="toc-list">
+          <li><a href="#core-viewport-specs">Core Viewport Specs</a></li>
+          <li><a href="#full-device-matrix">Full Device Matrix</a></li>
+          <li><a href="#safe-areas">Safe Area Insets</a></li>
+          <li class="toc-sub"><a href="#ios-safe-areas">iOS (Dynamic Island)</a></li>
+          <li class="toc-sub"><a href="#android-safe-areas">Android (Punch-Hole)</a></li>
+          <li><a href="#browser-engine-differences">Browser Engine Differences</a></li>
+          <li class="toc-sub"><a href="#viewport-units">Viewport Units (dvh)</a></li>
+          <li class="toc-sub"><a href="#scroll-behavior">Scroll Behavior</a></li>
+          <li class="toc-sub"><a href="#input-quirks">Input Quirks</a></li>
+          <li><a href="#media-query-strategy">Media Query Strategy</a></li>
+          <li><a href="#image-strategy">Image Strategy (3× DPR)</a></li>
+          <li><a href="#landscape-differences">Landscape Mode</a></li>
+          <li><a href="#testing-both-devices">Testing Both Devices</a></li>
+          <li><a href="#quick-reference-cheatsheet">Quick Reference Cheatsheet</a></li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-tool-card">
+        <h4>📐 Device Simulator</h4>
+        <p>Load iPhone 15 (390px) or Galaxy S23 (360px) presets and preview your site at exact device dimensions.</p>
+        <a href="/" class="sidebar-btn">Open Simulator →</a>
+      </div>
+
+      <div class="sidebar-tool-card" style="margin-top:16px">
+        <h4>📷 QR Code Generator</h4>
+        <p>Scan your URL on a real iPhone or Android in seconds. No cables, no fuss.</p>
+        <a href="/?tool=qr-generator" class="sidebar-btn">Generate QR →</a>
+        <a href="/blog/test-responsive-design" class="sidebar-btn-outline">🔧 Responsive Testing Guide →</a>
+        <a href="/blog/mobile-seo-checklist-2026" class="sidebar-btn-outline" style="margin-top:8px">📋 Mobile SEO Checklist →</a>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- RELATED POSTS -->
+  <section class="related-section" aria-label="Related articles">
+    <div class="container">
+      <span class="section-badge">Keep Reading</span>
+      <h2 class="section-title">Related Articles</h2>
+      <div class="related-grid">
+        <a href="/blog/test-responsive-design" class="related-card">
+          <div class="related-card-cat">Developer Guide</div>
+          <h3>How to Test Responsive Design Without Buying 20 Phones</h3>
+          <p>A complete layered testing workflow using free tools — from DevTools to QR code real-device checks.</p>
+        </a>
+        <a href="/blog/mobile-seo-checklist-2026" class="related-card">
+          <div class="related-card-cat">SEO</div>
+          <h3>Mobile SEO Checklist 2026: 15 Things Most Sites Still Get Wrong</h3>
+          <p>A definitive audit list covering Core Web Vitals, tap targets, structured data, and mobile-first indexing.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section" aria-labelledby="faq-heading">
+    <div class="faq-inner">
+      <span class="section-badge">FAQ</span>
+      <h2 class="section-title" id="faq-heading">Device Viewport FAQ</h2>
+      <p class="section-description">Common questions about iPhone 15 and Galaxy S23 viewport dimensions and browser differences</p>
+      <div class="faq-list" role="list">
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+            What is the CSS viewport width of the iPhone 15?
+            <span class="faq-chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>The iPhone 15 has a CSS viewport width of <strong>390px</strong> in portrait mode. Despite having a physical screen resolution of 2556×1179 pixels, iOS applies a 3× device pixel ratio, resulting in a 390×844px CSS viewport. The iPhone 15 Plus has a wider 430px CSS viewport. The iPhone 15 Pro is 393px wide.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+            What is the CSS viewport width of the Samsung Galaxy S23?
+            <span class="faq-chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>The Samsung Galaxy S23 has a CSS viewport width of <strong>360px</strong> in portrait mode with a device pixel ratio of 3×. The S23 Ultra is wider at 384px CSS width. The actual physical resolution of the S23 is 2340×1080 pixels. The S23+ also uses a 360px CSS viewport.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+            Do iPhone 15 and Galaxy S23 use the same browser engine?
+            <span class="faq-chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>No. The iPhone 15 uses WebKit — this is mandatory for all browsers on iOS, including Chrome for iOS and Firefox for iOS. The Galaxy S23 runs Chrome with Google's Blink rendering engine. This engine difference causes real CSS behavior differences in viewport units, scroll behavior, form element styling, and support for newer CSS properties. <a href="/blog/test-responsive-design">Testing on both platforms</a> is the only way to catch engine-specific bugs.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+            How do I handle the iPhone 15's Dynamic Island in CSS?
+            <span class="faq-chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>Use CSS environment variables combined with <code>viewport-fit=cover</code> in your viewport meta tag. Add <code>padding-top: env(safe-area-inset-top)</code> to your header or fixed elements. The Dynamic Island pushes the iOS safe area top inset to approximately 59px in portrait. Without this, fixed headers will partially overlap the Dynamic Island area on iPhone 15, 15 Pro, and newer models.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+            Can I simulate iPhone 15 and Galaxy S23 without owning the devices?
+            <span class="faq-chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>Yes. <a href="/">Mobile Viewer</a> includes device presets for both the iPhone 15 (390px viewport) and Galaxy S23 (360px viewport), rendering your site at the exact CSS dimensions these devices use. For testing actual browser engine behavior, use Xcode's iPhone Simulator for WebKit on iOS. For Blink on Android, use Chrome DevTools with the Galaxy S23 preset or Android Studio's Android Emulator.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" aria-label="Call to action">
+    <div class="container">
+      <div class="cta-card">
+        <div class="cta-glow" aria-hidden="true"></div>
+        <div class="cta-badge">iPhone 15 · Galaxy S23 · 20+ More Devices</div>
+        <h2 class="cta-title">Preview your site at exact device viewports — free</h2>
+        <p class="cta-description">Mobile Viewer simulates iPhone 15 (390px), Galaxy S23 (360px), and 20+ more devices instantly in your browser</p>
+        <div class="cta-actions">
+          <a href="/" class="cta-large-button">
+            Launch Mobile Viewer
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="/#tools" class="cta-secondary-link">Explore all tools →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-bottom-inner">
+        <p class="footer-copy">© 2026 Mobile Viewer. All rights reserved.</p>
+        <nav class="footer-legal" aria-label="Legal navigation">
+          <a href="/privacy" class="footer-legal-link">Privacy Policy</a>
+          <span aria-hidden="true">·</span>
+          <a href="/terms" class="footer-legal-link">Terms of Use</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleFaq(btn) {
+      const answer = btn.nextElementSibling;
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', !isOpen);
+      answer.classList.toggle('is-open', !isOpen);
+    }
+    const progressBar = document.getElementById('progressBar');
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progressBar.style.width = Math.min(progress, 100) + '%';
+    }, { passive: true });
+  </script>
+</body>
+</html>
