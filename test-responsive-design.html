@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Test Responsive Design Without Buying 20 Phones — Mobile Viewer Blog</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+
+  <!-- SEO -->
+  <meta name="description" content="Learn how to test responsive design across all device sizes without spending thousands on hardware. Free tools, browser tricks, and pro workflows for developers.">
+  <meta name="keywords" content="test responsive design, responsive design testing, mobile testing tools, browser device emulation, responsive checker, mobile simulator">
+  <meta name="author" content="Mobile Viewer">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://mobileviewer.github.io/test-responsive-design">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="How to Test Responsive Design Without Buying 20 Phones">
+  <meta property="og:description" content="Free tools and pro workflows to test responsive design across every device without the hardware bill.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://mobileviewer.github.io/test-responsive-design">
+  <meta property="og:site_name" content="Mobile Viewer">
+
+  <!-- Schema: Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How to Test Responsive Design Without Buying 20 Phones",
+    "description": "Learn how to test responsive design across all device sizes without spending thousands on hardware.",
+    "author": { "@type": "Organization", "name": "Mobile Viewer" },
+    "publisher": { "@type": "Organization", "name": "Mobile Viewer", "url": "https://mobileviewer.github.io/" },
+    "datePublished": "2026-04-01",
+    "dateModified": "2026-04-01"
+  }
+  </script>
+
+  <!-- Schema: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Can browser DevTools replace real device testing?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Browser DevTools are excellent for catching layout bugs and testing CSS breakpoints, but they cannot fully replicate real device behavior including GPU rendering differences, font rendering, touch event latency, or browser-specific quirks. Use DevTools for the bulk of your testing and supplement with real device checks for critical launches." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the fastest way to test a site on a real mobile device?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The fastest method is generating a QR code from your URL and scanning it on your phone. Mobile Viewer's built-in QR Code Generator does exactly this in one click — no cables, no manual URL typing required." }
+      },
+      {
+        "@type": "Question",
+        "name": "How many breakpoints should I test?",
+        "acceptedAnswer": { "@type": "Answer", "text": "At minimum, test at 375px (small phone), 390px (iPhone 14/15), 430px (large phone), 768px (tablet portrait), 1024px (tablet landscape / small desktop), and 1440px (standard desktop). Add breakpoints if your analytics show significant traffic from unusual viewport sizes." }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Mobile Viewer's responsive checker free?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Mobile Viewer's full suite including the responsive checker, device simulator, multi-device preview grid, and QR code generator are completely free with no account required." }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary:      #00F0FF;
+      --primary-dim:  rgba(0,240,255,0.15);
+      --secondary:    #7B61FF;
+      --accent:       #FF4FD8;
+      --bg:           #080C12;
+      --bg-dark:      #050810;
+      --bg-card:      #0D1220;
+      --bg-card-2:    #111827;
+      --border:       rgba(255,255,255,0.07);
+      --border-light: rgba(255,255,255,0.12);
+      --text:         #F0F4FF;
+      --text-secondary: rgba(240,244,255,0.6);
+      --text-muted:   rgba(240,244,255,0.35);
+      --radius:       12px;
+      --radius-lg:    20px;
+      --shadow-lg:    0 12px 48px rgba(0,0,0,0.6);
+      --header-h:     70px;
+      --container:    1240px;
+      --font-display: 'Syne', sans-serif;
+      --font-body:    'DM Sans', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 24px); -webkit-text-size-adjust: 100%; }
+    body { font-family: var(--font-body); font-size: 16px; line-height: 1.7; color: var(--text); background: var(--bg); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+    ul { list-style: none; }
+    code { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.85em; background: rgba(0,240,255,0.08); color: var(--primary); padding: 2px 6px; border-radius: 4px; }
+    img { display: block; max-width: 100%; }
+
+    .container { width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+
+    /* ── HEADER ── */
+    .site-header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      height: var(--header-h);
+      background: rgba(8,12,18,0.85);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid var(--border);
+    }
+    .header-inner { max-width: var(--container); margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; gap: 2rem; }
+    .header-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+    .logo-text { font-family: var(--font-display); font-size: 1.15rem; font-weight: 800; letter-spacing: -0.02em; color: var(--text); }
+    .logo-accent { color: var(--primary); }
+    .header-nav { margin-left: auto; }
+    .nav-list { display: flex; align-items: center; gap: 4px; list-style: none; }
+    .nav-link { display: flex; align-items: center; padding: 6px 14px; border-radius: 8px; font-size: 0.92rem; font-weight: 500; color: var(--text-secondary); text-decoration: none; transition: color 0.2s, background 0.2s; }
+    .nav-link:hover { color: var(--text); background: rgba(255,255,255,0.06); }
+    .header-cta-btn { display: flex; align-items: center; gap: 8px; padding: 9px 18px; background: var(--primary); color: #000; font-size: 0.875rem; font-weight: 700; border-radius: 8px; text-decoration: none; transition: all 0.2s; flex-shrink: 0; }
+    .header-cta-btn:hover { background: #29f5ff; transform: translateY(-1px); box-shadow: 0 4px 20px rgba(0,240,255,0.3); }
+
+    /* ── BLOG HERO ── */
+    .blog-hero {
+      padding: calc(var(--header-h) + 80px) 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .blog-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,240,255,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .blog-hero-inner { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    .blog-breadcrumb { display: flex; align-items: center; gap: 8px; margin-bottom: 2rem; font-size: 0.85rem; color: var(--text-muted); }
+    .blog-breadcrumb a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .blog-breadcrumb a:hover { color: var(--primary); }
+    .blog-breadcrumb span { color: var(--text-muted); }
+    .blog-category { display: inline-block; font-family: var(--font-display); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--primary); background: var(--primary-dim); border: 1px solid rgba(0,240,255,0.25); padding: 5px 14px; border-radius: 100px; margin-bottom: 1.5rem; }
+    .blog-hero-title { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; }
+    .gradient-text { background: linear-gradient(90deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .blog-hero-desc { font-size: 1.15rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 2rem; max-width: 700px; }
+    .blog-meta { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .blog-meta-item { display: flex; align-items: center; gap: 6px; font-size: 0.875rem; color: var(--text-muted); }
+    .blog-meta-item svg { color: var(--primary); flex-shrink: 0; }
+    .blog-divider { width: 100%; height: 1px; background: var(--border); margin: 3rem 0; }
+
+    /* ── LAYOUT ── */
+    .blog-layout { max-width: 1100px; margin: 0 auto; padding: 0 24px 100px; display: grid; grid-template-columns: 1fr 300px; gap: 60px; align-items: start; }
+
+    /* ── SIDEBAR ── */
+    .blog-sidebar { position: sticky; top: calc(var(--header-h) + 32px); }
+    .toc-card { background: var(--bg-card); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 28px; }
+    .toc-title { font-family: var(--font-display); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; }
+    .toc-list { display: flex; flex-direction: column; gap: 4px; list-style: none; }
+    .toc-list li a { display: block; padding: 6px 10px; border-radius: 6px; font-size: 0.875rem; color: var(--text-secondary); text-decoration: none; transition: color 0.2s, background 0.2s; border-left: 2px solid transparent; }
+    .toc-list li a:hover { color: var(--primary); background: var(--primary-dim); border-left-color: var(--primary); }
+    .toc-list li.toc-sub a { padding-left: 22px; font-size: 0.825rem; }
+    .sidebar-tool-card { background: var(--bg-card); border: 1px solid rgba(0,240,255,0.15); border-radius: var(--radius-lg); padding: 24px; margin-top: 20px; }
+    .sidebar-tool-card h4 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .sidebar-tool-card p { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 16px; line-height: 1.6; }
+    .sidebar-btn { display: block; text-align: center; padding: 10px 16px; background: var(--primary); color: #000; font-weight: 700; font-size: 0.875rem; border-radius: 8px; text-decoration: none; transition: all 0.2s; }
+    .sidebar-btn:hover { background: #29f5ff; transform: translateY(-1px); }
+    .sidebar-btn-outline { display: block; text-align: center; padding: 10px 16px; border: 1px solid var(--border-light); color: var(--text-secondary); font-size: 0.875rem; border-radius: 8px; text-decoration: none; transition: all 0.2s; margin-top: 8px; }
+    .sidebar-btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+
+    /* ── ARTICLE CONTENT ── */
+    .blog-content h2 { font-family: var(--font-display); font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 700; margin: 3rem 0 1rem; color: var(--text); scroll-margin-top: calc(var(--header-h) + 32px); }
+    .blog-content h3 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; margin: 2rem 0 0.75rem; color: var(--text); scroll-margin-top: calc(var(--header-h) + 32px); }
+    .blog-content p { margin-bottom: 1.25rem; color: var(--text-secondary); font-size: 1.02rem; }
+    .blog-content p strong { color: var(--text); font-weight: 600; }
+    .blog-content ul, .blog-content ol { padding-left: 1.5rem; margin-bottom: 1.5rem; color: var(--text-secondary); font-size: 1.02rem; }
+    .blog-content ul { list-style: disc; }
+    .blog-content ol { list-style: decimal; }
+    .blog-content li { margin-bottom: 0.5rem; }
+    .blog-content a { color: var(--primary); text-decoration: underline; text-underline-offset: 3px; transition: opacity 0.2s; }
+    .blog-content a:hover { opacity: 0.8; }
+
+    /* Callout boxes */
+    .callout { background: var(--bg-card); border: 1px solid var(--border-light); border-left: 3px solid var(--primary); border-radius: var(--radius); padding: 20px 24px; margin: 2rem 0; }
+    .callout-tip { border-left-color: #00F0FF; }
+    .callout-warn { border-left-color: #FF4FD8; background: rgba(255,79,216,0.04); border-color: rgba(255,79,216,0.2); }
+    .callout-label { font-family: var(--font-display); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--primary); margin-bottom: 8px; }
+    .callout-warn .callout-label { color: var(--accent); }
+    .callout p { margin-bottom: 0; color: var(--text-secondary); }
+
+    /* Step blocks */
+    .step-block { display: flex; gap: 20px; align-items: flex-start; margin: 2rem 0; padding: 24px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); }
+    .step-num { flex-shrink: 0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; background: var(--primary-dim); border: 1px solid rgba(0,240,255,0.25); border-radius: 10px; font-family: var(--font-display); font-size: 0.9rem; font-weight: 800; color: var(--primary); }
+    .step-body h3 { margin-top: 0; }
+
+    /* Tool cards */
+    .tool-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 2rem 0; }
+    .tool-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; transition: border-color 0.2s, transform 0.2s; }
+    .tool-card:hover { border-color: rgba(0,240,255,0.3); transform: translateY(-2px); }
+    .tool-card h4 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; margin-bottom: 6px; color: var(--text); }
+    .tool-card p { font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 12px; }
+    .tool-tag { display: inline-block; font-size: 0.7rem; font-weight: 600; background: var(--primary-dim); color: var(--primary); border-radius: 100px; padding: 2px 8px; }
+    .tool-tag.free { background: rgba(123,97,255,0.15); color: var(--secondary); }
+    .tool-tag.paid { background: rgba(255,79,216,0.1); color: var(--accent); }
+
+    /* Comparison table */
+    .comparison-table { width: 100%; border-collapse: collapse; margin: 2rem 0; font-size: 0.9rem; }
+    .comparison-table th { font-family: var(--font-display); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); padding: 12px 16px; border-bottom: 1px solid var(--border-light); text-align: left; }
+    .comparison-table td { padding: 14px 16px; border-bottom: 1px solid var(--border); color: var(--text-secondary); vertical-align: top; }
+    .comparison-table tr:hover td { background: rgba(255,255,255,0.02); }
+    .badge-yes { color: #00F0FF; font-weight: 600; }
+    .badge-partial { color: #FF9500; font-weight: 600; }
+    .badge-no { color: var(--text-muted); }
+
+    /* Inlink banner */
+    .inlink-banner { display: flex; align-items: center; gap: 20px; background: linear-gradient(135deg, rgba(0,240,255,0.06), rgba(123,97,255,0.06)); border: 1px solid rgba(0,240,255,0.15); border-radius: var(--radius-lg); padding: 24px 28px; margin: 2.5rem 0; }
+    .inlink-banner-icon { flex-shrink: 0; width: 48px; height: 48px; background: var(--primary-dim); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--primary); }
+    .inlink-banner-body h4 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+    .inlink-banner-body p { font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 12px; }
+    .inlink-banner-body a { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; background: var(--primary); color: #000; font-size: 0.85rem; font-weight: 700; border-radius: 8px; text-decoration: none; transition: all 0.2s; }
+    .inlink-banner-body a:hover { background: #29f5ff; }
+
+    /* FAQ section */
+    .faq-section { padding: 80px 0; background: var(--bg-dark); border-top: 1px solid var(--border); }
+    .faq-inner { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    .section-badge { display: inline-block; font-family: var(--font-display); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--primary); background: var(--primary-dim); border: 1px solid rgba(0,240,255,0.25); padding: 5px 14px; border-radius: 100px; margin-bottom: 1.25rem; }
+    .section-title { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 700; line-height: 1.15; margin-bottom: 1rem; }
+    .section-description { font-size: 1.05rem; color: var(--text-secondary); max-width: 600px; line-height: 1.7; margin-bottom: 3rem; }
+    .faq-list { display: flex; flex-direction: column; gap: 12px; }
+    .faq-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .faq-q { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 24px; font-size: 1rem; font-weight: 500; color: var(--text); text-align: left; transition: color 0.2s; }
+    .faq-q:hover { color: var(--primary); }
+    .faq-chevron { font-size: 1.2rem; transition: transform 0.3s; color: var(--text-muted); flex-shrink: 0; }
+    .faq-q[aria-expanded="true"] .faq-chevron { transform: rotate(180deg); color: var(--primary); }
+    .faq-a { display: none; padding: 0 24px 20px; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; border-top: 1px solid var(--border); padding-top: 16px; }
+    .faq-a.is-open { display: block; }
+
+    /* CTA section */
+    .cta-section { padding: 80px 0; }
+    .cta-card { position: relative; background: var(--bg-card); border: 1px solid rgba(0,240,255,0.15); border-radius: 28px; padding: 72px 40px; text-align: center; overflow: hidden; }
+    .cta-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 600px; height: 300px; background: radial-gradient(ellipse, rgba(0,240,255,0.08) 0%, transparent 70%); pointer-events: none; }
+    .cta-badge { display: inline-block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--primary); margin-bottom: 1.5rem; }
+    .cta-title { font-family: var(--font-display); font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; margin-bottom: 1rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+    .cta-description { font-size: 1.05rem; color: var(--text-secondary); margin-bottom: 2.5rem; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .cta-actions { display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; }
+    .cta-large-button { display: inline-flex; align-items: center; gap: 10px; padding: 16px 36px; background: var(--primary); color: #000; font-family: var(--font-display); font-size: 1rem; font-weight: 800; border-radius: 12px; text-decoration: none; transition: all 0.2s; }
+    .cta-large-button:hover { background: #29f5ff; transform: translateY(-2px); box-shadow: 0 10px 40px rgba(0,240,255,0.35); }
+    .cta-secondary-link { font-size: 0.9rem; font-weight: 600; color: var(--text-secondary); text-decoration: none; border-bottom: 1px solid var(--border-light); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
+    .cta-secondary-link:hover { color: var(--text); border-color: var(--text-secondary); }
+
+    /* Footer */
+    .site-footer { background: var(--bg-dark); border-top: 1px solid var(--border); padding: 48px 0 24px; }
+    .footer-bottom-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-copy, .footer-legal { font-size: 0.8rem; color: var(--text-muted); }
+    .footer-legal { display: flex; align-items: center; gap: 10px; }
+    .footer-legal-link { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .footer-legal-link:hover { color: var(--text-secondary); }
+
+    /* Related posts */
+    .related-section { padding: 80px 0; border-top: 1px solid var(--border); }
+    .related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 3rem; }
+    .related-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; text-decoration: none; transition: border-color 0.2s, transform 0.2s; display: block; }
+    .related-card:hover { border-color: rgba(0,240,255,0.25); transform: translateY(-3px); }
+    .related-card-cat { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--primary); margin-bottom: 10px; }
+    .related-card h3 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: 8px; line-height: 1.4; }
+    .related-card p { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; }
+
+    /* Progress bar */
+    .reading-progress { position: fixed; top: var(--header-h); left: 0; right: 0; height: 2px; background: transparent; z-index: 999; }
+    .reading-progress-bar { height: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary)); width: 0%; transition: width 0.1s; }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .blog-layout { grid-template-columns: 1fr; gap: 40px; }
+      .blog-sidebar { position: static; }
+      .tool-grid { grid-template-columns: 1fr; }
+      .related-grid { grid-template-columns: 1fr; }
+      .header-nav { display: none; }
+    }
+    @media (max-width: 640px) {
+      .container { padding: 0 16px; }
+      .blog-layout { padding: 0 16px 60px; }
+      .blog-hero-inner { padding: 0 16px; }
+      .cta-card { padding: 48px 24px; }
+      .inlink-banner { flex-direction: column; gap: 16px; }
+      .step-block { flex-direction: column; gap: 12px; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } html { scroll-behavior: auto; } }
+    :focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+
+  <!-- Reading progress bar -->
+  <div class="reading-progress" aria-hidden="true">
+    <div class="reading-progress-bar" id="progressBar"></div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a href="/" class="header-logo" aria-label="Mobile Viewer Home">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true" class="logo-icon" style="color:var(--primary)">
+          <rect x="7" y="2" width="14" height="22" rx="3" stroke="currentColor" stroke-width="2"/>
+          <circle cx="14" cy="20" r="1.5" fill="currentColor"/>
+        </svg>
+        <span class="logo-text">Mobile<span class="logo-accent">Viewer</span></span>
+      </a>
+      <nav class="header-nav" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/#tools" class="nav-link">Tools</a></li>
+          <li><a href="/blog/" class="nav-link" aria-current="page">Blog</a></li>
+        </ul>
+      </nav>
+      <a href="/" class="header-cta-btn">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="4" y="1" width="8" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="12" r="1" fill="currentColor"/></svg>
+        Test Your Site Free
+      </a>
+    </div>
+  </header>
+
+  <!-- BLOG HERO -->
+  <section class="blog-hero" aria-label="Article header">
+    <div class="blog-hero-inner">
+      <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">›</span>
+        <a href="/blog/">Blog</a>
+        <span aria-hidden="true">›</span>
+        <span>Responsive Testing</span>
+      </nav>
+      <span class="blog-category">Developer Guide</span>
+      <h1 class="blog-hero-title">How to Test <span class="gradient-text">Responsive Design</span> Without Buying 20 Phones</h1>
+      <p class="blog-hero-desc">A complete workflow for testing your site across every device and viewport — using free tools, browser tricks, and one surprisingly powerful online simulator. No hardware budget required.</p>
+      <div class="blog-meta">
+        <div class="blog-meta-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v3.5l2 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          12 min read
+        </div>
+        <div class="blog-meta-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M5 1v3M11 1v3M2 7h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          April 1, 2026
+        </div>
+        <div class="blog-meta-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1C5.24 1 3 3.24 3 6c0 4 5 9 5 9s5-5 5-9c0-2.76-2.24-5-5-5z" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="6" r="1.5" fill="currentColor"/></svg>
+          Responsive Design, Testing
+        </div>
+      </div>
+      <div class="blog-divider" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- BLOG LAYOUT: CONTENT + SIDEBAR -->
+  <div class="blog-layout">
+
+    <!-- MAIN CONTENT -->
+    <article class="blog-content" aria-label="Article content">
+
+      <p>You just finished building a beautiful website. It looks perfect on your 1440px MacBook display. Then a colleague pulls it up on their Galaxy S23 and the hero image is cut in half, the nav overlaps the logo, and the call-to-action button is unreachable below the fold. Sound familiar?</p>
+      <p>The naive solution — buy one of every phone — would cost you upward of $10,000 and require an entire shelf to store them. The smart solution is a layered testing workflow using free tools that covers 95% of real-world device scenarios. This guide walks you through every layer of that workflow, from your browser's built-in DevTools all the way to the fastest real-device check you can perform in under 30 seconds.</p>
+
+      <!-- ── SECTION 1 ── -->
+      <h2 id="why-physical-devices-arent-enough">Why Physical Devices Alone Aren't Enough</h2>
+      <p>Before we dive into the tools, it's worth understanding <strong>what you actually need to test</strong> and why physical hardware solves only part of the problem.</p>
+      <p>A responsive design can fail in three distinct ways:</p>
+      <ul>
+        <li><strong>Layout failure</strong> — elements overlap, overflow, or collapse at certain viewport widths</li>
+        <li><strong>Visual failure</strong> — fonts render differently, images look blurry on high-DPI screens, or colors shift on OLED displays</li>
+        <li><strong>Interaction failure</strong> — tap targets are too small, hover states don't translate to touch, or form inputs are obscured by the software keyboard</li>
+      </ul>
+      <p>Physical devices excel at catching visual and interaction failures but are painfully slow for iterating on layout bugs. Tools excel at layout and speed. The winning strategy combines both — <strong>tools first, devices last</strong>.</p>
+
+      <div class="callout callout-tip">
+        <div class="callout-label">💡 Pro Tip</div>
+        <p>The Pareto principle applies here: 80% of responsive bugs can be caught with browser DevTools and a good online simulator. Save real device testing for the final pre-launch QA pass and for catching rendering subtleties.</p>
+      </div>
+
+      <!-- ── SECTION 2 ── -->
+      <h2 id="layer-1-browser-devtools">Layer 1 — Your Browser's Built-In DevTools</h2>
+      <p>Every modern browser ships with a device emulation mode. It's free, it's instant, and it's the first line of defense for any responsive developer. Here's how to squeeze the most out of each one.</p>
+
+      <h3 id="chrome-devtools">Chrome DevTools Device Mode</h3>
+      <p>Open Chrome DevTools (<code>F12</code> or <code>Cmd+Opt+I</code>), then click the <strong>device toolbar icon</strong> (or press <code>Ctrl+Shift+M</code>). You're now in Device Mode. Key features to know:</p>
+      <ul>
+        <li><strong>Responsive preset</strong> — drag the viewport handles to test any arbitrary width, watching your CSS breakpoints trigger in real time</li>
+        <li><strong>Device list</strong> — choose from iPhone 14 Pro, Galaxy S20 Ultra, Pixel 7, iPad Mini, and many more</li>
+        <li><strong>DPR simulation</strong> — test how your site looks at 1×, 2× (Retina), and 3× (high-DPI Android) pixel density</li>
+        <li><strong>Network throttling</strong> — combine device emulation with a "Fast 3G" profile to test real-world loading on mobile connections</li>
+      </ul>
+
+      <h3 id="firefox-responsive">Firefox Responsive Design Mode</h3>
+      <p>Press <code>Ctrl+Shift+M</code> in Firefox. Firefox's version is particularly good for testing <strong>touch event simulation</strong> and gives you a clean ruler overlay showing exact viewport dimensions. Its screenshot tool also captures the entire page at the simulated resolution, useful for quick visual diffs.</p>
+
+      <h3 id="safari-simulator">Safari + Xcode iPhone Simulator</h3>
+      <p>If you're on macOS and have Xcode installed, Safari's Develop menu unlocks a full iPhone Simulator. This is the only way to test <strong>Mobile Safari's exact rendering engine</strong> without a physical iOS device — including WebKit quirks that Chrome DevTools won't surface because Chrome uses Blink internally.</p>
+
+      <div class="callout callout-warn">
+        <div class="callout-label">⚠️ Limitation</div>
+        <p>Chrome DevTools device emulation uses your desktop's GPU, font renderer, and browser engine. It accurately simulates viewport dimensions and pixel ratios, but it <em>cannot</em> replicate iOS's Safari WebKit engine or Android's Chrome Blink differences at the rendering level.</p>
+      </div>
+
+      <!-- ── SECTION 3 ── -->
+      <h2 id="layer-2-online-simulators">Layer 2 — Online Device Simulators</h2>
+      <p>Browser DevTools are powerful but limited to the browser you're running. Online simulators give you a broader view — multiple devices simultaneously, saved URLs, shareable previews, and QR code generation for jumping straight to real-device testing.</p>
+
+      <div class="inlink-banner">
+        <div class="inlink-banner-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="7" y="2" width="10" height="18" rx="2.5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="17" r="1" fill="currentColor"/></svg>
+        </div>
+        <div class="inlink-banner-body">
+          <h4>Try Mobile Viewer's Free Responsive Checker</h4>
+          <p>Preview your site on iPhone 15, Galaxy S23, iPad Pro, and desktop simultaneously. No download, no account.</p>
+          <a href="/?tool=responsive-checker">Open Responsive Checker →</a>
+        </div>
+      </div>
+
+      <p>When choosing an online simulator, look for these capabilities:</p>
+
+      <div class="tool-grid">
+        <div class="tool-card">
+          <h4>Multi-Device Preview Grid</h4>
+          <p>See your site on mobile, tablet, and desktop side by side. Spot layout inconsistencies without switching tabs.</p>
+          <span class="tool-tag">Essential</span>
+        </div>
+        <div class="tool-card">
+          <h4>Accurate Viewport Dimensions</h4>
+          <p>The simulator must use actual CSS viewport dimensions, not just scale the page. 390×844 for iPhone 15, not a shrunk desktop view.</p>
+          <span class="tool-tag">Essential</span>
+        </div>
+        <div class="tool-card">
+          <h4>QR Code Generation</h4>
+          <p>One-click QR lets you jump from the browser simulator to a real phone scan in seconds — the fastest real-device handoff.</p>
+          <span class="tool-tag free">Time-saver</span>
+        </div>
+        <div class="tool-card">
+          <h4>Custom Viewport Entry</h4>
+          <p>Enter any width/height for edge case testing — unusual wearable screens, old budget Androids, or ultra-wide monitors.</p>
+          <span class="tool-tag free">Power feature</span>
+        </div>
+      </div>
+
+      <!-- ── SECTION 4 ── -->
+      <h2 id="layer-3-the-breakpoint-strategy">Layer 3 — A Systematic Breakpoint Strategy</h2>
+      <p>Testing random widths wastes time. Testing the <em>right</em> widths catches real bugs. Here's the set of breakpoints that covers the widest range of real-world traffic while remaining manageable:</p>
+
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Viewport Width</th>
+            <th>Target Devices</th>
+            <th>Priority</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>360px</code></td>
+            <td>Budget Android phones, older Samsung</td>
+            <td><span class="badge-yes">High</span></td>
+          </tr>
+          <tr>
+            <td><code>375px</code></td>
+            <td>iPhone SE (3rd gen), older iPhones</td>
+            <td><span class="badge-yes">High</span></td>
+          </tr>
+          <tr>
+            <td><code>390px</code></td>
+            <td>iPhone 14, iPhone 15</td>
+            <td><span class="badge-yes">High</span></td>
+          </tr>
+          <tr>
+            <td><code>430px</code></td>
+            <td>iPhone 15 Plus, iPhone 15 Pro Max</td>
+            <td><span class="badge-yes">High</span></td>
+          </tr>
+          <tr>
+            <td><code>768px</code></td>
+            <td>iPad portrait, small tablets</td>
+            <td><span class="badge-yes">High</span></td>
+          </tr>
+          <tr>
+            <td><code>1024px</code></td>
+            <td>iPad landscape, 11" laptops, small desktops</td>
+            <td><span class="badge-partial">Medium</span></td>
+          </tr>
+          <tr>
+            <td><code>1280px</code></td>
+            <td>Standard laptop screens</td>
+            <td><span class="badge-partial">Medium</span></td>
+          </tr>
+          <tr>
+            <td><code>1440px</code></td>
+            <td>Common desktop monitor</td>
+            <td><span class="badge-partial">Medium</span></td>
+          </tr>
+          <tr>
+            <td><code>1920px</code></td>
+            <td>1080p full HD desktop</td>
+            <td><span class="badge-no">Low</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout-tip">
+        <div class="callout-label">💡 Data-driven breakpoints</div>
+        <p>Check your site's Google Analytics audience report under <strong>Audience → Mobile → Devices</strong> to see exactly which screen resolutions your real users have. Prioritize your testing around the top five.</p>
+      </div>
+
+      <!-- ── SECTION 5 ── -->
+      <h2 id="layer-4-the-right-order">Layer 4 — The Right Testing Order</h2>
+      <p>Testing in the wrong order means you'll find a critical bug at the end of your workflow and have to restart. Test in this sequence to catch problems as early as possible:</p>
+
+      <div class="step-block">
+        <div class="step-num">01</div>
+        <div class="step-body">
+          <h3>Test in Chrome DevTools first</h3>
+          <p>Use the responsive drag handle to sweep from 360px all the way to 1920px. Watch for elements that break at any intermediate width — not just your declared breakpoints. Resize slowly so nothing slips through.</p>
+        </div>
+      </div>
+
+      <div class="step-block">
+        <div class="step-num">02</div>
+        <div class="step-body">
+          <h3>Load specific device presets in an online simulator</h3>
+          <p>Use <a href="/">Mobile Viewer</a> to check the exact viewport and pixel ratio of your top traffic devices. This verifies your layout at precisely the dimensions real users see — not approximations.</p>
+        </div>
+      </div>
+
+      <div class="step-block">
+        <div class="step-num">03</div>
+        <div class="step-body">
+          <h3>Run the multi-device grid view</h3>
+          <p>Mobile Viewer's multi-device preview renders mobile, tablet, and desktop in one panel. This is the fastest way to spot layout regressions introduced by a CSS change that looks fine on one size but breaks another.</p>
+        </div>
+      </div>
+
+      <div class="step-block">
+        <div class="step-num">04</div>
+        <div class="step-body">
+          <h3>Scan to a real device with QR code</h3>
+          <p>Generate a QR code from Mobile Viewer and scan it with an actual iPhone or Android. This is your sanity check for touch target size, font rendering, and system browser quirks. Aim to do this on at least one iOS and one Android device before any launch.</p>
+        </div>
+      </div>
+
+      <div class="step-block">
+        <div class="step-num">05</div>
+        <div class="step-body">
+          <h3>Run a Lighthouse / Page Speed check</h3>
+          <p>Open Chrome DevTools → Lighthouse → select "Mobile" → run the audit. A poor mobile performance score directly correlates to higher bounce rates and lower Google rankings. Fix any score below 75.</p>
+        </div>
+      </div>
+
+      <!-- ── SECTION 6 ── -->
+      <h2 id="common-responsive-bugs">The 8 Most Common Responsive Bugs (and How to Spot Them Fast)</h2>
+      <p>Knowing what to look for cuts your testing time in half. These are the bugs that appear most frequently and are most often missed:</p>
+
+      <ol>
+        <li><strong>Horizontal scroll caused by fixed-width elements</strong> — set <code>overflow-x: hidden</code> on <code>body</code> temporarily to reveal which element is causing it, then fix the root cause</li>
+        <li><strong>Text too small to read without zooming</strong> — minimum body font size for mobile is 16px; anything smaller forces users to pinch-zoom</li>
+        <li><strong>Touch targets under 44×44px</strong> — Apple's HIG and Google's Material Design both specify 44px minimum; buttons in nav menus are the most common offender</li>
+        <li><strong>Content overflow on 360px screens</strong> — budget Androids are still a significant slice of global traffic; test at 360px even if it feels narrow</li>
+        <li><strong>Images not using <code>max-width: 100%</code></strong> — any image with a fixed pixel width will break out of its container on small screens</li>
+        <li><strong>Viewport meta tag missing or misconfigured</strong> — without <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code>, mobile browsers will render your site at 980px and shrink it</li>
+        <li><strong>Hover-only interactions with no touch equivalent</strong> — dropdown menus that only open on <code>:hover</code> are completely inaccessible on touch screens</li>
+        <li><strong>iOS input zoom on focus</strong> — inputs with <code>font-size</code> smaller than 16px trigger automatic zoom-in on iOS Safari; set all inputs to at least <code>font-size: 16px</code></li>
+      </ol>
+
+      <!-- ── SECTION 7 ── -->
+      <h2 id="tool-comparison">Tool Comparison: What Each Method Catches</h2>
+
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Testing Method</th>
+            <th>Layout Bugs</th>
+            <th>Font Rendering</th>
+            <th>Touch Interactions</th>
+            <th>Browser-Specific Bugs</th>
+            <th>Speed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Chrome DevTools</td>
+            <td><span class="badge-yes">Excellent</span></td>
+            <td><span class="badge-partial">Partial</span></td>
+            <td><span class="badge-partial">Simulated</span></td>
+            <td><span class="badge-no">No</span></td>
+            <td><span class="badge-yes">Instant</span></td>
+          </tr>
+          <tr>
+            <td>Mobile Viewer Online Simulator</td>
+            <td><span class="badge-yes">Excellent</span></td>
+            <td><span class="badge-partial">Partial</span></td>
+            <td><span class="badge-no">No</span></td>
+            <td><span class="badge-no">No</span></td>
+            <td><span class="badge-yes">Instant</span></td>
+          </tr>
+          <tr>
+            <td>Safari + Xcode Simulator</td>
+            <td><span class="badge-yes">Excellent</span></td>
+            <td><span class="badge-yes">Good</span></td>
+            <td><span class="badge-yes">Good</span></td>
+            <td><span class="badge-yes">iOS/Safari only</span></td>
+            <td><span class="badge-partial">1–2 min setup</span></td>
+          </tr>
+          <tr>
+            <td>Real iPhone (via QR code)</td>
+            <td><span class="badge-yes">Excellent</span></td>
+            <td><span class="badge-yes">Perfect</span></td>
+            <td><span class="badge-yes">Perfect</span></td>
+            <td><span class="badge-yes">Yes</span></td>
+            <td><span class="badge-partial">30 sec setup</span></td>
+          </tr>
+          <tr>
+            <td>Real Android (via QR code)</td>
+            <td><span class="badge-yes">Excellent</span></td>
+            <td><span class="badge-yes">Perfect</span></td>
+            <td><span class="badge-yes">Perfect</span></td>
+            <td><span class="badge-yes">Yes</span></td>
+            <td><span class="badge-partial">30 sec setup</span></td>
+          </tr>
+          <tr>
+            <td>BrowserStack / LambdaTest</td>
+            <td><span class="badge-yes">Excellent</span></td>
+            <td><span class="badge-yes">Good</span></td>
+            <td><span class="badge-yes">Good</span></td>
+            <td><span class="badge-yes">Yes</span></td>
+            <td><span class="badge-no">Slow, costly</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- ── SECTION 8 ── -->
+      <h2 id="free-tools-roundup">Free Tools Roundup for Every Budget</h2>
+
+      <div class="tool-grid">
+        <div class="tool-card">
+          <h4>Mobile Viewer</h4>
+          <p>All-in-one responsive checker with 20+ device presets, QR code generator, multi-device grid, and breakpoint tester.</p>
+          <span class="tool-tag">Free</span>
+        </div>
+        <div class="tool-card">
+          <h4>Chrome DevTools</h4>
+          <p>Built into Chrome. Best for rapid iteration during development. Essential for every frontend developer.</p>
+          <span class="tool-tag">Free</span>
+        </div>
+        <div class="tool-card">
+          <h4>Firefox Developer Edition</h4>
+          <p>Excellent responsive mode with touch simulation. Useful for cross-browser comparison with Chrome.</p>
+          <span class="tool-tag">Free</span>
+        </div>
+        <div class="tool-card">
+          <h4>Xcode iPhone Simulator</h4>
+          <p>The only way to test real Mobile Safari rendering without a physical iPhone. Requires macOS + Xcode.</p>
+          <span class="tool-tag">Free (macOS only)</span>
+        </div>
+        <div class="tool-card">
+          <h4>Android Emulator</h4>
+          <p>Part of Android Studio. Run Android Chrome at exact device specs. Heavy download but extremely accurate.</p>
+          <span class="tool-tag">Free</span>
+        </div>
+        <div class="tool-card">
+          <h4>PageSpeed Insights</h4>
+          <p>Google's free mobile performance auditor. Flags Core Web Vitals issues that hurt rankings and UX.</p>
+          <span class="tool-tag">Free</span>
+        </div>
+      </div>
+
+      <div class="inlink-banner">
+        <div class="inlink-banner-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="13" y="3" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="13" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="13" y="13" width="8" height="8" rx="1.5" stroke="currentColor" stroke-width="1.8"/></svg>
+        </div>
+        <div class="inlink-banner-body">
+          <h4>See all your devices at once with Multi-Device Preview</h4>
+          <p>Mobile Viewer's grid view renders your URL across mobile, tablet, and desktop simultaneously — spot inconsistencies in one glance.</p>
+          <a href="/?tool=multi-device-preview">Try Multi-Device Preview →</a>
+        </div>
+      </div>
+
+      <!-- ── SECTION 9 ── -->
+      <h2 id="automated-testing">Going Further: Automated Responsive Testing</h2>
+      <p>Manual testing works well for small sites and active development. For teams or projects with continuous deployment, consider integrating automated visual regression testing:</p>
+
+      <ul>
+        <li><strong>Playwright / Puppeteer</strong> — run headless Chromium at specific viewport sizes and compare screenshots between commits using visual diff tools like Pixelmatch</li>
+        <li><strong>Percy (BrowserStack)</strong> — takes snapshot screenshots on every pull request and highlights pixel differences; integrates with GitHub Actions</li>
+        <li><strong>Chromatic</strong> — purpose-built for Storybook component testing across viewports; excellent for design systems</li>
+        <li><strong>Lighthouse CI</strong> — automates Lighthouse audits in your CI pipeline and fails the build if the mobile performance score drops below your threshold</li>
+      </ul>
+
+      <p>For most solo developers and small teams, manual testing with the layered approach above combined with a weekly Lighthouse check is more than sufficient.</p>
+
+      <!-- ── SECTION 10 ── -->
+      <h2 id="quick-reference">Quick Reference Checklist</h2>
+      <p>Bookmark this checklist for every release:</p>
+      <ul>
+        <li>☐ Tested by dragging from 360px to 1440px in Chrome DevTools with no breaks</li>
+        <li>☐ Viewport meta tag present and correct</li>
+        <li>☐ All images have <code>max-width: 100%</code></li>
+        <li>☐ All touch targets are at least 44×44px</li>
+        <li>☐ Form inputs have <code>font-size: 16px</code> minimum (prevents iOS zoom)</li>
+        <li>☐ No horizontal scrollbar on any tested viewport</li>
+        <li>☐ Site loaded in Mobile Viewer at iPhone 15 + Galaxy S23 viewports</li>
+        <li>☐ QR code scanned on at least one real iOS device</li>
+        <li>☐ QR code scanned on at least one real Android device</li>
+        <li>☐ Lighthouse mobile score ≥ 75</li>
+      </ul>
+
+    </article>
+
+    <!-- SIDEBAR -->
+    <aside class="blog-sidebar" aria-label="Article navigation and tools">
+      <nav class="toc-card" aria-label="Table of contents">
+        <div class="toc-title">Table of Contents</div>
+        <ul class="toc-list">
+          <li><a href="#why-physical-devices-arent-enough">Why Physical Devices Aren't Enough</a></li>
+          <li><a href="#layer-1-browser-devtools">Layer 1 — Browser DevTools</a></li>
+          <li class="toc-sub"><a href="#chrome-devtools">Chrome DevTools</a></li>
+          <li class="toc-sub"><a href="#firefox-responsive">Firefox Responsive Mode</a></li>
+          <li class="toc-sub"><a href="#safari-simulator">Safari + Xcode Simulator</a></li>
+          <li><a href="#layer-2-online-simulators">Layer 2 — Online Simulators</a></li>
+          <li><a href="#layer-3-the-breakpoint-strategy">Layer 3 — Breakpoint Strategy</a></li>
+          <li><a href="#layer-4-the-right-order">Layer 4 — Testing Order</a></li>
+          <li><a href="#common-responsive-bugs">8 Most Common Bugs</a></li>
+          <li><a href="#tool-comparison">Tool Comparison</a></li>
+          <li><a href="#free-tools-roundup">Free Tools Roundup</a></li>
+          <li><a href="#automated-testing">Automated Testing</a></li>
+          <li><a href="#quick-reference">Quick Reference Checklist</a></li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-tool-card">
+        <h4>🔍 Responsive Checker</h4>
+        <p>Test your site at every major breakpoint from one URL. Free, instant, no login.</p>
+        <a href="/?tool=responsive-checker" class="sidebar-btn">Open Tool →</a>
+      </div>
+
+      <div class="sidebar-tool-card" style="margin-top:16px">
+        <h4>📱 QR Code Generator</h4>
+        <p>Scan your URL on a real device in one click. The fastest real-device handoff workflow.</p>
+        <a href="/?tool=qr-generator" class="sidebar-btn">Generate QR →</a>
+        <a href="/blog/mobile-seo-checklist-2026" class="sidebar-btn-outline">📋 Mobile SEO Checklist →</a>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- RELATED POSTS -->
+  <section class="related-section" aria-label="Related articles">
+    <div class="container">
+      <span class="section-badge">Keep Reading</span>
+      <h2 class="section-title">Related Articles</h2>
+      <div class="related-grid">
+        <a href="/blog/mobile-seo-checklist-2026" class="related-card">
+          <div class="related-card-cat">SEO</div>
+          <h3>Mobile SEO Checklist 2026: 15 Things Most Sites Still Get Wrong</h3>
+          <p>A complete audit list for developers and SEOs — covering Core Web Vitals, structured data, tap targets, and more.</p>
+        </a>
+        <a href="/blog/iphone-15-vs-galaxy-s23-viewport" class="related-card">
+          <div class="related-card-cat">Developer Reference</div>
+          <h3>iPhone 15 vs Galaxy S23 Viewport Differences Every Developer Should Know</h3>
+          <p>Viewport widths, pixel ratios, safe area insets, and browser quirks compared side by side for the two most common flagship devices.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section class="faq-section" aria-labelledby="faq-heading">
+    <div class="faq-inner">
+      <span class="section-badge">FAQ</span>
+      <h2 class="section-title" id="faq-heading">Frequently Asked Questions</h2>
+      <p class="section-description">Common questions about testing responsive design without physical devices</p>
+      <div class="faq-list" role="list">
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+            Can browser DevTools replace real device testing?
+            <span class="faq-chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>Browser DevTools are excellent for catching layout bugs and testing CSS breakpoints, but they cannot fully replicate real device behavior including GPU rendering differences, font rendering, touch event latency, or browser-specific quirks. Use DevTools for the bulk of your development testing and supplement with real device checks before any major launch.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+            What is the fastest way to test a site on a real mobile device?
+            <span class="faq-chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>The fastest method is generating a QR code from your URL and scanning it on your phone. <a href="/?tool=qr-generator">Mobile Viewer's built-in QR Code Generator</a> does exactly this in one click — no cables, no manual URL typing, no app installation required. Your phone just needs to be on the same network as your dev server for localhost testing.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+            How many breakpoints should I test?
+            <span class="faq-chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>At minimum, test at 375px (small phone), 390px (iPhone 14/15), 430px (large phone), 768px (tablet portrait), 1024px (tablet landscape / small desktop), and 1440px (standard desktop). Add breakpoints if your analytics show significant traffic from unusual viewport sizes — check Google Analytics under Audience → Mobile → Devices.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+            Is Mobile Viewer's responsive checker free?
+            <span class="faq-chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>Yes. Mobile Viewer's full suite including the <a href="/?tool=responsive-checker">responsive checker</a>, device simulator, multi-device preview grid, and QR code generator are completely free with no account required. All features are available immediately after opening the site.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+            Why does my site look different on the real device vs the simulator?
+            <span class="faq-chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>Several factors can cause visual differences: the real device uses its native browser engine (WebKit on iOS, Blink on Android Chrome) which handles font rendering, subpixel antialiasing, and CSS properties differently than your desktop browser. System font fallbacks, safe area insets for notch/island hardware, and OS-level dark mode can also affect how your CSS is interpreted. This is exactly why supplementing simulators with real device checks remains important.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA SECTION -->
+  <section class="cta-section" aria-label="Call to action">
+    <div class="container">
+      <div class="cta-card">
+        <div class="cta-glow" aria-hidden="true"></div>
+        <div class="cta-badge">Free · No Sign-up · Instant</div>
+        <h2 class="cta-title">Start testing your responsive design right now</h2>
+        <p class="cta-description">Join 50,000+ developers who use Mobile Viewer to build better websites for every screen</p>
+        <div class="cta-actions">
+          <a href="/" class="cta-large-button">
+            Launch Mobile Viewer
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="/#tools" class="cta-secondary-link">Explore all tools →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-bottom-inner">
+        <p class="footer-copy">© 2026 Mobile Viewer. All rights reserved.</p>
+        <nav class="footer-legal" aria-label="Legal navigation">
+          <a href="/privacy" class="footer-legal-link">Privacy Policy</a>
+          <span aria-hidden="true">·</span>
+          <a href="/terms" class="footer-legal-link">Terms of Use</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // FAQ toggle
+    function toggleFaq(btn) {
+      const answer = btn.nextElementSibling;
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', !isOpen);
+      answer.classList.toggle('is-open', !isOpen);
+    }
+
+    // Reading progress bar
+    const progressBar = document.getElementById('progressBar');
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progressBar.style.width = Math.min(progress, 100) + '%';
+    }, { passive: true });
+
+    // Active TOC link highlight
+    const headings = document.querySelectorAll('.blog-content h2, .blog-content h3');
+    const tocLinks = document.querySelectorAll('.toc-list a');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          tocLinks.forEach(link => link.style.color = '');
+          const activeLink = document.querySelector(`.toc-list a[href="#${entry.target.id}"]`);
+          if (activeLink) { activeLink.style.color = 'var(--primary)'; }
+        }
+      });
+    }, { rootMargin: '-20% 0px -60% 0px' });
+    headings.forEach(h => observer.observe(h));
+  </script>
+</body>
+</html>
