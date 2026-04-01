@@ -40,6 +40,7 @@
       --font-body:    'DM Sans', sans-serif;
       --transition:   0.2s ease;
       --container:    1240px;
+      --header-height: 70px; /* Match main site header height */
     }
 
     * {
@@ -62,74 +63,17 @@
       padding: 0 24px;
     }
 
-    /* simple header mock (lightweight, no external js) */
-    .blog-header {
-      padding: 32px 0 24px;
-      border-bottom: 1px solid var(--border);
-      background: rgba(8,12,18,0.8);
-      backdrop-filter: blur(12px);
-      position: sticky;
-      top: 0;
-      z-index: 10;
+    /* Main content wrapper with top padding to account for fixed header */
+    .blog-main {
+      padding-top: calc(var(--header-height) + 20px); /* Header height + extra spacing */
     }
 
-    .header-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-
-    .logo-area {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-    }
-
-    .logo-icon {
-      background: var(--primary);
-      width: 32px;
-      height: 32px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #000;
-      font-weight: 800;
-      font-family: var(--font-display);
-    }
-
-    .logo-text {
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 1.25rem;
-      letter-spacing: -0.02em;
-    }
-    .logo-accent { color: var(--primary); }
-
-    .back-link {
-      color: var(--text-secondary);
-      text-decoration: none;
-      font-weight: 500;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      border: 1px solid var(--border);
-      padding: 8px 18px;
-      border-radius: 40px;
-      transition: all var(--transition);
-    }
-    .back-link:hover {
-      border-color: var(--primary);
-      color: var(--primary);
-      background: var(--primary-dim);
-    }
-
+    /* simple header mock (lightweight, no external js) - but we're using the main header */
+    /* So we don't need this duplicate header anymore */
+    
     /* blog hero */
     .blog-hero {
-      padding: 60px 0 40px;
+      padding: 40px 0 40px;
       text-align: center;
     }
     .blog-badge {
@@ -269,6 +213,7 @@
       border-bottom: 1px solid transparent;
       transition: gap 0.2s, border-color 0.2s;
       width: fit-content;
+      cursor: pointer;
     }
     .read-more:hover {
       gap: 12px;
@@ -310,15 +255,27 @@
       .container { padding: 0 20px; }
       .articles-grid { grid-template-columns: 1fr; }
       .card-title { font-size: 1.2rem; }
+      .blog-hero {
+        padding: 20px 0 30px;
+      }
+      .blog-main {
+        padding-top: calc(var(--header-height) + 10px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .blog-main {
+        padding-top: calc(var(--header-height) + 5px);
+      }
     }
   </style>
 </head>
 <body>
 
 <!-- Header Component -->
-  <div id="header-placeholder"></div>
+<div id="header-placeholder"></div>
 
-<main>
+<main class="blog-main">
   <div class="container">
     <div class="blog-hero">
       <div class="blog-badge">Insights & tutorials</div>
@@ -405,7 +362,7 @@
           <span class="card-category">Tools & Resources</span>
           <h2 class="card-title">Best Free Tools for Mobile Testing in 2026</h2>
           <p class="card-excerpt">From Mobile Viewer itself to browser extensions, real device cloud trials, accessibility checkers, and performance analyzers — all 100% free.</p>
-          <a href="#" class="read-more" onclick="alert('We’re curating the ultimate free tools list — article coming soon!'); return false;">Read full story <span>→</span></a>
+          <a href="#" class="read-more" onclick="alert('We\'re curating the ultimate free tools list — article coming soon!'); return false;">Read full story <span>→</span></a>
         </div>
       </article>
 
@@ -426,19 +383,28 @@
       </article>
 
     </div>    
+  </div>
 </main>
 
 <!-- Footer Component -->
-  <div id="footer-placeholder"></div>
+<div id="footer-placeholder"></div>
 
-  <!-- Scripts -->
-  <script src="header.js"></script>
-  <script src="footer.js"></script>
+<!-- Scripts -->
+<script src="header.js"></script>
+<script src="footer.js"></script>
 
-<!-- optional smooth scroll / tiny interactive note -->
 <script>
-  // placeholder for future dynamic content
-  console.log("Blog page ready — article cards with placeholder featured images. Replace .card-image content with real images anytime.");
+  // Small helper to ensure header height is properly accounted for
+  document.addEventListener('DOMContentLoaded', function() {
+    // Get the actual header height from the loaded component
+    const header = document.querySelector('.site-header');
+    if (header) {
+      const headerHeight = header.offsetHeight;
+      document.documentElement.style.setProperty('--header-height', headerHeight + 'px');
+    }
+    
+    console.log("Blog page ready — article cards with placeholder featured images. Replace .card-image content with real images anytime.");
+  });
 </script>
 </body>
 </html>
