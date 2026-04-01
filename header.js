@@ -7,7 +7,7 @@
 
   const NAV_LINKS = [
     { href: '/',       label: 'Home' },
-    { href: '/#tools',        label: 'Tools' },
+    { href: '/#tools',        label: 'Tools', hasDropdown: true },
     { href: '#features',     label: 'Features' },
     { href: '#how-to-guide', label: 'Guide' },
     { href: '#faq',          label: 'FAQ' },
@@ -29,6 +29,10 @@
   function buildHeader() {
     const toolItems = TOOL_DROPDOWN.map(t =>
       `<li><a href="${t.href}" class="dropdown-item">${t.label}</a></li>`
+    ).join('');
+
+    const mobileToolItems = TOOL_DROPDOWN.map(t =>
+      `<li><a href="${t.href}" class="mobile-nav-link mobile-nav-link--sub">${t.label}</a></li>`
     ).join('');
 
     const navLinks = NAV_LINKS.map((l, i) => {
@@ -87,7 +91,19 @@
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobile-menu" aria-hidden="true" role="navigation" aria-label="Mobile navigation">
     <ul class="mobile-nav-list" role="list">
-      ${NAV_LINKS.map(l => `<li><a href="${l.href}" class="mobile-nav-link">${l.label}</a></li>`).join('')}
+      <li><a href="/" class="mobile-nav-link">Home</a></li>
+      <li class="mobile-nav-item--dropdown">
+        <button class="mobile-nav-link mobile-dropdown-trigger" data-mobile-dropdown="mobile-tools-dd" aria-expanded="false">
+          Tools
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true" class="dropdown-arrow">
+            <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <ul class="mobile-dropdown-menu" id="mobile-tools-dd" style="display: none;">${mobileToolItems}</ul>
+      </li>
+      <li><a href="#features" class="mobile-nav-link">Features</a></li>
+      <li><a href="#how-to-guide" class="mobile-nav-link">Guide</a></li>
+      <li><a href="#faq" class="mobile-nav-link">FAQ</a></li>
       <li class="mobile-nav-divider" aria-hidden="true"></li>
       <li><a href="#viewer" class="mobile-nav-link mobile-nav-link--cta" onclick="scrollToViewer()">🚀 Launch Viewer</a></li>
     </ul>
@@ -155,12 +171,32 @@
 
     overlay.addEventListener('click', closeMenu);
 
-    // Close menu on nav link click
+    // Close menu on nav link click (but not on dropdown trigger)
     mobileMenu.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', closeMenu);
     });
 
-    // ── Tools dropdown ────────────────────────────────
+    // ── Mobile dropdown functionality ─────────────────
+    const mobileDropdownTrigger = document.querySelector('.mobile-dropdown-trigger');
+    const mobileDropdownMenu = document.getElementById('mobile-tools-dd');
+
+    if (mobileDropdownTrigger && mobileDropdownMenu) {
+      mobileDropdownTrigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isExpanded = mobileDropdownTrigger.getAttribute('aria-expanded') === 'true';
+        mobileDropdownTrigger.setAttribute('aria-expanded', String(!isExpanded));
+        
+        if (!isExpanded) {
+          mobileDropdownMenu.style.display = 'block';
+          mobileDropdownTrigger.querySelector('.dropdown-arrow').style.transform = 'rotate(180deg)';
+        } else {
+          mobileDropdownMenu.style.display = 'none';
+          mobileDropdownTrigger.querySelector('.dropdown-arrow').style.transform = 'rotate(0deg)';
+        }
+      });
+    }
+
+    // ── Desktop dropdown ────────────────────────────────
     const ddBtn = document.querySelector('[data-dropdown="tools-dd"]');
     const ddMenu = document.getElementById('tools-dd');
 
@@ -173,13 +209,12 @@
       });
 
       document.addEventListener('click', (e) => {
-        if (!ddBtn.contains(e.target) && !ddMenu.contains(e.target)) {
+        if (ddBtn && ddMenu && !ddBtn.contains(e.target) && !ddMenu.contains(e.target)) {
           ddBtn.setAttribute('aria-expanded', 'false');
           ddMenu.classList.remove('is-open');
         }
       });
 
-      // Keyboard navigation
       ddBtn.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
           ddBtn.setAttribute('aria-expanded', 'false');
