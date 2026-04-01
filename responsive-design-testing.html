@@ -12,13 +12,13 @@
   <meta name="keywords" content="test responsive design, responsive design testing, mobile testing tools, browser device emulation, responsive checker, mobile simulator">
   <meta name="author" content="Mobile Viewer">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://mobileviewer.github.io/test-responsive-design">
+  <link rel="canonical" href="https://mobileviewer.github.io/responsive-design-testing">
 
   <!-- Open Graph -->
   <meta property="og:title" content="How to Test Responsive Design Without Buying 20 Phones">
   <meta property="og:description" content="Free tools and pro workflows to test responsive design across every device without the hardware bill.">
   <meta property="og:type" content="article">
-  <meta property="og:url" content="https://mobileviewer.github.io/test-responsive-design">
+  <meta property="og:url" content="https://mobileviewer.github.io/responsive-design-testing">
   <meta property="og:site_name" content="Mobile Viewer">
 
   <!-- Schema: Article -->
@@ -68,7 +68,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
-
+  <link rel="stylesheet" href="styles.css">
   <style>
     :root {
       --primary:      #00F0FF;
@@ -297,29 +297,8 @@
     <div class="reading-progress-bar" id="progressBar"></div>
   </div>
 
-  <!-- HEADER -->
-  <header class="site-header" role="banner">
-    <div class="header-inner">
-      <a href="/" class="header-logo" aria-label="Mobile Viewer Home">
-        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true" class="logo-icon" style="color:var(--primary)">
-          <rect x="7" y="2" width="14" height="22" rx="3" stroke="currentColor" stroke-width="2"/>
-          <circle cx="14" cy="20" r="1.5" fill="currentColor"/>
-        </svg>
-        <span class="logo-text">Mobile<span class="logo-accent">Viewer</span></span>
-      </a>
-      <nav class="header-nav" aria-label="Main navigation">
-        <ul class="nav-list">
-          <li><a href="/" class="nav-link">Home</a></li>
-          <li><a href="/#tools" class="nav-link">Tools</a></li>
-          <li><a href="/blog/" class="nav-link" aria-current="page">Blog</a></li>
-        </ul>
-      </nav>
-      <a href="/" class="header-cta-btn">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="4" y="1" width="8" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="12" r="1" fill="currentColor"/></svg>
-        Test Your Site Free
-      </a>
-    </div>
-  </header>
+  <!-- Header Component -->
+<div id="header-placeholder"></div>
 
   <!-- BLOG HERO -->
   <section class="blog-hero" aria-label="Article header">
@@ -327,7 +306,7 @@
       <nav class="blog-breadcrumb" aria-label="Breadcrumb">
         <a href="/">Home</a>
         <span aria-hidden="true">›</span>
-        <a href="/blog/">Blog</a>
+        <a href="/blog">Blog</a>
         <span aria-hidden="true">›</span>
         <span>Responsive Testing</span>
       </nav>
@@ -848,19 +827,12 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="site-footer" role="contentinfo">
-    <div class="container">
-      <div class="footer-bottom-inner">
-        <p class="footer-copy">© 2026 Mobile Viewer. All rights reserved.</p>
-        <nav class="footer-legal" aria-label="Legal navigation">
-          <a href="/privacy" class="footer-legal-link">Privacy Policy</a>
-          <span aria-hidden="true">·</span>
-          <a href="/terms" class="footer-legal-link">Terms of Use</a>
-        </nav>
-      </div>
-    </div>
-  </footer>
+  <!-- Footer Component -->
+<div id="footer-placeholder"></div>
+
+<!-- Scripts -->
+<script src="header.js"></script>
+<script src="footer.js"></script>
 
   <script>
     // FAQ toggle
