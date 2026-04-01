@@ -40,7 +40,7 @@
       --font-body:    'DM Sans', sans-serif;
       --transition:   0.2s ease;
       --container:    1240px;
-      --header-height: 70px; /* Match main site header height */
+      --header-height: 70px;
     }
 
     * {
@@ -63,15 +63,10 @@
       padding: 0 24px;
     }
 
-    /* Main content wrapper with top padding to account for fixed header */
     .blog-main {
-      padding-top: calc(var(--header-height) + 20px); /* Header height + extra spacing */
+      padding-top: calc(var(--header-height) + 20px);
     }
 
-    /* simple header mock (lightweight, no external js) - but we're using the main header */
-    /* So we don't need this duplicate header anymore */
-    
-    /* blog hero */
     .blog-hero {
       padding: 40px 0 40px;
       text-align: center;
@@ -106,7 +101,6 @@
       font-size: 1.1rem;
     }
 
-    /* === ARTICLE GRID (cards) === */
     .articles-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
@@ -123,6 +117,8 @@
       display: flex;
       flex-direction: column;
       backdrop-filter: blur(2px);
+      text-decoration: none;
+      color: inherit;
     }
 
     .article-card:hover {
@@ -131,7 +127,6 @@
       box-shadow: 0 20px 36px rgba(0,0,0,0.5), 0 0 0 1px rgba(0,240,255,0.1);
     }
 
-    /* featured image placeholder — you can later replace with actual images */
     .card-image {
       width: 100%;
       height: 200px;
@@ -144,7 +139,6 @@
       border-bottom: 1px solid var(--border);
     }
 
-    /* gradient accent + optional icon for visual placeholder */
     .img-placeholder {
       display: flex;
       flex-direction: column;
@@ -163,7 +157,6 @@
       opacity: 1;
     }
 
-    /* content area */
     .card-content {
       padding: 24px;
       flex: 1;
@@ -208,19 +201,17 @@
       gap: 8px;
       color: var(--primary);
       font-weight: 600;
-      text-decoration: none;
       font-size: 0.85rem;
       border-bottom: 1px solid transparent;
-      transition: gap 0.2s, border-color 0.2s;
+      transition: gap 0.2s, border-bottom-color 0.2s;
       width: fit-content;
-      cursor: pointer;
+      margin-top: auto;
     }
-    .read-more:hover {
+    .article-card:hover .read-more {
       gap: 12px;
       border-bottom-color: var(--primary);
     }
 
-    /* footer minimal (matching style) */
     .blog-footer {
       border-top: 1px solid var(--border);
       padding: 48px 0 32px;
@@ -272,7 +263,6 @@
 </head>
 <body>
 
-<!-- Header Component -->
 <div id="header-placeholder"></div>
 
 <main class="blog-main">
@@ -283,11 +273,9 @@
       <p>Actionable articles, SEO checklists, device viewport comparisons —<br> sharpen your mobile-first skills.</p>
     </div>
 
-    <!-- ARTICLE GRID: 6 cards with featured image placeholders (you can add real images later) -->
     <div class="articles-grid">
       
-      <!-- 1. How to Test Responsive Design Without Buying 20 Phones -->
-      <article class="article-card">
+      <a href="article-responsive-testing.html" class="article-card">
         <div class="card-image">
           <div class="img-placeholder">
             <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/><path d="M9 5h6"/></svg>
@@ -298,12 +286,11 @@
           <span class="card-category">Responsive Testing</span>
           <h2 class="card-title">How to Test Responsive Design Without Buying 20 Phones</h2>
           <p class="card-excerpt">Discover smart strategies: browser DevTools, cloud emulators, viewport presets, and live QR scanning — all without spending thousands on physical devices.</p>
-          <a href="responsive-design-testing" class="read-more" onclick="alert('Full article coming soon — stay tuned! 🚀'); return false;">Read full story <span>→</span></a>
+          <div class="read-more">Read full story <span>→</span></div>
         </div>
-      </article>
+      </a>
 
-      <!-- 2. Mobile SEO Checklist 2026: 15 Things Most Sites Still Get Wrong -->
-      <article class="article-card">
+      <a href="article-mobile-seo-checklist.html" class="article-card">
         <div class="card-image">
           <div class="img-placeholder">
             <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polygon points="7 10 12 15 17 10 12 5 7 10"/><line x1="12" y1="15" x2="12" y2="5"/></svg>
@@ -314,12 +301,11 @@
           <span class="card-category">SEO & Rankings</span>
           <h2 class="card-title">Mobile SEO Checklist 2026: 15 Things Most Sites Still Get Wrong</h2>
           <p class="card-excerpt">From tap targets to Core Web Vitals, font scaling, viewport meta, and mobile interstitials — avoid penalties and boost your mobile rankings now.</p>
-          <a href="mobile-seo-checklist-2026" class="read-more" onclick="alert('Complete SEO checklist will be published soon! 📈'); return false;">Read full story <span>→</span></a>
+          <div class="read-more">Read full story <span>→</span></div>
         </div>
-      </article>
+      </a>
 
-      <!-- 3. iPhone 15 vs Galaxy S23 Viewport Differences Every Developer Should Know -->
-      <article class="article-card">
+      <a href="article-viewport-differences.html" class="article-card">
         <div class="card-image">
           <div class="img-placeholder">
             <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 8h6M9 12h4M9 16h2"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
@@ -330,12 +316,11 @@
           <span class="card-category">Device Comparisons</span>
           <h2 class="card-title">iPhone 15 vs Galaxy S23 Viewport Differences Every Developer Should Know</h2>
           <p class="card-excerpt">How logical resolutions, safe area insets, and notch/ camera cutouts impact CSS layouts. Ensure pixel-perfect designs across iOS and Android flagships.</p>
-          <a href="iphone-15-vs-galaxy-s23-viewport" class="read-more" onclick="alert('Detailed viewport analysis coming — get ready!'); return false;">Read full story <span>→</span></a>
+          <div class="read-more">Read full story <span>→</span></div>
         </div>
-      </article>
+      </a>
 
-      <!-- 4. Why 63% of Your Traffic Is Mobile (and How to Fix Bad Experiences) -->
-      <article class="article-card">
+      <a href="article-mobile-traffic.html" class="article-card">
         <div class="card-image">
           <div class="img-placeholder">
             <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v4M12 18v4M4 4l2 2M18 4l-2 2M4 20l2-2M18 20l-2-2"/><circle cx="12" cy="12" r="4"/><path d="M4 12h4M16 12h4"/></svg>
@@ -346,12 +331,11 @@
           <span class="card-category">UX Optimization</span>
           <h2 class="card-title">Why 63% of Your Traffic Is Mobile (and How to Fix Bad Experiences)</h2>
           <p class="card-excerpt">Learn how to fix layout shifts, touch unfriendly elements, and slow load times — turning mobile visitors into loyal customers.</p>
-          <a href="#" class="read-more" onclick="alert('Deep dive on mobile UX soon — stay tuned!'); return false;">Read full story <span>→</span></a>
+          <div class="read-more">Read full story <span>→</span></div>
         </div>
-      </article>
+      </a>
 
-      <!-- 5. Best Free Tools for Mobile Testing in 2026 -->
-      <article class="article-card">
+      <a href="article-free-tools.html" class="article-card">
         <div class="card-image">
           <div class="img-placeholder">
             <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h4"/><circle cx="16" cy="15" r="1"/></svg>
@@ -362,12 +346,11 @@
           <span class="card-category">Tools & Resources</span>
           <h2 class="card-title">Best Free Tools for Mobile Testing in 2026</h2>
           <p class="card-excerpt">From Mobile Viewer itself to browser extensions, real device cloud trials, accessibility checkers, and performance analyzers — all 100% free.</p>
-          <a href="#" class="read-more" onclick="alert('We\'re curating the ultimate free tools list — article coming soon!'); return false;">Read full story <span>→</span></a>
+          <div class="read-more">Read full story <span>→</span></div>
         </div>
-      </article>
+      </a>
 
-      <!-- 6. How to Use QR Codes for Instant Client Mobile Previews -->
-      <article class="article-card">
+      <a href="article-qr-codes.html" class="article-card">
         <div class="card-image">
           <div class="img-placeholder">
             <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
@@ -378,32 +361,26 @@
           <span class="card-category">Workflow Hacks</span>
           <h2 class="card-title">How to Use QR Codes for Instant Client Mobile Previews</h2>
           <p class="card-excerpt">Streamline client feedback: generate QR codes for staging sites, let stakeholders test on real devices in seconds, and reduce back-and-forth emails.</p>
-          <a href="#" class="read-more" onclick="alert('QR-powered workflow tips — stay tuned for full article!'); return false;">Read full story <span>→</span></a>
+          <div class="read-more">Read full story <span>→</span></div>
         </div>
-      </article>
+      </a>
 
     </div>    
   </div>
 </main>
 
-<!-- Footer Component -->
 <div id="footer-placeholder"></div>
 
-<!-- Scripts -->
 <script src="header.js"></script>
 <script src="footer.js"></script>
 
 <script>
-  // Small helper to ensure header height is properly accounted for
   document.addEventListener('DOMContentLoaded', function() {
-    // Get the actual header height from the loaded component
     const header = document.querySelector('.site-header');
     if (header) {
       const headerHeight = header.offsetHeight;
       document.documentElement.style.setProperty('--header-height', headerHeight + 'px');
     }
-    
-    console.log("Blog page ready — article cards with placeholder featured images. Replace .card-image content with real images anytime.");
   });
 </script>
 </body>
