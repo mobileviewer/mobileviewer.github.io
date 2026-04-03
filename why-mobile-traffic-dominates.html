@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why 63% of Your Traffic Is Mobile (and How to Fix Bad Experiences) — Mobile Viewer Blog</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+  <meta name="description" content="Mobile traffic now dominates the web at 63%+ globally. Learn why mobile UX failures hurt your revenue, and get a concrete action plan to fix every bad experience on your site.">
+  <meta name="keywords" content="mobile traffic statistics, mobile UX, mobile web experience, mobile conversion rate, fix mobile website, mobile bounce rate, mobile-first design">
+  <meta name="author" content="Mobile Viewer">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://mobileviewer.github.io/blog/why-mobile-traffic-dominates">
+
+  <meta property="og:title" content="Why 63% of Your Traffic Is Mobile (and How to Fix Bad Experiences)">
+  <meta property="og:description" content="Mobile traffic dominates the web. Learn why bad mobile UX is silently killing your conversions and get an action plan to fix it.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://mobileviewer.github.io/blog/why-mobile-traffic-dominates">
+  <meta property="og:site_name" content="Mobile Viewer">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Why 63% of Your Traffic Is Mobile (and How to Fix Bad Experiences)",
+    "description": "Mobile traffic now dominates the web. Learn why bad mobile UX is silently killing your conversions and get an action plan to fix it.",
+    "author": { "@type": "Organization", "name": "Mobile Viewer" },
+    "publisher": { "@type": "Organization", "name": "Mobile Viewer", "url": "https://mobileviewer.github.io/" },
+    "datePublished": "2026-04-03",
+    "dateModified": "2026-04-03"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What percentage of web traffic is mobile in 2026?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Globally, mobile devices account for approximately 63–65% of all web traffic in 2026, based on aggregated analytics data from StatCounter and Google. In certain industries like e-commerce, news, and social media, mobile share can exceed 75–80%." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why do mobile users bounce more than desktop users?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Mobile users bounce more primarily because of slow load times, poor tap target sizing, unreadable text that requires zooming, horizontal scroll issues, and intrusive popups that are difficult to dismiss on small screens. Studies show that pages loading in over 3 seconds see bounce rates exceed 53% on mobile." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I find out how bad my mobile experience is?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Start with three free tools: Google Analytics (compare mobile vs. desktop bounce rates, session duration, and conversion rates), Google Search Console's Mobile Usability report (flags specific technical issues), and Mobile Viewer (visually previews your site at real device viewports to spot layout problems instantly)." }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary:      #00F0FF;
+      --primary-dim:  rgba(0,240,255,0.15);
+      --secondary:    #7B61FF;
+      --accent:       #FF4FD8;
+      --orange:       #FF8C42;
+      --orange-dim:   rgba(255,140,66,0.15);
+      --bg:           #080C12;
+      --bg-dark:      #050810;
+      --bg-card:      #0D1220;
+      --bg-card-2:    #111827;
+      --border:       rgba(255,255,255,0.07);
+      --border-light: rgba(255,255,255,0.12);
+      --text:         #F0F4FF;
+      --text-secondary: rgba(240,244,255,0.6);
+      --text-muted:   rgba(240,244,255,0.35);
+      --radius:       12px;
+      --radius-lg:    20px;
+      --header-h:     70px;
+      --container:    1240px;
+      --font-display: 'Syne', sans-serif;
+      --font-body:    'DM Sans', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 24px); -webkit-text-size-adjust: 100%; }
+    body { font-family: var(--font-body); font-size: 16px; line-height: 1.7; color: var(--text); background: var(--bg); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; } button { font-family: inherit; cursor: pointer; border: none; background: none; } ul { list-style: none; }
+    code { font-family: 'SF Mono','Fira Code',monospace; font-size: 0.85em; background: rgba(0,240,255,0.08); color: var(--primary); padding: 2px 6px; border-radius: 4px; }
+    .container { width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+
+    /* HEADER */
+    .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; height: var(--header-h); background: rgba(8,12,18,0.85); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); border-bottom: 1px solid var(--border); }
+    .header-inner { max-width: var(--container); margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; gap: 2rem; }
+    .header-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+    .logo-text { font-family: var(--font-display); font-size: 1.15rem; font-weight: 800; letter-spacing: -0.02em; color: var(--text); }
+    .logo-accent { color: var(--primary); }
+    .header-nav { margin-left: auto; }
+    .nav-list { display: flex; align-items: center; gap: 4px; list-style: none; }
+    .nav-link { display: flex; align-items: center; padding: 6px 14px; border-radius: 8px; font-size: 0.92rem; font-weight: 500; color: var(--text-secondary); text-decoration: none; transition: color 0.2s, background 0.2s; }
+    .nav-link:hover { color: var(--text); background: rgba(255,255,255,0.06); }
+    .header-cta-btn { display: flex; align-items: center; gap: 8px; padding: 9px 18px; background: var(--primary); color: #000; font-size: 0.875rem; font-weight: 700; border-radius: 8px; text-decoration: none; transition: all 0.2s; flex-shrink: 0; }
+    .header-cta-btn:hover { background: #29f5ff; transform: translateY(-1px); box-shadow: 0 4px 20px rgba(0,240,255,0.3); }
+
+    /* HERO */
+    .blog-hero { padding: calc(var(--header-h) + 80px) 0 80px; position: relative; overflow: hidden; }
+    .blog-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,140,66,0.06) 0%, transparent 65%); pointer-events: none; }
+    .blog-hero-inner { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    .blog-breadcrumb { display: flex; align-items: center; gap: 8px; margin-bottom: 2rem; font-size: 0.85rem; color: var(--text-muted); }
+    .blog-breadcrumb a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .blog-breadcrumb a:hover { color: var(--primary); }
+    .blog-category { display: inline-block; font-family: var(--font-display); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); background: var(--orange-dim); border: 1px solid rgba(255,140,66,0.3); padding: 5px 14px; border-radius: 100px; margin-bottom: 1.5rem; }
+    .blog-hero-title { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; }
+    .gradient-text { background: linear-gradient(90deg, var(--orange), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .blog-hero-desc { font-size: 1.15rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 2rem; max-width: 700px; }
+    .blog-meta { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .blog-meta-item { display: flex; align-items: center; gap: 6px; font-size: 0.875rem; color: var(--text-muted); }
+    .blog-meta-item svg { color: var(--orange); flex-shrink: 0; }
+    .blog-divider { width: 100%; height: 1px; background: var(--border); margin: 3rem 0; }
+
+    /* LAYOUT */
+    .blog-layout { max-width: 1100px; margin: 0 auto; padding: 0 24px 100px; display: grid; grid-template-columns: 1fr 300px; gap: 60px; align-items: start; }
+
+    /* SIDEBAR */
+    .blog-sidebar { position: sticky; top: calc(var(--header-h) + 32px); }
+    .toc-card { background: var(--bg-card); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 28px; }
+    .toc-title { font-family: var(--font-display); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; }
+    .toc-list { display: flex; flex-direction: column; gap: 4px; list-style: none; }
+    .toc-list li a { display: block; padding: 6px 10px; border-radius: 6px; font-size: 0.875rem; color: var(--text-secondary); text-decoration: none; transition: color 0.2s, background 0.2s; border-left: 2px solid transparent; }
+    .toc-list li a:hover { color: var(--orange); background: var(--orange-dim); border-left-color: var(--orange); }
+    .toc-list li.toc-sub a { padding-left: 22px; font-size: 0.825rem; }
+    .sidebar-tool-card { background: var(--bg-card); border: 1px solid rgba(255,140,66,0.2); border-radius: var(--radius-lg); padding: 24px; margin-top: 20px; }
+    .sidebar-tool-card h4 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .sidebar-tool-card p { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 16px; line-height: 1.6; }
+    .sidebar-btn { display: block; text-align: center; padding: 10px 16px; background: var(--primary); color: #000; font-weight: 700; font-size: 0.875rem; border-radius: 8px; text-decoration: none; transition: all 0.2s; }
+    .sidebar-btn:hover { background: #29f5ff; transform: translateY(-1px); }
+    .sidebar-btn-outline { display: block; text-align: center; padding: 10px 16px; border: 1px solid var(--border-light); color: var(--text-secondary); font-size: 0.875rem; border-radius: 8px; text-decoration: none; transition: all 0.2s; margin-top: 8px; }
+    .sidebar-btn-outline:hover { border-color: var(--orange); color: var(--orange); }
+
+    /* ARTICLE */
+    .blog-content h2 { font-family: var(--font-display); font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 700; margin: 3rem 0 1rem; color: var(--text); scroll-margin-top: calc(var(--header-h) + 32px); }
+    .blog-content h3 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; margin: 2rem 0 0.75rem; color: var(--text); scroll-margin-top: calc(var(--header-h) + 32px); }
+    .blog-content p { margin-bottom: 1.25rem; color: var(--text-secondary); font-size: 1.02rem; }
+    .blog-content p strong { color: var(--text); font-weight: 600; }
+    .blog-content ul, .blog-content ol { padding-left: 1.5rem; margin-bottom: 1.5rem; color: var(--text-secondary); font-size: 1.02rem; }
+    .blog-content ul { list-style: disc; } .blog-content ol { list-style: decimal; }
+    .blog-content li { margin-bottom: 0.5rem; }
+    .blog-content a { color: var(--primary); text-decoration: underline; text-underline-offset: 3px; transition: opacity 0.2s; }
+    .blog-content a:hover { opacity: 0.8; }
+
+    /* STAT CARDS */
+    .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 2rem 0; }
+    .stat-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px 20px; text-align: center; transition: border-color 0.2s; }
+    .stat-card:hover { border-color: rgba(255,140,66,0.3); }
+    .stat-number { font-family: var(--font-display); font-size: 2.2rem; font-weight: 800; line-height: 1; margin-bottom: 6px; background: linear-gradient(135deg, var(--orange), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .stat-label { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.4; }
+    .stat-source { font-size: 0.72rem; color: var(--text-muted); margin-top: 6px; }
+
+    /* CALLOUTS */
+    .callout { background: var(--bg-card); border: 1px solid var(--border-light); border-left: 3px solid var(--primary); border-radius: var(--radius); padding: 20px 24px; margin: 2rem 0; }
+    .callout-tip { border-left-color: var(--primary); }
+    .callout-warn { border-left-color: var(--accent); background: rgba(255,79,216,0.04); border-color: rgba(255,79,216,0.2); }
+    .callout-orange { border-left-color: var(--orange); background: var(--orange-dim); border-color: rgba(255,140,66,0.2); }
+    .callout-label { font-family: var(--font-display); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+    .callout-tip .callout-label { color: var(--primary); }
+    .callout-warn .callout-label { color: var(--accent); }
+    .callout-orange .callout-label { color: var(--orange); }
+    .callout p { margin-bottom: 0; color: var(--text-secondary); }
+
+    /* PROBLEM / FIX BLOCKS */
+    .fix-block { border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; margin: 2rem 0; }
+    .fix-block-header { display: flex; align-items: center; gap: 14px; padding: 18px 24px; background: rgba(255,255,255,0.02); border-bottom: 1px solid var(--border); }
+    .fix-icon { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .fix-icon-problem { background: rgba(255,79,216,0.12); }
+    .fix-icon-fix { background: rgba(0,240,255,0.12); }
+    .fix-block-header h3 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--text); margin: 0; }
+    .fix-block-body { padding: 20px 24px; }
+    .fix-block-body p { font-size: 0.92rem; color: var(--text-secondary); margin-bottom: 10px; }
+    .fix-block-body p:last-child { margin-bottom: 0; }
+    .fix-block-body strong { color: var(--text); }
+    .fix-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+    .fix-col-problem { border-right: 1px solid var(--border); }
+    .fix-col-problem .fix-block-header { background: rgba(255,79,216,0.04); }
+    .fix-col-fix .fix-block-header { background: rgba(0,240,255,0.04); }
+
+    /* CHECKLIST */
+    .action-checklist { background: var(--bg-card); border: 1px solid rgba(0,240,255,0.15); border-radius: var(--radius-lg); padding: 28px 32px; margin: 2rem 0; }
+    .action-checklist h3 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; color: var(--text); }
+    .action-checklist-list { display: flex; flex-direction: column; gap: 10px; list-style: none; padding: 0; }
+    .action-checklist-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 0.92rem; color: var(--text-secondary); }
+    .check-icon { flex-shrink: 0; width: 20px; height: 20px; border-radius: 50%; background: var(--primary-dim); border: 1px solid rgba(0,240,255,0.3); display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+    .check-icon svg { color: var(--primary); }
+
+    /* IMPACT TABLE */
+    .impact-table { width: 100%; border-collapse: collapse; margin: 2rem 0; font-size: 0.9rem; }
+    .impact-table th { font-family: var(--font-display); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); padding: 10px 16px; border-bottom: 1px solid var(--border-light); text-align: left; }
+    .impact-table td { padding: 13px 16px; border-bottom: 1px solid var(--border); color: var(--text-secondary); vertical-align: top; }
+    .impact-table tr:hover td { background: rgba(255,255,255,0.02); }
+    .badge-high { color: var(--accent); font-weight: 600; }
+    .badge-med { color: var(--orange); font-weight: 600; }
+    .badge-low { color: #34D399; font-weight: 600; }
+
+    /* INLINK BANNER */
+    .inlink-banner { display: flex; align-items: center; gap: 20px; background: linear-gradient(135deg, rgba(255,140,66,0.06), rgba(255,79,216,0.04)); border: 1px solid rgba(255,140,66,0.2); border-radius: var(--radius-lg); padding: 24px 28px; margin: 2.5rem 0; }
+    .inlink-banner-icon { flex-shrink: 0; width: 48px; height: 48px; background: var(--orange-dim); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--orange); }
+    .inlink-banner-body h4 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+    .inlink-banner-body p { font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 12px; }
+    .inlink-banner-body a { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; background: var(--primary); color: #000; font-size: 0.85rem; font-weight: 700; border-radius: 8px; text-decoration: none; transition: all 0.2s; }
+    .inlink-banner-body a:hover { background: #29f5ff; }
+
+    /* SECTION BADGE / TITLE */
+    .section-badge { display: inline-block; font-family: var(--font-display); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); background: var(--orange-dim); border: 1px solid rgba(255,140,66,0.3); padding: 5px 14px; border-radius: 100px; margin-bottom: 1.25rem; }
+    .section-title { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 700; line-height: 1.15; margin-bottom: 1rem; }
+    .section-description { font-size: 1.05rem; color: var(--text-secondary); max-width: 600px; line-height: 1.7; margin-bottom: 3rem; }
+
+    /* FAQ */
+    .faq-section { padding: 80px 0; background: var(--bg-dark); border-top: 1px solid var(--border); }
+    .faq-inner { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    .faq-list { display: flex; flex-direction: column; gap: 12px; }
+    .faq-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .faq-q { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 24px; font-size: 1rem; font-weight: 500; color: var(--text); text-align: left; transition: color 0.2s; }
+    .faq-q:hover { color: var(--orange); }
+    .faq-chevron { font-size: 1.2rem; transition: transform 0.3s; color: var(--text-muted); flex-shrink: 0; }
+    .faq-q[aria-expanded="true"] .faq-chevron { transform: rotate(180deg); color: var(--orange); }
+    .faq-a { display: none; padding: 16px 24px 20px; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; border-top: 1px solid var(--border); }
+    .faq-a.is-open { display: block; }
+
+    /* RELATED */
+    .related-section { padding: 80px 0; border-top: 1px solid var(--border); }
+    .related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 3rem; }
+    .related-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; text-decoration: none; transition: border-color 0.2s, transform 0.2s; display: block; }
+    .related-card:hover { border-color: rgba(255,140,66,0.3); transform: translateY(-3px); }
+    .related-card-cat { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; }
+    .related-card h3 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: 8px; line-height: 1.4; }
+    .related-card p { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; }
+
+    /* CTA */
+    .cta-section { padding: 80px 0; }
+    .cta-card { position: relative; background: var(--bg-card); border: 1px solid rgba(255,140,66,0.15); border-radius: 28px; padding: 72px 40px; text-align: center; overflow: hidden; }
+    .cta-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 600px; height: 300px; background: radial-gradient(ellipse, rgba(255,140,66,0.07) 0%, transparent 70%); pointer-events: none; }
+    .cta-badge { display: inline-block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 1.5rem; }
+    .cta-title { font-family: var(--font-display); font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; margin-bottom: 1rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+    .cta-description { font-size: 1.05rem; color: var(--text-secondary); margin-bottom: 2.5rem; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .cta-actions { display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; }
+    .cta-large-button { display: inline-flex; align-items: center; gap: 10px; padding: 16px 36px; background: var(--primary); color: #000; font-family: var(--font-display); font-size: 1rem; font-weight: 800; border-radius: 12px; text-decoration: none; transition: all 0.2s; }
+    .cta-large-button:hover { background: #29f5ff; transform: translateY(-2px); box-shadow: 0 10px 40px rgba(0,240,255,0.35); }
+    .cta-secondary-link { font-size: 0.9rem; font-weight: 600; color: var(--text-secondary); text-decoration: none; border-bottom: 1px solid var(--border-light); padding-bottom: 2px; transition: color 0.2s; }
+    .cta-secondary-link:hover { color: var(--text); }
+
+    /* FOOTER */
+    .site-footer { background: var(--bg-dark); border-top: 1px solid var(--border); padding: 48px 0 24px; }
+    .footer-bottom-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-copy, .footer-legal { font-size: 0.8rem; color: var(--text-muted); }
+    .footer-legal { display: flex; align-items: center; gap: 10px; }
+    .footer-legal-link { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .footer-legal-link:hover { color: var(--text-secondary); }
+
+    /* PROGRESS */
+    .reading-progress { position: fixed; top: var(--header-h); left: 0; right: 0; height: 2px; z-index: 999; }
+    .reading-progress-bar { height: 100%; background: linear-gradient(90deg, var(--orange), var(--accent)); width: 0%; transition: width 0.1s; }
+
+    @media (max-width: 900px) { .blog-layout { grid-template-columns: 1fr; gap: 40px; } .blog-sidebar { position: static; } .related-grid { grid-template-columns: 1fr; } .header-nav { display: none; } }
+    @media (max-width: 700px) { .stat-grid { grid-template-columns: 1fr 1fr; } .fix-row { grid-template-columns: 1fr; } .fix-col-problem { border-right: none; border-bottom: 1px solid var(--border); } }
+    @media (max-width: 640px) { .container { padding: 0 16px; } .blog-layout { padding: 0 16px 60px; } .blog-hero-inner { padding: 0 16px; } .cta-card { padding: 48px 24px; } .inlink-banner { flex-direction: column; gap: 16px; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } html { scroll-behavior: auto; } }
+    :focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+
+  <div class="reading-progress" aria-hidden="true">
+    <div class="reading-progress-bar" id="progressBar"></div>
+  </div>
+
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a href="/" class="header-logo" aria-label="Mobile Viewer Home">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true" style="color:var(--primary)">
+          <rect x="7" y="2" width="14" height="22" rx="3" stroke="currentColor" stroke-width="2"/>
+          <circle cx="14" cy="20" r="1.5" fill="currentColor"/>
+        </svg>
+        <span class="logo-text">Mobile<span class="logo-accent">Viewer</span></span>
+      </a>
+      <nav class="header-nav" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/#tools" class="nav-link">Tools</a></li>
+          <li><a href="/blog/" class="nav-link" aria-current="page">Blog</a></li>
+        </ul>
+      </nav>
+      <a href="/" class="header-cta-btn">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="4" y="1" width="8" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="12" r="1" fill="currentColor"/></svg>
+        Test Your Site Free
+      </a>
+    </div>
+  </header>
+
+  <section class="blog-hero" aria-label="Article header">
+    <div class="blog-hero-inner">
+      <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a><span aria-hidden="true">›</span>
+        <a href="/blog/">Blog</a><span aria-hidden="true">›</span>
+        <span>Mobile UX</span>
+      </nav>
+      <span class="blog-category">Mobile Strategy</span>
+      <h1 class="blog-hero-title">Why <span class="gradient-text">63% of Your Traffic</span> Is Mobile (and How to Fix Bad Experiences)</h1>
+      <p class="blog-hero-desc">Mobile is no longer a "nice to have" — it's the primary way people experience your site. Yet most websites still deliver desktop-first experiences on devices that deserve better. Here's the data, the damage, and the fixes.</p>
+      <div class="blog-meta">
+        <div class="blog-meta-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v3.5l2 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          13 min read
+        </div>
+        <div class="blog-meta-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M5 1v3M11 1v3M2 7h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          April 3, 2026
+        </div>
+        <div class="blog-meta-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="5" r="2.5" stroke="currentColor" stroke-width="1.5"/><path d="M3 13c0-2.76 2.24-5 5-5s5 2.24 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Mobile UX, Strategy
+        </div>
+      </div>
+      <div class="blog-divider" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <div class="blog-layout">
+    <article class="blog-content" aria-label="Article content">
+
+      <p>You probably already know that mobile traffic is big. But do you know how big it is on <em>your</em> site? Pull up Google Analytics right now and check your device breakdown for the last 30 days. If you're seeing less than 50% mobile, you're either in a niche B2B product or your mobile experience is so bad that people leave before the data counts.</p>
+      <p>Globally, 63% of web traffic comes from mobile devices. In e-commerce, it's closer to 72%. In food, travel, and lifestyle content, it often exceeds 80%. And yet the median mobile page speed score on a 4G connection still sits below 50 out of 100. There is a staggering gap between where your users are and how well you're serving them.</p>
+      <p>This article breaks down why mobile traffic is dominant, quantifies exactly what bad mobile experiences cost you, and gives you a concrete action plan to fix the most impactful problems first.</p>
+
+      <h2 id="the-data">The Data: Where Mobile Traffic Actually Stands</h2>
+      <p>Let's anchor this in real numbers before diving into fixes. These statistics reflect aggregated data from multiple global analytics sources as of early 2026:</p>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-number">63%</div>
+          <div class="stat-label">of all global web traffic comes from mobile devices</div>
+          <div class="stat-source">StatCounter Global Stats, Q1 2026</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">53%</div>
+          <div class="stat-label">of mobile visitors abandon pages that take over 3 seconds to load</div>
+          <div class="stat-source">Google / SOASTA Research</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">74%</div>
+          <div class="stat-label">of users say they'll return to a mobile-friendly site</div>
+          <div class="stat-source">Google Think With Google</div>
+        </div>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-number">61%</div>
+          <div class="stat-label">of users won't return after a bad mobile experience</div>
+          <div class="stat-source">Google Mobile Playbook</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">67%</div>
+          <div class="stat-label">more likely to buy if the site is mobile-friendly</div>
+          <div class="stat-source">Google Consumer Insights</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">1s</div>
+          <div class="stat-label">delay in page response can reduce conversions by 7%</div>
+          <div class="stat-source">Aberdeen Group Study</div>
+        </div>
+      </div>
+
+      <div class="callout callout-orange">
+        <div class="callout-label">💡 Check Your Own Numbers First</div>
+        <p>Before reading further, go to Google Analytics → Reports → Tech → Devices. Compare your mobile vs. desktop bounce rate, average session duration, and conversion rate. The gap between those numbers is the size of your mobile UX problem.</p>
+      </div>
+
+      <h2 id="why-gap-exists">Why the Mobile Experience Gap Still Exists</h2>
+      <p>If mobile traffic is this dominant and the stakes are this high, why do so many sites still deliver poor mobile experiences? The answer isn't ignorance — most developers and designers know mobile matters. It's a combination of three structural problems:</p>
+
+      <h3 id="desktop-first-development">Problem 1: Desktop-First Development Habits</h3>
+      <p>Most developers work on large monitors with fast Wi-Fi. They design and build on desktop, then try to "make it work" on mobile as a final step. This produces sites that are philosophically desktop experiences shrunk down, rather than mobile experiences scaled up. The layout, information density, navigation structure, and interaction patterns all reflect desktop thinking.</p>
+      <p><strong>The fix:</strong> Develop mobile-first. Write your base CSS styles for the smallest screen first and use <code>min-width</code> media queries to progressively enhance for larger screens. Open your browser DevTools in mobile mode before you open it in desktop mode. Make mobile feel effortless, then add desktop features on top.</p>
+
+      <h3 id="simulation-vs-reality">Problem 2: Testing in Simulation, Not Reality</h3>
+      <p>Chrome DevTools device emulation is an indispensable development tool. But it simulates <em>viewport dimensions</em>, not the full mobile experience. It doesn't throttle CPU to mobile-chip speeds, doesn't replicate font rendering on OLED displays, doesn't simulate the keyboard appearing and shrinking the viewport, and doesn't show you what your page looks like at the exact pixel density of a Galaxy S23 or iPhone 15.</p>
+
+      <div class="inlink-banner">
+        <div class="inlink-banner-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="7" y="2" width="10" height="18" rx="2.5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="17" r="1" fill="currentColor"/></svg>
+        </div>
+        <div class="inlink-banner-body">
+          <h4>See Your Site at Real Device Viewports</h4>
+          <p>Mobile Viewer renders your URL at the exact CSS viewport dimensions of iPhone 15, Galaxy S23, and 20+ more devices — free, instantly, no download.</p>
+          <a href="/">Open Mobile Viewer →</a>
+        </div>
+      </div>
+
+      <h3 id="mobile-as-afterthought">Problem 3: Content and UX Designed for Mouse, Not Finger</h3>
+      <p>Navigation menus that require precise hovering. Dropdown selects on forms. Tiny social share icons grouped in clusters. Date pickers that open a 300px wide calendar. These patterns work fine with a mouse pointer. On a thumb navigating a 6-inch glass screen at arm's length, they become exercises in frustration. Mobile UX requires rethinking interactions, not just resizing them.</p>
+
+      <h2 id="seven-bad-experiences">The 7 Most Damaging Mobile Experience Failures</h2>
+      <p>Here are the specific UX failures that show up most consistently in analytics as drivers of mobile bounce rate, cart abandonment, and low conversion:</p>
+
+      <!-- Fix blocks -->
+      <div class="fix-block">
+        <div class="fix-row">
+          <div class="fix-col-problem">
+            <div class="fix-block-header">
+              <div class="fix-icon fix-icon-problem">❌</div>
+              <h3>Problem: Slow Load Time</h3>
+            </div>
+            <div class="fix-block-body">
+              <p>Over 3 seconds to interactive means over 53% of visitors leave before seeing your content. On mobile connections with higher latency, every unoptimized asset adds up fast.</p>
+            </div>
+          </div>
+          <div class="fix-col-fix">
+            <div class="fix-block-header">
+              <div class="fix-icon fix-icon-fix">✅</div>
+              <h3>Fix: Prioritize above-fold speed</h3>
+            </div>
+            <div class="fix-block-body">
+              <p>Preload your LCP image. Serve WebP/AVIF. Defer non-critical JavaScript. Use a CDN. Target under 2.5s LCP on a simulated 4G connection in PageSpeed Insights.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fix-block">
+        <div class="fix-row">
+          <div class="fix-col-problem">
+            <div class="fix-block-header">
+              <div class="fix-icon fix-icon-problem">❌</div>
+              <h3>Problem: Microscopic Tap Targets</h3>
+            </div>
+            <div class="fix-block-body">
+              <p>Navigation links, "X" close buttons, and social share icons smaller than 44×44px force users to zoom and re-tap. Each failed tap is a frustration signal.</p>
+            </div>
+          </div>
+          <div class="fix-col-fix">
+            <div class="fix-block-header">
+              <div class="fix-icon fix-icon-fix">✅</div>
+              <h3>Fix: 44px minimum on all interactive elements</h3>
+            </div>
+            <div class="fix-block-body">
+              <p>Set <code>min-height: 44px; min-width: 44px</code> on every button, link, and icon. Use padding rather than margin to expand hit areas without changing visual size.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fix-block">
+        <div class="fix-row">
+          <div class="fix-col-problem">
+            <div class="fix-block-header">
+              <div class="fix-icon fix-icon-problem">❌</div>
+              <h3>Problem: Text That Requires Zooming</h3>
+            </div>
+            <div class="fix-block-body">
+              <p>Body text under 16px and line heights under 1.5 cause users to pinch-zoom. Once zoomed in, horizontal scrolling becomes inevitable and the experience breaks entirely.</p>
+            </div>
+          </div>
+          <div class="fix-col-fix">
+            <div class="fix-block-header">
+              <div class="fix-icon fix-icon-fix">✅</div>
+              <h3>Fix: 16px body minimum, 1.6 line-height</h3>
+            </div>
+            <div class="fix-block-body">
+              <p>Set base font-size to 16px, line-height to 1.6 for paragraphs. Increase heading contrast. Ensure paragraph max-width of 68–72ch to avoid overly long reading lines on tablets.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fix-block">
+        <div class="fix-row">
+          <div class="fix-col-problem">
+            <div class="fix-block-header">
+              <div class="fix-icon fix-icon-problem">❌</div>
+              <h3>Problem: Full-Screen Popups</h3>
+            </div>
+            <div class="fix-block-body">
+              <p>Newsletter overlays and cookie consent banners that cover the entire mobile screen force users to find and tap a tiny "X" before accessing content. Many abandon instead.</p>
+            </div>
+          </div>
+          <div class="fix-col-fix">
+            <div class="fix-block-header">
+              <div class="fix-icon fix-icon-fix">✅</div>
+              <h3>Fix: Bottom sheet banners under 30% height</h3>
+            </div>
+            <div class="fix-block-body">
+              <p>Replace full-screen overlays with bottom-anchored banners occupying less than 30% of screen height. Ensure close buttons are at least 44×44px and placed where thumbs naturally rest.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fix-block">
+        <div class="fix-row">
+          <div class="fix-col-problem">
+            <div class="fix-block-header">
+              <div class="fix-icon fix-icon-problem">❌</div>
+              <h3>Problem: Forms That Fight the Keyboard</h3>
+            </div>
+            <div class="fix-block-body">
+              <p>Forms without correct <code>type</code>, <code>inputmode</code>, and <code>autocomplete</code> attributes force users to switch keyboards manually. Submit buttons hidden behind the keyboard on focus.</p>
+            </div>
+          </div>
+          <div class="fix-col-fix">
+            <div class="fix-block-header">
+              <div class="fix-icon fix-icon-fix">✅</div>
+              <h3>Fix: Proper input attributes + scroll-into-view</h3>
+            </div>
+            <div class="fix-block-body">
+              <p>Use <code>type="email"</code>, <code>type="tel"</code>, <code>inputmode="numeric"</code> to trigger the right keyboard. Add <code>autocomplete</code> attributes. Ensure focused inputs scroll into the visible viewport above the keyboard.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fix-block">
+        <div class="fix-row">
+          <div class="fix-col-problem">
+            <div class="fix-block-header">
+              <div class="fix-icon fix-icon-problem">❌</div>
+              <h3>Problem: No Visible Mobile Navigation</h3>
+            </div>
+            <div class="fix-block-body">
+              <p>Hidden or confusing navigation causes users to get stuck after the landing page. If the path to purchase or conversion is unclear on mobile, users leave rather than hunt for it.</p>
+            </div>
+          </div>
+          <div class="fix-col-fix">
+            <div class="fix-block-header">
+              <div class="fix-icon fix-icon-fix">✅</div>
+              <h3>Fix: Persistent, prominent mobile nav</h3>
+            </div>
+            <div class="fix-block-body">
+              <p>Use a sticky header with a clearly labeled hamburger or tab bar. Show the 3–5 most important destinations. Never hide your primary CTA behind multiple menu levels on mobile.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fix-block">
+        <div class="fix-row">
+          <div class="fix-col-problem">
+            <div class="fix-block-header">
+              <div class="fix-icon fix-icon-problem">❌</div>
+              <h3>Problem: Images Not Sized for Mobile</h3>
+            </div>
+            <div class="fix-block-body">
+              <p>Serving 1400px desktop hero images to a 390px phone viewport wastes 8–12× the bandwidth needed. On mobile connections this adds 2–4 seconds of unnecessary load time.</p>
+            </div>
+          </div>
+          <div class="fix-col-fix">
+            <div class="fix-block-header">
+              <div class="fix-icon fix-icon-fix">✅</div>
+              <h3>Fix: srcset, WebP, and lazy loading</h3>
+            </div>
+            <div class="fix-block-body">
+              <p>Use <code>srcset</code> and <code>sizes</code> to serve appropriately scaled images. Convert to WebP or AVIF. Add <code>loading="lazy"</code> to below-fold images. Use a CDN with auto image optimization.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2 id="measuring-impact">Measuring the Business Impact of Your Mobile UX</h2>
+      <p>These problems aren't just user experience nuisances — they have direct, measurable revenue impact. Here's a framework for calculating what poor mobile UX is costing you:</p>
+
+      <table class="impact-table">
+        <thead>
+          <tr>
+            <th>Mobile UX Issue</th>
+            <th>Primary Metric Affected</th>
+            <th>Typical Impact</th>
+            <th>Revenue Priority</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Load time &gt; 3s</strong></td>
+            <td>Bounce rate</td>
+            <td>+53% abandonment vs &lt;1s</td>
+            <td><span class="badge-high">Critical</span></td>
+          </tr>
+          <tr>
+            <td><strong>Intrusive popups</strong></td>
+            <td>Engagement rate, SEO penalty</td>
+            <td>Up to 30% session drop</td>
+            <td><span class="badge-high">Critical</span></td>
+          </tr>
+          <tr>
+            <td><strong>Poor form UX</strong></td>
+            <td>Checkout conversion rate</td>
+            <td>20–40% form abandonment</td>
+            <td><span class="badge-high">Critical</span></td>
+          </tr>
+          <tr>
+            <td><strong>Tiny tap targets</strong></td>
+            <td>Click-through rate, rage taps</td>
+            <td>15–25% navigation abandonment</td>
+            <td><span class="badge-med">High</span></td>
+          </tr>
+          <tr>
+            <td><strong>Unreadable text</strong></td>
+            <td>Time on page, return visits</td>
+            <td>40% higher bounce on content pages</td>
+            <td><span class="badge-med">High</span></td>
+          </tr>
+          <tr>
+            <td><strong>Oversized images</strong></td>
+            <td>LCP, page speed score</td>
+            <td>2–4s added load per page</td>
+            <td><span class="badge-med">High</span></td>
+          </tr>
+          <tr>
+            <td><strong>Poor mobile nav</strong></td>
+            <td>Pages per session, conversion path</td>
+            <td>30% lower session depth</td>
+            <td><span class="badge-low">Medium</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 id="action-plan">Your 30-Day Mobile UX Fix Plan</h2>
+      <p>The issues above are real, but tackling all of them at once is paralyzing. Here's a prioritized 30-day plan that will produce measurable results quickly:</p>
+
+      <h3 id="week-one">Week 1 — Diagnose and Baseline</h3>
+      <p>Before fixing anything, measure everything. Establishing baselines lets you prove the impact of your improvements:</p>
+      <ul>
+        <li>Record your current mobile bounce rate, session duration, and conversion rate in Google Analytics</li>
+        <li>Run PageSpeed Insights on your 3 highest-traffic pages, mobile mode, and record LCP, INP, and CLS scores</li>
+        <li>Open <a href="/">Mobile Viewer</a> and preview your site on iPhone 15 (390px) and Galaxy S23 (360px) — screenshot any visual breaks you find</li>
+        <li>Check Google Search Console → Mobile Usability for any flagged issues</li>
+      </ul>
+
+      <h3 id="week-two">Week 2 — Fix the Highest-Impact Issues</h3>
+      <ul>
+        <li>Audit and fix tap target sizes on your primary navigation and CTA buttons (44×44px minimum)</li>
+        <li>Convert hero images to WebP and add <code>srcset</code> for mobile-sized variants</li>
+        <li>Add <code>loading="lazy"</code> to all below-fold images</li>
+        <li>Audit form inputs for correct <code>type</code> and <code>autocomplete</code> attributes</li>
+        <li>Remove or resize any popups that cover more than 30% of the mobile screen on entry</li>
+      </ul>
+
+      <h3 id="week-three">Week 3 — Performance Optimizations</h3>
+      <ul>
+        <li>Defer non-critical JavaScript using <code>async</code> or <code>defer</code> attributes</li>
+        <li>Enable text compression (gzip or Brotli) on your server or CDN</li>
+        <li>Preload your LCP image with <code>&lt;link rel="preload"&gt;</code></li>
+        <li>Audit and remove render-blocking CSS from the critical path</li>
+        <li>Set up a CDN if you don't have one (Cloudflare free tier is a quick win)</li>
+      </ul>
+
+      <h3 id="week-four">Week 4 — Measure, Iterate, and Document</h3>
+      <ul>
+        <li>Re-run PageSpeed Insights and record new LCP, INP, CLS scores</li>
+        <li>Compare mobile bounce rate and conversion rate against your Week 1 baseline</li>
+        <li>Use <a href="/blog/test-responsive-design">the layered responsive testing workflow</a> to validate fixes across all major device viewports</li>
+        <li>Document what you changed and schedule a monthly re-audit to catch regressions</li>
+      </ul>
+
+      <div class="action-checklist">
+        <h3>📋 Quick-Win Mobile UX Checklist</h3>
+        <ul class="action-checklist-list">
+          <li>
+            <span class="check-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            All tap targets are at least 44×44 CSS pixels
+          </li>
+          <li>
+            <span class="check-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            Body text is at least 16px with 1.6 line-height
+          </li>
+          <li>
+            <span class="check-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            LCP image is preloaded and served as WebP with srcset
+          </li>
+          <li>
+            <span class="check-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            No full-screen popups appear within 3 seconds of mobile page load
+          </li>
+          <li>
+            <span class="check-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            All form inputs use appropriate type and autocomplete attributes
+          </li>
+          <li>
+            <span class="check-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            Viewport meta tag is present and correct (no user-scalable=no)
+          </li>
+          <li>
+            <span class="check-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            Site passes Google Mobile Usability report with zero errors
+          </li>
+          <li>
+            <span class="check-icon"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5l2.5 2.5L8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            Mobile PageSpeed Insights score is above 75 on main landing pages
+          </li>
+        </ul>
+      </div>
+
+      <h2 id="industry-benchmarks">Industry Benchmarks: How Does Your Site Stack Up?</h2>
+      <p>Context matters. A mobile conversion rate of 1.5% sounds terrible until you realize the industry average for mobile e-commerce is 1.8–2.2%. Here's a rough guide by industry:</p>
+      <ul>
+        <li><strong>E-commerce:</strong> Good mobile conversion rate is 2–4%. Bounce rate under 45% on mobile is solid. LCP under 2s.</li>
+        <li><strong>SaaS / B2B:</strong> Mobile traffic lower (40–50%) but still significant. Conversion rates are lower; focus on engagement metrics like scroll depth and CTA click-through.</li>
+        <li><strong>News / Media / Blog:</strong> Mobile traffic often exceeds 75%. Primary metric is time on page and pages per session. Load speed is everything.</li>
+        <li><strong>Local / Service businesses:</strong> Mobile intent is often immediate (directions, phone calls). Your top priority is tap-to-call buttons, maps integration, and sub-2-second load times.</li>
+      </ul>
+
+      <div class="callout callout-tip">
+        <div class="callout-label">💡 The Mobile Gap Formula</div>
+        <p>A simple way to quantify your opportunity: <strong>(Desktop conversion rate − Mobile conversion rate) × Monthly mobile sessions × Average order value</strong>. For most sites, this number is in the thousands of dollars of monthly revenue left on the table.</p>
+      </div>
+
+    </article>
+
+    <aside class="blog-sidebar" aria-label="Article navigation and tools">
+      <nav class="toc-card" aria-label="Table of contents">
+        <div class="toc-title">Table of Contents</div>
+        <ul class="toc-list">
+          <li><a href="#the-data">The Data: Mobile Traffic Stats</a></li>
+          <li><a href="#why-gap-exists">Why the Mobile Gap Exists</a></li>
+          <li class="toc-sub"><a href="#desktop-first-development">Desktop-First Development</a></li>
+          <li class="toc-sub"><a href="#simulation-vs-reality">Simulation vs. Reality</a></li>
+          <li class="toc-sub"><a href="#mobile-as-afterthought">Mouse vs. Finger UX</a></li>
+          <li><a href="#seven-bad-experiences">7 Most Damaging Failures</a></li>
+          <li><a href="#measuring-impact">Measuring Business Impact</a></li>
+          <li><a href="#action-plan">30-Day Fix Plan</a></li>
+          <li class="toc-sub"><a href="#week-one">Week 1 — Diagnose</a></li>
+          <li class="toc-sub"><a href="#week-two">Week 2 — Quick Fixes</a></li>
+          <li class="toc-sub"><a href="#week-three">Week 3 — Performance</a></li>
+          <li class="toc-sub"><a href="#week-four">Week 4 — Measure</a></li>
+          <li><a href="#industry-benchmarks">Industry Benchmarks</a></li>
+        </ul>
+      </nav>
+      <div class="sidebar-tool-card">
+        <h4>📱 Check Your Mobile View</h4>
+        <p>See exactly what 63% of your visitors see. Preview your site at real device viewports in seconds.</p>
+        <a href="/" class="sidebar-btn">Open Mobile Viewer →</a>
+      </div>
+      <div class="sidebar-tool-card" style="margin-top:16px">
+        <h4>⚡ Page Speed Test</h4>
+        <p>Find out what's slowing down your mobile experience with a free speed analysis.</p>
+        <a href="/?tool=page-speed" class="sidebar-btn">Run Speed Test →</a>
+        <a href="/blog/mobile-seo-checklist-2026" class="sidebar-btn-outline">📋 Mobile SEO Checklist →</a>
+      </div>
+    </aside>
+  </div>
+
+  <section class="related-section" aria-label="Related articles">
+    <div class="container">
+      <span class="section-badge">Keep Reading</span>
+      <h2 class="section-title">Related Articles</h2>
+      <div class="related-grid">
+        <a href="/blog/mobile-seo-checklist-2026" class="related-card">
+          <div class="related-card-cat">SEO</div>
+          <h3>Mobile SEO Checklist 2026: 15 Things Most Sites Still Get Wrong</h3>
+          <p>The complete audit list for mobile-first indexing, Core Web Vitals, tap targets, and more.</p>
+        </a>
+        <a href="/blog/best-free-mobile-testing-tools-2026" class="related-card">
+          <div class="related-card-cat">Tools</div>
+          <h3>Best Free Tools for Mobile Testing in 2026</h3>
+          <p>Every free tool you need to audit, test, and optimize your mobile web experience — compared and ranked.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq-section" aria-labelledby="faq-heading">
+    <div class="faq-inner">
+      <span class="section-badge">FAQ</span>
+      <h2 class="section-title" id="faq-heading">Mobile Traffic FAQ</h2>
+      <p class="section-description">Common questions about mobile web traffic and how to improve mobile experiences</p>
+      <div class="faq-list" role="list">
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+            What percentage of web traffic is mobile in 2026?
+            <span class="faq-chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>Globally, mobile devices account for approximately 63–65% of all web traffic in 2026, based on aggregated analytics data from StatCounter and Google. In certain industries like e-commerce, news, and social media, mobile share can exceed 75–80%. Check your own Google Analytics for your site's specific breakdown under Reports → Tech → Devices.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+            Why do mobile users bounce more than desktop users?
+            <span class="faq-chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>Mobile users bounce more primarily because of slow load times, poor tap target sizing, unreadable text requiring zooming, horizontal scroll issues, and intrusive popups difficult to dismiss on small screens. Pages loading in over 3 seconds see bounce rates exceed 53% on mobile — compared to around 32% on desktop for the same page.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+            How do I find out how bad my mobile experience is?
+            <span class="faq-chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>Start with three free tools: Google Analytics (compare mobile vs. desktop bounce rates, session duration, and conversion rates), Google Search Console's Mobile Usability report (flags specific technical issues like tap target size and font readability), and <a href="/">Mobile Viewer</a> (visually previews your site at real device viewports to instantly spot layout problems).</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+            Does improving mobile UX actually increase revenue?
+            <span class="faq-chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>Yes, consistently. Google studies show that mobile-friendly sites see 67% higher purchase likelihood. A 1-second improvement in mobile load time can increase conversion rates by 3–5% for e-commerce sites. The business case is strong — particularly because mobile traffic is typically your highest-volume channel, so even small improvements compound quickly across many sessions.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+            Should I build a separate mobile site or use responsive design?
+            <span class="faq-chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>Google explicitly recommends responsive design (a single URL with CSS adapting to viewport size) over separate m.dot mobile sites. Responsive design is simpler to maintain, avoids duplicate content SEO issues, and ensures a single consistent codebase. The only remaining valid case for a separate mobile experience is a significantly different feature set — like a PWA — which can be served as a standalone app rather than an m.dot subdomain.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section" aria-label="Call to action">
+    <div class="container">
+      <div class="cta-card">
+        <div class="cta-glow" aria-hidden="true"></div>
+        <div class="cta-badge">Free · No Sign-up · Instant</div>
+        <h2 class="cta-title">See exactly what your mobile visitors experience</h2>
+        <p class="cta-description">Mobile Viewer renders your site at real device viewports so you can spot and fix bad experiences before they cost you conversions</p>
+        <div class="cta-actions">
+          <a href="/" class="cta-large-button">
+            Launch Mobile Viewer
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="/#tools" class="cta-secondary-link">Explore all tools →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-bottom-inner">
+        <p class="footer-copy">© 2026 Mobile Viewer. All rights reserved.</p>
+        <nav class="footer-legal" aria-label="Legal navigation">
+          <a href="/privacy" class="footer-legal-link">Privacy Policy</a>
+          <span aria-hidden="true">·</span>
+          <a href="/terms" class="footer-legal-link">Terms of Use</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleFaq(btn) {
+      const answer = btn.nextElementSibling;
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', !isOpen);
+      answer.classList.toggle('is-open', !isOpen);
+    }
+    const progressBar = document.getElementById('progressBar');
+    window.addEventListener('scroll', () => {
+      const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+      progressBar.style.width = Math.min(pct, 100) + '%';
+    }, { passive: true });
+  </script>
+</body>
+</html>
