@@ -273,34 +273,14 @@
     <div class="reading-progress-bar" id="progressBar"></div>
   </div>
 
-  <header class="site-header" role="banner">
-    <div class="header-inner">
-      <a href="/" class="header-logo" aria-label="Mobile Viewer Home">
-        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true" style="color:var(--primary)">
-          <rect x="7" y="2" width="14" height="22" rx="3" stroke="currentColor" stroke-width="2"/>
-          <circle cx="14" cy="20" r="1.5" fill="currentColor"/>
-        </svg>
-        <span class="logo-text">Mobile<span class="logo-accent">Viewer</span></span>
-      </a>
-      <nav class="header-nav" aria-label="Main navigation">
-        <ul class="nav-list">
-          <li><a href="/" class="nav-link">Home</a></li>
-          <li><a href="/#tools" class="nav-link">Tools</a></li>
-          <li><a href="/blog" class="nav-link" aria-current="page">Blog</a></li>
-        </ul>
-      </nav>
-      <a href="/" class="header-cta-btn">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="4" y="1" width="8" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="8" cy="12" r="1" fill="currentColor"/></svg>
-        Test Your Site Free
-      </a>
-    </div>
-  </header>
+  <!-- Header Component -->
+  <div id="header-placeholder"></div>
 
   <section class="blog-hero" aria-label="Article header">
     <div class="blog-hero-inner">
       <nav class="blog-breadcrumb" aria-label="Breadcrumb">
         <a href="/">Home</a><span aria-hidden="true">›</span>
-        <a href="/blog/">Blog</a><span aria-hidden="true">›</span>
+        <a href="/blog">Blog</a><span aria-hidden="true">›</span>
         <span>Mobile UX</span>
       </nav>
       <span class="blog-category">Mobile Strategy</span>
@@ -845,18 +825,12 @@
     </div>
   </section>
 
-  <footer class="site-footer" role="contentinfo">
-    <div class="container">
-      <div class="footer-bottom-inner">
-        <p class="footer-copy">© 2026 Mobile Viewer. All rights reserved.</p>
-        <nav class="footer-legal" aria-label="Legal navigation">
-          <a href="/privacy" class="footer-legal-link">Privacy Policy</a>
-          <span aria-hidden="true">·</span>
-          <a href="/terms" class="footer-legal-link">Terms of Use</a>
-        </nav>
-      </div>
-    </div>
-  </footer>
+  <!-- Footer Component -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Scripts -->
+  <script src="header.js"></script>
+  <script src="footer.js"></script>
 
   <script>
     function toggleFaq(btn) {
