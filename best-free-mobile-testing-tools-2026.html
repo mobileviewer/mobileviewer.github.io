@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Best Free Tools for Mobile Testing in 2026 — Mobile Viewer Blog</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+  <meta name="description" content="A comprehensive guide to the best free mobile testing tools in 2026 — device simulators, responsive checkers, speed testers, accessibility auditors, and cross-browser tools compared and ranked.">
+  <meta name="keywords" content="best mobile testing tools 2026, free mobile testing tools, responsive design tools, mobile simulator, cross-browser testing free, web testing tools">
+  <meta name="author" content="Mobile Viewer">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://mobileviewer.github.io/blog/best-free-mobile-testing-tools-2026">
+
+  <meta property="og:title" content="Best Free Tools for Mobile Testing in 2026">
+  <meta property="og:description" content="Every free tool you need to test, audit, and optimize your mobile web experience — compared, ranked, and explained.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://mobileviewer.github.io/blog/best-free-mobile-testing-tools-2026">
+  <meta property="og:site_name" content="Mobile Viewer">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Best Free Tools for Mobile Testing in 2026",
+    "description": "A comprehensive guide to every free tool you need for mobile web testing in 2026 — simulators, speed testers, accessibility auditors, and more.",
+    "author": { "@type": "Organization", "name": "Mobile Viewer" },
+    "publisher": { "@type": "Organization", "name": "Mobile Viewer", "url": "https://mobileviewer.github.io/" },
+    "datePublished": "2026-04-03",
+    "dateModified": "2026-04-03"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the best free tool for mobile responsive testing?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Mobile Viewer is the most comprehensive free tool for responsive testing — it includes a device simulator with 20+ presets, a responsive checker, multi-device preview grid, QR code generator, and page speed integration, all without an account. For built-in browser testing, Chrome DevTools Device Mode is the best free option for rapid development iteration." }
+      },
+      {
+        "@type": "Question",
+        "name": "Are there free alternatives to BrowserStack?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. For visual responsive testing, Mobile Viewer is free with no limits. Chrome DevTools, Firefox Responsive Design Mode, and Safari + Xcode Simulator all provide free device emulation. For cross-browser testing beyond emulation, BrowserStack and LambdaTest both offer limited free tiers. For automated visual regression, Percy has a free tier and Playwright is fully free." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I test my website for free on a real mobile device?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The fastest method is to use Mobile Viewer's QR Code Generator — paste your URL, generate a QR code, and scan it with your phone. This opens the live site in your phone's actual browser engine (Safari on iOS, Chrome on Android) with zero setup and no cost." }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    :root {
+      --primary:      #00F0FF;
+      --primary-dim:  rgba(0,240,255,0.15);
+      --secondary:    #7B61FF;
+      --accent:       #FF4FD8;
+      --gold:         #F5C518;
+      --gold-dim:     rgba(245,197,24,0.12);
+      --bg:           #080C12;
+      --bg-dark:      #050810;
+      --bg-card:      #0D1220;
+      --bg-card-2:    #111827;
+      --border:       rgba(255,255,255,0.07);
+      --border-light: rgba(255,255,255,0.12);
+      --text:         #F0F4FF;
+      --text-secondary: rgba(240,244,255,0.6);
+      --text-muted:   rgba(240,244,255,0.35);
+      --radius:       12px;
+      --radius-lg:    20px;
+      --header-h:     70px;
+      --container:    1240px;
+      --font-display: 'Syne', sans-serif;
+      --font-body:    'DM Sans', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 24px); -webkit-text-size-adjust: 100%; }
+    body { font-family: var(--font-body); font-size: 16px; line-height: 1.7; color: var(--text); background: var(--bg); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; } button { font-family: inherit; cursor: pointer; border: none; background: none; } ul { list-style: none; }
+    code { font-family: 'SF Mono','Fira Code',monospace; font-size: 0.85em; background: rgba(0,240,255,0.08); color: var(--primary); padding: 2px 6px; border-radius: 4px; }
+    .container { width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+
+    /* HEADER */
+    .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; height: var(--header-h); background: rgba(8,12,18,0.85); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); border-bottom: 1px solid var(--border); }
+    .header-inner { max-width: var(--container); margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; gap: 2rem; }
+    .header-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+    .logo-text { font-family: var(--font-display); font-size: 1.15rem; font-weight: 800; letter-spacing: -0.02em; color: var(--text); }
+    .logo-accent { color: var(--primary); }
+    .header-nav { margin-left: auto; }
+    .nav-list { display: flex; align-items: center; gap: 4px; list-style: none; }
+    .nav-link { display: flex; align-items: center; padding: 6px 14px; border-radius: 8px; font-size: 0.92rem; font-weight: 500; color: var(--text-secondary); text-decoration: none; transition: color 0.2s, background 0.2s; }
+    .nav-link:hover { color: var(--text); background: rgba(255,255,255,0.06); }
+    .header-cta-btn { display: flex; align-items: center; gap: 8px; padding: 9px 18px; background: var(--primary); color: #000; font-size: 0.875rem; font-weight: 700; border-radius: 8px; text-decoration: none; transition: all 0.2s; flex-shrink: 0; }
+    .header-cta-btn:hover { background: #29f5ff; transform: translateY(-1px); box-shadow: 0 4px 20px rgba(0,240,255,0.3); }
+
+    /* HERO */
+    .blog-hero { padding: calc(var(--header-h) + 80px) 0 80px; position: relative; overflow: hidden; }
+    .blog-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(245,197,24,0.05) 0%, transparent 65%); pointer-events: none; }
+    .blog-hero-inner { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    .blog-breadcrumb { display: flex; align-items: center; gap: 8px; margin-bottom: 2rem; font-size: 0.85rem; color: var(--text-muted); }
+    .blog-breadcrumb a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .blog-breadcrumb a:hover { color: var(--primary); }
+    .blog-category { display: inline-block; font-family: var(--font-display); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); background: var(--gold-dim); border: 1px solid rgba(245,197,24,0.3); padding: 5px 14px; border-radius: 100px; margin-bottom: 1.5rem; }
+    .blog-hero-title { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; }
+    .gradient-text { background: linear-gradient(90deg, var(--gold), var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .blog-hero-desc { font-size: 1.15rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 2rem; max-width: 700px; }
+    .blog-meta { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .blog-meta-item { display: flex; align-items: center; gap: 6px; font-size: 0.875rem; color: var(--text-muted); }
+    .blog-meta-item svg { color: var(--gold); flex-shrink: 0; }
+    .blog-divider { width: 100%; height: 1px; background: var(--border); margin: 3rem 0; }
+
+    /* LAYOUT */
+    .blog-layout { max-width: 1100px; margin: 0 auto; padding: 0 24px 100px; display: grid; grid-template-columns: 1fr 300px; gap: 60px; align-items: start; }
+
+    /* SIDEBAR */
+    .blog-sidebar { position: sticky; top: calc(var(--header-h) + 32px); }
+    .toc-card { background: var(--bg-card); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 28px; }
+    .toc-title { font-family: var(--font-display); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; }
+    .toc-list { display: flex; flex-direction: column; gap: 4px; list-style: none; }
+    .toc-list li a { display: block; padding: 6px 10px; border-radius: 6px; font-size: 0.875rem; color: var(--text-secondary); text-decoration: none; transition: color 0.2s, background 0.2s; border-left: 2px solid transparent; }
+    .toc-list li a:hover { color: var(--gold); background: var(--gold-dim); border-left-color: var(--gold); }
+    .toc-list li.toc-sub a { padding-left: 22px; font-size: 0.825rem; }
+    .sidebar-tool-card { background: var(--bg-card); border: 1px solid rgba(245,197,24,0.2); border-radius: var(--radius-lg); padding: 24px; margin-top: 20px; }
+    .sidebar-tool-card h4 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .sidebar-tool-card p { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 16px; line-height: 1.6; }
+    .sidebar-btn { display: block; text-align: center; padding: 10px 16px; background: var(--primary); color: #000; font-weight: 700; font-size: 0.875rem; border-radius: 8px; text-decoration: none; transition: all 0.2s; }
+    .sidebar-btn:hover { background: #29f5ff; transform: translateY(-1px); }
+    .sidebar-btn-outline { display: block; text-align: center; padding: 10px 16px; border: 1px solid var(--border-light); color: var(--text-secondary); font-size: 0.875rem; border-radius: 8px; text-decoration: none; transition: all 0.2s; margin-top: 8px; }
+    .sidebar-btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ARTICLE */
+    .blog-content h2 { font-family: var(--font-display); font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 700; margin: 3rem 0 1rem; color: var(--text); scroll-margin-top: calc(var(--header-h) + 32px); }
+    .blog-content h3 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; margin: 2rem 0 0.75rem; color: var(--text); scroll-margin-top: calc(var(--header-h) + 32px); }
+    .blog-content p { margin-bottom: 1.25rem; color: var(--text-secondary); font-size: 1.02rem; }
+    .blog-content p strong { color: var(--text); font-weight: 600; }
+    .blog-content ul, .blog-content ol { padding-left: 1.5rem; margin-bottom: 1.5rem; color: var(--text-secondary); font-size: 1.02rem; }
+    .blog-content ul { list-style: disc; } .blog-content ol { list-style: decimal; }
+    .blog-content li { margin-bottom: 0.5rem; }
+    .blog-content a { color: var(--primary); text-decoration: underline; text-underline-offset: 3px; transition: opacity 0.2s; }
+    .blog-content a:hover { opacity: 0.8; }
+
+    /* TOOL REVIEW CARDS */
+    .tool-review { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; margin: 1.5rem 0; transition: border-color 0.2s; }
+    .tool-review:hover { border-color: rgba(245,197,24,0.2); }
+    .tool-review-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 16px; flex-wrap: wrap; }
+    .tool-review-meta { flex: 1; }
+    .tool-review-name { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .tool-review-subtitle { font-size: 0.85rem; color: var(--text-muted); }
+    .tool-badges { display: flex; gap: 6px; flex-wrap: wrap; flex-shrink: 0; }
+    .badge { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; padding: 3px 9px; border-radius: 100px; }
+    .badge-free { background: rgba(52,211,153,0.15); color: #34D399; border: 1px solid rgba(52,211,153,0.25); }
+    .badge-partial { background: rgba(255,149,0,0.12); color: #FF9500; border: 1px solid rgba(255,149,0,0.2); }
+    .badge-paid { background: rgba(255,79,216,0.1); color: var(--accent); border: 1px solid rgba(255,79,216,0.2); }
+    .badge-builtin { background: var(--primary-dim); color: var(--primary); border: 1px solid rgba(0,240,255,0.2); }
+    .tool-review-desc { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 16px; line-height: 1.65; }
+    .tool-pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .pros, .cons { background: rgba(255,255,255,0.02); border-radius: var(--radius); padding: 14px; }
+    .pros-label, .cons-label { font-family: var(--font-display); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
+    .pros-label { color: #34D399; }
+    .cons-label { color: var(--accent); }
+    .pros ul, .cons ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 5px; }
+    .pros li, .cons li { font-size: 0.85rem; color: var(--text-secondary); padding-left: 16px; position: relative; }
+    .pros li::before { content: '✓'; position: absolute; left: 0; color: #34D399; font-size: 0.8rem; }
+    .cons li::before { content: '✗'; position: absolute; left: 0; color: var(--accent); font-size: 0.8rem; }
+    .tool-best-for { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); font-size: 0.85rem; color: var(--text-muted); }
+    .tool-best-for strong { color: var(--text-secondary); }
+    .tool-link { display: inline-flex; align-items: center; gap: 5px; font-size: 0.85rem; font-weight: 600; color: var(--primary); text-decoration: none; margin-top: 10px; border-bottom: 1px solid rgba(0,240,255,0.3); padding-bottom: 1px; transition: opacity 0.2s; }
+    .tool-link:hover { opacity: 0.8; }
+
+    /* RANK BADGE */
+    .tool-rank { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; font-family: var(--font-display); font-size: 0.8rem; font-weight: 800; flex-shrink: 0; }
+    .rank-1 { background: var(--gold-dim); color: var(--gold); border: 1px solid rgba(245,197,24,0.35); }
+    .rank-2 { background: rgba(192,192,192,0.12); color: #C0C0C0; border: 1px solid rgba(192,192,192,0.25); }
+    .rank-3 { background: rgba(205,127,50,0.12); color: #CD7F32; border: 1px solid rgba(205,127,50,0.2); }
+    .rank-n { background: rgba(255,255,255,0.05); color: var(--text-muted); border: 1px solid var(--border); }
+
+    /* CATEGORY HEADER */
+    .category-header { display: flex; align-items: center; gap: 14px; margin: 3rem 0 0.5rem; }
+    .category-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--gold-dim); border: 1px solid rgba(245,197,24,0.25); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+    .category-header h2 { font-family: var(--font-display); font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 700; color: var(--text); margin: 0; scroll-margin-top: calc(var(--header-h) + 32px); }
+
+    /* COMPARISON TABLE */
+    .summary-table { width: 100%; border-collapse: collapse; margin: 2rem 0; font-size: 0.875rem; }
+    .summary-table th { font-family: var(--font-display); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); padding: 10px 14px; border-bottom: 1px solid var(--border-light); text-align: left; }
+    .summary-table td { padding: 12px 14px; border-bottom: 1px solid var(--border); color: var(--text-secondary); vertical-align: middle; }
+    .summary-table td:first-child { font-weight: 600; color: var(--text); }
+    .summary-table tr:hover td { background: rgba(255,255,255,0.02); }
+    .badge-yes { color: #34D399; font-weight: 600; }
+    .badge-partial { color: #FF9500; font-weight: 600; }
+    .badge-no { color: var(--accent); }
+
+    /* CALLOUTS */
+    .callout { background: var(--bg-card); border: 1px solid var(--border-light); border-left: 3px solid var(--primary); border-radius: var(--radius); padding: 20px 24px; margin: 2rem 0; }
+    .callout-tip { border-left-color: var(--primary); }
+    .callout-warn { border-left-color: var(--accent); background: rgba(255,79,216,0.04); border-color: rgba(255,79,216,0.2); }
+    .callout-label { font-family: var(--font-display); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+    .callout-tip .callout-label { color: var(--primary); }
+    .callout-warn .callout-label { color: var(--accent); }
+    .callout p { margin-bottom: 0; color: var(--text-secondary); }
+
+    /* INLINK BANNER */
+    .inlink-banner { display: flex; align-items: center; gap: 20px; background: linear-gradient(135deg, rgba(245,197,24,0.05), rgba(0,240,255,0.04)); border: 1px solid rgba(245,197,24,0.18); border-radius: var(--radius-lg); padding: 24px 28px; margin: 2.5rem 0; }
+    .inlink-banner-icon { flex-shrink: 0; width: 48px; height: 48px; background: var(--gold-dim); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 1.3rem; }
+    .inlink-banner-body h4 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+    .inlink-banner-body p { font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 12px; }
+    .inlink-banner-body a { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; background: var(--primary); color: #000; font-size: 0.85rem; font-weight: 700; border-radius: 8px; text-decoration: none; transition: all 0.2s; }
+    .inlink-banner-body a:hover { background: #29f5ff; }
+
+    /* SECTION BADGE / TITLE */
+    .section-badge { display: inline-block; font-family: var(--font-display); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); background: var(--gold-dim); border: 1px solid rgba(245,197,24,0.3); padding: 5px 14px; border-radius: 100px; margin-bottom: 1.25rem; }
+    .section-title { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 700; line-height: 1.15; margin-bottom: 1rem; }
+    .section-description { font-size: 1.05rem; color: var(--text-secondary); max-width: 600px; line-height: 1.7; margin-bottom: 3rem; }
+
+    /* FAQ */
+    .faq-section { padding: 80px 0; background: var(--bg-dark); border-top: 1px solid var(--border); }
+    .faq-inner { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    .faq-list { display: flex; flex-direction: column; gap: 12px; }
+    .faq-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .faq-q { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 24px; font-size: 1rem; font-weight: 500; color: var(--text); text-align: left; transition: color 0.2s; }
+    .faq-q:hover { color: var(--gold); }
+    .faq-chevron { font-size: 1.2rem; transition: transform 0.3s; color: var(--text-muted); flex-shrink: 0; }
+    .faq-q[aria-expanded="true"] .faq-chevron { transform: rotate(180deg); color: var(--gold); }
+    .faq-a { display: none; padding: 16px 24px 20px; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; border-top: 1px solid var(--border); }
+    .faq-a.is-open { display: block; }
+
+    /* RELATED */
+    .related-section { padding: 80px 0; border-top: 1px solid var(--border); }
+    .related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 3rem; }
+    .related-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; text-decoration: none; transition: border-color 0.2s, transform 0.2s; display: block; }
+    .related-card:hover { border-color: rgba(245,197,24,0.25); transform: translateY(-3px); }
+    .related-card-cat { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .related-card h3 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: 8px; line-height: 1.4; }
+    .related-card p { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; }
+
+    /* CTA */
+    .cta-section { padding: 80px 0; }
+    .cta-card { position: relative; background: var(--bg-card); border: 1px solid rgba(245,197,24,0.12); border-radius: 28px; padding: 72px 40px; text-align: center; overflow: hidden; }
+    .cta-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 600px; height: 300px; background: radial-gradient(ellipse, rgba(245,197,24,0.05) 0%, transparent 70%); pointer-events: none; }
+    .cta-badge { display: inline-block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; }
+    .cta-title { font-family: var(--font-display); font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; margin-bottom: 1rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+    .cta-description { font-size: 1.05rem; color: var(--text-secondary); margin-bottom: 2.5rem; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .cta-actions { display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; }
+    .cta-large-button { display: inline-flex; align-items: center; gap: 10px; padding: 16px 36px; background: var(--primary); color: #000; font-family: var(--font-display); font-size: 1rem; font-weight: 800; border-radius: 12px; text-decoration: none; transition: all 0.2s; }
+    .cta-large-button:hover { background: #29f5ff; transform: translateY(-2px); box-shadow: 0 10px 40px rgba(0,240,255,0.35); }
+    .cta-secondary-link { font-size: 0.9rem; font-weight: 600; color: var(--text-secondary); text-decoration: none; border-bottom: 1px solid var(--border-light); padding-bottom: 2px; transition: color 0.2s; }
+    .cta-secondary-link:hover { color: var(--text); }
+
+    /* FOOTER */
+    .site-footer { background: var(--bg-dark); border-top: 1px solid var(--border); padding: 48px 0 24px; }
+    .footer-bottom-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-copy, .footer-legal { font-size: 0.8rem; color: var(--text-muted); }
+    .footer-legal { display: flex; align-items: center; gap: 10px; }
+    .footer-legal-link { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .footer-legal-link:hover { color: var(--text-secondary); }
+
+    /* PROGRESS */
+    .reading-progress { position: fixed; top: var(--header-h); left: 0; right: 0; height: 2px; z-index: 999; }
+    .reading-progress-bar { height: 100%; background: linear-gradient(90deg, var(--gold), var(--primary)); width: 0%; transition: width 0.1s; }
+
+    @media (max-width: 900px) { .blog-layout { grid-template-columns: 1fr; gap: 40px; } .blog-sidebar { position: static; } .related-grid { grid-template-columns: 1fr; } .header-nav { display: none; } }
+    @media (max-width: 640px) { .container { padding: 0 16px; } .blog-layout { padding: 0 16px 60px; } .blog-hero-inner { padding: 0 16px; } .cta-card { padding: 48px 24px; } .inlink-banner { flex-direction: column; gap: 16px; } .tool-pros-cons { grid-template-columns: 1fr; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } html { scroll-behavior: auto; } }
+    :focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+
+  <div class="reading-progress" aria-hidden="true">
+    <div class="reading-progress-bar" id="progressBar"></div>
+  </div>
+
+  <!-- Header Component -->
+  <div id="header-placeholder"></div>
+
+  <section class="blog-hero" aria-label="Article header">
+    <div class="blog-hero-inner">
+      <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a><span aria-hidden="true">›</span>
+        <a href="/blog">Blog</a><span aria-hidden="true">›</span>
+        <span>Tools &amp; Resources</span>
+      </nav>
+      <span class="blog-category">Tools Roundup</span>
+      <h1 class="blog-hero-title">Best <span class="gradient-text">Free Tools</span> for Mobile Testing in 2026</h1>
+      <p class="blog-hero-desc">A complete, no-fluff guide to every free mobile testing tool worth using in 2026 — device simulators, responsive checkers, speed analyzers, accessibility auditors, and cross-browser testing platforms, all compared and ranked.</p>
+      <div class="blog-meta">
+        <div class="blog-meta-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v3.5l2 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          16 min read
+        </div>
+        <div class="blog-meta-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M5 1v3M11 1v3M2 7h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          April 3, 2026
+        </div>
+        <div class="blog-meta-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 4h12M4 8h8M6 12h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Tools, Testing, Free
+        </div>
+      </div>
+      <div class="blog-divider" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <div class="blog-layout">
+    <article class="blog-content" aria-label="Article content">
+
+      <p>The mobile web testing ecosystem is full of paid tools promising enterprise-grade cross-browser testing for $299/month. But for the vast majority of developers, designers, and small teams, free tools cover 95% of what you actually need. The challenge is knowing which ones to trust and how to fit them together into a workflow that doesn't waste your time.</p>
+      <p>This guide covers every category of mobile testing tool worth using in 2026, with honest pros and cons for each. All tools listed here have genuinely free tiers with no credit card required and no misleading "free trial" limitations.</p>
+
+      <h2 id="how-to-use-this-guide">How to Use This Guide</h2>
+      <p>Mobile testing tools fall into five distinct categories. You need tools from all five categories for a complete workflow — no single tool covers everything. Read the category that matters most for your current bottleneck, or scan the full summary table at the end:</p>
+      <ol>
+        <li><strong>Device Simulators &amp; Responsive Checkers</strong> — see your site at real device viewports</li>
+        <li><strong>Browser-Based DevTools</strong> — built-in developer tooling for rapid iteration</li>
+        <li><strong>Performance &amp; Speed Tools</strong> — measure and improve load times and Core Web Vitals</li>
+        <li><strong>Accessibility Auditors</strong> — catch mobile accessibility issues before real users do</li>
+        <li><strong>Cross-Browser &amp; Visual Regression</strong> — verify layout consistency across browsers and devices</li>
+      </ol>
+
+      <!-- CATEGORY 1 -->
+      <div class="category-header" id="simulators">
+        <div class="category-icon">📱</div>
+        <h2>Category 1 — Device Simulators &amp; Responsive Checkers</h2>
+      </div>
+      <p>These tools let you see your site as it appears on specific devices without owning the hardware. Essential for every stage of development and QA.</p>
+
+      <div class="tool-review">
+        <div class="tool-review-header">
+          <div class="tool-review-meta">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
+              <span class="tool-rank rank-1">1</span>
+              <div class="tool-review-name">Mobile Viewer</div>
+            </div>
+            <div class="tool-review-subtitle">All-in-one responsive testing platform — free, browser-based</div>
+          </div>
+          <div class="tool-badges">
+            <span class="badge badge-free">100% Free</span>
+            <span class="badge badge-builtin">No Account</span>
+          </div>
+        </div>
+        <div class="tool-review-desc">
+          Mobile Viewer is the most complete free tool for device simulation and responsive testing. It renders your site at exact CSS viewport dimensions — not a scaled-down version — for 20+ device presets including iPhone 15, Galaxy S23, iPad Pro, and custom sizes. The QR Code Generator enables one-scan real-device handoff. The Multi-Device Preview Grid shows mobile, tablet, and desktop simultaneously. The Breakpoint Tester and Page Speed integration round out a tool that handles most of your testing workflow in one place.
+        </div>
+        <div class="tool-pros-cons">
+          <div class="pros">
+            <div class="pros-label">Pros</div>
+            <ul>
+              <li>20+ device presets with accurate CSS viewports</li>
+              <li>Built-in QR code generator for real-device handoff</li>
+              <li>Multi-device preview grid in one view</li>
+              <li>Breakpoint tester and page speed integration</li>
+              <li>No account, no download, works in any browser</li>
+            </ul>
+          </div>
+          <div class="cons">
+            <div class="cons-label">Cons</div>
+            <ul>
+              <li>Sites with X-Frame-Options headers won't load in iframe</li>
+              <li>Cannot replicate real browser engine rendering (WebKit vs Blink)</li>
+              <li>No JavaScript console or element inspector built in</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tool-best-for"><strong>Best for:</strong> Visual layout testing at device viewports, client previews, responsive design audits, QR-based real-device handoff</div>
+        <a href="/" class="tool-link">Open Mobile Viewer →</a>
+      </div>
+
+      <div class="tool-review">
+        <div class="tool-review-header">
+          <div class="tool-review-meta">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
+              <span class="tool-rank rank-2">2</span>
+              <div class="tool-review-name">Chrome DevTools Device Mode</div>
+            </div>
+            <div class="tool-review-subtitle">Built into Chrome — F12 → device toolbar icon</div>
+          </div>
+          <div class="tool-badges"><span class="badge badge-builtin">Built-in</span><span class="badge badge-free">Free</span></div>
+        </div>
+        <div class="tool-review-desc">
+          The most used mobile testing tool in the world, and for good reason. Chrome DevTools Device Mode gives you instant device emulation at any viewport size, DPR simulation, network throttling, and access to the full inspector, console, and network panel — all in one window. Best for rapid CSS iteration during development; less useful for realistic rendering validation.
+        </div>
+        <div class="tool-pros-cons">
+          <div class="pros">
+            <div class="pros-label">Pros</div>
+            <ul>
+              <li>Instant — no page load or URL entry required</li>
+              <li>Full DevTools: inspector, console, network, performance</li>
+              <li>Network throttling (Fast 3G, Slow 3G, offline)</li>
+              <li>CPU throttling for mobile performance simulation</li>
+            </ul>
+          </div>
+          <div class="cons">
+            <div class="cons-label">Cons</div>
+            <ul>
+              <li>Uses your desktop GPU and browser engine — not a real iOS/Android render</li>
+              <li>Cannot test WebKit-specific CSS behavior on Windows</li>
+              <li>No simultaneous multi-device view</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tool-best-for"><strong>Best for:</strong> Day-to-day development, debugging CSS layouts, JavaScript profiling, network analysis</div>
+      </div>
+
+      <div class="tool-review">
+        <div class="tool-review-header">
+          <div class="tool-review-meta">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
+              <span class="tool-rank rank-3">3</span>
+              <div class="tool-review-name">Xcode iPhone Simulator (macOS)</div>
+            </div>
+            <div class="tool-review-subtitle">Apple's official iOS simulator — real WebKit engine</div>
+          </div>
+          <div class="tool-badges"><span class="badge badge-free">Free</span><span class="badge badge-partial">macOS Only</span></div>
+        </div>
+        <div class="tool-review-desc">
+          The only free tool that runs the actual WebKit browser engine used in iOS Safari. Requires macOS and an Xcode installation (large download ~8GB) but provides the most accurate simulation of iOS rendering available without a physical device. Essential for catching iOS-specific CSS bugs before launch.
+        </div>
+        <div class="tool-pros-cons">
+          <div class="pros">
+            <div class="pros-label">Pros</div>
+            <ul>
+              <li>Real WebKit engine — catches iOS-specific bugs</li>
+              <li>Full range of iPhone and iPad models available</li>
+              <li>Touch simulation and gesture support</li>
+              <li>Web Inspector integration via Safari DevTools</li>
+            </ul>
+          </div>
+          <div class="cons">
+            <div class="cons-label">Cons</div>
+            <ul>
+              <li>macOS only — unavailable to Windows/Linux developers</li>
+              <li>~8GB Xcode download required</li>
+              <li>Slow startup time compared to browser tools</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tool-best-for"><strong>Best for:</strong> iOS-specific CSS debugging, WebKit rendering validation, pre-launch iOS QA on macOS</div>
+      </div>
+
+      <div class="inlink-banner">
+        <div class="inlink-banner-icon" aria-hidden="true">📱</div>
+        <div class="inlink-banner-body">
+          <h4>All the Responsive Testing You Need, Free</h4>
+          <p>Mobile Viewer covers device simulation, multi-device preview, QR code generation, and breakpoint testing in one place — no account, no download.</p>
+          <a href="/">Open Mobile Viewer →</a>
+        </div>
+      </div>
+
+      <!-- CATEGORY 2 -->
+      <div class="category-header" id="performance">
+        <div class="category-icon">⚡</div>
+        <h2>Category 2 — Performance &amp; Core Web Vitals Tools</h2>
+      </div>
+      <p>Slow mobile pages are the most common reason users leave before converting. These tools diagnose exactly what's slow and how to fix it.</p>
+
+      <div class="tool-review">
+        <div class="tool-review-header">
+          <div class="tool-review-meta">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
+              <span class="tool-rank rank-1">1</span>
+              <div class="tool-review-name">PageSpeed Insights</div>
+            </div>
+            <div class="tool-review-subtitle">Google's official Core Web Vitals tester — field + lab data</div>
+          </div>
+          <div class="tool-badges"><span class="badge badge-free">Free</span><span class="badge badge-builtin">Google Official</span></div>
+        </div>
+        <div class="tool-review-desc">
+          PageSpeed Insights is the authoritative tool for measuring your site's Core Web Vitals (LCP, INP, CLS) against Google's thresholds. It combines real-world field data from the Chrome User Experience Report with Lighthouse lab analysis. It identifies your specific LCP element, flags layout shift sources, and gives prioritized recommendations. Run it on mobile mode on your 3–5 highest-traffic pages monthly.
+        </div>
+        <div class="tool-pros-cons">
+          <div class="pros">
+            <div class="pros-label">Pros</div>
+            <ul>
+              <li>Field data from real Chrome users (CrUX)</li>
+              <li>Identifies specific LCP element and CLS sources</li>
+              <li>Prioritized, actionable recommendations</li>
+              <li>Separate mobile and desktop scores</li>
+            </ul>
+          </div>
+          <div class="cons">
+            <div class="cons-label">Cons</div>
+            <ul>
+              <li>Field data only available for high-traffic pages</li>
+              <li>Lab data uses simulated Moto G4 device — may not match your users' hardware</li>
+              <li>Only tests one URL at a time</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tool-best-for"><strong>Best for:</strong> Core Web Vitals auditing, LCP/CLS debugging, SEO performance validation, pre-launch speed checks</div>
+        <a href="https://pagespeed.web.dev" class="tool-link" target="_blank" rel="noopener">Open PageSpeed Insights ↗</a>
+      </div>
+
+      <div class="tool-review">
+        <div class="tool-review-header">
+          <div class="tool-review-meta">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
+              <span class="tool-rank rank-2">2</span>
+              <div class="tool-review-name">Google Search Console — Core Web Vitals Report</div>
+            </div>
+            <div class="tool-review-subtitle">Real user CWV data aggregated across all pages</div>
+          </div>
+          <div class="tool-badges"><span class="badge badge-free">Free</span><span class="badge badge-partial">Requires Verification</span></div>
+        </div>
+        <div class="tool-review-desc">
+          While PageSpeed Insights shows lab data for individual URLs, Search Console's Core Web Vitals report shows aggregated real-user data across your entire site, organized by page group and segmented by mobile vs. desktop. It surfaces which page templates have the most CWV failures — letting you prioritize fixes where they affect the most real users, not just the pages you remember to test manually.
+        </div>
+        <div class="tool-pros-cons">
+          <div class="pros">
+            <div class="pros-label">Pros</div>
+            <ul>
+              <li>Real user data, not synthetic tests</li>
+              <li>Site-wide view of CWV failures by page group</li>
+              <li>Mobile vs. desktop segmentation</li>
+              <li>Also includes Mobile Usability report</li>
+            </ul>
+          </div>
+          <div class="cons">
+            <div class="cons-label">Cons</div>
+            <ul>
+              <li>Requires site ownership verification</li>
+              <li>28-day data lag — not useful for real-time debugging</li>
+              <li>Only shows data for pages with enough traffic</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tool-best-for"><strong>Best for:</strong> Site-wide CWV monitoring, identifying which page templates need optimization, monthly performance reviews</div>
+      </div>
+
+      <div class="tool-review">
+        <div class="tool-review-header">
+          <div class="tool-review-meta">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
+              <span class="tool-rank rank-3">3</span>
+              <div class="tool-review-name">WebPageTest</div>
+            </div>
+            <div class="tool-review-subtitle">Advanced performance testing from real global locations</div>
+          </div>
+          <div class="tool-badges"><span class="badge badge-free">Free</span></div>
+        </div>
+        <div class="tool-review-desc">
+          WebPageTest offers a level of performance analysis detail that PageSpeed Insights doesn't reach. You can test from dozens of global locations on real device connections, view waterfall charts, identify third-party scripts dragging down your load time, and run filmstrip visualizations that show frame-by-frame how your page loads on mobile. The free tier is generous and sufficient for most auditing needs.
+        </div>
+        <div class="tool-pros-cons">
+          <div class="pros">
+            <div class="pros-label">Pros</div>
+            <ul>
+              <li>Test from real locations worldwide</li>
+              <li>Detailed waterfall and filmstrip views</li>
+              <li>Third-party impact analysis</li>
+              <li>Repeat view caching analysis</li>
+            </ul>
+          </div>
+          <div class="cons">
+            <div class="cons-label">Cons</div>
+            <ul>
+              <li>Slower — tests take 1–2 minutes to run</li>
+              <li>Interface has a steep learning curve</li>
+              <li>Free tests are queued behind paid users during peak times</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tool-best-for"><strong>Best for:</strong> Deep performance investigations, third-party script audits, global latency analysis</div>
+        <a href="https://www.webpagetest.org" class="tool-link" target="_blank" rel="noopener">Open WebPageTest ↗</a>
+      </div>
+
+      <!-- CATEGORY 3 -->
+      <div class="category-header" id="accessibility">
+        <div class="category-icon">♿</div>
+        <h2>Category 3 — Mobile Accessibility Tools</h2>
+      </div>
+      <p>Accessibility issues on mobile are often more severe than on desktop — tiny tap targets, low contrast on OLED screens, missing ARIA labels for screen readers. These free tools surface the most common violations.</p>
+
+      <div class="tool-review">
+        <div class="tool-review-header">
+          <div class="tool-review-meta">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
+              <span class="tool-rank rank-1">1</span>
+              <div class="tool-review-name">Lighthouse (Chrome DevTools)</div>
+            </div>
+            <div class="tool-review-subtitle">Google's automated audit tool — accessibility, performance, SEO, PWA</div>
+          </div>
+          <div class="tool-badges"><span class="badge badge-builtin">Built-in Chrome</span><span class="badge badge-free">Free</span></div>
+        </div>
+        <div class="tool-review-desc">
+          Lighthouse runs automated audits across accessibility, performance, SEO, and progressive web app criteria — all from within Chrome DevTools. The accessibility audit covers 70+ checks including contrast ratios, ARIA usage, tab order, keyboard navigation, and mobile-specific concerns like tap target size. Run in "Mobile" mode to get the mobile-specific performance score that Google uses in its rankings.
+        </div>
+        <div class="tool-pros-cons">
+          <div class="pros">
+            <div class="pros-label">Pros</div>
+            <ul>
+              <li>Covers accessibility, performance, SEO, and PWA in one run</li>
+              <li>70+ accessibility checks with clear fix guidance</li>
+              <li>Mobile mode produces the score Google sees</li>
+              <li>Can be run via CLI for CI/CD integration</li>
+            </ul>
+          </div>
+          <div class="cons">
+            <div class="cons-label">Cons</div>
+            <ul>
+              <li>Lab data only — not real user measurements</li>
+              <li>Automated accessibility checks catch ~30% of real issues</li>
+              <li>Does not test complex interactions (login flows, carousels)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tool-best-for"><strong>Best for:</strong> Regular accessibility baseline checks, SEO auditing, performance scoring before deployments</div>
+      </div>
+
+      <div class="tool-review">
+        <div class="tool-review-header">
+          <div class="tool-review-meta">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
+              <span class="tool-rank rank-2">2</span>
+              <div class="tool-review-name">axe DevTools (Browser Extension)</div>
+            </div>
+            <div class="tool-review-subtitle">Industry-standard accessibility testing extension</div>
+          </div>
+          <div class="tool-badges"><span class="badge badge-free">Free Core</span><span class="badge badge-partial">Paid Pro</span></div>
+        </div>
+        <div class="tool-review-desc">
+          axe DevTools is the browser extension used by accessibility professionals worldwide. The free core version integrates with Chrome and Firefox DevTools, runs WCAG 2.1 AA checks on the page, and highlights every violation with a clear explanation and a link to the specific guideline. Particularly useful for mobile because it catches tap target size violations, missing touch action labels, and focus management issues.
+        </div>
+        <div class="tool-pros-cons">
+          <div class="pros">
+            <div class="pros-label">Pros</div>
+            <ul>
+              <li>Zero false positives — flags only confirmed violations</li>
+              <li>WCAG 2.1 AA coverage</li>
+              <li>Guided fixes with rule links</li>
+              <li>Works on live pages including authenticated pages</li>
+            </ul>
+          </div>
+          <div class="cons">
+            <div class="cons-label">Cons</div>
+            <ul>
+              <li>Needs to be run at each mobile breakpoint manually</li>
+              <li>Advanced features (auto-testing, CI, component scanning) require paid license</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tool-best-for"><strong>Best for:</strong> WCAG compliance auditing, pre-launch accessibility review, developer accessibility education</div>
+      </div>
+
+      <!-- CATEGORY 4 -->
+      <div class="category-header" id="cross-browser">
+        <div class="category-icon">🌐</div>
+        <h2>Category 4 — Cross-Browser &amp; Visual Regression</h2>
+      </div>
+      <p>Browser engine differences (especially WebKit vs. Blink) cause real visual discrepancies. These tools help catch inconsistencies before real users report them.</p>
+
+      <div class="tool-review">
+        <div class="tool-review-header">
+          <div class="tool-review-meta">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
+              <span class="tool-rank rank-1">1</span>
+              <div class="tool-review-name">Playwright</div>
+            </div>
+            <div class="tool-review-subtitle">Microsoft's browser automation framework — free, open source</div>
+          </div>
+          <div class="tool-badges"><span class="badge badge-free">Free / Open Source</span></div>
+        </div>
+        <div class="tool-review-desc">
+          Playwright is Microsoft's open-source browser automation library. For mobile testing, it provides device emulation for iPhone 15, Galaxy S23, iPad, and other devices — running tests against Chromium, WebKit, and Firefox from the same test suite. It's the best free option for automated cross-browser visual regression testing, especially when combined with its built-in screenshot comparison API.
+        </div>
+        <div class="tool-pros-cons">
+          <div class="pros">
+            <div class="pros-label">Pros</div>
+            <ul>
+              <li>Tests against Chromium, WebKit, and Firefox</li>
+              <li>Built-in device emulation with 20+ mobile presets</li>
+              <li>Screenshot diff and visual regression testing</li>
+              <li>Fully free and open-source</li>
+            </ul>
+          </div>
+          <div class="cons">
+            <div class="cons-label">Cons</div>
+            <ul>
+              <li>Requires developer setup — not a click-and-use tool</li>
+              <li>WebKit engine in Playwright is not identical to iOS Safari</li>
+              <li>Setup time investment is significant for small projects</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tool-best-for"><strong>Best for:</strong> Automated regression testing, CI/CD integration, teams that deploy frequently</div>
+        <a href="https://playwright.dev" class="tool-link" target="_blank" rel="noopener">playwright.dev ↗</a>
+      </div>
+
+      <div class="tool-review">
+        <div class="tool-review-header">
+          <div class="tool-review-meta">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
+              <span class="tool-rank rank-2">2</span>
+              <div class="tool-review-name">BrowserStack (Free Tier)</div>
+            </div>
+            <div class="tool-review-subtitle">Real device cloud testing — limited free access</div>
+          </div>
+          <div class="tool-badges"><span class="badge badge-partial">Free Trial</span><span class="badge badge-paid">Paid</span></div>
+        </div>
+        <div class="tool-review-desc">
+          BrowserStack gives you access to real iOS and Android devices in the cloud — not emulators. The free tier is limited (100 minutes/month Automate, 1 parallel session) but it's the most realistic cross-browser testing available without physical hardware. Particularly valuable for testing iOS Safari behavior that desktop browser tools can't accurately replicate.
+        </div>
+        <div class="tool-pros-cons">
+          <div class="pros">
+            <div class="pros-label">Pros</div>
+            <ul>
+              <li>Real physical devices — most accurate available</li>
+              <li>Hundreds of iOS and Android device/OS combos</li>
+              <li>Live interactive testing (free tier)</li>
+              <li>Screenshot and video recording</li>
+            </ul>
+          </div>
+          <div class="cons">
+            <div class="cons-label">Cons</div>
+            <ul>
+              <li>Free tier is very limited — 30 min live testing, 100 min Automate</li>
+              <li>Paid plans are expensive for solo developers</li>
+              <li>Session latency can be noticeable</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tool-best-for"><strong>Best for:</strong> Occasional pre-launch real-device checks when physical devices aren't available</div>
+      </div>
+
+      <!-- SUMMARY TABLE -->
+      <h2 id="quick-reference-summary">Quick Reference Summary</h2>
+
+      <table class="summary-table">
+        <thead>
+          <tr>
+            <th>Tool</th>
+            <th>Category</th>
+            <th>Free?</th>
+            <th>Real Device</th>
+            <th>Best Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Mobile Viewer</td><td>Simulator</td><td><span class="badge-yes">Yes, fully</span></td><td><span class="badge-partial">Via QR</span></td><td>Visual layout, device preview</td></tr>
+          <tr><td>Chrome DevTools</td><td>Simulator / Debug</td><td><span class="badge-yes">Yes, built-in</span></td><td><span class="badge-partial">No (emulated)</span></td><td>Development iteration</td></tr>
+          <tr><td>Xcode Simulator</td><td>Simulator</td><td><span class="badge-partial">Free, macOS only</span></td><td><span class="badge-partial">WebKit only</span></td><td>iOS-specific bugs</td></tr>
+          <tr><td>PageSpeed Insights</td><td>Performance</td><td><span class="badge-yes">Yes, fully</span></td><td><span class="badge-no">No</span></td><td>Core Web Vitals</td></tr>
+          <tr><td>Google Search Console</td><td>Performance / SEO</td><td><span class="badge-yes">Yes, free</span></td><td><span class="badge-partial">CrUX field data</span></td><td>Site-wide CWV</td></tr>
+          <tr><td>WebPageTest</td><td>Performance</td><td><span class="badge-yes">Yes, free tier</span></td><td><span class="badge-partial">Real locations</span></td><td>Deep perf analysis</td></tr>
+          <tr><td>Lighthouse</td><td>Accessibility / Perf</td><td><span class="badge-yes">Yes, built-in</span></td><td><span class="badge-no">No</span></td><td>Accessibility baseline</td></tr>
+          <tr><td>axe DevTools</td><td>Accessibility</td><td><span class="badge-partial">Free core</span></td><td><span class="badge-no">No</span></td><td>WCAG auditing</td></tr>
+          <tr><td>Playwright</td><td>Automation</td><td><span class="badge-yes">Yes, open-source</span></td><td><span class="badge-no">No (emulated)</span></td><td>Automated regression</td></tr>
+          <tr><td>BrowserStack</td><td>Cross-browser</td><td><span class="badge-partial">Limited free tier</span></td><td><span class="badge-yes">Yes — real devices</span></td><td>Pre-launch real-device QA</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout callout-tip">
+        <div class="callout-label">💡 Recommended Stack for Solo Developers</div>
+        <p>If you're building and testing alone, this stack covers 95% of needs for free: <strong>Mobile Viewer</strong> for visual responsive testing + QR handoff → <strong>Chrome DevTools</strong> for debugging → <strong>PageSpeed Insights</strong> for performance → <strong>Lighthouse</strong> for accessibility → <strong>Playwright</strong> if you want automated regression. The only thing you're missing is real iOS/Android engine testing, which you can cover on pre-launch days with BrowserStack's free trial minutes.</p>
+      </div>
+
+      <h2 id="workflow-recommendation">Putting It Together: Recommended Testing Workflow</h2>
+      <p>The best stack in the world is worthless without a consistent workflow. Here's how to combine these tools in practice:</p>
+      <ol>
+        <li><strong>During development (daily):</strong> Chrome DevTools Device Mode for rapid CSS iteration. Switch between 360px and 390px viewports to catch layout breaks early.</li>
+        <li><strong>Before each PR/commit:</strong> Open Mobile Viewer and check your changed pages at iPhone 15 + Galaxy S23 viewports. Run Lighthouse on any modified pages for performance and accessibility regressions.</li>
+        <li><strong>Pre-launch (day before):</strong> Run PageSpeed Insights on your 5 most important pages. Fix any LCP above 2.5s or CLS above 0.1. Use Mobile Viewer's QR code to scan on at least one real iOS and one real Android device.</li>
+        <li><strong>Post-launch (monthly):</strong> Check Google Search Console Core Web Vitals report for field data regressions. Run a full Lighthouse audit on the homepage and 2–3 key landing pages.</li>
+      </ol>
+
+      <p>For a deeper dive into the testing workflow specifically, see our guide on <a href="/blog/test-responsive-design">how to test responsive design without buying 20 phones</a>.</p>
+
+    </article>
+
+    <aside class="blog-sidebar" aria-label="Article navigation and tools">
+      <nav class="toc-card" aria-label="Table of contents">
+        <div class="toc-title">Table of Contents</div>
+        <ul class="toc-list">
+          <li><a href="#how-to-use-this-guide">How to Use This Guide</a></li>
+          <li><a href="#simulators">Category 1: Simulators</a></li>
+          <li class="toc-sub"><a href="#simulators">Mobile Viewer</a></li>
+          <li class="toc-sub"><a href="#simulators">Chrome DevTools</a></li>
+          <li class="toc-sub"><a href="#simulators">Xcode Simulator</a></li>
+          <li><a href="#performance">Category 2: Performance</a></li>
+          <li class="toc-sub"><a href="#performance">PageSpeed Insights</a></li>
+          <li class="toc-sub"><a href="#performance">Search Console CWV</a></li>
+          <li class="toc-sub"><a href="#performance">WebPageTest</a></li>
+          <li><a href="#accessibility">Category 3: Accessibility</a></li>
+          <li class="toc-sub"><a href="#accessibility">Lighthouse</a></li>
+          <li class="toc-sub"><a href="#accessibility">axe DevTools</a></li>
+          <li><a href="#cross-browser">Category 4: Cross-Browser</a></li>
+          <li class="toc-sub"><a href="#cross-browser">Playwright</a></li>
+          <li class="toc-sub"><a href="#cross-browser">BrowserStack</a></li>
+          <li><a href="#quick-reference-summary">Summary Table</a></li>
+          <li><a href="#workflow-recommendation">Recommended Workflow</a></li>
+        </ul>
+      </nav>
+      <div class="sidebar-tool-card">
+        <h4>🥇 #1 Free Testing Tool</div>
+        <p>Mobile Viewer covers device simulation, QR code preview, multi-device grid, and page speed — all free, all in one place.</p>
+        <a href="/" class="sidebar-btn">Open Mobile Viewer →</a>
+      </div>
+      <div class="sidebar-tool-card" style="margin-top:16px">
+        <h4>📷 QR Code Generator</h4>
+        <p>Instant real-device testing — scan your staging URL from any phone in under 10 seconds.</p>
+        <a href="/?tool=qr-generator" class="sidebar-btn">Generate QR Code →</a>
+        <a href="/blog/test-responsive-design" class="sidebar-btn-outline">🔧 Testing Workflow Guide →</a>
+      </div>
+    </aside>
+  </div>
+
+  <section class="related-section" aria-label="Related articles">
+    <div class="container">
+      <span class="section-badge">Keep Reading</span>
+      <h2 class="section-title">Related Articles</h2>
+      <div class="related-grid">
+        <a href="/blog/test-responsive-design" class="related-card">
+          <div class="related-card-cat">Developer Guide</div>
+          <h3>How to Test Responsive Design Without Buying 20 Phones</h3>
+          <p>The complete layered testing workflow — from browser DevTools to QR-based real-device checks.</p>
+        </a>
+        <a href="/blog/mobile-seo-checklist-2026" class="related-card">
+          <div class="related-card-cat">SEO</div>
+          <h3>Mobile SEO Checklist 2026: 15 Things Most Sites Still Get Wrong</h3>
+          <p>The definitive audit checklist for Core Web Vitals, mobile-first indexing, and tap targets.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq-section" aria-labelledby="faq-heading">
+    <div class="faq-inner">
+      <span class="section-badge">FAQ</span>
+      <h2 class="section-title" id="faq-heading">Mobile Testing Tools FAQ</h2>
+      <p class="section-description">Common questions about free mobile testing tools in 2026</p>
+      <div class="faq-list" role="list">
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+            What is the best free tool for mobile responsive testing?
+            <span class="faq-chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="faq-a">
+            <p><a href="/">Mobile Viewer</a> is the most comprehensive free tool for responsive testing — it includes a device simulator with 20+ presets, a responsive checker, multi-device preview grid, QR code generator, and page speed integration, all without creating an account. For built-in browser testing during development, Chrome DevTools Device Mode is the best free option for rapid iteration.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+            Are there free alternatives to BrowserStack?
+            <span class="faq-chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>Yes. For visual responsive testing, Mobile Viewer is fully free with no limits. Chrome DevTools, Firefox Responsive Design Mode, and Safari + Xcode Simulator all provide free device emulation covering all major viewport sizes. For automated visual regression testing, Playwright is fully free and open-source. BrowserStack remains the best option for testing on actual real hardware, but their free tier is limited — you'll want to use it strategically for pre-launch checks rather than daily testing.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+            How do I test my website for free on a real mobile device?
+            <span class="faq-chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>The fastest method is to use <a href="/?tool=qr-generator">Mobile Viewer's QR Code Generator</a> — paste your URL, generate a QR code, and scan it with your phone. This opens the live site in your phone's actual browser engine (Safari on iOS, Chrome on Android) with zero setup and no cost. For local development servers, use your machine's local IP address instead of <code>localhost</code> so the phone can reach it over Wi-Fi.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+            Can I test iOS Safari behavior without a Mac or iPhone?
+            <span class="faq-chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>Accurately, no. iOS Safari uses Apple's WebKit engine, and the only free way to run WebKit is via Xcode's iPhone Simulator on macOS. Windows and Linux users without a Mac or iPhone must use BrowserStack's paid real-device cloud. Chrome DevTools and Mobile Viewer use the Blink engine on desktop and cannot fully replicate WebKit rendering quirks. For teams on Windows/Linux, BrowserStack's free trial minutes are valuable specifically for iOS WebKit validation.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+            Do I need all these tools or can I just use one?
+            <span class="faq-chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>You need tools from multiple categories because each covers a different type of failure. Mobile Viewer and Chrome DevTools handle layout and visual testing. PageSpeed Insights handles performance. Lighthouse handles accessibility. No single tool catches everything. That said, if you're just starting out, Mobile Viewer + Chrome DevTools + PageSpeed Insights will catch the vast majority of issues affecting most sites. Add the accessibility and automation tools as your workflow matures.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section" aria-label="Call to action">
+    <div class="container">
+      <div class="cta-card">
+        <div class="cta-glow" aria-hidden="true"></div>
+        <div class="cta-badge">Ranked #1 Free Mobile Testing Tool</div>
+        <h2 class="cta-title">Start testing with Mobile Viewer — free, right now</h2>
+        <p class="cta-description">Device simulator, QR code generator, multi-device preview, breakpoint tester, and page speed — all free, all in one place</p>
+        <div class="cta-actions">
+          <a href="/" class="cta-large-button">
+            Launch Mobile Viewer
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="/#tools" class="cta-secondary-link">Explore all tools →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Component -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Scripts -->
+  <script src="header.js"></script>
+  <script src="footer.js"></script>
+  <script src="script.js"></script>
+
+  <script>
+    function toggleFaq(btn) {
+      const answer = btn.nextElementSibling;
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', !isOpen);
+      answer.classList.toggle('is-open', !isOpen);
+    }
+    const progressBar = document.getElementById('progressBar');
+    window.addEventListener('scroll', () => {
+      const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+      progressBar.style.width = Math.min(pct, 100) + '%';
+    }, { passive: true });
+  </script>
+</body>
+</html>
