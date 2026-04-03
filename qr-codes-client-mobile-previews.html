@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Use QR Codes for Instant Client Mobile Previews — Mobile Viewer Blog</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+  <meta name="description" content="Learn how to use QR codes to give clients instant mobile previews of websites, staging environments, and prototypes — without sharing URLs or login credentials.">
+  <meta name="keywords" content="QR code mobile preview, client mobile preview, QR code website testing, staging site QR code, mobile preview workflow, developer client workflow">
+  <meta name="author" content="Mobile Viewer">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://mobileviewer.github.io/blog/qr-codes-client-mobile-previews">
+
+  <meta property="og:title" content="How to Use QR Codes for Instant Client Mobile Previews">
+  <meta property="og:description" content="QR codes are the fastest way to get clients previewing your work on real mobile devices. Here's the complete workflow.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://mobileviewer.github.io/blog/qr-codes-client-mobile-previews">
+  <meta property="og:site_name" content="Mobile Viewer">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How to Use QR Codes for Instant Client Mobile Previews",
+    "description": "Use QR codes to give clients instant mobile previews of staging sites, prototypes, and live builds without sharing URLs manually.",
+    "author": { "@type": "Organization", "name": "Mobile Viewer" },
+    "publisher": { "@type": "Organization", "name": "Mobile Viewer", "url": "https://mobileviewer.github.io/" },
+    "datePublished": "2026-04-03",
+    "dateModified": "2026-04-03"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I generate a QR code for a website?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The fastest method is to paste your URL into Mobile Viewer's QR Code Generator tool, which instantly creates a scannable QR code you can share, screenshot, or embed in documents. No account required. For staging sites, use the same URL you'd normally share — the QR just encodes that URL for easy phone scanning." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can clients scan a QR code to see a staging site?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes, as long as the staging site is accessible on a public URL or the client's device is on the same network as the local development server. For password-protected staging environments, the QR code simply encodes the URL — clients will still need to enter any login credentials after scanning." }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the best QR code generator for developers?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Mobile Viewer's built-in QR Code Generator is purpose-built for developers and designers who need to quickly preview websites on mobile devices. It generates QR codes instantly from any URL, requires no account, and works alongside the device simulator and responsive checker tools." }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary:      #00F0FF;
+      --primary-dim:  rgba(0,240,255,0.15);
+      --secondary:    #7B61FF;
+      --accent:       #FF4FD8;
+      --teal:         #00D4AA;
+      --teal-dim:     rgba(0,212,170,0.15);
+      --bg:           #080C12;
+      --bg-dark:      #050810;
+      --bg-card:      #0D1220;
+      --bg-card-2:    #111827;
+      --border:       rgba(255,255,255,0.07);
+      --border-light: rgba(255,255,255,0.12);
+      --text:         #F0F4FF;
+      --text-secondary: rgba(240,244,255,0.6);
+      --text-muted:   rgba(240,244,255,0.35);
+      --radius:       12px;
+      --radius-lg:    20px;
+      --header-h:     70px;
+      --container:    1240px;
+      --font-display: 'Syne', sans-serif;
+      --font-body:    'DM Sans', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 24px); -webkit-text-size-adjust: 100%; }
+    body { font-family: var(--font-body); font-size: 16px; line-height: 1.7; color: var(--text); background: var(--bg); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; } button { font-family: inherit; cursor: pointer; border: none; background: none; } ul { list-style: none; }
+    code { font-family: 'SF Mono','Fira Code',monospace; font-size: 0.85em; background: rgba(0,212,170,0.1); color: var(--teal); padding: 2px 6px; border-radius: 4px; }
+    .container { width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+
+    /* HEADER */
+    .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; height: var(--header-h); background: rgba(8,12,18,0.85); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); border-bottom: 1px solid var(--border); }
+    .header-inner { max-width: var(--container); margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; gap: 2rem; }
+    .header-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+    .logo-text { font-family: var(--font-display); font-size: 1.15rem; font-weight: 800; letter-spacing: -0.02em; color: var(--text); }
+    .logo-accent { color: var(--primary); }
+    .header-nav { margin-left: auto; }
+    .nav-list { display: flex; align-items: center; gap: 4px; list-style: none; }
+    .nav-link { display: flex; align-items: center; padding: 6px 14px; border-radius: 8px; font-size: 0.92rem; font-weight: 500; color: var(--text-secondary); text-decoration: none; transition: color 0.2s, background 0.2s; }
+    .nav-link:hover { color: var(--text); background: rgba(255,255,255,0.06); }
+    .header-cta-btn { display: flex; align-items: center; gap: 8px; padding: 9px 18px; background: var(--primary); color: #000; font-size: 0.875rem; font-weight: 700; border-radius: 8px; text-decoration: none; transition: all 0.2s; flex-shrink: 0; }
+    .header-cta-btn:hover { background: #29f5ff; transform: translateY(-1px); box-shadow: 0 4px 20px rgba(0,240,255,0.3); }
+
+    /* HERO */
+    .blog-hero { padding: calc(var(--header-h) + 80px) 0 80px; position: relative; overflow: hidden; }
+    .blog-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 50% at 30% 0%, rgba(0,212,170,0.06) 0%, transparent 60%), radial-gradient(ellipse 60% 50% at 70% 10%, rgba(0,240,255,0.04) 0%, transparent 55%); pointer-events: none; }
+    .blog-hero-inner { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    .blog-breadcrumb { display: flex; align-items: center; gap: 8px; margin-bottom: 2rem; font-size: 0.85rem; color: var(--text-muted); }
+    .blog-breadcrumb a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .blog-breadcrumb a:hover { color: var(--primary); }
+    .blog-category { display: inline-block; font-family: var(--font-display); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); background: var(--teal-dim); border: 1px solid rgba(0,212,170,0.3); padding: 5px 14px; border-radius: 100px; margin-bottom: 1.5rem; }
+    .blog-hero-title { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; }
+    .gradient-text { background: linear-gradient(90deg, var(--teal), var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .blog-hero-desc { font-size: 1.15rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 2rem; max-width: 700px; }
+    .blog-meta { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .blog-meta-item { display: flex; align-items: center; gap: 6px; font-size: 0.875rem; color: var(--text-muted); }
+    .blog-meta-item svg { color: var(--teal); flex-shrink: 0; }
+    .blog-divider { width: 100%; height: 1px; background: var(--border); margin: 3rem 0; }
+
+    /* LAYOUT */
+    .blog-layout { max-width: 1100px; margin: 0 auto; padding: 0 24px 100px; display: grid; grid-template-columns: 1fr 300px; gap: 60px; align-items: start; }
+
+    /* SIDEBAR */
+    .blog-sidebar { position: sticky; top: calc(var(--header-h) + 32px); }
+    .toc-card { background: var(--bg-card); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 28px; }
+    .toc-title { font-family: var(--font-display); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; }
+    .toc-list { display: flex; flex-direction: column; gap: 4px; list-style: none; }
+    .toc-list li a { display: block; padding: 6px 10px; border-radius: 6px; font-size: 0.875rem; color: var(--text-secondary); text-decoration: none; transition: color 0.2s, background 0.2s; border-left: 2px solid transparent; }
+    .toc-list li a:hover { color: var(--teal); background: var(--teal-dim); border-left-color: var(--teal); }
+    .toc-list li.toc-sub a { padding-left: 22px; font-size: 0.825rem; }
+    .sidebar-tool-card { background: var(--bg-card); border: 1px solid rgba(0,212,170,0.2); border-radius: var(--radius-lg); padding: 24px; margin-top: 20px; }
+    .sidebar-tool-card h4 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .sidebar-tool-card p { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 16px; line-height: 1.6; }
+    .sidebar-btn { display: block; text-align: center; padding: 10px 16px; background: var(--primary); color: #000; font-weight: 700; font-size: 0.875rem; border-radius: 8px; text-decoration: none; transition: all 0.2s; }
+    .sidebar-btn:hover { background: #29f5ff; transform: translateY(-1px); }
+    .sidebar-btn-outline { display: block; text-align: center; padding: 10px 16px; border: 1px solid var(--border-light); color: var(--text-secondary); font-size: 0.875rem; border-radius: 8px; text-decoration: none; transition: all 0.2s; margin-top: 8px; }
+    .sidebar-btn-outline:hover { border-color: var(--teal); color: var(--teal); }
+
+    /* ARTICLE */
+    .blog-content h2 { font-family: var(--font-display); font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 700; margin: 3rem 0 1rem; color: var(--text); scroll-margin-top: calc(var(--header-h) + 32px); }
+    .blog-content h3 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; margin: 2rem 0 0.75rem; color: var(--text); scroll-margin-top: calc(var(--header-h) + 32px); }
+    .blog-content p { margin-bottom: 1.25rem; color: var(--text-secondary); font-size: 1.02rem; }
+    .blog-content p strong { color: var(--text); font-weight: 600; }
+    .blog-content ul, .blog-content ol { padding-left: 1.5rem; margin-bottom: 1.5rem; color: var(--text-secondary); font-size: 1.02rem; }
+    .blog-content ul { list-style: disc; } .blog-content ol { list-style: decimal; }
+    .blog-content li { margin-bottom: 0.5rem; }
+    .blog-content a { color: var(--primary); text-decoration: underline; text-underline-offset: 3px; transition: opacity 0.2s; }
+    .blog-content a:hover { opacity: 0.8; }
+
+    /* WORKFLOW STEPS */
+    .workflow { display: flex; flex-direction: column; gap: 0; margin: 2rem 0; position: relative; }
+    .workflow::before { content: ''; position: absolute; left: 20px; top: 40px; bottom: 40px; width: 2px; background: linear-gradient(to bottom, var(--teal), rgba(0,212,170,0.1)); }
+    .workflow-step { display: flex; gap: 24px; align-items: flex-start; padding: 20px 0; position: relative; }
+    .workflow-num { flex-shrink: 0; width: 42px; height: 42px; border-radius: 50%; background: var(--teal-dim); border: 2px solid var(--teal); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 0.85rem; font-weight: 800; color: var(--teal); position: relative; z-index: 1; }
+    .workflow-body h3 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: 6px; margin-top: 6px; }
+    .workflow-body p { font-size: 0.92rem; color: var(--text-secondary); margin-bottom: 0; line-height: 1.65; }
+    .workflow-body p strong { color: var(--text); }
+
+    /* USE CASE CARDS */
+    .use-case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 2rem 0; }
+    .use-case-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 22px; transition: border-color 0.2s, transform 0.2s; }
+    .use-case-card:hover { border-color: rgba(0,212,170,0.3); transform: translateY(-2px); }
+    .use-case-icon { font-size: 1.5rem; margin-bottom: 12px; }
+    .use-case-card h4 { font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+    .use-case-card p { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 0; }
+
+    /* CALLOUTS */
+    .callout { background: var(--bg-card); border: 1px solid var(--border-light); border-left: 3px solid var(--teal); border-radius: var(--radius); padding: 20px 24px; margin: 2rem 0; }
+    .callout-pro { border-left-color: var(--teal); background: rgba(0,212,170,0.03); border-color: rgba(0,212,170,0.2); }
+    .callout-warn { border-left-color: var(--accent); background: rgba(255,79,216,0.04); border-color: rgba(255,79,216,0.2); }
+    .callout-label { font-family: var(--font-display); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 8px; }
+    .callout-pro .callout-label { color: var(--teal); }
+    .callout-warn .callout-label { color: var(--accent); }
+    .callout p { margin-bottom: 0; color: var(--text-secondary); }
+
+    /* SCENARIO BLOCK */
+    .scenario-block { background: var(--bg-card); border: 1px solid rgba(0,212,170,0.15); border-radius: var(--radius-lg); padding: 28px; margin: 2rem 0; }
+    .scenario-label { display: inline-block; font-family: var(--font-display); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); background: var(--teal-dim); border: 1px solid rgba(0,212,170,0.25); padding: 3px 10px; border-radius: 100px; margin-bottom: 14px; }
+    .scenario-block h3 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: 10px; }
+    .scenario-block p { font-size: 0.92rem; color: var(--text-secondary); margin-bottom: 10px; line-height: 1.65; }
+    .scenario-block p:last-child { margin-bottom: 0; }
+    .scenario-block strong { color: var(--text); }
+
+    /* COMPARISON TABLE */
+    .comparison-table { width: 100%; border-collapse: collapse; margin: 2rem 0; font-size: 0.88rem; }
+    .comparison-table th { font-family: var(--font-display); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); padding: 10px 16px; border-bottom: 1px solid var(--border-light); text-align: left; }
+    .comparison-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--text-secondary); vertical-align: middle; }
+    .comparison-table tr:hover td { background: rgba(255,255,255,0.02); }
+    .badge-yes { color: #34D399; font-weight: 600; }
+    .badge-no { color: var(--accent); font-weight: 600; }
+    .badge-partial { color: #FF9500; font-weight: 600; }
+
+    /* INLINK BANNER */
+    .inlink-banner { display: flex; align-items: center; gap: 20px; background: linear-gradient(135deg, rgba(0,212,170,0.06), rgba(0,240,255,0.04)); border: 1px solid rgba(0,212,170,0.2); border-radius: var(--radius-lg); padding: 24px 28px; margin: 2.5rem 0; }
+    .inlink-banner-icon { flex-shrink: 0; width: 48px; height: 48px; background: var(--teal-dim); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--teal); }
+    .inlink-banner-body h4 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+    .inlink-banner-body p { font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 12px; }
+    .inlink-banner-body a { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; background: var(--primary); color: #000; font-size: 0.85rem; font-weight: 700; border-radius: 8px; text-decoration: none; transition: all 0.2s; }
+    .inlink-banner-body a:hover { background: #29f5ff; }
+
+    /* SECTION BADGE / TITLE */
+    .section-badge { display: inline-block; font-family: var(--font-display); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); background: var(--teal-dim); border: 1px solid rgba(0,212,170,0.3); padding: 5px 14px; border-radius: 100px; margin-bottom: 1.25rem; }
+    .section-title { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 700; line-height: 1.15; margin-bottom: 1rem; }
+    .section-description { font-size: 1.05rem; color: var(--text-secondary); max-width: 600px; line-height: 1.7; margin-bottom: 3rem; }
+
+    /* FAQ */
+    .faq-section { padding: 80px 0; background: var(--bg-dark); border-top: 1px solid var(--border); }
+    .faq-inner { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    .faq-list { display: flex; flex-direction: column; gap: 12px; }
+    .faq-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .faq-q { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 24px; font-size: 1rem; font-weight: 500; color: var(--text); text-align: left; transition: color 0.2s; }
+    .faq-q:hover { color: var(--teal); }
+    .faq-chevron { font-size: 1.2rem; transition: transform 0.3s; color: var(--text-muted); flex-shrink: 0; }
+    .faq-q[aria-expanded="true"] .faq-chevron { transform: rotate(180deg); color: var(--teal); }
+    .faq-a { display: none; padding: 16px 24px 20px; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.7; border-top: 1px solid var(--border); }
+    .faq-a.is-open { display: block; }
+
+    /* RELATED */
+    .related-section { padding: 80px 0; border-top: 1px solid var(--border); }
+    .related-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 3rem; }
+    .related-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; text-decoration: none; transition: border-color 0.2s, transform 0.2s; display: block; }
+    .related-card:hover { border-color: rgba(0,212,170,0.3); transform: translateY(-3px); }
+    .related-card-cat { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin-bottom: 10px; }
+    .related-card h3 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: 8px; line-height: 1.4; }
+    .related-card p { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; }
+
+    /* CTA */
+    .cta-section { padding: 80px 0; }
+    .cta-card { position: relative; background: var(--bg-card); border: 1px solid rgba(0,212,170,0.15); border-radius: 28px; padding: 72px 40px; text-align: center; overflow: hidden; }
+    .cta-glow { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 600px; height: 300px; background: radial-gradient(ellipse, rgba(0,212,170,0.06) 0%, transparent 70%); pointer-events: none; }
+    .cta-badge { display: inline-block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin-bottom: 1.5rem; }
+    .cta-title { font-family: var(--font-display); font-size: clamp(1.75rem, 4vw, 2.5rem); font-weight: 800; margin-bottom: 1rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+    .cta-description { font-size: 1.05rem; color: var(--text-secondary); margin-bottom: 2.5rem; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .cta-actions { display: flex; align-items: center; justify-content: center; gap: 20px; flex-wrap: wrap; }
+    .cta-large-button { display: inline-flex; align-items: center; gap: 10px; padding: 16px 36px; background: var(--primary); color: #000; font-family: var(--font-display); font-size: 1rem; font-weight: 800; border-radius: 12px; text-decoration: none; transition: all 0.2s; }
+    .cta-large-button:hover { background: #29f5ff; transform: translateY(-2px); box-shadow: 0 10px 40px rgba(0,240,255,0.35); }
+    .cta-secondary-link { font-size: 0.9rem; font-weight: 600; color: var(--text-secondary); text-decoration: none; border-bottom: 1px solid var(--border-light); padding-bottom: 2px; transition: color 0.2s; }
+    .cta-secondary-link:hover { color: var(--text); }
+
+    /* FOOTER */
+    .site-footer { background: var(--bg-dark); border-top: 1px solid var(--border); padding: 48px 0 24px; }
+    .footer-bottom-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-copy, .footer-legal { font-size: 0.8rem; color: var(--text-muted); }
+    .footer-legal { display: flex; align-items: center; gap: 10px; }
+    .footer-legal-link { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .footer-legal-link:hover { color: var(--text-secondary); }
+
+    /* PROGRESS */
+    .reading-progress { position: fixed; top: var(--header-h); left: 0; right: 0; height: 2px; z-index: 999; }
+    .reading-progress-bar { height: 100%; background: linear-gradient(90deg, var(--teal), var(--primary)); width: 0%; transition: width 0.1s; }
+
+    @media (max-width: 900px) { .blog-layout { grid-template-columns: 1fr; gap: 40px; } .blog-sidebar { position: static; } .related-grid { grid-template-columns: 1fr; } .header-nav { display: none; } }
+    @media (max-width: 640px) { .container { padding: 0 16px; } .blog-layout { padding: 0 16px 60px; } .blog-hero-inner { padding: 0 16px; } .cta-card { padding: 48px 24px; } .inlink-banner { flex-direction: column; gap: 16px; } .use-case-grid { grid-template-columns: 1fr; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } html { scroll-behavior: auto; } }
+    :focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; border-radius: 4px; }
+  </style>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="reading-progress" aria-hidden="true">
+    <div class="reading-progress-bar" id="progressBar"></div>
+  </div>
+
+  <!-- Header Component -->
+  <div id="header-placeholder"></div>
+
+  <section class="blog-hero" aria-label="Article header">
+    <div class="blog-hero-inner">
+      <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a><span aria-hidden="true">›</span>
+        <a href="/blog/">Blog</a><span aria-hidden="true">›</span>
+        <span>Workflow &amp; Tools</span>
+      </nav>
+      <span class="blog-category">Workflow &amp; Collaboration</span>
+      <h1 class="blog-hero-title">How to Use <span class="gradient-text">QR Codes</span> for Instant Client Mobile Previews</h1>
+      <p class="blog-hero-desc">Stop emailing URLs and screenshotting browser windows. QR codes are the fastest way to get clients, stakeholders, and teammates previewing your work on their actual devices — here's the complete workflow.</p>
+      <div class="blog-meta">
+        <div class="blog-meta-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M8 5v3.5l2 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          10 min read
+        </div>
+        <div class="blog-meta-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="2" y="3" width="12" height="11" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M5 1v3M11 1v3M2 7h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          April 3, 2026
+        </div>
+        <div class="blog-meta-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><rect x="3" y="3" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="8" y="3" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="3" y="8" width="5" height="5" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="10" y="10" width="1.5" height="1.5" fill="currentColor"/></svg>
+          QR Codes, Workflow, Clients
+        </div>
+      </div>
+      <div class="blog-divider" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <div class="blog-layout">
+    <article class="blog-content" aria-label="Article content">
+
+      <p>You've spent three days building a beautiful landing page. You want the client to see how it looks on their iPhone before the Wednesday call. So you email them the staging URL, they try to type it into their phone from the email on their computer, fat-finger the subdomain, give up, and never actually open it on mobile. On Wednesday they approve it based on the desktop version. It launches. It breaks on every phone.</p>
+      <p>This scenario plays out in agencies and freelance engagements every week. The fix is embarrassingly simple: <strong>QR codes</strong>. A client points their camera at a code on your screen, taps the notification, and they're immediately on the staging site on their personal device. No typing, no email, no "the link didn't work." Just their real phone showing your real work.</p>
+      <p>This guide covers every workflow scenario where QR code previews save time and improve outcomes — from client calls to design reviews to cross-device QA.</p>
+
+      <h2 id="why-qr-previews">Why QR Codes Beat Every Other Mobile Preview Method</h2>
+      <p>Let's quickly acknowledge what developers typically do instead of QR codes — and why each approach breaks down:</p>
+
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th>Method</th>
+            <th>Time to Preview</th>
+            <th>Works for Clients</th>
+            <th>Works on Staging</th>
+            <th>Real Device</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Email the URL</strong></td>
+            <td>2–5 min</td>
+            <td><span class="badge-partial">Fragile</span></td>
+            <td><span class="badge-partial">Auth issues</span></td>
+            <td><span class="badge-yes">Yes</span></td>
+          </tr>
+          <tr>
+            <td><strong>Screenshot from browser</strong></td>
+            <td>1 min</td>
+            <td><span class="badge-yes">Easy</span></td>
+            <td><span class="badge-yes">Yes</span></td>
+            <td><span class="badge-no">No — static</span></td>
+          </tr>
+          <tr>
+            <td><strong>Browser DevTools responsive mode</strong></td>
+            <td>Instant</td>
+            <td><span class="badge-no">Needs sharing</span></td>
+            <td><span class="badge-yes">Yes</span></td>
+            <td><span class="badge-no">No — simulated</span></td>
+          </tr>
+          <tr>
+            <td><strong>USB cable + remote debug</strong></td>
+            <td>5–10 min</td>
+            <td><span class="badge-no">Not practical</span></td>
+            <td><span class="badge-yes">Yes</span></td>
+            <td><span class="badge-yes">Yes</span></td>
+          </tr>
+          <tr>
+            <td><strong>QR Code (Mobile Viewer)</strong></td>
+            <td>&lt; 10 seconds</td>
+            <td><span class="badge-yes">Instant scan</span></td>
+            <td><span class="badge-yes">Yes</span></td>
+            <td><span class="badge-yes">Yes</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p>The QR code approach wins on every dimension that matters in a client or team context. The only requirement is that the URL being previewed is reachable from the phone (either publicly accessible or on the same local network for dev servers).</p>
+
+      <h2 id="generating-qr-codes">Generating QR Codes with Mobile Viewer</h2>
+      <p>Mobile Viewer's QR Code Generator is designed specifically for this workflow. Here's how to use it:</p>
+
+      <div class="workflow">
+        <div class="workflow-step">
+          <div class="workflow-num">1</div>
+          <div class="workflow-body">
+            <h3>Paste your URL into Mobile Viewer</h3>
+            <p>Open <a href="/">mobileviewer.github.io</a> and paste any URL — a live site, a staging domain, a localhost address, or any publicly accessible link. The tool works with <code>https://</code>, <code>http://</code>, and local network addresses like <code>192.168.1.x:3000</code>.</p>
+          </div>
+        </div>
+        <div class="workflow-step">
+          <div class="workflow-num">2</div>
+          <div class="workflow-body">
+            <h3>Click "QR Code" in the toolbar</h3>
+            <p>The QR Code button is prominently placed in Mobile Viewer's controls. One click generates a scannable QR code encoding your exact URL. <strong>No account required, no expiry, no tracking codes appended.</strong></p>
+          </div>
+        </div>
+        <div class="workflow-step">
+          <div class="workflow-num">3</div>
+          <div class="workflow-body">
+            <h3>Share the screen or screenshot the QR</h3>
+            <p>In a live meeting: turn your laptop toward the client and ask them to scan. In a recorded Loom or video call: screenshare and hold the code still for 3 seconds. In a document: screenshot the QR and paste it directly into Notion, Figma, Google Docs, or your email.</p>
+          </div>
+        </div>
+        <div class="workflow-step">
+          <div class="workflow-num">4</div>
+          <div class="workflow-body">
+            <h3>Client scans and sees the live site</h3>
+            <p>Any modern smartphone camera app will detect the QR code without a separate app. A notification pops up, the client taps it, and their Safari or Chrome opens the URL <strong>on their actual device, with their actual screen size, their actual browser engine</strong>. That's a real mobile preview.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="inlink-banner">
+        <div class="inlink-banner-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.8"/><rect x="3" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="14" width="2" height="2" fill="currentColor"/></svg>
+        </div>
+        <div class="inlink-banner-body">
+          <h4>Generate a QR Code for Any URL — Free</h4>
+          <p>Mobile Viewer's QR Code Generator creates instant scannable codes for any URL. No account, no expiry, no watermarks.</p>
+          <a href="/?tool=qr-generator">Open QR Generator →</a>
+        </div>
+      </div>
+
+      <h2 id="use-cases">8 Workflows Where QR Previews Save the Day</h2>
+      <p>The obvious use case is showing a client a website on their phone. But QR previews are valuable in a much wider range of situations:</p>
+
+      <div class="use-case-grid">
+        <div class="use-case-card">
+          <div class="use-case-icon">🤝</div>
+          <h4>Client Approval Calls</h4>
+          <p>Show clients the staging site on their own device during a call. They experience real tap targets, real fonts, real scroll behavior — not a screenshot.</p>
+        </div>
+        <div class="use-case-card">
+          <div class="use-case-icon">🎨</div>
+          <h4>Design Review Sessions</h4>
+          <p>Designers reviewing their Figma prototypes or live implementations can scan to see the design at their device's exact resolution and see how fonts render on OLED screens.</p>
+        </div>
+        <div class="use-case-card">
+          <div class="use-case-icon">🔍</div>
+          <h4>Cross-Device QA</h4>
+          <p>Pass a QR code to the iOS tester, the Android tester, and the tablet tester simultaneously. All three can load the same build instantly on their devices.</p>
+        </div>
+        <div class="use-case-card">
+          <div class="use-case-icon">📋</div>
+          <h4>Handoff Documentation</h4>
+          <p>Embed a QR code in your project handoff doc or Notion page. Stakeholders who open the doc weeks later can still scan to the live site instantly.</p>
+        </div>
+        <div class="use-case-card">
+          <div class="use-case-icon">🖥️</div>
+          <h4>Conference & Presentation</h4>
+          <p>Presenting at a meetup or to a board? Display a QR code on your slide so the room can pull up the demo on their own phones without you having to type the URL.</p>
+        </div>
+        <div class="use-case-card">
+          <div class="use-case-icon">⚡</div>
+          <h4>Dev-to-Phone Handoff</h4>
+          <p>Skip USB cable debugging for quick visual checks. Scan your localhost address (on the same network) from your phone to spot rendering issues before committing code.</p>
+        </div>
+        <div class="use-case-card">
+          <div class="use-case-icon">💬</div>
+          <h4>Async Feedback Loops</h4>
+          <p>Record a Loom showing the QR code. Remote team members or clients can pause the video, scan the code, and explore the build independently.</p>
+        </div>
+        <div class="use-case-card">
+          <div class="use-case-icon">🚀</div>
+          <h4>Pre-Launch Sanity Check</h4>
+          <p>15 minutes before a launch, send a QR code to your entire team in Slack. A dozen people can check the site on their personal devices in under 2 minutes.</p>
+        </div>
+      </div>
+
+      <h2 id="scenario-walkthroughs">Real Scenario Walkthroughs</h2>
+
+      <div class="scenario-block">
+        <div class="scenario-label">Scenario 1</div>
+        <h3>Agency: Client Review Call for an E-commerce Redesign</h3>
+        <p>You've built the new product page on a staging server at <code>staging.client-store.com/products/featured</code>. The client wants to see it before approving the mobile layout. During the Zoom call, you open Mobile Viewer, paste the staging URL, and click QR Code. You share your screen.</p>
+        <p>The client opens their phone camera, points it at the QR on their screen, taps the link, and sees the product page <strong>on their own iPhone 15</strong>. They can scroll, zoom in on the product images, and tap the Add to Cart button — experiencing it exactly as their customers will. The review takes 8 minutes instead of 45.</p>
+      </div>
+
+      <div class="scenario-block">
+        <div class="scenario-label">Scenario 2</div>
+        <h3>Freelancer: Testing Localhost on a Real Device</h3>
+        <p>You're working on a portfolio site at <code>localhost:5173</code> and want to check it on your iPhone without deploying to staging. Open Mobile Viewer, switch to the local network URL (<code>192.168.1.x:5173</code> — your machine's local IP + dev server port), generate a QR code, and scan.</p>
+        <p>Your phone and laptop are on the same Wi-Fi network, so the scan opens your dev server directly in Mobile Safari. <strong>You're now seeing real WebKit rendering, real safe area insets, and real touch behavior</strong> on a live build without a single deployment step.</p>
+      </div>
+
+      <div class="scenario-block">
+        <div class="scenario-label">Scenario 3</div>
+        <h3>In-House Team: Async QA Before a Feature Launch</h3>
+        <p>Your team is distributed across three time zones. You push a feature to the staging branch at 2pm. You want QA feedback before the 9am merge window. Post a screenshot of the QR code in your Slack channel with a note: "Scan to test the new checkout flow on your device and leave feedback in this thread."</p>
+        <p>Over the next 6 hours, teammates in London, São Paulo, and Singapore each scan, test on their devices (mix of iOS and Android), and post feedback. By 9am you have <strong>real-device feedback from multiple operating systems</strong> without scheduling a single meeting.</p>
+      </div>
+
+      <h2 id="tips-and-best-practices">Tips and Best Practices</h2>
+      <h3 id="local-network">Testing Localhost with QR Codes</h3>
+      <p>For localhost URLs to work when scanned on a phone, both devices must be on the same Wi-Fi network. Use your machine's local IP address instead of <code>localhost</code>:</p>
+      <ul>
+        <li><strong>macOS:</strong> System Preferences → Network → your Wi-Fi connection → IP Address. Typically <code>192.168.1.x</code></li>
+        <li><strong>Windows:</strong> Run <code>ipconfig</code> in Command Prompt. Look for IPv4 Address under your Wi-Fi adapter</li>
+        <li>Replace <code>localhost</code> with that IP in your URL: <code>http://192.168.1.42:3000</code></li>
+        <li>Make sure your dev server is bound to <code>0.0.0.0</code> (not just <code>127.0.0.1</code>). For Vite: <code>vite --host</code>. For Next.js: already handles this. For webpack-dev-server: add <code>--host 0.0.0.0</code></li>
+      </ul>
+
+      <div class="callout callout-warn">
+        <div class="callout-label">⚠️ Firewall Note</div>
+        <p>If your phone can't reach your dev server via the local IP, check your machine's firewall settings. On macOS, System Preferences → Security → Firewall. On Windows, Windows Defender Firewall → Allow an app — add your Node/Python/etc. executable. The dev server port must be allowed through.</p>
+      </div>
+
+      <h3 id="staging-with-auth">QR Codes for Password-Protected Staging</h3>
+      <p>QR codes encode a URL, not credentials. If your staging site is behind HTTP Basic Auth or a login page, clients will still need to enter credentials after scanning. Options for smoother previews:</p>
+      <ul>
+        <li>Create a temporary shareable link via Netlify, Vercel, or GitHub Pages with a preview-only URL that doesn't require auth</li>
+        <li>Use Vercel's password-protected preview deployments and share the password verbally during the call</li>
+        <li>Include credentials in the URL itself if your staging uses HTTP Basic Auth: <code>https://user:pass@staging.example.com</code> — note this is insecure and appropriate only for non-sensitive reviews</li>
+      </ul>
+
+      <h3 id="embedding-qr">Embedding QR Codes in Deliverables</h3>
+      <p>A QR code in a static document or presentation will always point to wherever the URL was pointing at the time of generation. This makes them excellent for:</p>
+      <ul>
+        <li><strong>Figma prototype links:</strong> generate a QR for the Figma preview URL and embed it in the component spec page</li>
+        <li><strong>Design handoff PDFs:</strong> include a QR pointing to the live staging build alongside the spec</li>
+        <li><strong>Proposal decks:</strong> QR code to a demo site so prospects can scan during the pitch</li>
+        <li><strong>Test reports:</strong> include a QR to the specific page under test so reviewers can verify fixes directly</li>
+      </ul>
+
+      <div class="callout callout-pro">
+        <div class="callout-label">💡 Pro Tip</div>
+        <p>Screenshot the QR code generated by Mobile Viewer and drop it into your project's README.md. Any developer who clones the repo can instantly scan to the live demo on their phone — no URL copying needed.</p>
+      </div>
+
+      <h2 id="combining-with-simulator">Combining QR Previews with the Simulator</h2>
+      <p>QR previews and the device simulator complement each other in a complete testing workflow. Use the simulator first to catch layout bugs without needing a device, then use QR codes for the final real-device validation:</p>
+      <ol>
+        <li><strong>During development:</strong> Use Mobile Viewer's <a href="/?tool=responsive-checker">Responsive Checker</a> to iterate on the layout at iPhone 15, Galaxy S23, and tablet viewports</li>
+        <li><strong>Before review:</strong> Use the <a href="/?tool=multi-device-preview">Multi-Device Preview</a> to screenshot your site across 4 viewports simultaneously as a reference image</li>
+        <li><strong>During client call:</strong> Generate a QR code and have the client scan to experience the site on their real device</li>
+        <li><strong>After review:</strong> Use QR codes to distribute the updated staging URL to all QA reviewers across iOS and Android devices</li>
+      </ol>
+      <p>This workflow catches the maximum number of issues with the minimum amount of back-and-forth. The simulator handles 90% of layout testing, and QR-based real-device testing catches the remaining 10% that only real hardware exposes.</p>
+
+      <p>For deeper guidance on the full testing workflow, see our article on <a href="/blog/test-responsive-design">how to test responsive design without buying 20 phones</a>.</p>
+
+    </article>
+
+    <aside class="blog-sidebar" aria-label="Article navigation and tools">
+      <nav class="toc-card" aria-label="Table of contents">
+        <div class="toc-title">Table of Contents</div>
+        <ul class="toc-list">
+          <li><a href="#why-qr-previews">Why QR Beats Other Methods</a></li>
+          <li><a href="#generating-qr-codes">Generating QR Codes</a></li>
+          <li><a href="#use-cases">8 Workflow Use Cases</a></li>
+          <li><a href="#scenario-walkthroughs">Real Scenario Walkthroughs</a></li>
+          <li class="toc-sub"><a href="#scenario-walkthroughs">Client Review Call</a></li>
+          <li class="toc-sub"><a href="#scenario-walkthroughs">Testing Localhost</a></li>
+          <li class="toc-sub"><a href="#scenario-walkthroughs">Async Team QA</a></li>
+          <li><a href="#tips-and-best-practices">Tips &amp; Best Practices</a></li>
+          <li class="toc-sub"><a href="#local-network">Localhost QR Testing</a></li>
+          <li class="toc-sub"><a href="#staging-with-auth">Password-Protected Staging</a></li>
+          <li class="toc-sub"><a href="#embedding-qr">Embedding in Deliverables</a></li>
+          <li><a href="#combining-with-simulator">Combining with Simulator</a></li>
+        </ul>
+      </nav>
+      <div class="sidebar-tool-card">
+        <h4>📷 QR Code Generator</h4>
+        <p>Instantly create a QR code for any URL. Paste, click, scan — the fastest mobile preview handoff.</p>
+        <a href="/?tool=qr-generator" class="sidebar-btn">Generate QR Code →</a>
+      </div>
+      <div class="sidebar-tool-card" style="margin-top:16px">
+        <h4>📱 Device Simulator</h4>
+        <p>Preview your URL at iPhone 15, Galaxy S23, and 20+ device presets before sharing the QR.</p>
+        <a href="/" class="sidebar-btn">Open Simulator →</a>
+        <a href="/blog/test-responsive-design" class="sidebar-btn-outline">🔧 Responsive Testing Guide →</a>
+      </div>
+    </aside>
+  </div>
+
+  <section class="related-section" aria-label="Related articles">
+    <div class="container">
+      <span class="section-badge">Keep Reading</span>
+      <h2 class="section-title">Related Articles</h2>
+      <div class="related-grid">
+        <a href="/blog/test-responsive-design" class="related-card">
+          <div class="related-card-cat">Developer Guide</div>
+          <h3>How to Test Responsive Design Without Buying 20 Phones</h3>
+          <p>A complete layered testing workflow — from browser DevTools all the way to QR-based real-device checks.</p>
+        </a>
+        <a href="/blog/best-free-mobile-testing-tools-2026" class="related-card">
+          <div class="related-card-cat">Tools</div>
+          <h3>Best Free Tools for Mobile Testing in 2026</h3>
+          <p>Every free tool you need to audit, test, and optimize your site's mobile experience — compared and ranked.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq-section" aria-labelledby="faq-heading">
+    <div class="faq-inner">
+      <span class="section-badge">FAQ</span>
+      <h2 class="section-title" id="faq-heading">QR Code Preview FAQ</h2>
+      <p class="section-description">Common questions about using QR codes for mobile website previews</p>
+      <div class="faq-list" role="list">
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+            How do I generate a QR code for a website?
+            <span class="faq-chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>The fastest method for web developers is <a href="/?tool=qr-generator">Mobile Viewer's QR Code Generator</a> — paste your URL, click QR Code, and a scannable code appears instantly. No account required. For staging sites, use the same URL you'd normally share. The QR simply encodes that URL for easy phone scanning without manual typing.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+            Can clients scan a QR code to see a staging site?
+            <span class="faq-chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>Yes, as long as the staging site is on a publicly accessible URL — or the client's device is on the same Wi-Fi network as your local dev server. For password-protected staging environments, the QR code simply encodes the URL and clients will still need to enter any login credentials after scanning.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+            What is the best QR code generator for developers?
+            <span class="faq-chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>For developers focused on web testing, <a href="/?tool=qr-generator">Mobile Viewer's QR Code Generator</a> is purpose-built for this workflow. It's integrated directly with the device simulator and responsive checker — so you can preview at a specific viewport in the simulator, then instantly generate a QR to hand off to a real device, all from the same tool.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+            Does the QR code expire?
+            <span class="faq-chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>QR codes are simply a visual encoding of a URL. They never expire on their own — as long as the underlying URL is accessible, the QR code will work indefinitely. If you paste a QR code screenshot into a document, it will remain scannable as long as the image is visible and the URL still exists.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+            Can I use a QR code to test a localhost site on my phone?
+            <span class="faq-chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>Yes, but you need to use your machine's local network IP address instead of <code>localhost</code>. Find your IP (e.g. <code>192.168.1.42</code>) and use <code>http://192.168.1.42:3000</code> in the URL. Both your laptop and phone must be on the same Wi-Fi network. Also make sure your dev server is bound to <code>0.0.0.0</code> rather than just <code>127.0.0.1</code> — most frameworks support this with a <code>--host</code> flag.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section" aria-label="Call to action">
+    <div class="container">
+      <div class="cta-card">
+        <div class="cta-glow" aria-hidden="true"></div>
+        <div class="cta-badge">Free · Instant · No Account Needed</div>
+        <h2 class="cta-title">Generate a QR code for your site in one click</h2>
+        <p class="cta-description">Mobile Viewer's QR Code Generator is free, instant, and built for the developer-to-device handoff workflow</p>
+        <div class="cta-actions">
+          <a href="/?tool=qr-generator" class="cta-large-button">
+            Generate QR Code
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/><rect x="14" y="3" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/><rect x="3" y="14" width="7" height="7" rx="1" stroke="currentColor" stroke-width="2"/><rect x="15" y="15" width="2" height="2" fill="currentColor"/></svg>
+          </a>
+          <a href="/#tools" class="cta-secondary-link">Explore all tools →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Component -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Scripts -->
+  <script src="header.js"></script>
+  <script src="footer.js"></script>
+  <script src="script.js"></script>
+
+  <script>
+    function toggleFaq(btn) {
+      const answer = btn.nextElementSibling;
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', !isOpen);
+      answer.classList.toggle('is-open', !isOpen);
+    }
+    const progressBar = document.getElementById('progressBar');
+    window.addEventListener('scroll', () => {
+      const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+      progressBar.style.width = Math.min(pct, 100) + '%';
+    }, { passive: true });
+  </script>
+</body>
+</html>
