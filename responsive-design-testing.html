@@ -337,11 +337,11 @@
     <!-- MAIN CONTENT -->
     <article class="blog-content" aria-label="Article content">
 
-      <figure style="margin-bottom: 2.5rem;">
+      <figure style="margin-bottom: 2.5rem; width: 100%; overflow: hidden;">
   <img src="/images/responsive-testing.png" 
        alt="A desktop screen showing a website being tested across various mobile and tablet device frames" 
-       style="width: 100%; height: auto; border-radius: var(--radius-lg); border: 1px solid var(--border-light); object-fit: cover; max-height: 480px; display: block;">
-  <figcaption style="font-size: 0.85rem; color: var(--text-muted); margin-top: 12px; text-align: center; font-style: italic;">
+       style="display: block; width: 100%; height: auto; border-radius: var(--radius-lg); border: 1px solid var(--border-light); /* Removed max-height and object-fit for better natural scaling */">
+  <figcaption style="font-size: 0.85rem; color: var(--text-muted); margin-top: 12px; text-align: center; font-style: italic; padding: 0 10px;">
     Modern responsive testing: Simulating a full device lab directly from your browser.
   </figcaption>
 </figure>
