@@ -2340,24 +2340,3 @@ code {
   }
   html { scroll-behavior: auto; }
 }
-
-/* Responsive Fixes */
-.container {
-    width: 100% !important;
-}
-
-img {
-    height: auto; /* Ensure images don't distort when shrinking */
-}
-
-@media (max-width: 640px) {
-    .blog-hero-title {
-        font-size: 1.75rem; /* Manual override if clamp is too big */
-    }
-    
-    /* Prevent horizontal scroll entirely */
-    body, html {
-        overflow-x: hidden;
-        position: relative;
-    }
-}
