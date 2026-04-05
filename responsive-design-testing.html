@@ -283,26 +283,7 @@
   </div>
 
   <!-- Header Component -->
-  <header class="site-header">
-    <div class="header-inner">
-      <a href="/" class="header-logo">
-        <div class="logo-icon">
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="8" y="4" width="16" height="24" rx="4" stroke="var(--primary)" stroke-width="2.5"/><circle cx="16" cy="24" r="1.5" fill="var(--primary)"/></svg>
-        </div>
-        <span class="logo-text">Mobile<span class="logo-accent">Viewer</span></span>
-      </a>
-      <nav class="header-nav">
-        <ul class="nav-list">
-          <li><a href="/#tools" class="nav-link">Tools</a></li>
-          <li><a href="/blog" class="nav-link">Blog</a></li>
-          <li><a href="/#faq" class="nav-link">FAQ</a></li>
-        </ul>
-      </nav>
-      <a href="/" class="header-cta-btn">
-        Launch App
-      </a>
-    </div>
-  </header>
+<div id="header-placeholder"></div>
 
   <!-- BLOG HERO -->
   <section class="blog-hero" aria-label="Article header">
@@ -475,6 +456,11 @@
             </tr>
           </tbody>
         </table>
+      </div>
+
+      <div class="callout callout-tip">
+        <div class="callout-label">💡 Data-driven breakpoints</div>
+        <p>Check your site's Google Analytics audience report under <strong>Audience → Mobile → Devices</strong> to see exactly which screen resolutions your real users have. Prioritize your testing around the top five.</p>
       </div>
 
       <!-- ── SECTION 5 ── -->
@@ -712,6 +698,26 @@
 
   </div>
 
+  <!-- RELATED POSTS -->
+  <section class="related-section" aria-label="Related articles">
+    <div class="container">
+      <span class="section-badge">Keep Reading</span>
+      <h2 class="section-title">Related Articles</h2>
+      <div class="related-grid">
+        <a href="/mobile-seo-checklist-2026" class="related-card">
+          <div class="related-card-cat">SEO</div>
+          <h3>Mobile SEO Checklist 2026: 15 Things Most Sites Still Get Wrong</h3>
+          <p>A complete audit list for developers and SEOs — covering Core Web Vitals, structured data, tap targets, and more.</p>
+        </a>
+        <a href="/iphone-15-vs-galaxy-s23-viewport" class="related-card">
+          <div class="related-card-cat">Developer Reference</div>
+          <h3>iPhone 15 vs Galaxy S23 Viewport Differences Every Developer Should Know</h3>
+          <p>Viewport widths, pixel ratios, safe area insets, and browser quirks compared side by side for the two most common flagship devices.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- FAQ SECTION -->
   <section class="faq-section" id="faq">
     <div class="container">
@@ -783,21 +789,11 @@
   </section>
 
   <!-- Footer Component -->
-  <footer class="site-footer">
-    <div class="container">
-      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
-        <div class="header-logo">
-          <div class="logo-icon">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><rect x="8" y="4" width="16" height="24" rx="4" stroke="var(--primary)" stroke-width="2.5"/><circle cx="16" cy="24" r="1.5" fill="var(--primary)"/></svg>
-          </div>
-          <span class="logo-text">Mobile<span class="logo-accent">Viewer</span></span>
-        </div>
-        <div style="font-size: 0.85rem; color: var(--text-muted);">
-          &copy; 2026 Mobile Viewer. All rights reserved.
-        </div>
-      </div>
-    </div>
-  </footer>
+<div id="footer-placeholder"></div>
+
+<!-- Scripts -->
+<script src="header.js"></script>
+<script src="footer.js"></script>
 
   <script>
     // FAQ toggle
