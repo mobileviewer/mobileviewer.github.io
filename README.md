@@ -2,7 +2,7 @@
 
 **Professional Responsive Website Tester & Device Preview Tool**
 
-![Mobile Viewer](https://mobileviewer.github.io/images/mobile-viewer-hero.jpg)
+![Mobile Viewer](https://mobileviewer.github.io/favicon.png)
 
 **See your website on any device — instantly.**
 
