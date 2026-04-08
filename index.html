@@ -10,14 +10,41 @@
     gtag('js', new Date());
     gtag('config', 'G-MBJB77SQ0K');
   </script>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mobile Viewer — Free Responsive Website Tester & Device Preview Tool</title>
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
-
   <meta name="google-adsense-account" content="ca-pub-9759808041159779">
+
+  <!-- ====================== STICKY SIDE ADS CSS ====================== -->
+  <style>
+    /* Sticky vertical ads on both sides (desktop only) */
+    .sticky-side-ad {
+      position: fixed;
+      top: 120px;
+      width: 160px;
+      z-index: 9999;
+      display: none;
+    }
+    .sticky-side-ad.left  { left: 20px; }
+    .sticky-side-ad.right { right: 20px; }
+
+    @media (min-width: 1280px) {
+      .sticky-side-ad {
+        display: block;
+      }
+    }
+
+    /* Optional: make main container slightly narrower on very wide screens to avoid overlap */
+    @media (min-width: 1280px) {
+      .container {
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  </style>
 
   <!-- Primary SEO -->
   <meta name="description" content="Mobile Viewer is the #1 free tool to check how your website looks on any mobile device. Test responsive design, simulate iPhones, Android phones, tablets, and desktops — instantly, no download needed.">
@@ -25,7 +52,6 @@
   <meta name="author" content="Mobile Viewer">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://mobileviewer.github.io/">
-
   <!-- Open Graph -->
   <meta property="og:title" content="Mobile Viewer — Free Responsive Website Tester & Device Preview Tool">
   <meta property="og:description" content="Instantly preview your website on any mobile device, tablet, or desktop. Free responsive design checker with QR generator, screenshot capture, and more.">
@@ -34,14 +60,12 @@
   <meta property="og:image" content="https://mobileviewer.github.io/og-image.jpg">
   <meta property="og:site_name" content="Mobile Viewer">
   <meta property="og:locale" content="en_US">
-
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Mobile Viewer — Free Responsive Website Tester">
   <meta name="twitter:description" content="Test your website on any device instantly. Free mobile preview tool for developers & designers.">
   <meta name="twitter:image" content="https://mobileviewer.github.io/twitter-image.jpg">
   <meta name="twitter:site" content="@mobileviewer">
-
   <!-- Schema: WebApplication -->
   <script type="application/ld+json">
   {
@@ -76,7 +100,6 @@
     ]
   }
   </script>
-
   <!-- Schema: FAQPage -->
   <script type="application/ld+json">
   {
@@ -118,7 +141,6 @@
     ]
   }
   </script>
-
   <!-- Schema: BreadcrumbList -->
   <script type="application/ld+json">
   {
@@ -131,17 +153,27 @@
     ]
   }
   </script>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
-
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
   <!-- Header Component -->
   <div id="header-placeholder"></div>
+
+  <!-- ====================== AD PLACEMENT 1: TOP LEADERBOARD (Above the fold) ====================== -->
+  <div style="margin: 20px 0 30px; text-align: center;">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-9759808041159779"
+         data-ad-slot="6601821575"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
 
   <!-- ═══════════════════════════════════════════
        SECTION 1: HERO
@@ -277,7 +309,6 @@
         <h2 class="section-title" id="viewer-heading">Mobile Viewer Tool</h2>
         <p class="section-description">Enter any URL and instantly preview it on mobile, tablet, or desktop — with advanced controls</p>
       </div>
-
       <div class="viewer-card">
         <!-- URL Bar & Controls -->
         <div class="viewer-controls">
@@ -291,7 +322,6 @@
             <input type="text" id="urlInput" placeholder="example.com" class="url-input" aria-label="Enter website URL" autocomplete="url" spellcheck="false">
             <button class="url-clear-btn" id="urlClearBtn" onclick="clearUrl()" aria-label="Clear URL" style="display:none">✕</button>
           </div>
-
           <div class="device-toggle" role="group" aria-label="Device type">
             <button class="toggle-btn active" data-device="mobile" onclick="switchDevice('mobile')" aria-pressed="true">
               <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="5" y="2" width="10" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M9 15H11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
@@ -306,13 +336,11 @@
               <span>Desktop</span>
             </button>
           </div>
-
           <button class="load-button" onclick="loadURL()" aria-label="Load website preview">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1v8M5 6l3 3 3-3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 11v2a1 1 0 001 1h10a1 1 0 001-1v-2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
             <span>Load</span>
           </button>
         </div>
-
         <!-- Advanced Controls Row -->
         <div class="viewer-advanced-controls" id="advancedControls">
           <div class="advanced-group">
@@ -342,7 +370,6 @@
               <option value="custom">✏️ Custom Size...</option>
             </select>
           </div>
-
           <div class="advanced-group custom-size-group" id="customSizeGroup" style="display:none">
             <label class="adv-label">Custom Size</label>
             <div class="custom-size-inputs">
@@ -351,7 +378,6 @@
               <input type="number" id="customH" placeholder="Height" class="adv-input" min="300" max="1600" aria-label="Custom height">
             </div>
           </div>
-
           <div class="advanced-group">
             <label for="orientationToggle" class="adv-label">Orientation</label>
             <button class="adv-btn" id="orientationToggle" onclick="toggleOrientation()" aria-label="Toggle orientation">
@@ -359,7 +385,6 @@
               <span id="orientLabel">Portrait</span>
             </button>
           </div>
-
           <div class="advanced-group">
             <label class="adv-label">Zoom</label>
             <div class="zoom-controls">
@@ -368,7 +393,6 @@
               <button class="zoom-btn" onclick="adjustZoom(10)" aria-label="Zoom in">+</button>
             </div>
           </div>
-
           <div class="advanced-group">
             <label class="adv-label">Actions</label>
             <div class="action-btns">
@@ -387,7 +411,6 @@
             </div>
           </div>
         </div>
-
         <!-- Status Bar -->
         <div class="viewer-status-bar" id="viewerStatusBar">
           <div class="status-left">
@@ -398,7 +421,6 @@
             <span class="status-dim" id="statusDim"></span>
           </div>
         </div>
-
         <!-- Device Frames -->
         <div class="frames-wrapper" id="framesWrapper">
           <!-- Mobile Frame -->
@@ -427,7 +449,6 @@
               </div>
             </div>
           </div>
-
           <!-- Tablet Frame -->
           <div class="device-frame tablet-frame" id="tabletFrame" aria-label="Tablet device preview">
             <div class="device-outer device-outer--tablet">
@@ -447,7 +468,6 @@
               </div>
             </div>
           </div>
-
           <!-- Desktop Frame -->
           <div class="device-frame desktop-frame" id="desktopFrame" aria-label="Desktop device preview">
             <div class="device-outer device-outer--desktop">
@@ -479,7 +499,6 @@
             </div>
           </div>
         </div>
-
         <!-- QR Modal -->
         <div class="qr-modal" id="qrModal" role="dialog" aria-modal="true" aria-label="QR Code">
           <div class="qr-modal-inner">
@@ -494,6 +513,19 @@
     </div>
   </section>
 
+  <!-- ====================== AD PLACEMENT 2: BELOW PREVIEW TOOL (Highest CTR spot) ====================== -->
+  <div style="margin: 50px 0 60px; text-align: center;">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-9759808041159779"
+         data-ad-slot="8850176009"
+         data-ad-format="rectangle"
+         data-full-width-responsive="true"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+
   <!-- ═══════════════════════════════════════════
        SECTION 4: WHY MOBILE VIEWER
   ═══════════════════════════════════════════ -->
@@ -504,7 +536,6 @@
         <h2 class="section-title" id="why-heading">Why You Need a <span class="gradient-text">Mobile Site Viewer</span></h2>
         <p class="section-description">Over 63% of all web traffic now comes from mobile devices. A broken mobile experience doesn't just frustrate visitors — it costs you rankings, conversions, and credibility.</p>
       </div>
-
       <div class="why-grid">
         <div class="why-card why-card--large">
           <div class="why-icon">
@@ -544,6 +575,17 @@
         </div>
       </div>
 
+      <!-- ====================== AD PLACEMENT 3: After Why Cards ====================== -->
+      <ins class="adsbygoogle"
+           style="display:block; margin: 40px 0;"
+           data-ad-client="ca-pub-9759808041159779"
+           data-ad-slot="8850176009"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+
       <blockquote class="why-quote">
         <p>"Neglecting mobile optimization is not a technical debt — it's a revenue leak. Every pixel out of place on mobile is a customer walking out the door."</p>
         <cite>— Mobile UX Research, 2024</cite>
@@ -561,7 +603,6 @@
         <h2 class="section-title" id="guide-heading">How to Check <span class="gradient-text">Mobile View</span> of a Website</h2>
         <p class="section-description">Follow this professional workflow to ensure your site looks perfect on every screen size</p>
       </div>
-
       <div class="guide-steps">
         <div class="guide-step">
           <div class="guide-step-num">01</div>
@@ -603,7 +644,6 @@
           </div>
         </div>
       </div>
-
       <div class="pro-tip-box">
         <div class="pro-tip-icon" aria-hidden="true">⚡</div>
         <div>
@@ -623,7 +663,6 @@
         <h2 class="section-title" id="tools-heading">Complete Testing Suite</h2>
         <p class="section-description">Everything you need to build, test, and ship pixel-perfect responsive websites</p>
       </div>
-
       <div class="tools-grid">
         <article class="tool-card">
           <div class="tool-icon">
@@ -633,7 +672,6 @@
           <p class="tool-description">Dynamically adjust iframe width and height to simulate any device breakpoint. Perfect for checking CSS media query thresholds.</p>
           <button class="tool-button" onclick="window.location.href='/responsive-viewport-resizer'" aria-label="Launch Responsive Viewport Resizer tool">Launch Tool →</button>
         </article>
-
         <article class="tool-card">
           <div class="tool-icon">
             <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="5" y="5" width="10" height="10" rx="1" stroke="currentColor" stroke-width="2"/><rect x="17" y="5" width="10" height="10" rx="1" stroke="currentColor" stroke-width="2"/><rect x="5" y="17" width="10" height="10" rx="1" stroke="currentColor" stroke-width="2"/><rect x="17" y="17" width="10" height="10" rx="1" stroke="currentColor" stroke-width="2"/></svg>
@@ -642,7 +680,6 @@
           <p class="tool-description">Generate a QR code for any URL and instantly test mobile access by scanning with your phone. Great for staging sites.</p>
           <button class="tool-button" onclick="window.location.href='/qr-code-generator'" aria-label="Launch QR Code Generator tool">Launch Tool →</button>
         </article>
-
         <article class="tool-card">
           <div class="tool-icon">
             <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="4" y="8" width="24" height="16" rx="2" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="16" r="3" stroke="currentColor" stroke-width="2"/></svg>
@@ -651,7 +688,6 @@
           <p class="tool-description">Capture screenshots of any website at multiple device resolutions for visual comparison and stakeholder reports.</p>
           <button class="tool-button" onclick="window.location.href='/website-screenshot-capturer'" aria-label="Launch Website Screenshot Capturer tool">Launch Tool →</button>
         </article>
-
         <article class="tool-card">
           <div class="tool-icon">
             <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="2"/><path d="M10 16a6 6 0 016-6M16 10v3m0 6v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
@@ -660,7 +696,6 @@
           <p class="tool-description">Test color contrast ratios against WCAG AA/AAA standards to ensure text is readable on all device types and in all lighting conditions.</p>
           <button class="tool-button" onclick="window.location.href='/accessibility-contrast-checker'" aria-label="Launch Accessibility Contrast Checker tool">Launch Tool →</button>
         </article>
-
         <article class="tool-card">
           <div class="tool-icon">
             <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="4" y="6" width="24" height="20" rx="2" stroke="currentColor" stroke-width="2"/><path d="M4 12h24" stroke="currentColor" stroke-width="2"/><circle cx="9" cy="9" r="1.5" fill="currentColor"/><circle cx="14" cy="9" r="1.5" fill="currentColor"/></svg>
@@ -669,7 +704,6 @@
           <p class="tool-description">Simulate different browsers and crawlers including Googlebot to see how your site responds to various user agent strings.</p>
           <button class="tool-button" onclick="window.location.href='/user-agent-switcher'" aria-label="Launch User Agent Switcher tool">Launch Tool →</button>
         </article>
-
         <article class="tool-card">
           <div class="tool-icon">
             <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="2" y="6" width="11" height="20" rx="2" stroke="currentColor" stroke-width="2"/><rect x="16" y="10" width="14" height="12" rx="2" stroke="currentColor" stroke-width="2"/></svg>
@@ -678,7 +712,6 @@
           <p class="tool-description">View your URL simultaneously across multiple device sizes in a grid layout. Spot responsive inconsistencies at a glance.</p>
           <button class="tool-button" onclick="window.location.href='/multi-device-preview'" aria-label="Launch Multi-Device Preview Grid tool">Launch Tool →</button>
         </article>
-
         <article class="tool-card">
           <div class="tool-icon">
             <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M4 28V4l12 8 12-8v24l-12-8-12 8z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
@@ -687,7 +720,6 @@
           <p class="tool-description">A draggable overlay that shows CSS breakpoints in real-time on any loaded page. Check layout shifts at every responsive threshold.</p>
           <button class="tool-button" onclick="window.location.href='/breakpoint-tester-bookmarklet'" aria-label="Launch Breakpoint Tester tool">Launch Tool →</button>
         </article>
-
         <article class="tool-card">
           <div class="tool-icon">
             <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 4C9.373 4 4 9.373 4 16s5.373 12 12 12 12-5.373 12-12S22.627 4 16 4z" stroke="currentColor" stroke-width="2"/><path d="M10 16h12M16 10v12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M16 4v4M16 24v4M4 16h4M24 16h4" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".4"/></svg>
@@ -696,7 +728,6 @@
           <p class="tool-description">Simulate network offline conditions to test Progressive Web App (PWA) behavior, service workers, and cached content delivery.</p>
           <button class="tool-button" onclick="window.location.href='/offline-mode-tester'" aria-label="Launch Offline Mode Tester tool">Launch Tool →</button>
         </article>
-
         <article class="tool-card">
           <div class="tool-icon">
             <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="8" y="4" width="16" height="26" rx="2" stroke="currentColor" stroke-width="2"/><rect x="4" y="6" width="24" height="20" rx="2" stroke="currentColor" stroke-width="2"/></svg>
@@ -705,7 +736,6 @@
           <p class="tool-description">Wrap your website preview in realistic device frames — perfect for client presentations, app store screenshots, and marketing materials.</p>
           <button class="tool-button" onclick="window.location.href='/device-frame-simulator'" aria-label="Launch Device Frame Simulator tool">Launch Tool →</button>
         </article>
-
         <article class="tool-card tool-card--featured">
           <div class="tool-icon">
             <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M4 16C4 16 8 8 16 8s12 8 12 8-4 8-12 8S4 16 4 16z" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="16" r="4" stroke="currentColor" stroke-width="2"/></svg>
@@ -728,7 +758,6 @@
         <h2 class="section-title" id="features-heading">Powerful Features for <span class="gradient-text">Every Workflow</span></h2>
         <p class="section-description">Built for developers, designers, QA engineers, and digital professionals who demand precision</p>
       </div>
-
       <div class="features-grid">
         <div class="feature-card">
           <div class="feature-number">01</div>
@@ -774,7 +803,6 @@
         <h2 class="section-title" id="how-heading">Up and Running in <span class="gradient-text">3 Seconds</span></h2>
         <p class="section-description">No setup, no learning curve — just paste and preview</p>
       </div>
-
       <div class="how-steps">
         <div class="how-step">
           <div class="how-step-icon">
@@ -784,11 +812,9 @@
           <h3>Paste URL</h3>
           <p>Enter the website address you want to check. Works with any live URL or local dev server.</p>
         </div>
-
         <div class="how-arrow" aria-hidden="true">
           <svg width="48" height="20" viewBox="0 0 48 20" fill="none"><path d="M0 10h46M40 3l8 7-8 7" stroke="url(#ag)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="ag" x1="0" y1="10" x2="48" y2="10" gradientUnits="userSpaceOnUse"><stop stop-color="#00F0FF"/><stop offset="1" stop-color="#7B61FF"/></linearGradient></defs></svg>
         </div>
-
         <div class="how-step">
           <div class="how-step-icon">
             <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true"><rect x="12" y="4" width="16" height="28" rx="3" stroke="currentColor" stroke-width="2.5"/><rect x="6" y="10" width="28" height="18" rx="3" stroke="currentColor" stroke-width="2.5"/></svg>
@@ -797,11 +823,9 @@
           <h3>Choose Device</h3>
           <p>Pick mobile, tablet, or desktop, then select from 20+ real device presets or enter custom dimensions.</p>
         </div>
-
         <div class="how-arrow" aria-hidden="true">
           <svg width="48" height="20" viewBox="0 0 48 20" fill="none"><path d="M0 10h46M40 3l8 7-8 7" stroke="url(#ag2)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="ag2" x1="0" y1="10" x2="48" y2="10" gradientUnits="userSpaceOnUse"><stop stop-color="#00F0FF"/><stop offset="1" stop-color="#7B61FF"/></linearGradient></defs></svg>
         </div>
-
         <div class="how-step">
           <div class="how-step-icon">
             <svg width="40" height="40" viewBox="0 0 40 40" fill="none" aria-hidden="true"><circle cx="20" cy="20" r="13" stroke="currentColor" stroke-width="2.5"/><path d="M14 20l5 5 8-9" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -824,7 +848,6 @@
         <h2 class="section-title" id="faq-heading">Frequently Asked Questions</h2>
         <p class="section-description">Everything you need to know about the Mobile Viewer tool</p>
       </div>
-
       <div class="faq-list" role="list">
         <div class="faq-item" role="listitem">
           <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
@@ -835,7 +858,6 @@
             <p>To check the mobile view of your website using Mobile Viewer, paste your URL into the input bar, select <strong>Mobile</strong> as the device type, choose a device preset (like iPhone 15 or Samsung Galaxy), and click <strong>Load</strong>. The tool renders your site in a realistic phone frame at the exact device resolution so you can see precisely how mobile visitors experience your page.</p>
           </div>
         </div>
-
         <div class="faq-item" role="listitem">
           <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
             Is Mobile Viewer completely free?
@@ -845,7 +867,6 @@
             <p>Yes — Mobile Viewer is 100% free with no hidden charges, no registration, and no premium tiers. All features including mobile preview, QR code generation, device simulation, and the full tools suite are available to everyone for free.</p>
           </div>
         </div>
-
         <div class="faq-item" role="listitem">
           <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
             Which mobile devices can I simulate?
@@ -856,6 +877,17 @@
           </div>
         </div>
 
+        <!-- ====================== AD PLACEMENT 4: Mid-FAQ (In-Article) ====================== -->
+        <ins class="adsbygoogle"
+             style="display:block; margin: 40px 0;"
+             data-ad-client="ca-pub-9759808041159779"
+             data-ad-slot="8850176009"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+        <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+
         <div class="faq-item" role="listitem">
           <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
             Why doesn't my website load in the viewer?
@@ -865,7 +897,6 @@
             <p>Some websites block being loaded inside iframes using the <code>X-Frame-Options</code> or <code>Content-Security-Policy</code> HTTP headers. This is a security policy on the target website, not a limitation of Mobile Viewer. For sites you own, you can adjust these headers. You can also use our QR Code feature to scan the URL on a real device instead.</p>
           </div>
         </div>
-
         <div class="faq-item" role="listitem">
           <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
             How accurate is the mobile simulation?
@@ -875,7 +906,6 @@
             <p>The simulation uses the exact CSS viewport dimensions of each device preset, giving you a highly accurate visual representation of layout, font scaling, and responsive breakpoints. For full fidelity testing (including GPU rendering differences and browser-specific behavior), we recommend supplementing with physical device testing — use our QR Code feature for the fastest physical device check.</p>
           </div>
         </div>
-
         <div class="faq-item" role="listitem">
           <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
             Can I test a localhost or staging server URL?
@@ -888,6 +918,19 @@
       </div>
     </div>
   </section>
+
+  <!-- ====================== AD PLACEMENT 5: Pre-CTA ====================== -->
+  <div style="margin: 60px 0; text-align: center;">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-9759808041159779"
+         data-ad-slot="8850176009"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
 
   <!-- ═══════════════════════════════════════════
        SECTION 10: CTA
@@ -910,8 +953,46 @@
     </div>
   </section>
 
+  <!-- ====================== AD PLACEMENT 6: Footer Banner ====================== -->
+  <div style="margin: 30px 0 40px; text-align: center;">
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-9759808041159779"
+         data-ad-slot="6601821575"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+
   <!-- Footer Component -->
   <div id="footer-placeholder"></div>
+
+  <!-- ====================== STICKY VERTICAL ADS (BOTH SIDES) ====================== -->
+  <div class="sticky-side-ad left">
+    <ins class="adsbygoogle"
+         style="display:block; width:160px; height:600px;"
+         data-ad-client="ca-pub-9759808041159779"
+         data-ad-slot="1181973939"
+         data-ad-format="vertical"
+         data-full-width-responsive="false"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
+
+  <div class="sticky-side-ad right">
+    <ins class="adsbygoogle"
+         style="display:block; width:160px; height:600px;"
+         data-ad-client="ca-pub-9759808041159779"
+         data-ad-slot="1181973939"
+         data-ad-format="vertical"
+         data-full-width-responsive="false"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div>
 
   <!-- Scripts -->
   <script src="header.js"></script>
