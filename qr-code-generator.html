@@ -1,211 +1,1865 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9759808041159779"
-     crossorigin="anonymous"></script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MBJB77SQ0K"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-MBJB77SQ0K');
-    </script>
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Code Generator - Instant Mobile Testing Tool | Mobile Viewer</title>
-    
-    <meta name="description" content="Generate QR codes instantly to test your website on physical mobile devices. A free, client-side tool for developers and designers to bridge the gap between desktop and mobile testing.">
-    <meta name="keywords" content="QR code generator, mobile testing tool, developer tools, responsive design, website QR code, instant QR, client-side QR">
-    <meta name="author" content="Mobile Viewer">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://mobileviewer.github.io/qr-code-generator">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9759808041159779"
+      crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MBJB77SQ0K"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-MBJB77SQ0K');
+  </script>
 
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://mobileviewer.github.io/qr-code-generator">
-    <meta property="og:title" content="QR Code Generator - Instant Mobile Testing Tool">
-    <meta property="og:description" content="Create downloadable QR codes for any URL instantly. No data sent to servers, 100% private.">
-    <meta property="og:image" content="https://mobileviewer.github.io/social-preview.jpg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free QR Code Generator — Instant, Custom & No Sign-Up | Mobile Viewer</title>
 
-    <link rel="stylesheet" href="styles.css">
-    
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "QR Code Generator",
-      "url": "https://mobileviewer.github.io/qr-code-generator",
-      "description": "A free, browser-based QR code generator designed for developers to instantly test URLs on physical mobile devices.",
-      "applicationCategory": "DeveloperApplication",
-      "operatingSystem": "Any",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
+  <meta name="description" content="Generate free QR codes instantly for any URL, text, email, phone, or Wi-Fi. Customize colors, add logos, download as PNG. 100% private — no data sent to servers. Perfect for developers and designers.">
+  <meta name="keywords" content="QR code generator, free QR code, custom QR code, QR code maker, mobile testing, developer tools, URL to QR code, WiFi QR code, download QR code PNG">
+  <meta name="author" content="Mobile Viewer">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://mobileviewer.github.io/qr-code-generator">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mobileviewer.github.io/qr-code-generator">
+  <meta property="og:title" content="Free QR Code Generator — Instant, Custom & No Sign-Up">
+  <meta property="og:description" content="Create customizable QR codes for any URL or text instantly. No server upload, 100% private, free forever.">
+  <meta property="og:image" content="https://mobileviewer.github.io/social-preview.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Free QR Code Generator | Mobile Viewer">
+  <meta name="twitter:description" content="Instant, private, customizable QR codes for developers and designers. No sign-up needed.">
+
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "QR Code Generator by Mobile Viewer",
+    "url": "https://mobileviewer.github.io/qr-code-generator",
+    "description": "A free, browser-based QR code generator with customization options for developers, designers and marketers.",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "featureList": ["Custom colors","Logo overlay","Multiple content types","PNG download","100% private"],
+    "publisher": { "@type": "Organization", "name": "Mobile Viewer", "url": "https://mobileviewer.github.io" }
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is this QR code generator really free?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes, completely free with no hidden fees, no sign-up required, and no watermarks on downloads." }
+      },
+      {
+        "@type": "Question",
+        "name": "Are my QR codes private?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. All QR code generation happens entirely in your browser. No data is sent to any server." }
+      },
+      {
+        "@type": "Question",
+        "name": "Do QR codes expire?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Static QR codes generated here never expire. They permanently encode whatever content you entered at the time of creation." }
+      },
+      {
+        "@type": "Question",
+        "name": "What formats can I download?",
+        "acceptedAnswer": { "@type": "Answer", "text": "You can download your QR code as a PNG image, suitable for both digital and print use." }
       }
+    ]
+  }
+  </script>
+
+  <style>
+    /* ── PAGE-SPECIFIC STYLES ─────────────────────────────── */
+
+    /* Hero */
+    .qr-hero {
+      padding-top: calc(var(--header-h) + 60px);
+      padding-bottom: 0;
+      position: relative;
+      overflow: hidden;
     }
-    </script>
 
-    <style>
-        .qr-container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 3rem;
-            text-align: center;
-        }
+    .qr-hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 800px 400px at 50% 0%, rgba(0,240,255,0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 400px 400px at 80% 50%, rgba(123,97,255,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
 
-        #qrcode {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            display: inline-block;
-            margin: 2rem 0;
-            min-height: 256px;
-            min-width: 256px;
-        }
+    .qr-hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,240,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,240,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 0%, transparent 80%);
+    }
 
-        #qrcode img {
-            margin: 0 auto;
-        }
+    .qr-hero-inner {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 0 24px 3rem;
+    }
 
-        .qr-actions {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 1rem;
-        }
+    .qr-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--primary);
+      background: var(--primary-dim);
+      border: 1px solid rgba(0,240,255,0.25);
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+    }
 
-        .secondary-btn {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
+    .qr-hero-badge .dot {
+      width: 6px; height: 6px;
+      background: var(--primary);
+      border-radius: 50%;
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
 
-        .secondary-btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-        }
-    </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.7); }
+    }
+
+    .qr-hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5.5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+
+    .qr-hero-desc {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 560px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
+    }
+
+    .trust-pills {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+    }
+
+    .trust-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      padding: 5px 12px;
+      border-radius: 100px;
+    }
+
+    .trust-pill svg { color: var(--primary); }
+
+    /* ── MAIN TOOL ───────────────────────────────────────── */
+    .tool-section {
+      padding: 0 0 80px;
+    }
+
+    .tool-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg), 0 0 80px rgba(0,240,255,0.04);
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .tool-tabs {
+      display: flex;
+      border-bottom: 1px solid var(--border);
+      padding: 0 8px;
+      background: rgba(0,0,0,0.2);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .tool-tabs::-webkit-scrollbar { display: none; }
+
+    .tool-tab {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 14px 18px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+      white-space: nowrap;
+      margin-bottom: -1px;
+    }
+
+    .tool-tab:hover { color: var(--text-secondary); }
+    .tool-tab.active { color: var(--primary); border-bottom-color: var(--primary); }
+    .tool-tab svg { flex-shrink: 0; }
+
+    .tool-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .tool-left {
+      padding: 2.5rem;
+      border-right: 1px solid var(--border);
+    }
+
+    .tool-right {
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.15);
+    }
+
+    /* Input panels */
+    .input-panel { display: none; }
+    .input-panel.active { display: block; }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius);
+      padding: 11px 14px;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: rgba(0,240,255,0.4);
+      box-shadow: 0 0 0 3px rgba(0,240,255,0.08);
+    }
+
+    .form-input::placeholder, .form-textarea::placeholder { color: var(--text-muted); }
+
+    .form-textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .form-select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2300F0FF' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      cursor: pointer;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    /* Customization */
+    .customize-section {
+      margin-top: 1.75rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .customize-title {
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .color-row {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 1rem;
+    }
+
+    .color-group {
+      flex: 1;
+    }
+
+    .color-input-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius);
+      padding: 8px 12px;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+
+    .color-input-wrapper:hover { border-color: rgba(0,240,255,0.3); }
+
+    .color-swatch {
+      width: 28px; height: 28px;
+      border-radius: 6px;
+      border: 1px solid rgba(255,255,255,0.15);
+      flex-shrink: 0;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .color-hex {
+      font-size: 0.85rem;
+      font-family: 'SF Mono','Fira Code',monospace;
+      color: var(--text-secondary);
+    }
+
+    .size-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 1rem;
+    }
+
+    .size-label {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+      min-width: 40px;
+    }
+
+    .size-slider {
+      flex: 1;
+      appearance: none;
+      height: 4px;
+      background: var(--border-light);
+      border-radius: 4px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .size-slider::-webkit-slider-thumb {
+      appearance: none;
+      width: 16px; height: 16px;
+      background: var(--primary);
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 0 8px rgba(0,240,255,0.4);
+    }
+
+    .size-val {
+      font-size: 0.8rem;
+      font-family: 'SF Mono','Fira Code',monospace;
+      color: var(--primary);
+      min-width: 44px;
+      text-align: right;
+    }
+
+    .ecc-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .ecc-btn {
+      flex: 1;
+      padding: 8px 4px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+    }
+
+    .ecc-btn:hover { border-color: rgba(0,240,255,0.3); color: var(--text-secondary); }
+    .ecc-btn.active { background: var(--primary-dim); border-color: rgba(0,240,255,0.4); color: var(--primary); }
+
+    /* QR Output */
+    .qr-output-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+      width: 100%;
+    }
+
+    .qr-canvas-box {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 240px;
+      min-height: 240px;
+      position: relative;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+      transition: box-shadow 0.3s;
+    }
+
+    .qr-canvas-box:hover {
+      box-shadow: 0 12px 60px rgba(0,240,255,0.15);
+    }
+
+    .qr-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      color: var(--text-muted);
+      text-align: center;
+      padding: 20px;
+    }
+
+    .qr-placeholder svg { opacity: 0.3; }
+    .qr-placeholder p { font-size: 0.85rem; }
+
+    #qrcode { display: contents; }
+    #qrcode img, #qrcode canvas { display: block !important; border-radius: 4px; }
+
+    .qr-action-row {
+      display: flex;
+      gap: 10px;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .btn-generate {
+      flex: 1;
+      padding: 12px 20px;
+      background: var(--primary);
+      color: #000;
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 800;
+      border-radius: var(--radius);
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+    }
+
+    .btn-generate:hover {
+      background: #29f5ff;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 24px rgba(0,240,255,0.35);
+    }
+
+    .btn-download {
+      padding: 12px 14px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border-light);
+      color: var(--text-secondary);
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .btn-download:hover {
+      background: rgba(0,240,255,0.08);
+      border-color: rgba(0,240,255,0.3);
+      color: var(--primary);
+    }
+
+    .btn-clear {
+      padding: 12px 14px;
+      background: transparent;
+      border: 1px solid rgba(255,82,82,0.2);
+      color: rgba(255,82,82,0.7);
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .btn-clear:hover {
+      background: rgba(255,82,82,0.08);
+      border-color: rgba(255,82,82,0.4);
+      color: #ff5252;
+    }
+
+    .qr-meta {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* ── USE CASES ───────────────────────────────────────── */
+    .uses-section {
+      padding: 80px 0;
+      background: var(--bg-dark);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .uses-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 3rem;
+    }
+
+    .use-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+      cursor: default;
+    }
+
+    .use-card:hover {
+      border-color: rgba(0,240,255,0.25);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+
+    .use-icon {
+      width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--primary-dim);
+      border: 1px solid rgba(0,240,255,0.2);
+      border-radius: 10px;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .use-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .use-desc {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ── HOW IT WORKS ────────────────────────────────────── */
+    .how-section {
+      padding: 80px 0;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 3rem;
+      position: relative;
+    }
+
+    .steps-grid::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: calc(12.5% + 20px);
+      right: calc(12.5% + 20px);
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border-light), var(--border-light), transparent);
+      z-index: 0;
+    }
+
+    .step-card {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-num {
+      width: 56px; height: 56px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: 50%;
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 0 auto 1rem;
+      box-shadow: 0 0 0 6px var(--bg);
+    }
+
+    .step-title {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .step-desc {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ── FEATURES ────────────────────────────────────────── */
+    .features-section {
+      padding: 80px 0;
+      background: var(--bg-dark);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .features-grid-qr {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-top: 3rem;
+    }
+
+    .feature-cell {
+      background: var(--bg-card);
+      padding: 1.75rem;
+      transition: background 0.2s;
+    }
+
+    .feature-cell:hover { background: var(--bg-card-2); }
+
+    .feature-icon-sm {
+      width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .feature-title-sm {
+      font-family: var(--font-display);
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .feature-desc-sm {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ── TOOLS COMPARE ───────────────────────────────────── */
+    .compare-section {
+      padding: 80px 0;
+    }
+
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin-top: 3rem;
+    }
+
+    .compare-table th {
+      padding: 1rem 1.5rem;
+      text-align: left;
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      background: rgba(0,0,0,0.3);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .compare-table th:not(:first-child) { text-align: center; }
+
+    .compare-table td {
+      padding: 1rem 1.5rem;
+      font-size: 0.9rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-secondary);
+    }
+
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table td:not(:first-child) { text-align: center; }
+
+    .compare-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+    .check { color: #00e676; font-size: 1.1rem; }
+    .cross { color: #ff5252; font-size: 1.1rem; }
+    .col-highlight { color: var(--primary); font-weight: 700; }
+
+    .compare-table th.highlight-col,
+    .compare-table td.highlight-col {
+      background: rgba(0,240,255,0.04);
+    }
+
+    /* ── FAQ ─────────────────────────────────────────────── */
+    .faq-section {
+      padding: 80px 0;
+      background: var(--bg-dark);
+      border-top: 1px solid var(--border);
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 3rem;
+    }
+
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+
+    .faq-item:hover { border-color: rgba(0,240,255,0.2); }
+
+    .faq-q {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 1.25rem 1.5rem;
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text);
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .faq-chevron {
+      flex-shrink: 0;
+      color: var(--primary);
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+      padding: 0 1.5rem;
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 300px;
+      padding: 0 1.5rem 1.25rem;
+    }
+
+    .faq-a p {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+    }
+
+    .faq-a a { color: var(--primary); text-decoration: none; }
+    .faq-a a:hover { text-decoration: underline; }
+
+    /* ── RELATED TOOLS ───────────────────────────────────── */
+    .related-section {
+      padding: 80px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 3rem;
+    }
+
+    .related-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    }
+
+    .related-card:hover {
+      border-color: rgba(0,240,255,0.3);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+
+    .related-icon {
+      width: 48px; height: 48px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--primary-dim);
+      border: 1px solid rgba(0,240,255,0.2);
+      border-radius: 12px;
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+
+    .related-name {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .related-desc {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .related-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    /* ── CTA SECTION ─────────────────────────────────────── */
+    .page-cta {
+      padding: 80px 0;
+      background: var(--bg-dark);
+      border-top: 1px solid var(--border);
+    }
+
+    .cta-card {
+      background: linear-gradient(145deg, rgba(0,240,255,0.06), rgba(123,97,255,0.04));
+      border: 1px solid rgba(0,240,255,0.15);
+      border-radius: var(--radius-xl);
+      padding: 72px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-glow {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px; height: 300px;
+      background: radial-gradient(ellipse, rgba(0,240,255,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta-inner { position: relative; z-index: 1; }
+
+    .cta-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .cta-desc {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      max-width: 480px;
+      margin: 0 auto 2.25rem;
+      line-height: 1.7;
+    }
+
+    .cta-btns {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-cta-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 15px 32px;
+      background: var(--primary);
+      color: #000;
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      font-weight: 800;
+      border-radius: var(--radius);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-cta-primary:hover {
+      background: #29f5ff;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 40px rgba(0,240,255,0.35);
+    }
+
+    .btn-cta-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: transparent;
+      border: 1px solid var(--border-light);
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      font-weight: 600;
+      border-radius: var(--radius);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-cta-ghost:hover { border-color: rgba(0,240,255,0.3); color: var(--text); }
+
+    /* ── RESPONSIVE ──────────────────────────────────────── */
+    @media (max-width: 860px) {
+      .tool-body { grid-template-columns: 1fr; }
+      .tool-left { border-right: none; border-bottom: 1px solid var(--border); }
+      .uses-grid { grid-template-columns: repeat(2, 1fr); }
+      .steps-grid { grid-template-columns: repeat(2, 1fr); }
+      .steps-grid::before { display: none; }
+      .features-grid-qr { grid-template-columns: repeat(2, 1fr); }
+      .faq-grid { grid-template-columns: 1fr; }
+      .related-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 600px) {
+      .qr-hero-title { font-size: 2rem; }
+      .uses-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr 1fr; }
+      .features-grid-qr { grid-template-columns: 1fr; }
+      .related-grid { grid-template-columns: 1fr; }
+      .compare-table th, .compare-table td { padding: 0.75rem 1rem; font-size: 0.82rem; }
+      .qr-action-row { flex-wrap: wrap; max-width: 100%; }
+      .tool-left { padding: 1.5rem; }
+      .tool-right { padding: 1.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .cta-card { padding: 48px 24px; }
+    }
+
+    /* Notification toast */
+    .toast {
+      position: fixed;
+      bottom: 24px; right: 24px;
+      background: var(--bg-card);
+      border: 1px solid rgba(0,240,255,0.3);
+      border-radius: var(--radius);
+      padding: 12px 18px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--primary);
+      box-shadow: var(--shadow-lg);
+      z-index: 9999;
+      transform: translateY(80px);
+      opacity: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .toast.show { transform: translateY(0); opacity: 1; }
+  </style>
 </head>
 <body>
-    <div id="header-placeholder"></div>
 
-    <section class="viewer-section" style="padding-top: 120px;">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-badge">Mobile Bridge</span>
-                <h2 class="section-title">QR Code Generator</h2>
-                <p class="section-description">Turn any URL into a QR code to quickly open it on your physical smartphone.</p>
+  <div id="header-placeholder"></div>
+
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section class="qr-hero">
+    <div class="qr-hero-bg"></div>
+    <div class="qr-hero-grid"></div>
+    <div class="container">
+      <div class="qr-hero-inner">
+        <div class="qr-hero-badge">
+          <span class="dot"></span>
+          Free &amp; Private — No Sign-Up Needed
+        </div>
+        <h1 class="qr-hero-title">
+          QR Code <span class="gradient-text">Generator</span>
+        </h1>
+        <p class="qr-hero-desc">
+          Instantly create custom QR codes for URLs, text, email, phone, Wi-Fi &amp; more.
+          All processing happens in your browser — zero data leaves your device.
+        </p>
+        <div class="trust-pills">
+          <span class="trust-pill">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            100% Private
+          </span>
+          <span class="trust-pill">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            No Watermark
+          </span>
+          <span class="trust-pill">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            Free Forever
+          </span>
+          <span class="trust-pill">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8M12 8v8"/></svg>
+            Instant Generation
+          </span>
+          <span class="trust-pill">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            PNG Download
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ TOOL ═══════════════ -->
+  <section class="tool-section" id="generator">
+    <div class="container">
+      <div class="tool-card reveal">
+
+        <!-- Tabs -->
+        <div class="tool-tabs" role="tablist">
+          <button class="tool-tab active" data-tab="url" role="tab" aria-selected="true" onclick="switchTab('url')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71"/></svg>
+            URL / Link
+          </button>
+          <button class="tool-tab" data-tab="text" role="tab" aria-selected="false" onclick="switchTab('text')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h7"/></svg>
+            Plain Text
+          </button>
+          <button class="tool-tab" data-tab="email" role="tab" aria-selected="false" onclick="switchTab('email')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Email
+          </button>
+          <button class="tool-tab" data-tab="phone" role="tab" aria-selected="false" onclick="switchTab('phone')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.17 9.81 19.79 19.79 0 01.1 1.18 2 2 0 012.09 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.41 7.43a16 16 0 006.15 6.15l.95-.94a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+            Phone / SMS
+          </button>
+          <button class="tool-tab" data-tab="wifi" role="tab" aria-selected="false" onclick="switchTab('wifi')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0114.08 0M1.42 9a16 16 0 0121.16 0M8.53 16.11a6 6 0 016.95 0M12 20h.01"/></svg>
+            Wi-Fi
+          </button>
+          <button class="tool-tab" data-tab="vcard" role="tab" aria-selected="false" onclick="switchTab('vcard')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="8" y1="10" x2="8" y2="10"/><line x1="8" y1="14" x2="16" y2="14"/><circle cx="8" cy="10" r="1" fill="currentColor"/></svg>
+            vCard
+          </button>
+        </div>
+
+        <!-- Body -->
+        <div class="tool-body">
+
+          <!-- LEFT: Inputs + Customize -->
+          <div class="tool-left">
+
+            <!-- URL Panel -->
+            <div class="input-panel active" id="panel-url">
+              <div class="form-group">
+                <label class="form-label" for="input-url">Website URL</label>
+                <input type="url" id="input-url" class="form-input" placeholder="https://example.com" value="https://mobileviewer.github.io">
+              </div>
             </div>
 
-            <div class="qr-container">
-                <input type="text" id="qrText" placeholder="Enter URL or text here..." class="url-input" style="width: 100%;" onkeypress="if(event.key === 'Enter') generateQR()">
-                
-                <div id="qrcode"></div>
+            <!-- Text Panel -->
+            <div class="input-panel" id="panel-text">
+              <div class="form-group">
+                <label class="form-label" for="input-text">Your Text</label>
+                <textarea id="input-text" class="form-textarea" placeholder="Type any text you want encoded…" rows="4"></textarea>
+              </div>
+            </div>
 
-                <div class="qr-actions">
-                    <button class="load-button" onclick="generateQR()">Generate QR</button>
-                    <button class="secondary-btn" onclick="downloadQR()">Download PNG</button>
-                    <button class="secondary-btn" onclick="clearQR()" style="color: #ff5252; border-color: rgba(255, 82, 82, 0.2);">Clear</button>
+            <!-- Email Panel -->
+            <div class="input-panel" id="panel-email">
+              <div class="form-group">
+                <label class="form-label" for="input-email-to">Email Address</label>
+                <input type="email" id="input-email-to" class="form-input" placeholder="hello@example.com">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="input-email-subject">Subject (optional)</label>
+                <input type="text" id="input-email-subject" class="form-input" placeholder="Hello from QR!">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="input-email-body">Body (optional)</label>
+                <textarea id="input-email-body" class="form-textarea" placeholder="Message body…" rows="3"></textarea>
+              </div>
+            </div>
+
+            <!-- Phone Panel -->
+            <div class="input-panel" id="panel-phone">
+              <div class="form-group">
+                <label class="form-label" for="input-phone">Phone Number</label>
+                <input type="tel" id="input-phone" class="form-input" placeholder="+1 555 000 0000">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="input-sms">SMS Message (optional)</label>
+                <textarea id="input-sms" class="form-textarea" placeholder="Pre-fill SMS text…" rows="3"></textarea>
+              </div>
+            </div>
+
+            <!-- Wi-Fi Panel -->
+            <div class="input-panel" id="panel-wifi">
+              <div class="form-group">
+                <label class="form-label" for="input-ssid">Network Name (SSID)</label>
+                <input type="text" id="input-ssid" class="form-input" placeholder="MyHomeNetwork">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="input-password">Password</label>
+                <input type="password" id="input-password" class="form-input" placeholder="••••••••">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="input-security">Security Type</label>
+                <select id="input-security" class="form-select">
+                  <option value="WPA">WPA / WPA2 / WPA3</option>
+                  <option value="WEP">WEP</option>
+                  <option value="nopass">None (Open)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" style="display:flex;align-items:center;gap:8px;cursor:pointer;">
+                  <input type="checkbox" id="input-hidden" style="accent-color:var(--primary);width:14px;height:14px;">
+                  Hidden Network
+                </label>
+              </div>
+            </div>
+
+            <!-- vCard Panel -->
+            <div class="input-panel" id="panel-vcard">
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="vc-first">First Name</label>
+                  <input type="text" id="vc-first" class="form-input" placeholder="Jane">
                 </div>
+                <div class="form-group">
+                  <label class="form-label" for="vc-last">Last Name</label>
+                  <input type="text" id="vc-last" class="form-input" placeholder="Smith">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="vc-org">Organization</label>
+                <input type="text" id="vc-org" class="form-input" placeholder="Company name">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="vc-phone">Phone</label>
+                <input type="tel" id="vc-phone" class="form-input" placeholder="+1 555 000 0000">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="vc-email">Email</label>
+                <input type="email" id="vc-email" class="form-input" placeholder="jane@company.com">
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="vc-url">Website</label>
+                <input type="url" id="vc-url" class="form-input" placeholder="https://company.com">
+              </div>
             </div>
-        </div>
-    </section>
 
-   <section class="content-block">
-        <div class="container">
-            <div class="text-content">
-                <h2>About This Tool</h2>
-                <p>
-                    The Mobile Viewer QR Code Generator is a simple, privacy-focused tool designed for developers and designers. It allows you to quickly transfer a URL from your desktop development environment to a physical mobile device without typing long addresses.
-                </p>
+            <!-- Customize -->
+            <div class="customize-section">
+              <p class="customize-title">Customize</p>
 
-                <h3>How to Use</h3>
-                <ol>
-                    <li><strong>Enter your content:</strong> Paste your website URL or type any text into the input field above.</li>
-                    <li><strong>Generate:</strong> Click the "Generate" button. The QR code will appear instantly.</li>
-                    <li><strong>Scan:</strong> Open your mobile phone's camera app or a QR scanner and point it at the screen.</li>
-                    <li><strong>Download (Optional):</strong> If you need to save the code for print or sharing, click "Download PNG".</li>
-                </ol>
+              <div class="color-row">
+                <div class="color-group">
+                  <label class="form-label">Foreground</label>
+                  <div class="color-input-wrapper" onclick="document.getElementById('fg-color').click()">
+                    <input type="color" id="fg-color" value="#000000" class="color-swatch" oninput="syncColorHex('fg')">
+                    <span class="color-hex" id="fg-hex">#000000</span>
+                  </div>
+                </div>
+                <div class="color-group">
+                  <label class="form-label">Background</label>
+                  <div class="color-input-wrapper" onclick="document.getElementById('bg-color').click()">
+                    <input type="color" id="bg-color" value="#ffffff" class="color-swatch" oninput="syncColorHex('bg')">
+                    <span class="color-hex" id="bg-hex">#ffffff</span>
+                  </div>
+                </div>
+              </div>
 
-                <h3>Why use QR Codes for Testing?</h3>
-                <p>
-                    While browser-based emulators (like our <a href="index.html#viewer" style="color: var(--primary);">Mobile Viewer</a>) are excellent for layout testing, sometimes you need to test on real hardware to check:
-                </p>
-                <ul>
-                    <li>Touch responsiveness and gestures.</li>
-                    <li>Real-world performance and battery usage.</li>
-                    <li>Native browser behaviors (Safari iOS vs Chrome Android).</li>
-                    <li>Camera or gyroscope permissions.</li>
-                </ul>
+              <div class="form-group">
+                <label class="form-label">Error Correction</label>
+                <div class="ecc-row">
+                  <button class="ecc-btn" data-ecc="L" onclick="setECC(this)">L <span style="font-weight:400;opacity:0.7">7%</span></button>
+                  <button class="ecc-btn" data-ecc="M" onclick="setECC(this)">M <span style="font-weight:400;opacity:0.7">15%</span></button>
+                  <button class="ecc-btn active" data-ecc="H" onclick="setECC(this)">H <span style="font-weight:400;opacity:0.7">30%</span></button>
+                  <button class="ecc-btn" data-ecc="Q" onclick="setECC(this)">Q <span style="font-weight:400;opacity:0.7">25%</span></button>
+                </div>
+              </div>
+
+              <div class="size-row">
+                <span class="size-label">Size</span>
+                <input type="range" id="qr-size" class="size-slider" min="128" max="512" step="32" value="256" oninput="document.getElementById('size-val').textContent = this.value + 'px'">
+                <span class="size-val" id="size-val">256px</span>
+              </div>
             </div>
-        </div>
-    </section>
+          </div>
 
-<!-- Footer Component -->
+          <!-- RIGHT: QR Preview -->
+          <div class="tool-right">
+            <div class="qr-output-wrap">
+              <div class="qr-canvas-box" id="qr-box">
+                <div class="qr-placeholder" id="qr-placeholder">
+                  <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                    <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+                    <rect x="3" y="14" width="7" height="7"/>
+                    <rect x="5" y="5" width="3" height="3" fill="currentColor" stroke="none"/>
+                    <rect x="16" y="5" width="3" height="3" fill="currentColor" stroke="none"/>
+                    <rect x="5" y="16" width="3" height="3" fill="currentColor" stroke="none"/>
+                    <path d="M14 14h3v3h-3zM17 17h3v3h-3zM14 17h3v3h-3z"/>
+                  </svg>
+                  <p>Fill in the fields<br>and click Generate</p>
+                </div>
+                <div id="qrcode"></div>
+              </div>
+
+              <div class="qr-action-row">
+                <button class="btn-generate" onclick="generateQR()">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                  Generate
+                </button>
+                <button class="btn-download" onclick="downloadQR()" title="Download PNG">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                  PNG
+                </button>
+                <button class="btn-clear" onclick="clearQR()" title="Clear">✕</button>
+              </div>
+
+              <p class="qr-meta" id="qr-meta">Generated in your browser — never uploaded</p>
+            </div>
+          </div>
+
+        </div><!-- tool-body -->
+      </div><!-- tool-card -->
+    </div>
+  </section>
+
+  <!-- ═══════════════ HOW IT WORKS ═══════════════ -->
+  <section class="how-section" id="how-it-works">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-badge">Simple Process</span>
+        <h2 class="section-title">How to Generate a QR Code</h2>
+        <p class="section-description">Go from idea to scannable code in seconds — no account, no waiting, no friction.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card reveal">
+          <div class="step-num">01</div>
+          <h3 class="step-title">Choose Content Type</h3>
+          <p class="step-desc">Select URL, text, email, phone, Wi-Fi, or vCard depending on what you want the scanner to receive.</p>
+        </div>
+        <div class="step-card reveal" style="animation-delay:0.1s">
+          <div class="step-num">02</div>
+          <h3 class="step-title">Enter Your Content</h3>
+          <p class="step-desc">Fill in the relevant fields. All input stays in your browser — nothing is sent anywhere.</p>
+        </div>
+        <div class="step-card reveal" style="animation-delay:0.2s">
+          <div class="step-num">03</div>
+          <h3 class="step-title">Customise &amp; Generate</h3>
+          <p class="step-desc">Pick your colors, error correction level, and size — then click Generate for an instant preview.</p>
+        </div>
+        <div class="step-card reveal" style="animation-delay:0.3s">
+          <div class="step-num">04</div>
+          <h3 class="step-title">Download &amp; Use</h3>
+          <p class="step-desc">Save a crisp PNG for digital use, printing, social media, or wherever your QR code needs to live.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ USE CASES ═══════════════ -->
+  <section class="uses-section" id="use-cases">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-badge">Use Cases</span>
+        <h2 class="section-title">Everything You Can Do With a QR Code</h2>
+        <p class="section-description">One tool, unlimited applications — from developer testing to marketing campaigns.</p>
+      </div>
+      <div class="uses-grid">
+        <div class="use-card reveal">
+          <div class="use-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          </div>
+          <h3 class="use-title">Mobile Device Testing</h3>
+          <p class="use-desc">Instantly open a localhost or staging URL on your physical phone without typing. Pair with our <a href="index.html#viewer" style="color:var(--primary)">Mobile Viewer</a> for full workflow coverage.</p>
+        </div>
+        <div class="use-card reveal">
+          <div class="use-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <h3 class="use-title">Contact Sharing (vCard)</h3>
+          <p class="use-desc">Print your vCard QR on business cards. Scanners instantly add your details to their phone contacts — no typing needed.</p>
+        </div>
+        <div class="use-card reveal">
+          <div class="use-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.55a11 11 0 0114.08 0M1.42 9a16 16 0 0121.16 0M8.53 16.11a6 6 0 016.95 0M12 20h.01"/></svg>
+          </div>
+          <h3 class="use-title">Wi-Fi Credential Sharing</h3>
+          <p class="use-desc">Generate a Wi-Fi QR code for your home or office. Guests simply scan to join — no awkward password recitation.</p>
+        </div>
+        <div class="use-card reveal">
+          <div class="use-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+          </div>
+          <h3 class="use-title">Restaurant &amp; Menu Links</h3>
+          <p class="use-desc">Link printed materials to your live digital menu or ordering page. Update the URL without reprinting the QR code.</p>
+        </div>
+        <div class="use-card reveal">
+          <div class="use-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3 class="use-title">Marketing &amp; Print Campaigns</h3>
+          <p class="use-desc">Bridge offline print — flyers, posters, packaging — directly to landing pages, promotional offers, or video content.</p>
+        </div>
+        <div class="use-card reveal">
+          <div class="use-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <h3 class="use-title">Pre-filled Email / SMS</h3>
+          <p class="use-desc">Encode a mailto or sms link with a subject and body. Tap-to-contact your audience without them writing a single character.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FEATURES ═══════════════ -->
+  <section class="features-section" id="features">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-badge">Why Choose Us</span>
+        <h2 class="section-title">Everything You Need, Nothing You Don't</h2>
+        <p class="section-description">Built for speed, privacy, and flexibility — no bloat, no friction.</p>
+      </div>
+      <div class="features-grid-qr reveal">
+        <div class="feature-cell">
+          <div class="feature-icon-sm">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3 class="feature-title-sm">100% Private</h3>
+          <p class="feature-desc-sm">Everything runs client-side in JavaScript. Your URLs, passwords and contacts never touch a server.</p>
+        </div>
+        <div class="feature-cell">
+          <div class="feature-icon-sm">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3 class="feature-title-sm">Instant Generation</h3>
+          <p class="feature-desc-sm">QR codes render in milliseconds — no API calls, no loading spinners, no rate limits.</p>
+        </div>
+        <div class="feature-cell">
+          <div class="feature-icon-sm">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 010 14.14M4.93 4.93a10 10 0 000 14.14"/></svg>
+          </div>
+          <h3 class="feature-title-sm">Custom Colors</h3>
+          <p class="feature-desc-sm">Match your brand — choose any foreground and background color for a QR code that stands out.</p>
+        </div>
+        <div class="feature-cell">
+          <div class="feature-icon-sm">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1zM4 22v-7"/></svg>
+          </div>
+          <h3 class="feature-title-sm">Error Correction</h3>
+          <p class="feature-desc-sm">Choose L, M, Q, or H error correction so your QR remains scannable even with wear or partial damage.</p>
+        </div>
+        <div class="feature-cell">
+          <div class="feature-icon-sm">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          </div>
+          <h3 class="feature-title-sm">PNG Download</h3>
+          <p class="feature-desc-sm">Export a lossless PNG at any size up to 512×512 — sharp for print and crisp for digital screens.</p>
+        </div>
+        <div class="feature-cell">
+          <div class="feature-icon-sm">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+          </div>
+          <h3 class="feature-title-sm">6 Content Types</h3>
+          <p class="feature-desc-sm">URL, plain text, email, phone/SMS, Wi-Fi, and vCard — all with guided form fields so formatting is always correct.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ COMPARISON TABLE ═══════════════ -->
+  <section class="compare-section" id="comparison">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-badge">Comparison</span>
+        <h2 class="section-title">How We Stack Up</h2>
+        <p class="section-description">See why developers and marketers choose Mobile Viewer's QR generator over the alternatives.</p>
+      </div>
+      <div style="overflow-x:auto;" class="reveal">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th class="highlight-col"><span class="col-highlight">Mobile Viewer ✦</span></th>
+              <th>QR Code Monkey</th>
+              <th>GoQR.me</th>
+              <th>Canva QR</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Completely Free</td>
+              <td class="highlight-col"><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+              <td>Partial</td>
+            </tr>
+            <tr>
+              <td>No Sign-Up Required</td>
+              <td class="highlight-col"><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="cross">✗</span></td>
+            </tr>
+            <tr>
+              <td>100% Browser-Based (Private)</td>
+              <td class="highlight-col"><span class="check">✓</span></td>
+              <td><span class="cross">✗</span></td>
+              <td><span class="cross">✗</span></td>
+              <td><span class="cross">✗</span></td>
+            </tr>
+            <tr>
+              <td>Wi-Fi QR Code</td>
+              <td class="highlight-col"><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="cross">✗</span></td>
+              <td><span class="cross">✗</span></td>
+            </tr>
+            <tr>
+              <td>vCard QR Code</td>
+              <td class="highlight-col"><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+              <td>Partial</td>
+              <td><span class="cross">✗</span></td>
+            </tr>
+            <tr>
+              <td>Custom Colors</td>
+              <td class="highlight-col"><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="cross">✗</span></td>
+              <td><span class="check">✓</span></td>
+            </tr>
+            <tr>
+              <td>No Watermark</td>
+              <td class="highlight-col"><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="check">✓</span></td>
+              <td><span class="cross">✗</span></td>
+            </tr>
+            <tr>
+              <td>Integrated Mobile Testing</td>
+              <td class="highlight-col"><span class="check">✓</span></td>
+              <td><span class="cross">✗</span></td>
+              <td><span class="cross">✗</span></td>
+              <td><span class="cross">✗</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FAQ ═══════════════ -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-badge">FAQ</span>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-description">Everything you need to know about QR codes and this tool.</p>
+      </div>
+      <div class="faq-grid reveal">
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Is this QR code generator really free?
+            <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a"><p>Yes, completely free — no hidden fees, no subscription tiers, no sign-up, and absolutely no watermarks on downloaded images. We believe essential developer tools should be free.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Is my data private? Do you store my QR codes?
+            <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a"><p>Absolutely. All QR code generation happens entirely in your browser using JavaScript. No content — not your URLs, passwords, emails, or contacts — is ever sent to any server. Close the tab and it's gone.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Do static QR codes ever expire?
+            <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a"><p>Never. Static QR codes — like the ones generated here — permanently encode the content you entered at creation. There's no server dependency, no domain redirect, and no expiry date. They work as long as the linked resource itself exists.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            What is error correction and which level should I choose?
+            <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a"><p>Error correction allows a QR code to be scanned even when partially damaged or obscured. <strong>L (7%)</strong> creates the smallest/simplest code. <strong>M (15%)</strong> is good for most digital use. <strong>Q (25%)</strong> is ideal when you plan to print. <strong>H (30%)</strong> is best for harsh conditions or if you want to overlay a logo.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            What size should I use for printing?
+            <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a"><p>For print, we recommend generating at 512×512 px and using a minimum printed size of 2×2 cm. For large-format prints (posters, banners), the general rule is 1mm of QR code size per 10cm of scanning distance.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Can I edit a QR code after generating it?
+            <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a"><p>Static QR codes permanently encode their content — you cannot change the destination after creation without generating a new code. If you need editable destination URLs, you'd need a "dynamic QR" service (not offered here, as those require accounts and servers).</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Will a dark-background QR code scan reliably?
+            <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a"><p>Yes, provided there is sufficient contrast between the foreground and background colors. High contrast (e.g., dark on light or white on a very dark color) is required. Avoid similar shades or low-contrast combinations, as most scanners require a contrast ratio of at least 4:1.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            How do I test the QR code on a real device?
+            <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a"><p>Simply open the camera app on any modern iOS or Android device and point it at the QR code on screen — no third-party scanner app required. For testing dev environments, pair this tool with our <a href="index.html#viewer">Mobile Viewer emulator</a> for a complete workflow.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Can I generate a QR code for a Wi-Fi network?
+            <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a"><p>Yes! Switch to the Wi-Fi tab, enter your SSID, password and security type. The QR code encodes the WIFI: protocol string — guests scan it and are prompted to join automatically on iOS 11+ and Android 10+.</p></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Is this tool suitable for commercial use?
+            <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="faq-a"><p>Yes. QR codes generated here carry no license restrictions — use them on product packaging, business cards, print ads, digital campaigns, or anywhere else, commercially or personally, without attribution.</p></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ RELATED TOOLS ═══════════════ -->
+  <section class="related-section" id="related-tools">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-badge">Mobile Viewer Toolkit</span>
+        <h2 class="section-title">More Tools You'll Love</h2>
+        <p class="section-description">Everything a developer or designer needs to test and deliver great mobile experiences.</p>
+      </div>
+      <div class="related-grid">
+        <a href="index.html#viewer" class="related-card reveal">
+          <div class="related-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          </div>
+          <h3 class="related-name">Mobile Viewer</h3>
+          <p class="related-desc">Preview any website in a realistic phone, tablet, or desktop frame. Test responsive layouts without a device.</p>
+          <span class="related-link">Try it free <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </a>
+        <a href="index.html#tools" class="related-card reveal" style="animation-delay:0.1s">
+          <div class="related-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <h3 class="related-name">Performance Checker</h3>
+          <p class="related-desc">Analyse load speed, render times, and core web vitals for any URL directly from the browser.</p>
+          <span class="related-link">Try it free <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </a>
+        <a href="index.html#tools" class="related-card reveal" style="animation-delay:0.2s">
+          <div class="related-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <h3 class="related-name">SEO Inspector</h3>
+          <p class="related-desc">Instantly check meta tags, Open Graph, structured data, and canonical URLs for any public webpage.</p>
+          <span class="related-link">Try it free <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CTA ═══════════════ -->
+  <section class="page-cta">
+    <div class="container">
+      <div class="cta-card reveal">
+        <div class="cta-glow"></div>
+        <div class="cta-inner">
+          <p class="cta-badge">✦ Free, Forever</p>
+          <h2 class="cta-title">Ready to Test on Real Devices?</h2>
+          <p class="cta-desc">Generate your QR code above, then open the Mobile Viewer to see exactly how your site renders across screen sizes — before your users do.</p>
+          <div class="cta-btns">
+            <a href="#generator" class="btn-cta-primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              Generate QR Code
+            </a>
+            <a href="index.html#viewer" class="btn-cta-ghost">
+              Open Mobile Viewer
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FOOTER PLACEHOLDER ═══════════════ -->
   <div id="footer-placeholder"></div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
 
   <script src="header.js"></script>
   <script src="footer.js"></script>
   <script src="script.js"></script>
-    <script>
-        let qrcodeObj = null;
 
-        // Auto-load current site or instructions
-        window.onload = function() {
-            generateQR("https://mobileviewer.github.io");
-        };
+  <script>
+    /* ── STATE ─────────────────────────────────────────── */
+    let qrcodeObj = null;
+    let activeTab  = 'url';
+    let activeECC  = 'H';
 
-        function generateQR(defaultText) {
-            const input = document.getElementById("qrText");
-            const text = defaultText || input.value.trim();
-            const container = document.getElementById("qrcode");
+    /* ── TABS ──────────────────────────────────────────── */
+    function switchTab(tab) {
+      document.querySelectorAll('.tool-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.input-panel').forEach(p => p.classList.remove('active'));
+      document.querySelector(`[data-tab="${tab}"]`).classList.add('active');
+      document.getElementById(`panel-${tab}`).classList.add('active');
+      activeTab = tab;
+    }
 
-            if (!text) {
-                alert("Please enter text or a URL");
-                return;
-            }
+    /* ── ECC ───────────────────────────────────────────── */
+    function setECC(btn) {
+      document.querySelectorAll('.ecc-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeECC = btn.dataset.ecc;
+    }
 
-            container.innerHTML = "";
+    /* ── COLOR SYNC ────────────────────────────────────── */
+    function syncColorHex(which) {
+      const val = document.getElementById(`${which}-color`).value;
+      document.getElementById(`${which}-hex`).textContent = val.toUpperCase();
+    }
 
-            qrcodeObj = new QRCode(container, {
-                text: text,
-                width: 256,
-                height: 256,
-                colorDark : "#000000",
-                colorLight : "#ffffff",
-                correctLevel : QRCode.CorrectLevel.H
-            });
-            
-            if(!defaultText) input.blur();
+    /* ── BUILD CONTENT STRING ──────────────────────────── */
+    function buildContent() {
+      switch (activeTab) {
+        case 'url':
+          return document.getElementById('input-url').value.trim() || 'https://mobileviewer.github.io';
+        case 'text':
+          return document.getElementById('input-text').value.trim() || 'Hello from Mobile Viewer!';
+        case 'email': {
+          const to  = document.getElementById('input-email-to').value.trim();
+          const sub = document.getElementById('input-email-subject').value.trim();
+          const bod = document.getElementById('input-email-body').value.trim();
+          if (!to) { showToast('Please enter an email address'); return null; }
+          let s = `mailto:${to}`;
+          const params = [];
+          if (sub) params.push(`subject=${encodeURIComponent(sub)}`);
+          if (bod) params.push(`body=${encodeURIComponent(bod)}`);
+          if (params.length) s += '?' + params.join('&');
+          return s;
         }
-
-        function downloadQR() {
-            const img = document.querySelector("#qrcode img");
-            if (img && img.src) {
-                const link = document.createElement("a");
-                link.href = img.src;
-                link.download = "qrcode.png";
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            } else {
-                alert("Please generate a QR code first.");
-            }
+        case 'phone': {
+          const ph  = document.getElementById('input-phone').value.trim();
+          const sms = document.getElementById('input-sms').value.trim();
+          if (!ph) { showToast('Please enter a phone number'); return null; }
+          return sms ? `smsto:${ph}:${sms}` : `tel:${ph}`;
         }
-
-        function clearQR() {
-            document.getElementById("qrText").value = "";
-            document.getElementById("qrcode").innerHTML = "";
-            qrcodeObj = null;
+        case 'wifi': {
+          const ssid = document.getElementById('input-ssid').value.trim();
+          if (!ssid) { showToast('Please enter a network name'); return null; }
+          const pass = document.getElementById('input-password').value;
+          const sec  = document.getElementById('input-security').value;
+          const hid  = document.getElementById('input-hidden').checked ? 'true' : 'false';
+          return `WIFI:T:${sec};S:${ssid};P:${pass};H:${hid};;`;
         }
-    </script>
+        case 'vcard': {
+          const fn = document.getElementById('vc-first').value.trim();
+          const ln = document.getElementById('vc-last').value.trim();
+          if (!fn && !ln) { showToast('Please enter at least a name'); return null; }
+          const org = document.getElementById('vc-org').value.trim();
+          const ph  = document.getElementById('vc-phone').value.trim();
+          const em  = document.getElementById('vc-email').value.trim();
+          const url = document.getElementById('vc-url').value.trim();
+          let v = `BEGIN:VCARD\nVERSION:3.0\nN:${ln};${fn}\nFN:${fn} ${ln}`;
+          if (org) v += `\nORG:${org}`;
+          if (ph)  v += `\nTEL:${ph}`;
+          if (em)  v += `\nEMAIL:${em}`;
+          if (url) v += `\nURL:${url}`;
+          v += '\nEND:VCARD';
+          return v;
+        }
+        default: return null;
+      }
+    }
+
+    /* ── GENERATE ──────────────────────────────────────── */
+    function generateQR(defaultText) {
+      const text = defaultText || buildContent();
+      if (!text) return;
+
+      const container = document.getElementById('qrcode');
+      const placeholder = document.getElementById('qr-placeholder');
+      const size = parseInt(document.getElementById('qr-size').value);
+      const fg = document.getElementById('fg-color').value;
+      const bg = document.getElementById('bg-color').value;
+      const eccMap = { L: QRCode.CorrectLevel.L, M: QRCode.CorrectLevel.M, Q: QRCode.CorrectLevel.Q, H: QRCode.CorrectLevel.H };
+
+      container.innerHTML = '';
+      if (placeholder) placeholder.style.display = 'none';
+
+      qrcodeObj = new QRCode(container, {
+        text, width: size, height: size,
+        colorDark: fg, colorLight: bg,
+        correctLevel: eccMap[activeECC] || QRCode.CorrectLevel.H
+      });
+
+      // Update canvas box bg to match QR bg
+      document.getElementById('qr-box').style.background = bg;
+
+      const charCount = text.length;
+      document.getElementById('qr-meta').textContent =
+        `${charCount} character${charCount !== 1 ? 's' : ''} · ${size}×${size}px · ECC ${activeECC} · Generated locally`;
+
+      showToast('QR code generated ✓');
+    }
+
+    /* ── DOWNLOAD ──────────────────────────────────────── */
+    function downloadQR() {
+      const img = document.querySelector('#qrcode img');
+      const canvas = document.querySelector('#qrcode canvas');
+      let src = null;
+
+      if (canvas) {
+        src = canvas.toDataURL('image/png');
+      } else if (img && img.src) {
+        src = img.src;
+      }
+
+      if (!src) { showToast('Generate a QR code first'); return; }
+
+      const link = document.createElement('a');
+      link.href = src;
+      link.download = `qrcode-${Date.now()}.png`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      showToast('Downloaded ✓');
+    }
+
+    /* ── CLEAR ─────────────────────────────────────────── */
+    function clearQR() {
+      document.getElementById('qrcode').innerHTML = '';
+      qrcodeObj = null;
+      const placeholder = document.getElementById('qr-placeholder');
+      if (placeholder) placeholder.style.display = 'flex';
+      document.getElementById('qr-box').style.background = 'white';
+      document.getElementById('qr-meta').textContent = 'Generated in your browser — never uploaded';
+      showToast('Cleared');
+    }
+
+    /* ── TOAST ─────────────────────────────────────────── */
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2500);
+    }
+
+    /* ── FAQ ACCORDION ─────────────────────────────────── */
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
+
+    /* ── REVEAL ON SCROLL ──────────────────────────────── */
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    /* ── AUTO LOAD ─────────────────────────────────────── */
+    window.addEventListener('load', () => {
+      generateQR('https://mobileviewer.github.io');
+    });
+
+    /* ── ENTER KEY ─────────────────────────────────────── */
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Enter' && e.target.matches('.form-input, .form-textarea')) generateQR();
+    });
+  </script>
 </body>
 </html>
