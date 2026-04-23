@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9759808041159779"
+     crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MBJB77SQ0K"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-MBJB77SQ0K');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>How 2026 Flagship Phones Affect Responsive Design — Viewport, Notch & Foldable Testing | Mobile Viewer</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+
+  <meta name="description" content="iPhone 17, Galaxy S26, Pixel 10 — the 2026 flagship phones bring new viewport dimensions, Dynamic Island changes, and foldable form factors that directly affect your responsive CSS. Here's what every developer needs to know.">
+  <meta name="keywords" content="2026 flagship phones responsive design, iPhone 17 viewport, Galaxy S26 viewport, responsive design 2026, notch CSS 2026, foldable responsive design, dynamic island CSS">
+  <meta name="author" content="Mobile Viewer">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://mobileviewer.github.io/2026-flagship-phones-responsive-design">
+
+  <meta property="og:title" content="How New 2026 Flagship Phones Affect Your Responsive Designs (Viewport, Notch, and Foldable Testing Tips)">
+  <meta property="og:description" content="iPhone 17, Galaxy S26, and new foldables bring fresh viewport dimensions and notch configurations. Here's what changed and how to adapt your CSS.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://mobileviewer.github.io/2026-flagship-phones-responsive-design">
+  <meta property="og:site_name" content="Mobile Viewer">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How New 2026 Flagship Phones Affect Your Responsive Designs (Viewport, Notch, and Foldable Testing Tips)",
+    "description": "The 2026 flagship phones bring new viewport dimensions, Dynamic Island changes, and foldable form factors that affect responsive CSS layouts.",
+    "author": { "@type": "Organization", "name": "Mobile Viewer" },
+    "publisher": { "@type": "Organization", "name": "Mobile Viewer", "url": "https://mobileviewer.github.io/" },
+    "datePublished": "2026-04-01",
+    "dateModified": "2026-04-23"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the logical viewport width of the iPhone 17 in CSS?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The iPhone 17 standard model has a logical CSS viewport width of 393px in portrait orientation (same as iPhone 15 and 16), at a device pixel ratio of 3x. The iPhone 17 Pro Max is 430px wide in portrait. These logical widths are what your CSS media queries see — not the physical pixel resolution." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I handle the Dynamic Island in CSS?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The Dynamic Island (iPhone 14 Pro onwards) is handled via the safe area inset environment variables. Use viewport-fit=cover in your viewport meta tag, then apply padding-top: env(safe-area-inset-top) to any fixed headers or elements that need to avoid the Dynamic Island. The safe-area-inset-top value on Dynamic Island devices is approximately 59px in portrait mode (vs 47px on older notch iPhones)." }
+      },
+      {
+        "@type": "Question",
+        "name": "Should I test my site on every 2026 flagship phone?",
+        "acceptedAnswer": { "@type": "Answer", "text": "You don't need to test on every device, but you should test at the logical viewport widths that represent each flagship's form factor. The key 2026 mobile viewport widths to cover are: 375px (small iPhones), 390-393px (standard iPhone 17), 414-430px (iPhone 17 Pro Max, large Androids), 360px (budget Android baseline), and 768px (iPad mini, small tablet)." }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    :root {
+      --primary:#00F0FF;--primary-dim:rgba(0,240,255,0.15);--secondary:#7B61FF;--accent:#FF4FD8;
+      --bg:#080C12;--bg-dark:#050810;--bg-card:#0D1220;--bg-card-2:#111827;
+      --border:rgba(255,255,255,0.07);--border-light:rgba(255,255,255,0.12);
+      --text:#F0F4FF;--text-secondary:rgba(240,244,255,0.6);--text-muted:rgba(240,244,255,0.35);
+      --radius:12px;--radius-lg:20px;--header-h:70px;--container:1240px;
+      --font-display:'Syne',sans-serif;--font-body:'DM Sans',sans-serif;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + 24px);-webkit-text-size-adjust:100%}
+    body{font-family:var(--font-body);font-size:16px;line-height:1.7;color:var(--text);background:var(--bg);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    a{color:inherit}button{font-family:inherit;cursor:pointer;border:none;background:none}ul{list-style:none}
+    code{font-family:'SF Mono','Fira Code',monospace;font-size:0.85em;background:rgba(0,240,255,0.08);color:var(--primary);padding:2px 6px;border-radius:4px}
+    img{display:block;max-width:100%}
+    .container{width:100%;max-width:var(--container);margin:0 auto;padding:0 24px}
+    #progressBar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--secondary),var(--primary));z-index:2000;width:0%;transition:width 0.1s linear}
+    .blog-hero{padding:calc(var(--header-h) + 80px) 0 80px;position:relative;overflow:hidden}
+    .blog-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(255,79,216,0.06) 0%,transparent 70%);pointer-events:none}
+    .blog-hero-inner{max-width:860px;margin:0 auto;padding:0 24px}
+    .blog-breadcrumb{display:flex;align-items:center;gap:8px;margin-bottom:2rem;font-size:0.85rem;color:var(--text-muted)}
+    .blog-breadcrumb a{color:var(--text-muted);text-decoration:none;transition:color 0.2s}
+    .blog-breadcrumb a:hover{color:var(--primary)}
+    .blog-category{display:inline-block;font-family:var(--font-display);font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);background:rgba(255,79,216,0.12);border:1px solid rgba(255,79,216,0.3);padding:5px 14px;border-radius:100px;margin-bottom:1.5rem}
+    .blog-hero-title{font-family:var(--font-display);font-size:clamp(2rem,5vw,3.2rem);font-weight:800;line-height:1.1;margin-bottom:1.5rem}
+    .gradient-text{background:linear-gradient(90deg,var(--accent),var(--secondary));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .blog-hero-desc{font-size:1.15rem;color:var(--text-secondary);line-height:1.7;margin-bottom:2rem;max-width:700px}
+    .blog-meta{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+    .blog-meta-item{display:flex;align-items:center;gap:6px;font-size:0.875rem;color:var(--text-muted)}
+    .blog-divider{width:100%;height:1px;background:var(--border);margin:3rem 0}
+    .blog-layout{max-width:1100px;margin:0 auto;padding:0 24px 100px;display:grid;grid-template-columns:1fr 300px;gap:60px;align-items:start}
+    .blog-sidebar{position:sticky;top:calc(var(--header-h) + 32px)}
+    .toc-card{background:var(--bg-card);border:1px solid var(--border-light);border-radius:var(--radius-lg);padding:28px}
+    .toc-title{font-family:var(--font-display);font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:16px}
+    .toc-list{display:flex;flex-direction:column;gap:4px;list-style:none}
+    .toc-list li a{display:block;padding:6px 10px;border-radius:6px;font-size:0.875rem;color:var(--text-secondary);text-decoration:none;transition:color 0.2s,background 0.2s;border-left:2px solid transparent}
+    .toc-list li a:hover{color:var(--accent);background:rgba(255,79,216,0.07);border-left-color:var(--accent)}
+    .toc-list li.toc-sub a{padding-left:22px;font-size:0.825rem}
+    .sidebar-tool-card{background:var(--bg-card);border:1px solid rgba(0,240,255,0.2);border-radius:var(--radius-lg);padding:24px;margin-top:20px}
+    .sidebar-tool-card h4{font-family:var(--font-display);font-size:1rem;font-weight:700;margin-bottom:8px}
+    .sidebar-tool-card p{font-size:0.85rem;color:var(--text-secondary);margin-bottom:16px;line-height:1.6}
+    .sidebar-btn{display:block;text-align:center;padding:10px 16px;background:var(--primary);color:#000;font-weight:700;font-size:0.875rem;border-radius:8px;text-decoration:none;transition:all 0.2s}
+    .sidebar-btn:hover{background:#29f5ff;transform:translateY(-1px)}
+    .sidebar-btn-outline{display:block;text-align:center;padding:10px 16px;border:1px solid var(--border-light);color:var(--text-secondary);font-size:0.875rem;border-radius:8px;text-decoration:none;transition:all 0.2s;margin-top:8px}
+    .sidebar-btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+    .blog-content h2{font-family:var(--font-display);font-size:clamp(1.4rem,3vw,1.9rem);font-weight:700;margin:3rem 0 1rem;color:var(--text);scroll-margin-top:calc(var(--header-h) + 32px)}
+    .blog-content h3{font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin:2rem 0 0.75rem;color:var(--text);scroll-margin-top:calc(var(--header-h) + 32px)}
+    .blog-content p{margin-bottom:1.25rem;color:var(--text-secondary);font-size:1.02rem}
+    .blog-content p strong{color:var(--text);font-weight:600}
+    .blog-content ul,.blog-content ol{padding-left:1.5rem;margin-bottom:1.5rem;color:var(--text-secondary);font-size:1.02rem}
+    .blog-content ul{list-style:disc}.blog-content ol{list-style:decimal}.blog-content li{margin-bottom:0.5rem}
+    .blog-content a{color:var(--primary);text-decoration:underline;text-underline-offset:3px;transition:opacity 0.2s}
+    .blog-content a:hover{opacity:0.8}
+    .checklist-item{display:flex;gap:20px;align-items:flex-start;margin:1.5rem 0;padding:24px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);transition:border-color 0.2s}
+    .checklist-item:hover{border-color:rgba(255,79,216,0.2)}
+    .checklist-num{flex-shrink:0;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:rgba(255,79,216,0.1);border:1px solid rgba(255,79,216,0.25);border-radius:10px;font-family:var(--font-display);font-size:0.85rem;font-weight:800;color:var(--accent)}
+    .checklist-body{flex:1}
+    .checklist-body h3{font-family:var(--font-display);font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:6px;margin-top:0}
+    .checklist-body p{font-size:0.9rem;color:var(--text-secondary);margin-bottom:8px;line-height:1.6}
+    .checklist-body code{font-family:'SF Mono','Fira Code',monospace;font-size:0.82em;background:rgba(0,240,255,0.08);color:var(--primary);padding:2px 6px;border-radius:4px}
+    .severity{display:inline-flex;align-items:center;gap:5px;font-size:0.72rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;padding:3px 8px;border-radius:100px}
+    .severity-critical{background:rgba(255,79,216,0.12);color:var(--accent);border:1px solid rgba(255,79,216,0.25)}
+    .severity-high{background:rgba(255,149,0,0.12);color:#FF9500;border:1px solid rgba(255,149,0,0.25)}
+    .severity-medium{background:rgba(123,97,255,0.12);color:var(--secondary);border:1px solid rgba(123,97,255,0.25)}
+    .callout{background:var(--bg-card);border:1px solid var(--border-light);border-left:3px solid var(--primary);border-radius:var(--radius);padding:20px 24px;margin:2rem 0}
+    .callout-warn{border-left-color:#FF4FD8;background:rgba(255,79,216,0.04);border-color:rgba(255,79,216,0.2)}
+    .callout-tip{border-left-color:var(--secondary);background:rgba(123,97,255,0.04);border-color:rgba(123,97,255,0.2)}
+    .callout-label{font-family:var(--font-display);font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--primary);margin-bottom:8px}
+    .callout-tip .callout-label{color:var(--secondary)}.callout-warn .callout-label{color:var(--accent)}
+    .callout p{margin-bottom:0;color:var(--text-secondary)}
+    .inlink-banner{display:flex;align-items:center;gap:20px;background:linear-gradient(135deg,rgba(255,79,216,0.05),rgba(0,240,255,0.05));border:1px solid rgba(255,79,216,0.2);border-radius:var(--radius-lg);padding:24px 28px;margin:2.5rem 0}
+    .inlink-banner-icon{flex-shrink:0;width:48px;height:48px;background:rgba(255,79,216,0.1);border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--accent)}
+    .inlink-banner-body h4{font-family:var(--font-display);font-size:1rem;font-weight:700;margin-bottom:4px}
+    .inlink-banner-body p{font-size:0.875rem;color:var(--text-secondary);margin-bottom:12px}
+    .inlink-banner-body a{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:var(--primary);color:#000;font-size:0.85rem;font-weight:700;border-radius:8px;text-decoration:none;transition:all 0.2s}
+    .inlink-banner-body a:hover{background:#29f5ff}
+    .section-badge{display:inline-block;font-family:var(--font-display);font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--secondary);background:rgba(123,97,255,0.15);border:1px solid rgba(123,97,255,0.3);padding:5px 14px;border-radius:100px;margin-bottom:1.25rem}
+    .section-title{font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700;line-height:1.15;margin-bottom:1rem}
+    .section-description{font-size:1.05rem;color:var(--text-secondary);max-width:600px;line-height:1.7;margin-bottom:3rem}
+    .comparison-table{width:100%;border-collapse:collapse;margin:2rem 0;font-size:0.9rem}
+    .comparison-table th{font-family:var(--font-display);font-size:0.75rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);padding:12px 16px;border-bottom:1px solid var(--border-light);text-align:left}
+    .comparison-table td{padding:14px 16px;border-bottom:1px solid var(--border);color:var(--text-secondary);vertical-align:top}
+    .comparison-table tr:hover td{background:rgba(255,255,255,0.02)}
+    .badge-yes{color:#34D399;font-weight:600}.badge-partial{color:#FF9500;font-weight:600}.badge-no{color:var(--accent);font-weight:600}
+    .faq-section{background:var(--bg-dark);padding:80px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+    .faq-inner{max-width:800px;margin:0 auto;padding:0 24px;text-align:center}
+    .faq-list{text-align:left;margin-top:3rem}
+    .faq-item{border-bottom:1px solid var(--border)}
+    .faq-q{width:100%;padding:20px 0;display:flex;justify-content:space-between;align-items:center;gap:16px;font-family:var(--font-display);font-size:1rem;font-weight:700;color:var(--text);cursor:pointer;background:none;border:none;text-align:left}
+    .faq-chevron{font-size:1.2rem;color:var(--text-muted);transition:transform 0.3s;flex-shrink:0}
+    .faq-q[aria-expanded="true"] .faq-chevron{transform:rotate(180deg);color:var(--primary)}
+    .faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s ease}
+    .faq-a.is-open{max-height:500px}
+    .faq-a p{padding-bottom:20px;color:var(--text-secondary);font-size:0.97rem}
+    .faq-a a{color:var(--primary)}
+    .related-section{padding:80px 0}
+    .related-section .container{text-align:center}
+    .related-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px;margin-top:2.5rem;text-align:left}
+    .related-card{display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:28px;text-decoration:none;color:inherit;transition:border-color 0.2s,transform 0.2s}
+    .related-card:hover{border-color:rgba(0,240,255,0.3);transform:translateY(-4px)}
+    .related-card-cat{font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--primary);margin-bottom:12px}
+    .related-card h3{font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:10px;line-height:1.3;color:var(--text)}
+    .related-card p{font-size:0.875rem;color:var(--text-secondary);line-height:1.6}
+    .cta-section{padding:80px 0}
+    .cta-card{position:relative;background:linear-gradient(135deg,rgba(0,240,255,0.06),rgba(123,97,255,0.08));border:1px solid rgba(0,240,255,0.2);border-radius:28px;padding:64px 48px;text-align:center;overflow:hidden}
+    .cta-glow{position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:400px;height:300px;background:radial-gradient(ellipse,rgba(0,240,255,0.12),transparent 70%);pointer-events:none}
+    .cta-badge{display:inline-block;font-family:var(--font-display);font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--primary);background:var(--primary-dim);border:1px solid rgba(0,240,255,0.3);padding:5px 14px;border-radius:100px;margin-bottom:1.5rem}
+    .cta-title{font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;line-height:1.15;margin-bottom:1rem}
+    .cta-description{font-size:1.1rem;color:var(--text-secondary);max-width:520px;margin:0 auto 2.5rem;line-height:1.7}
+    .cta-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+    .cta-large-button{display:inline-flex;align-items:center;gap:10px;padding:16px 32px;background:var(--primary);color:#000;font-size:1rem;font-weight:700;border-radius:12px;text-decoration:none;transition:all 0.2s}
+    .cta-large-button:hover{background:#29f5ff;transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,240,255,0.3)}
+    .cta-secondary-link{display:inline-flex;align-items:center;padding:16px 24px;color:var(--text-secondary);font-size:1rem;font-weight:600;text-decoration:none;border-radius:12px;border:1px solid var(--border-light);transition:all 0.2s}
+    .cta-secondary-link:hover{color:var(--text);background:rgba(255,255,255,0.05)}
+    @media(max-width:900px){.blog-layout{grid-template-columns:1fr}.blog-sidebar{position:static}}
+    @media(max-width:600px){.blog-hero-inner{padding:0 16px}.cta-card{padding:40px 24px}.blog-layout{padding:0 16px 60px}}
+  </style>
+</head>
+<body>
+<div id="progressBar" role="progressbar" aria-hidden="true"></div>
+<div id="header-placeholder"></div>
+
+<section class="blog-hero" aria-label="Article header">
+  <div class="blog-hero-inner">
+    <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">›</span>
+      <a href="/blog">Blog</a> <span aria-hidden="true">›</span>
+      <span>Device Viewports 2026</span>
+    </nav>
+    <div class="blog-category">Device Comparisons</div>
+    <h1 class="blog-hero-title">How <span class="gradient-text">New 2026 Flagship Phones</span> Affect Your Responsive Designs: Viewport, Notch, and Foldable Testing Tips</h1>
+    <p class="blog-hero-desc">iPhone 17, Galaxy S26, Pixel 10, and the latest foldables ship with new viewport dimensions, updated Dynamic Island behavior, and aspect ratios your current breakpoints may not handle. Here's the complete developer reference.</p>
+    <div class="blog-meta">
+      <div class="blog-meta-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        April 23, 2026
+      </div>
+      <div class="blog-meta-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        15 min read
+      </div>
+      <div class="blog-meta-item">Device Viewports · Responsive CSS</div>
+    </div>
+  </div>
+</section>
+
+<div class="blog-layout">
+  <article class="blog-content" aria-label="Article body">
+
+    <p>Every year, flagship phones ship with updated dimensions, changed notch configurations, and new form factors that quietly break layouts developers haven't revisited in years. In 2026, the changes are more significant than usual: the iPhone 17 lineup introduces a new camera bump design affecting landscape layouts, Samsung's Galaxy S26 Ultra extends to an even taller aspect ratio, and several devices ship with wider physical screens but the same logical CSS viewport — a mismatch that confuses developers accustomed to assuming a 1:1 relationship between physical size and CSS pixels.</p>
+
+    <p>This guide covers what actually changed in 2026 flagships, how it affects your responsive CSS, and what to test.</p>
+
+    <h2 id="viewport-dimensions-2026">2026 Flagship Viewport Dimensions Reference</h2>
+
+    <p>The key thing to remember: <strong>your CSS media queries see logical CSS pixels, not physical pixels.</strong> A 1440×3200 physical resolution Galaxy device has a device pixel ratio (DPR) of 3.5 and a logical viewport of about 412×914px. Here are the key dimensions for 2026 flagships:</p>
+
+    <table class="comparison-table" aria-label="2026 flagship phone viewport dimensions">
+      <thead>
+        <tr>
+          <th>Device</th>
+          <th>CSS Viewport (portrait)</th>
+          <th>DPR</th>
+          <th>Aspect Ratio</th>
+          <th>Cutout Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>iPhone 17</strong></td>
+          <td>393 × 852px</td>
+          <td>3×</td>
+          <td>19.5:9</td>
+          <td>Dynamic Island</td>
+        </tr>
+        <tr>
+          <td><strong>iPhone 17 Plus</strong></td>
+          <td>430 × 932px</td>
+          <td>3×</td>
+          <td>19.5:9</td>
+          <td>Dynamic Island</td>
+        </tr>
+        <tr>
+          <td><strong>iPhone 17 Pro</strong></td>
+          <td>393 × 852px</td>
+          <td>3×</td>
+          <td>19.5:9</td>
+          <td>Dynamic Island (smaller)</td>
+        </tr>
+        <tr>
+          <td><strong>iPhone 17 Pro Max</strong></td>
+          <td>440 × 956px</td>
+          <td>3×</td>
+          <td>19.5:9</td>
+          <td>Dynamic Island (smaller)</td>
+        </tr>
+        <tr>
+          <td><strong>Galaxy S26</strong></td>
+          <td>360 × 780px</td>
+          <td>3×</td>
+          <td>19.5:9</td>
+          <td>Punch-hole (centered)</td>
+        </tr>
+        <tr>
+          <td><strong>Galaxy S26+</strong></td>
+          <td>390 × 844px</td>
+          <td>3×</td>
+          <td>19.5:9</td>
+          <td>Punch-hole (centered)</td>
+        </tr>
+        <tr>
+          <td><strong>Galaxy S26 Ultra</strong></td>
+          <td>412 × 924px</td>
+          <td>3.5×</td>
+          <td>19.7:9</td>
+          <td>Punch-hole (centered)</td>
+        </tr>
+        <tr>
+          <td><strong>Pixel 10</strong></td>
+          <td>393 × 851px</td>
+          <td>2.625×</td>
+          <td>20:9</td>
+          <td>Punch-hole (centered)</td>
+        </tr>
+        <tr>
+          <td><strong>Pixel 10 Pro XL</strong></td>
+          <td>412 × 914px</td>
+          <td>3.5×</td>
+          <td>20:9</td>
+          <td>Punch-hole (centered)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-tip">
+      <div class="callout-label">💡 Key Insight</div>
+      <p>Notice that many 2026 flagships cluster around 390–412px wide in CSS pixels. Your breakpoints at 375px (old iPhone SE/standard), 390–393px (iPhone 17), and 412–430px (Plus/Pro Max/Ultra) need to be tested deliberately — the difference of 17–37px can cause unexpected word breaks, button overflows, and nav item truncation.</p>
+    </div>
+
+    <h2 id="dynamic-island-2026">Dynamic Island in 2026: What Changed</h2>
+
+    <p>The iPhone 17 Pro series ships with a smaller Dynamic Island than its predecessors. While this is primarily a hardware change, it has a CSS implication: <code>env(safe-area-inset-top)</code> is slightly reduced compared to iPhone 16 Pro. However, you should <strong>never hardcode safe area values</strong> — always use the env() variables and let iOS provide the correct value at runtime.</p>
+
+    <div class="checklist-item">
+      <div class="checklist-num">01</div>
+      <div class="checklist-body">
+        <span class="severity severity-critical">Critical</span>
+        <h3>Use env(safe-area-inset-*) — Never Hardcode Pixel Values</h3>
+        <p>The correct CSS pattern for Dynamic Island and notch avoidance: set <code>viewport-fit=cover</code> in your meta viewport tag, then apply <code>padding-top: env(safe-area-inset-top)</code> to any fixed or sticky header. For bottom navigation bars: <code>padding-bottom: env(safe-area-inset-bottom)</code>. For landscape use <code>env(safe-area-inset-left)</code> and <code>env(safe-area-inset-right)</code>. This works across all iPhone notch and Dynamic Island variants without hardcoded values that break on new hardware.</p>
+      </div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-num">02</div>
+      <div class="checklist-body">
+        <span class="severity severity-high">High</span>
+        <h3>Test Landscape Orientation on All Flagships</h3>
+        <p>In landscape mode on iPhone, the Dynamic Island (or notch on older models) sits on the left side, and safe area insets apply to the left and right edges — not top and bottom. Fixed sidebars, full-width banners, and horizontally scrolling carousels are the most commonly broken elements in landscape. Test landscape specifically on iPhone 17 Pro Max (now wider at 956px in portrait = 440px equivalent in landscape rotation) and note how the Dynamic Island changes your usable horizontal space.</p>
+      </div>
+    </div>
+
+    <h2 id="aspect-ratio-changes">Aspect Ratio Changes and Their Layout Impact</h2>
+
+    <p>The trend toward taller aspect ratios continued in 2026. The Galaxy S26 Ultra at 19.7:9 and Pixel 10 at 20:9 mean that <strong>designs tested only at 16:9 ratios are significantly wrong</strong> on these devices — content that appears "above the fold" at 16:9 may require scrolling on taller phones, and layouts that look balanced at 16:9 can appear top-heavy at 20:9.</p>
+
+    <h3>What to Check for Tall Aspect Ratios</h3>
+    <ul>
+      <li><strong>Hero sections:</strong> Full-viewport-height heroes (<code>height: 100vh</code>) on a 20:9 screen are very tall. Test that your CTA remains visible without scrolling.</li>
+      <li><strong>Fixed-height containers:</strong> Any container with a fixed pixel height (e.g., a card set to <code>height: 240px</code>) may have too much empty space at the bottom on tall phones.</li>
+      <li><strong>Scroll positions:</strong> Lazy-loaded sections that trigger on scroll may trigger differently on taller screens — test your scroll-based animations and lazy load points.</li>
+      <li><strong>Bottom navigation:</strong> Bottom nav bars need additional padding for home indicator safe area on iPhone, and may feel very far from the middle of the screen on a 20:9 phone held in one hand.</li>
+    </ul>
+
+    <div class="inlink-banner">
+      <div class="inlink-banner-icon" aria-hidden="true">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="5" y="2" width="14" height="20" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M9 7h6M9 11h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </div>
+      <div class="inlink-banner-body">
+        <h4>Preview Your Layout at 2026 Device Viewports</h4>
+        <p>Mobile Viewer has up-to-date presets for 2026 flagships including iPhone 17, Galaxy S26 Ultra, and Pixel 10. Check your layout at every new dimension instantly.</p>
+        <a href="/">Launch Mobile Viewer →</a>
+      </div>
+    </div>
+
+    <h2 id="high-refresh-css">High-Refresh-Rate Displays and CSS Animations</h2>
+
+    <p>All 2026 flagships ship with 120Hz or higher refresh rates (with ProMotion on Apple and adaptive refresh on Android). This is increasingly relevant for CSS:</p>
+
+    <ul>
+      <li><strong>CSS animations at 60fps feel janky</strong> on 120Hz screens. Use <code>transform</code> and <code>opacity</code> for animations (GPU-composited) and avoid animating <code>width</code>, <code>height</code>, <code>top</code>, or <code>left</code> properties which trigger layout recalculation.</li>
+      <li><strong>Scroll-linked animations</strong> using the new Scroll Timeline API benefit significantly from high refresh — but poorly implemented scroll effects cause noticeable jitter. Test on a real 120Hz device.</li>
+      <li><strong>Transitions must feel snappy.</strong> The expected interaction response time on a 120Hz screen is under 8ms per frame. CSS transitions above 300ms duration feel sluggish to users accustomed to 120Hz.</li>
+    </ul>
+
+    <h2 id="camera-protrusion">Camera Bump and Physical Protrusions</h2>
+
+    <p>The iPhone 17 series introduced a significant camera bump that affects how the phone rests on surfaces, potentially changing how users hold and interact with it in landscape mode. While CSS can't directly detect this, it's worth understanding for UX testing:</p>
+
+    <ul>
+      <li>Users holding an iPhone 17 in landscape will naturally avoid triggering tap targets in the upper-left corner (near the camera bump) — this is an ergonomics issue that shows up as poor tap accuracy in analytics.</li>
+      <li>If you have landscape-specific UIs, consider shifting critical tap targets away from the camera-side corners.</li>
+    </ul>
+
+    <h2 id="testing-breakpoints-2026">Recommended Breakpoints and Testing Viewports for 2026</h2>
+
+    <p>Based on the 2026 flagship landscape, here are the viewport widths every responsive design must test explicitly:</p>
+
+    <ol>
+      <li><strong>360px</strong> — Budget Android baseline (Galaxy S26, many entry-level devices). Your most space-constrained layout.</li>
+      <li><strong>375px</strong> — Older iPhones (SE 3rd gen, iPhone 12/13 mini) still in wide use.</li>
+      <li><strong>390–393px</strong> — iPhone 16/17 standard, Galaxy S26+. The most common iOS viewport in 2026.</li>
+      <li><strong>412px</strong> — Pixel 10 Pro, Galaxy S26 Ultra. Common large-screen Android viewport.</li>
+      <li><strong>430–440px</strong> — iPhone 17 Plus and Pro Max. Largest mainstream phone viewport.</li>
+      <li><strong>768px</strong> — iPad mini, small tablets. The classic tablet breakpoint remains relevant.</li>
+      <li><strong>1024px</strong> — iPad 11" and standard iPads in landscape / small laptop / tablet with keyboard.</li>
+    </ol>
+
+    <div class="callout callout-warn">
+      <div class="callout-label">⚠️ Common Mistake</div>
+      <p>Testing only at 375px and 414px misses a significant portion of 2026 flagship users. The 390–393px range (iPhone 16/17) is now the most common iOS viewport width, and 412px covers a large chunk of flagship Android. Layouts that look fine at 375px often overflow or misalign at 393px due to subpixel differences in grid columns, padding, and font scaling.</p>
+    </div>
+
+    <p>For a broader look at how foldable phones and wearables add additional viewport complexity beyond flat-screen flagships, see our companion guide on <a href="/foldable-phones-viewport-testing-2026">testing foldable phones and multi-screen devices</a>. For the impact of these new viewports on your Core Web Vitals scores (especially LCP on large high-DPR screens), read our <a href="/mobile-core-web-vitals-2026">Mobile Core Web Vitals mastery guide</a>.</p>
+
+    <div class="blog-divider"></div>
+
+    <p>The bottom line for 2026 responsive design: the shift isn't dramatic, but the details matter. Most sites won't break completely on new flagships — but layouts will subtly misalign, text will wrap differently, and tap targets that were marginal at 375px will become genuinely problematic at 393px. Systematic testing at the viewport widths above, using a combination of <a href="/">Mobile Viewer</a> for fast visual checks and real devices for final validation, will catch these issues before your users do.</p>
+
+  </article>
+
+  <aside class="blog-sidebar" aria-label="Article navigation">
+    <div class="toc-card">
+      <div class="toc-title">Table of Contents</div>
+      <ul class="toc-list">
+        <li><a href="#viewport-dimensions-2026">2026 Viewport Dimensions</a></li>
+        <li><a href="#dynamic-island-2026">Dynamic Island in 2026</a></li>
+        <li><a href="#aspect-ratio-changes">Aspect Ratio Changes</a></li>
+        <li><a href="#high-refresh-css">High-Refresh & CSS Animations</a></li>
+        <li><a href="#camera-protrusion">Camera Bump Considerations</a></li>
+        <li><a href="#testing-breakpoints-2026">Recommended Breakpoints 2026</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-tool-card">
+      <h4>Test 2026 Flagship Viewports</h4>
+      <p>Mobile Viewer includes presets for iPhone 17, Galaxy S26, Pixel 10, and all major 2026 flagships.</p>
+      <a href="/" class="sidebar-btn">Launch Mobile Viewer →</a>
+      <a href="/iphone-15-vs-galaxy-s23-viewport" class="sidebar-btn-outline">📱 iPhone vs Galaxy Guide →</a>
+    </div>
+  </aside>
+</div>
+
+<section class="related-section" aria-label="Related articles">
+  <div class="container">
+    <span class="section-badge">Keep Reading</span>
+    <h2 class="section-title">Related Articles</h2>
+    <div class="related-grid">
+      <a href="/foldable-phones-viewport-testing-2026" class="related-card">
+        <div class="related-card-cat">Advanced Device Testing</div>
+        <h3>Testing for Foldable Phones, Wearables & Multi-Screen Devices</h3>
+        <p>Go beyond flat-screen flagships — fold seam, spanning display API, and posture media queries explained.</p>
+      </a>
+      <a href="/iphone-15-vs-galaxy-s23-viewport" class="related-card">
+        <div class="related-card-cat">Developer Reference</div>
+        <h3>iPhone 15 vs Galaxy S23 Viewport Differences</h3>
+        <p>The foundational viewport comparison guide that still applies to understanding the 2026 flagship differences.</p>
+      </a>
+      <a href="/mobile-seo-checklist-2026" class="related-card">
+        <div class="related-card-cat">SEO</div>
+        <h3>Mobile SEO Checklist 2026</h3>
+        <p>New device viewports mean new mobile usability issues — make sure your site passes all 15 checks.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="faq-section" aria-labelledby="faq-heading">
+  <div class="faq-inner">
+    <span class="section-badge">FAQ</span>
+    <h2 class="section-title" id="faq-heading">2026 Flagship Phones: Developer FAQ</h2>
+    <p class="section-description">Common questions about how 2026 flagship phones affect responsive CSS layouts</p>
+    <div class="faq-list" role="list">
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          What is the logical viewport width of the iPhone 17 in CSS?
+          <span class="faq-chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="faq-a">
+          <p>The iPhone 17 standard model has a logical CSS viewport width of 393px in portrait orientation, at a device pixel ratio of 3×. The iPhone 17 Pro Max is 440px wide in portrait. These logical widths are what your CSS media queries see — not the physical pixel resolution. Use <a href="/">Mobile Viewer</a> to preview at these exact dimensions.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          How do I handle the Dynamic Island in CSS?
+          <span class="faq-chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="faq-a">
+          <p>The Dynamic Island is handled via the safe area inset environment variables. Use <code>viewport-fit=cover</code> in your viewport meta tag, then apply <code>padding-top: env(safe-area-inset-top)</code> to any fixed headers or elements that need to avoid the Dynamic Island. Never hardcode pixel values — they change between iPhone models and will break on new hardware.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Should I test my site on every 2026 flagship phone?
+          <span class="faq-chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="faq-a">
+          <p>You don't need to test on every device, but you should test at the logical viewport widths that represent each flagship's form factor. The key 2026 mobile viewport widths to cover are: 360px (budget Android baseline), 375px (older iPhones), 390–393px (iPhone 17), 412px (flagship Android), and 430–440px (iPhone 17 Plus/Pro Max). Use <a href="/">Mobile Viewer</a> to rapidly check all these without switching physical devices.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Do 120Hz screens affect my CSS animations?
+          <span class="faq-chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="faq-a">
+          <p>Yes. On 120Hz devices, CSS animations that only target 60fps will appear slightly less smooth than native apps. More importantly, animations that cause layout recalculation (animating width, height, margin, or padding) produce visible jank on 120Hz screens because the browser can't complete layout in under 8ms per frame. Stick to animating <code>transform</code> and <code>opacity</code> for smooth 120fps performance.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" aria-label="Call to action">
+  <div class="container">
+    <div class="cta-card">
+      <div class="cta-glow" aria-hidden="true"></div>
+      <div class="cta-badge">Free · No Sign-up · Instant</div>
+      <h2 class="cta-title">Preview your site on 2026 flagship viewports now</h2>
+      <p class="cta-description">Mobile Viewer has updated presets for every major 2026 flagship. Check your layout at iPhone 17, Galaxy S26 Ultra, and Pixel 10 viewports in seconds.</p>
+      <div class="cta-actions">
+        <a href="/" class="cta-large-button">
+          Launch Mobile Viewer
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="/blog" class="cta-secondary-link">Browse all articles →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+<script src="header.js"></script>
+<script src="footer.js"></script>
+<script>
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const isOpen = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', !isOpen);
+    answer.classList.toggle('is-open', !isOpen);
+  }
+  const progressBar = document.getElementById('progressBar');
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = Math.min(progress, 100) + '%';
+  }, { passive: true });
+</script>
+</body>
+</html>
