@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9759808041159779"
+     crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MBJB77SQ0K"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-MBJB77SQ0K');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>PWA Mobile Testing Checklist 2026: Offline, Installable Experiences | Mobile Viewer Blog</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+
+  <meta name="description" content="The complete 2026 PWA testing checklist covering service workers, offline mode, installability, push notifications, app shell architecture, and how to audit each on mobile devices.">
+  <meta name="keywords" content="PWA testing checklist 2026, progressive web app mobile testing, service worker testing, PWA installability, offline PWA, web app manifest testing">
+  <meta name="author" content="Mobile Viewer">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://mobileviewer.github.io/pwa-mobile-testing-checklist-2026">
+
+  <meta property="og:title" content="Progressive Web Apps (PWAs) in 2026: Mobile Testing Checklist for Offline, Installable Experiences">
+  <meta property="og:description" content="The complete PWA testing checklist for 2026 — service workers, offline mode, installability, push notifications, and mobile-specific viewport issues.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://mobileviewer.github.io/pwa-mobile-testing-checklist-2026">
+  <meta property="og:site_name" content="Mobile Viewer">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Progressive Web Apps (PWAs) in 2026: Mobile Testing Checklist for Offline, Installable Experiences",
+    "description": "The complete 2026 PWA testing checklist covering service workers, offline mode, installability, push notifications, and mobile-specific issues.",
+    "author": { "@type": "Organization", "name": "Mobile Viewer" },
+    "publisher": { "@type": "Organization", "name": "Mobile Viewer", "url": "https://mobileviewer.github.io/" },
+    "datePublished": "2026-04-01",
+    "dateModified": "2026-04-23"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the minimum requirement for a PWA to be installable on mobile?",
+        "acceptedAnswer": { "@type": "Answer", "text": "For a PWA to trigger the install prompt on Android Chrome, it needs: a valid web app manifest with name, short_name, icons (including 512x512), start_url, and display mode set to standalone or fullscreen; a registered service worker with a fetch event handler; and HTTPS. Safari on iOS doesn't show an automatic install prompt — users must manually 'Add to Home Screen' from the share menu." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I test my PWA offline mode?",
+        "acceptedAnswer": { "@type": "Answer", "text": "The most reliable way to test offline mode is Chrome DevTools > Application > Service Workers > check 'Offline', then reload the page. Also test by throttling to 'No throttling' then switching to offline mid-session to simulate connection drops. On real devices, enable airplane mode after the page loads. Check that your app shell loads, cached content is visible, and appropriate offline UI (not a browser error page) is shown." }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does my PWA look different when installed vs viewed in a browser on iOS?",
+        "acceptedAnswer": { "@type": "Answer", "text": "iOS Safari's standalone PWA mode has significant differences from the in-browser experience: no back/forward navigation, no URL bar, limited API access (no push notifications in older iOS versions, restricted background sync), and the status bar area is not automatically handled — requiring apple-mobile-web-app-status-bar-style meta tags and env(safe-area-inset-*) CSS to prevent UI being obscured by the notch or Dynamic Island." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Google index PWA content correctly?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Googlebot can crawl and index PWA content if your app renders content server-side or uses dynamic rendering. Client-side-only rendering (JavaScript-rendered content that Googlebot can't process) is the most common indexing failure. Use Google's URL Inspection tool in Search Console to see what Googlebot actually sees when it crawls your PWA routes." }
+      }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    :root {
+      --primary:      #00F0FF;
+      --primary-dim:  rgba(0,240,255,0.15);
+      --secondary:    #7B61FF;
+      --accent:       #FF4FD8;
+      --bg:           #080C12;
+      --bg-dark:      #050810;
+      --bg-card:      #0D1220;
+      --bg-card-2:    #111827;
+      --border:       rgba(255,255,255,0.07);
+      --border-light: rgba(255,255,255,0.12);
+      --text:         #F0F4FF;
+      --text-secondary: rgba(240,244,255,0.6);
+      --text-muted:   rgba(240,244,255,0.35);
+      --radius:       12px;
+      --radius-lg:    20px;
+      --header-h:     70px;
+      --container:    1240px;
+      --font-display: 'Syne', sans-serif;
+      --font-body:    'DM Sans', sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 24px); -webkit-text-size-adjust: 100%; }
+    body { font-family: var(--font-body); font-size: 16px; line-height: 1.7; color: var(--text); background: var(--bg); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+    ul { list-style: none; }
+    code { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.85em; background: rgba(0,240,255,0.08); color: var(--primary); padding: 2px 6px; border-radius: 4px; }
+    img { display: block; max-width: 100%; }
+    .container { width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+    #progressBar { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--secondary), var(--primary)); z-index: 2000; width: 0%; transition: width 0.1s linear; }
+    .blog-hero { padding: calc(var(--header-h) + 80px) 0 80px; position: relative; overflow: hidden; }
+    .blog-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(123,97,255,0.07) 0%, transparent 70%); pointer-events: none; }
+    .blog-hero-inner { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+    .blog-breadcrumb { display: flex; align-items: center; gap: 8px; margin-bottom: 2rem; font-size: 0.85rem; color: var(--text-muted); }
+    .blog-breadcrumb a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .blog-breadcrumb a:hover { color: var(--primary); }
+    .blog-category { display: inline-block; font-family: var(--font-display); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--secondary); background: rgba(123,97,255,0.15); border: 1px solid rgba(123,97,255,0.3); padding: 5px 14px; border-radius: 100px; margin-bottom: 1.5rem; }
+    .blog-hero-title { font-family: var(--font-display); font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; }
+    .gradient-text { background: linear-gradient(90deg, var(--secondary), var(--primary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .blog-hero-desc { font-size: 1.15rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 2rem; max-width: 700px; }
+    .blog-meta { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .blog-meta-item { display: flex; align-items: center; gap: 6px; font-size: 0.875rem; color: var(--text-muted); }
+    .blog-divider { width: 100%; height: 1px; background: var(--border); margin: 3rem 0; }
+    .blog-layout { max-width: 1100px; margin: 0 auto; padding: 0 24px 100px; display: grid; grid-template-columns: 1fr 300px; gap: 60px; align-items: start; }
+    .blog-sidebar { position: sticky; top: calc(var(--header-h) + 32px); }
+    .toc-card { background: var(--bg-card); border: 1px solid var(--border-light); border-radius: var(--radius-lg); padding: 28px; }
+    .toc-title { font-family: var(--font-display); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; }
+    .toc-list { display: flex; flex-direction: column; gap: 4px; list-style: none; }
+    .toc-list li a { display: block; padding: 6px 10px; border-radius: 6px; font-size: 0.875rem; color: var(--text-secondary); text-decoration: none; transition: color 0.2s, background 0.2s; border-left: 2px solid transparent; }
+    .toc-list li a:hover { color: var(--secondary); background: rgba(123,97,255,0.1); border-left-color: var(--secondary); }
+    .toc-list li.toc-sub a { padding-left: 22px; font-size: 0.825rem; }
+    .sidebar-tool-card { background: var(--bg-card); border: 1px solid rgba(123,97,255,0.2); border-radius: var(--radius-lg); padding: 24px; margin-top: 20px; }
+    .sidebar-tool-card h4 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .sidebar-tool-card p { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 16px; line-height: 1.6; }
+    .sidebar-btn { display: block; text-align: center; padding: 10px 16px; background: var(--primary); color: #000; font-weight: 700; font-size: 0.875rem; border-radius: 8px; text-decoration: none; transition: all 0.2s; }
+    .sidebar-btn:hover { background: #29f5ff; transform: translateY(-1px); }
+    .sidebar-btn-outline { display: block; text-align: center; padding: 10px 16px; border: 1px solid var(--border-light); color: var(--text-secondary); font-size: 0.875rem; border-radius: 8px; text-decoration: none; transition: all 0.2s; margin-top: 8px; }
+    .sidebar-btn-outline:hover { border-color: var(--secondary); color: var(--secondary); }
+    .blog-content h2 { font-family: var(--font-display); font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 700; margin: 3rem 0 1rem; color: var(--text); scroll-margin-top: calc(var(--header-h) + 32px); }
+    .blog-content h3 { font-family: var(--font-display); font-size: 1.2rem; font-weight: 700; margin: 2rem 0 0.75rem; color: var(--text); scroll-margin-top: calc(var(--header-h) + 32px); }
+    .blog-content p { margin-bottom: 1.25rem; color: var(--text-secondary); font-size: 1.02rem; }
+    .blog-content p strong { color: var(--text); font-weight: 600; }
+    .blog-content ul, .blog-content ol { padding-left: 1.5rem; margin-bottom: 1.5rem; color: var(--text-secondary); font-size: 1.02rem; }
+    .blog-content ul { list-style: disc; }
+    .blog-content ol { list-style: decimal; }
+    .blog-content li { margin-bottom: 0.5rem; }
+    .blog-content a { color: var(--primary); text-decoration: underline; text-underline-offset: 3px; transition: opacity 0.2s; }
+    .blog-content a:hover { opacity: 0.8; }
+    .checklist-item { display: flex; gap: 20px; align-items: flex-start; margin: 1.5rem 0; padding: 24px; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); transition: border-color 0.2s; }
+    .checklist-item:hover { border-color: rgba(123,97,255,0.25); }
+    .checklist-num { flex-shrink: 0; width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background: rgba(123,97,255,0.15); border: 1px solid rgba(123,97,255,0.3); border-radius: 10px; font-family: var(--font-display); font-size: 0.85rem; font-weight: 800; color: var(--secondary); }
+    .checklist-body { flex: 1; }
+    .checklist-body h3 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: var(--text); margin-bottom: 6px; margin-top: 0; }
+    .checklist-body p { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 8px; line-height: 1.6; }
+    .checklist-body code { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.82em; background: rgba(0,240,255,0.08); color: var(--primary); padding: 2px 6px; border-radius: 4px; }
+    .severity { display: inline-flex; align-items: center; gap: 5px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; padding: 3px 8px; border-radius: 100px; }
+    .severity-critical { background: rgba(255,79,216,0.12); color: var(--accent); border: 1px solid rgba(255,79,216,0.25); }
+    .severity-high { background: rgba(255,149,0,0.12); color: #FF9500; border: 1px solid rgba(255,149,0,0.25); }
+    .severity-medium { background: rgba(123,97,255,0.12); color: var(--secondary); border: 1px solid rgba(123,97,255,0.25); }
+    .callout { background: var(--bg-card); border: 1px solid var(--border-light); border-left: 3px solid var(--primary); border-radius: var(--radius); padding: 20px 24px; margin: 2rem 0; }
+    .callout-warn { border-left-color: #FF4FD8; background: rgba(255,79,216,0.04); border-color: rgba(255,79,216,0.2); }
+    .callout-tip { border-left-color: var(--secondary); background: rgba(123,97,255,0.04); border-color: rgba(123,97,255,0.2); }
+    .callout-label { font-family: var(--font-display); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--primary); margin-bottom: 8px; }
+    .callout-tip .callout-label { color: var(--secondary); }
+    .callout-warn .callout-label { color: var(--accent); }
+    .callout p { margin-bottom: 0; color: var(--text-secondary); }
+    .inlink-banner { display: flex; align-items: center; gap: 20px; background: linear-gradient(135deg, rgba(123,97,255,0.06), rgba(0,240,255,0.06)); border: 1px solid rgba(123,97,255,0.2); border-radius: var(--radius-lg); padding: 24px 28px; margin: 2.5rem 0; }
+    .inlink-banner-icon { flex-shrink: 0; width: 48px; height: 48px; background: rgba(123,97,255,0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--secondary); }
+    .inlink-banner-body h4 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; margin-bottom: 4px; }
+    .inlink-banner-body p { font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 12px; }
+    .inlink-banner-body a { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; background: var(--secondary); color: #fff; font-size: 0.85rem; font-weight: 700; border-radius: 8px; text-decoration: none; transition: all 0.2s; }
+    .inlink-banner-body a:hover { background: #9378FF; }
+    .section-badge { display: inline-block; font-family: var(--font-display); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--secondary); background: rgba(123,97,255,0.15); border: 1px solid rgba(123,97,255,0.3); padding: 5px 14px; border-radius: 100px; margin-bottom: 1.25rem; }
+    .section-title { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 700; line-height: 1.15; margin-bottom: 1rem; }
+    .section-description { font-size: 1.05rem; color: var(--text-secondary); max-width: 600px; line-height: 1.7; margin-bottom: 3rem; }
+    .comparison-table { width: 100%; border-collapse: collapse; margin: 2rem 0; font-size: 0.9rem; }
+    .comparison-table th { font-family: var(--font-display); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); padding: 12px 16px; border-bottom: 1px solid var(--border-light); text-align: left; }
+    .comparison-table td { padding: 14px 16px; border-bottom: 1px solid var(--border); color: var(--text-secondary); vertical-align: top; }
+    .comparison-table tr:hover td { background: rgba(255,255,255,0.02); }
+    .badge-yes { color: #34D399; font-weight: 600; }
+    .badge-partial { color: #FF9500; font-weight: 600; }
+    .badge-no { color: var(--accent); font-weight: 600; }
+    .faq-section { background: var(--bg-dark); padding: 80px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .faq-inner { max-width: 800px; margin: 0 auto; padding: 0 24px; text-align: center; }
+    .faq-list { text-align: left; margin-top: 3rem; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-q { width: 100%; padding: 20px 0; display: flex; justify-content: space-between; align-items: center; gap: 16px; font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--text); cursor: pointer; background: none; border: none; text-align: left; }
+    .faq-chevron { font-size: 1.2rem; color: var(--text-muted); transition: transform 0.3s; flex-shrink: 0; }
+    .faq-q[aria-expanded="true"] .faq-chevron { transform: rotate(180deg); color: var(--primary); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+    .faq-a.is-open { max-height: 500px; }
+    .faq-a p { padding-bottom: 20px; color: var(--text-secondary); font-size: 0.97rem; }
+    .faq-a a { color: var(--primary); }
+    .related-section { padding: 80px 0; }
+    .related-section .container { text-align: center; }
+    .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; margin-top: 2.5rem; text-align: left; }
+    .related-card { display: block; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; text-decoration: none; color: inherit; transition: border-color 0.2s, transform 0.2s; }
+    .related-card:hover { border-color: rgba(0,240,255,0.3); transform: translateY(-4px); }
+    .related-card-cat { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--primary); margin-bottom: 12px; }
+    .related-card h3 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; line-height: 1.3; color: var(--text); }
+    .related-card p { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; }
+    .cta-section { padding: 80px 0; }
+    .cta-card { position: relative; background: linear-gradient(135deg, rgba(0,240,255,0.06), rgba(123,97,255,0.08)); border: 1px solid rgba(0,240,255,0.2); border-radius: 28px; padding: 64px 48px; text-align: center; overflow: hidden; }
+    .cta-glow { position: absolute; top: -60px; left: 50%; transform: translateX(-50%); width: 400px; height: 300px; background: radial-gradient(ellipse, rgba(0,240,255,0.12), transparent 70%); pointer-events: none; }
+    .cta-badge { display: inline-block; font-family: var(--font-display); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--primary); background: var(--primary-dim); border: 1px solid rgba(0,240,255,0.3); padding: 5px 14px; border-radius: 100px; margin-bottom: 1.5rem; }
+    .cta-title { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; line-height: 1.15; margin-bottom: 1rem; }
+    .cta-description { font-size: 1.1rem; color: var(--text-secondary); max-width: 520px; margin: 0 auto 2.5rem; line-height: 1.7; }
+    .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .cta-large-button { display: inline-flex; align-items: center; gap: 10px; padding: 16px 32px; background: var(--primary); color: #000; font-size: 1rem; font-weight: 700; border-radius: 12px; text-decoration: none; transition: all 0.2s; }
+    .cta-large-button:hover { background: #29f5ff; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,240,255,0.3); }
+    .cta-secondary-link { display: inline-flex; align-items: center; padding: 16px 24px; color: var(--text-secondary); font-size: 1rem; font-weight: 600; text-decoration: none; border-radius: 12px; border: 1px solid var(--border-light); transition: all 0.2s; }
+    .cta-secondary-link:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+    @media (max-width: 900px) { .blog-layout { grid-template-columns: 1fr; } .blog-sidebar { position: static; } }
+    @media (max-width: 600px) { .blog-hero-inner { padding: 0 16px; } .cta-card { padding: 40px 24px; } .blog-layout { padding: 0 16px 60px; } }
+  </style>
+</head>
+<body>
+<div id="progressBar" role="progressbar" aria-hidden="true"></div>
+<div id="header-placeholder"></div>
+
+<section class="blog-hero" aria-label="Article header">
+  <div class="blog-hero-inner">
+    <nav class="blog-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a> <span aria-hidden="true">›</span>
+      <a href="/blog">Blog</a> <span aria-hidden="true">›</span>
+      <span>PWA Testing</span>
+    </nav>
+    <div class="blog-category">PWAs & Modern Web</div>
+    <h1 class="blog-hero-title">Progressive Web Apps <span class="gradient-text">(PWAs) in 2026</span>: Mobile Testing Checklist for Offline, Installable Experiences</h1>
+    <p class="blog-hero-desc">Service workers, offline mode, web app manifests, push notifications, install prompts — PWAs have more testable surfaces than ever. This complete checklist covers every one of them.</p>
+    <div class="blog-meta">
+      <div class="blog-meta-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        April 23, 2026
+      </div>
+      <div class="blog-meta-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        16 min read
+      </div>
+      <div class="blog-meta-item">PWA · Mobile Testing</div>
+    </div>
+  </div>
+</section>
+
+<div class="blog-layout">
+  <article class="blog-content" aria-label="Article body">
+
+    <p>In 2026, PWAs are no longer a niche strategy. Major e-commerce platforms, SaaS products, and media sites have adopted the PWA model — and with that adoption comes a more complex testing surface than a traditional responsive website. An app that must function offline, be installable, receive push notifications, and update silently in the background has failure modes that simply don't exist in a standard web page.</p>
+
+    <p>This checklist covers every testable dimension of a modern PWA on mobile, organized by category, with specific testing steps for each item.</p>
+
+    <div class="callout">
+      <div class="callout-label">📋 How to Use This Checklist</div>
+      <p>Work through each category top-to-bottom. Use Chrome DevTools (Application panel) for service worker and manifest testing. Use a real Android device for install prompt and standalone-mode testing. Use a real iOS device for Safari-specific standalone behavior — do not assume iOS behaves the same as Android Chrome.</p>
+    </div>
+
+    <h2 id="installability">1. Installability Requirements</h2>
+
+    <p>Before your PWA can be installed, it must satisfy a specific set of criteria. These vary between browsers and platforms, and failure on any one point silently prevents the install prompt from appearing.</p>
+
+    <div class="checklist-item">
+      <div class="checklist-num">01</div>
+      <div class="checklist-body">
+        <span class="severity severity-critical">Critical</span>
+        <h3>Valid Web App Manifest</h3>
+        <p>Your manifest must include: <code>name</code>, <code>short_name</code>, <code>start_url</code>, <code>display</code> set to <code>standalone</code> or <code>fullscreen</code>, <code>background_color</code>, <code>theme_color</code>, and at least one icon at 512×512px. Verify in Chrome DevTools > Application > Manifest — any red validation errors prevent installation. Also check that <code>start_url</code> is relative to the manifest's location, not an absolute URL on a different origin.</p>
+      </div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-num">02</div>
+      <div class="checklist-body">
+        <span class="severity severity-critical">Critical</span>
+        <h3>Registered Service Worker with Fetch Handler</h3>
+        <p>A service worker must be registered and must include a <code>fetch</code> event listener. Chrome requires this specifically to show the install prompt. Verify in DevTools > Application > Service Workers that your SW shows "activated and is running." Also check the scope — if your SW is registered at <code>/app/sw.js</code> with no explicit scope, it only controls pages under <code>/app/</code>. Use <code>navigator.serviceWorker.register('/sw.js', { scope: '/' })</code> to control the root.</p>
+      </div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-num">03</div>
+      <div class="checklist-body">
+        <span class="severity severity-critical">Critical</span>
+        <h3>HTTPS Required</h3>
+        <p>Service workers require a secure context. There are no exceptions in production — not even for IP addresses. The only exception is <code>localhost</code> for local development. Check your SSL certificate expiry, ensure all subresources are served over HTTPS (mixed content blocks service worker registration), and verify your certificate covers all subdomains used by the PWA.</p>
+      </div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-num">04</div>
+      <div class="checklist-body">
+        <span class="severity severity-high">High</span>
+        <h3>Maskable Icons</h3>
+        <p>Android adaptive icons crop your PWA icon into different shapes (circle, rounded square, squircle) depending on the device manufacturer's launcher. Without a maskable icon, your logo gets letterboxed in a white circle. Add <code>"purpose": "maskable"</code> to your largest icon entry in the manifest and ensure the key content is within the "safe zone" — the center 80% of the icon area. Use <a href="https://maskable.app" rel="noopener noreferrer">maskable.app</a> to preview how your icon will be cropped.</p>
+      </div>
+    </div>
+
+    <h2 id="service-worker">2. Service Worker & Caching Strategy</h2>
+
+    <p>Your service worker's caching strategy determines what users see when they're offline, how updates are delivered, and how much storage your app uses on the device. Each strategy has different testing requirements.</p>
+
+    <div class="checklist-item">
+      <div class="checklist-num">05</div>
+      <div class="checklist-body">
+        <span class="severity severity-critical">Critical</span>
+        <h3>App Shell Loads Offline</h3>
+        <p>The app shell — your navigation, layout chrome, and loading skeleton — must load and render without a network connection. Test this by: (1) loading the page normally, (2) going to DevTools > Application > Service Workers and checking "Offline," (3) reloading the page. You should see your app shell, not a browser "No internet" dinosaur page. If you see the dinosaur, your shell assets aren't in the cache or your SW fetch handler is missing a cache-first strategy for shell resources.</p>
+      </div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-num">06</div>
+      <div class="checklist-body">
+        <span class="severity severity-high">High</span>
+        <h3>Offline Fallback Page</h3>
+        <p>When users navigate to a page that isn't cached while offline, they must see a branded offline page — not a browser error. Pre-cache an <code>offline.html</code> file during the service worker install event and serve it as a fallback for navigation requests that fail. Test by: loading a page, going offline, then navigating to a URL you haven't visited. The SW should intercept the failed fetch and return your offline fallback.</p>
+      </div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-num">07</div>
+      <div class="checklist-body">
+        <span class="severity severity-high">High</span>
+        <h3>Cache Size Management</h3>
+        <p>Uncapped caches grow indefinitely and trigger storage pressure warnings on mobile devices with limited storage. Implement cache expiration using a library like Workbox's <code>ExpirationPlugin</code>. Set maximum entries (e.g., 50 images) and maximum age (e.g., 30 days) for runtime caches. Also implement a <code>storage.estimate()</code> check on startup and degrade gracefully if storage quota is nearly exhausted.</p>
+      </div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-num">08</div>
+      <div class="checklist-body">
+        <span class="severity severity-high">High</span>
+        <h3>Service Worker Update Flow</h3>
+        <p>By default, users won't see PWA updates until they close all tabs. Most apps need to notify users and prompt a reload. Test the update flow by: deploying a SW change, opening the app, verifying the "Update available" notification appears (if you've implemented one), and confirming the new version loads after reload. Use <code>skipWaiting()</code> + <code>clients.claim()</code> carefully — they can cause issues if the new SW has different cache structure expectations.</p>
+      </div>
+    </div>
+
+    <div class="inlink-banner">
+      <div class="inlink-banner-icon" aria-hidden="true">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="5" y="2" width="14" height="20" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M9 7h6M9 11h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </div>
+      <div class="inlink-banner-body">
+        <h4>Verify Your PWA's Responsive Layout</h4>
+        <p>A PWA's standalone display mode can behave differently from browser display. Preview your PWA at real device viewports before testing the service worker layer.</p>
+        <a href="/">Launch Mobile Viewer →</a>
+      </div>
+    </div>
+
+    <h2 id="standalone-mode">3. Standalone Mode & Mobile UI</h2>
+
+    <p>When installed, a PWA runs in <code>standalone</code> mode — without the browser's address bar, navigation buttons, or tab bar. This changes the available screen space and requires specific UI handling.</p>
+
+    <div class="checklist-item">
+      <div class="checklist-num">09</div>
+      <div class="checklist-body">
+        <span class="severity severity-critical">Critical</span>
+        <h3>Safe Area Inset Handling (Notch & Dynamic Island)</h3>
+        <p>In standalone mode on iOS, your PWA occupies the full screen including the area behind the Dynamic Island or notch. Without proper handling, UI elements are obscured. Add <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"&gt;</code> and use CSS env variables: <code>padding-top: env(safe-area-inset-top)</code>, <code>padding-bottom: env(safe-area-inset-bottom)</code> on your fixed headers and bottom navigation. Check this on a real iPhone — <a href="/">Mobile Viewer's</a> iPhone presets give you a starting point for visual layout checks.</p>
+      </div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-num">10</div>
+      <div class="checklist-body">
+        <span class="severity severity-high">High</span>
+        <h3>Back Navigation in Standalone Mode</h3>
+        <p>On iOS, installed PWAs have no browser back button. Your UI must provide in-app navigation controls for every view. Test by installing your PWA and navigating 3–4 levels deep — can the user get back without hardware gestures? On Android, the system back button works but can cause unexpected behavior if your app uses custom routing. Test that the back button navigates within the app rather than exiting it.</p>
+      </div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-num">11</div>
+      <div class="checklist-body">
+        <span class="severity severity-high">High</span>
+        <h3>Status Bar Appearance (iOS)</h3>
+        <p>Control the iOS status bar color and style using <code>&lt;meta name="apple-mobile-web-app-status-bar-style"&gt;</code>. Options: <code>default</code> (white bar, black text), <code>black</code> (black bar), or <code>black-translucent</code> (content extends under the status bar — requires safe area handling). Test on both light and dark system themes. Remember that <code>theme_color</code> in the manifest affects Android's status bar color but not iOS.</p>
+      </div>
+    </div>
+
+    <h2 id="ios-vs-android">4. iOS vs Android PWA Capability Differences</h2>
+
+    <p>iOS and Android have significantly different PWA capability sets. <strong>Never assume Android behavior applies to iOS.</strong> Key differences developers must test explicitly:</p>
+
+    <table class="comparison-table" aria-label="iOS vs Android PWA capability comparison">
+      <thead>
+        <tr>
+          <th>Capability</th>
+          <th>Android (Chrome)</th>
+          <th>iOS (Safari)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Install Prompt</strong></td>
+          <td><span class="badge-yes">Automatic (beforeinstallprompt)</span></td>
+          <td><span class="badge-partial">Manual (Add to Home Screen)</span></td>
+        </tr>
+        <tr>
+          <td><strong>Push Notifications</strong></td>
+          <td><span class="badge-yes">Full support</span></td>
+          <td><span class="badge-partial">iOS 16.4+ only, must be installed</span></td>
+        </tr>
+        <tr>
+          <td><strong>Background Sync</strong></td>
+          <td><span class="badge-yes">Supported</span></td>
+          <td><span class="badge-no">Not supported</span></td>
+        </tr>
+        <tr>
+          <td><strong>Badging API</strong></td>
+          <td><span class="badge-yes">Supported</span></td>
+          <td><span class="badge-partial">iOS 16.4+ only</span></td>
+        </tr>
+        <tr>
+          <td><strong>File System Access</strong></td>
+          <td><span class="badge-yes">Supported</span></td>
+          <td><span class="badge-no">Limited</span></td>
+        </tr>
+        <tr>
+          <td><strong>Persistent Storage</strong></td>
+          <td><span class="badge-yes">requestPersistent()</span></td>
+          <td><span class="badge-partial">7-day limit without persistent grant</span></td>
+        </tr>
+        <tr>
+          <td><strong>Share Target</strong></td>
+          <td><span class="badge-yes">Supported</span></td>
+          <td><span class="badge-no">Not supported</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout callout-warn">
+      <div class="callout-label">⚠️ iOS Storage Warning</div>
+      <p>iOS evicts PWA storage (including service worker caches and IndexedDB) after approximately 7 days of inactivity unless the user grants persistent storage. This means offline content may disappear for users who haven't opened your PWA in a week. Always test iOS offline behavior after simulating inactivity, not just immediately after installation.</p>
+    </div>
+
+    <h2 id="performance">5. PWA Performance on Mobile</h2>
+
+    <p>A PWA's performance characteristics on mobile differ from a regular website because service worker startup time adds latency on cold starts, and the cached resource strategy affects repeat-visit performance. For the complete performance testing workflow, see our <a href="/mobile-core-web-vitals-2026">Mobile Core Web Vitals guide</a>.</p>
+
+    <div class="checklist-item">
+      <div class="checklist-num">12</div>
+      <div class="checklist-body">
+        <span class="severity severity-high">High</span>
+        <h3>First Load vs Repeat Load Performance</h3>
+        <p>PWAs should be significantly faster on repeat loads thanks to caching. Measure LCP separately for first load (cold cache) and repeat load (warm cache) using PageSpeed Insights. A repeat load LCP should typically be under 1 second if your app shell is cached. If repeat load performance is similar to first load, your caching strategy isn't working correctly — the service worker isn't intercepting navigation requests.</p>
+      </div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-num">13</div>
+      <div class="checklist-body">
+        <span class="severity severity-medium">Medium</span>
+        <h3>Lighthouse PWA Audit</h3>
+        <p>Run a Lighthouse audit (DevTools > Lighthouse > Mobile > PWA category) on every major release. The audit checks 13 PWA requirements covering installability, offline behavior, and best practices. Aim for all checks passing in the "Installable" and "PWA Optimized" categories. Note: Lighthouse's PWA audit doesn't test iOS-specific behaviors — you must test those manually on a real device.</p>
+      </div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-num">14</div>
+      <div class="checklist-body">
+        <span class="severity severity-medium">Medium</span>
+        <h3>Push Notification Delivery and Display</h3>
+        <p>Test the full push notification flow: permission request UX, notification display when app is backgrounded, and tap-to-open behavior. On Android, test that notification icons use your maskable icon and display correctly. On iOS (16.4+), test that push notifications only appear when the PWA is installed — they don't work in the browser tab. Also verify that notification permission prompts are contextually triggered (e.g., after a user action) rather than on page load, which increases denial rates.</p>
+      </div>
+    </div>
+
+    <div class="checklist-item">
+      <div class="checklist-num">15</div>
+      <div class="checklist-body">
+        <span class="severity severity-medium">Medium</span>
+        <h3>Responsive Layout in Standalone Mode</h3>
+        <p>Test your PWA's responsive layout specifically in standalone mode — the available viewport height changes because the browser chrome disappears. On Android, the bottom navigation bar's height also affects the available viewport. Use <a href="/">Mobile Viewer</a> to preview your layout at the exact viewport dimensions of installed mode, and verify that your CSS Grid or Flexbox layouts adapt correctly to the taller available space.</p>
+      </div>
+    </div>
+
+    <p>PWA testing is fundamentally different from website testing because it involves multiple runtime layers — the browser, the service worker, the cache, the OS install mechanism, and the device's own notification system. Each of these can behave differently across operating systems, browser versions, and even device manufacturers. For a complete picture of how device differences affect your responsive layouts, see our guide on <a href="/2026-flagship-phones-responsive-design">how 2026 flagship phones affect responsive design</a>.</p>
+
+    <div class="blog-divider"></div>
+
+    <p>Run this checklist before every major PWA release and after every significant service worker change. The most common source of PWA regressions is a service worker update that breaks offline behavior without the developer noticing — because it works fine in the browser with DevTools open, but fails on a real device with a real cached state from a previous version.</p>
+
+  </article>
+
+  <aside class="blog-sidebar" aria-label="Article navigation">
+    <div class="toc-card">
+      <div class="toc-title">Table of Contents</div>
+      <ul class="toc-list">
+        <li><a href="#installability">1. Installability Requirements</a></li>
+        <li><a href="#service-worker">2. Service Worker & Caching</a></li>
+        <li><a href="#standalone-mode">3. Standalone Mode & UI</a></li>
+        <li><a href="#ios-vs-android">4. iOS vs Android Differences</a></li>
+        <li><a href="#performance">5. PWA Performance</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-tool-card">
+      <h4>Preview Your PWA Layout</h4>
+      <p>Check your PWA's standalone-mode layout at real device viewport sizes before testing the service worker layer.</p>
+      <a href="/" class="sidebar-btn">Launch Mobile Viewer →</a>
+      <a href="/mobile-seo-checklist-2026" class="sidebar-btn-outline">📋 Mobile SEO Checklist →</a>
+    </div>
+  </aside>
+</div>
+
+<section class="related-section" aria-label="Related articles">
+  <div class="container">
+    <span class="section-badge">Keep Reading</span>
+    <h2 class="section-title">Related Articles</h2>
+    <div class="related-grid">
+      <a href="/mobile-core-web-vitals-2026" class="related-card">
+        <div class="related-card-cat">Performance</div>
+        <h3>Mobile Core Web Vitals Mastery 2026</h3>
+        <p>Diagnose and fix LCP, INP, and CLS issues — the same metrics that govern your PWA's performance score.</p>
+      </a>
+      <a href="/2026-flagship-phones-responsive-design" class="related-card">
+        <div class="related-card-cat">Device Testing</div>
+        <h3>How 2026 Flagship Phones Affect Responsive Designs</h3>
+        <p>Viewport, notch, and foldable testing tips for the latest iOS and Android flagship devices.</p>
+      </a>
+      <a href="/mobile-seo-checklist-2026" class="related-card">
+        <div class="related-card-cat">SEO</div>
+        <h3>Mobile SEO Checklist 2026</h3>
+        <p>15 things most sites still get wrong — including PWA-specific indexing pitfalls.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="faq-section" aria-labelledby="faq-heading">
+  <div class="faq-inner">
+    <span class="section-badge">FAQ</span>
+    <h2 class="section-title" id="faq-heading">PWA Mobile Testing FAQ</h2>
+    <p class="section-description">The most common questions about testing progressive web apps on mobile in 2026</p>
+    <div class="faq-list" role="list">
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          What is the minimum requirement for a PWA to be installable on mobile?
+          <span class="faq-chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="faq-a">
+          <p>For a PWA to trigger the install prompt on Android Chrome, it needs: a valid web app manifest with name, short_name, icons (including 512×512), start_url, and display mode set to standalone or fullscreen; a registered service worker with a fetch event handler; and HTTPS. Safari on iOS doesn't show an automatic install prompt — users must manually "Add to Home Screen" from the share menu.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          How do I test my PWA offline mode?
+          <span class="faq-chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="faq-a">
+          <p>The most reliable way to test offline mode is Chrome DevTools > Application > Service Workers > check "Offline", then reload the page. Also test by throttling to "No throttling" then switching to offline mid-session to simulate connection drops. On real devices, enable airplane mode after the page loads. Check that your app shell loads, cached content is visible, and appropriate offline UI (not a browser error page) is shown.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Why does my PWA look different when installed vs viewed in a browser on iOS?
+          <span class="faq-chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="faq-a">
+          <p>iOS Safari's standalone PWA mode has significant differences from the in-browser experience: no back/forward navigation, no URL bar, limited API access (no push notifications in older iOS versions, restricted background sync), and the status bar area is not automatically handled — requiring apple-mobile-web-app-status-bar-style meta tags and <code>env(safe-area-inset-*)</code> CSS to prevent UI being obscured by the notch or Dynamic Island.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="toggleFaq(this)">
+          Does Google index PWA content correctly?
+          <span class="faq-chevron" aria-hidden="true">▾</span>
+        </button>
+        <div class="faq-a">
+          <p>Googlebot can crawl and index PWA content if your app renders content server-side or uses dynamic rendering. Client-side-only rendering (JavaScript-rendered content that Googlebot can't process) is the most common indexing failure. Use Google's URL Inspection tool in Search Console to see what Googlebot actually sees when it crawls your PWA routes.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" aria-label="Call to action">
+  <div class="container">
+    <div class="cta-card">
+      <div class="cta-glow" aria-hidden="true"></div>
+      <div class="cta-badge">Free · No Sign-up · Instant</div>
+      <h2 class="cta-title">Preview your PWA at every mobile viewport</h2>
+      <p class="cta-description">Mobile Viewer lets you instantly check your PWA's layout at real device viewports before diving into service worker testing.</p>
+      <div class="cta-actions">
+        <a href="/" class="cta-large-button">
+          Launch Mobile Viewer
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="/blog" class="cta-secondary-link">Browse all articles →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+<script src="header.js"></script>
+<script src="footer.js"></script>
+<script>
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const isOpen = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', !isOpen);
+    answer.classList.toggle('is-open', !isOpen);
+  }
+  const progressBar = document.getElementById('progressBar');
+  window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = Math.min(progress, 100) + '%';
+  }, { passive: true });
+</script>
+</body>
+</html>
