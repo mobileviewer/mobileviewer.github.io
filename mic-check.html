@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9759808041159779" crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MBJB77SQ0K"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-MBJB77SQ0K');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mic Check — Free Online Microphone Test Tool</title>  
+  <meta name="description" content="Test your microphone online for free. Check mic volume, frequency response, noise level, and record a test clip instantly — no download needed. Works on all devices and browsers.">
+  <meta name="keywords" content="mic check, microphone test, test microphone online, check microphone, mic tester, online mic test, test my mic, microphone checker, mic not working, microphone volume test, audio input test">
+  <meta name="author" content="Mobile Viewer">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://mobileviewer.github.io/mic-check">
+  <meta property="og:title" content="Mic Check — Free Online Microphone Test Tool">
+  <meta property="og:description" content="Test your microphone online. Check volume level, frequency response, and record a test clip. Free, no install needed.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mobileviewer.github.io/mic-check">
+  <meta property="og:site_name" content="Mobile Viewer">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mic Check — Free Online Microphone Test Tool">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Mic Check",
+    "url": "https://mobileviewer.github.io/mic-check",
+    "description": "Free online microphone tester. Check mic volume, frequency response, noise level, and record test clips — no download required.",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires a modern web browser with microphone permissions.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #00F0FF;
+      --primary-dim: rgba(0,240,255,0.15);
+      --secondary: #7B61FF;
+      --accent: #FF4FD8;
+      --bg: #080C12;
+      --bg-dark: #050810;
+      --bg-card: #0D1220;
+      --bg-card-2: #111827;
+      --border: rgba(255,255,255,0.07);
+      --border-light: rgba(255,255,255,0.12);
+      --text: #F0F4FF;
+      --text-secondary: rgba(240,244,255,0.6);
+      --text-muted: rgba(240,244,255,0.35);
+      --radius: 12px; --radius-lg: 20px; --radius-xl: 28px;
+      --shadow: 0 4px 24px rgba(0,0,0,0.4);
+      --shadow-lg: 0 12px 48px rgba(0,0,0,0.6);
+      --header-h: 70px;
+      --container: 1240px;
+      --font-display: 'Syne', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --transition: 0.2s ease;
+      --transition-md: 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 16px); }
+    body { font-family: var(--font-body); font-size: 16px; line-height: 1.6; color: var(--text); background: var(--bg); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    img, video { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+    ul { list-style: none; }
+    .container { width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+    .gradient-text { background: linear-gradient(90deg, var(--secondary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .section-badge { display: inline-block; font-family: var(--font-display); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--secondary); background: rgba(123,97,255,0.12); border: 1px solid rgba(123,97,255,0.3); padding: 5px 14px; border-radius: 100px; margin-bottom: 1.25rem; }
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    :focus-visible { outline: 2px solid var(--secondary); outline-offset: 2px; border-radius: 4px; }
+
+    /* HEADER */
+    .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; height: var(--header-h); background: rgba(8,12,18,0.85); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); border-bottom: 1px solid var(--border); transition: background 0.3s ease; }
+    .site-header.header--scrolled { background: rgba(8,12,18,0.97); border-bottom-color: var(--border-light); }
+    .header-inner { max-width: var(--container); margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; gap: 2rem; }
+    .header-logo { display: flex; align-items: center; gap: 10px; }
+    .logo-text { font-family: var(--font-display); font-size: 1.15rem; font-weight: 800; letter-spacing: -0.02em; color: var(--text); }
+    .logo-accent { color: var(--primary); }
+    .header-nav { margin-left: auto; }
+    .nav-list { display: flex; align-items: center; gap: 4px; }
+    .nav-link { display: flex; align-items: center; gap: 5px; padding: 6px 14px; border-radius: 8px; font-size: 0.92rem; font-weight: 500; color: var(--text-secondary); transition: color var(--transition), background var(--transition); white-space: nowrap; }
+    .nav-link:hover, .nav-link--active { color: var(--text); background: rgba(255,255,255,0.06); }
+    .nav-link--active { color: var(--secondary) !important; }
+    .hamburger { display: none; flex-direction: column; justify-content: space-between; width: 26px; height: 18px; padding: 0; margin-left: auto; flex-shrink: 0; }
+    .hamburger span { display: block; width: 100%; height: 2px; background: var(--text); border-radius: 2px; transition: transform 0.3s ease, opacity 0.3s ease; }
+    .hamburger.is-open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.is-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.is-open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; top: var(--header-h); left: 0; right: 0; bottom: 0; background: rgba(8,12,18,0.98); backdrop-filter: blur(20px); z-index: 999; padding: 24px; }
+    .mobile-menu.is-open { display: block; }
+    .mobile-nav-list { display: flex; flex-direction: column; gap: 4px; }
+    .mobile-nav-link { display: block; padding: 12px 16px; border-radius: 10px; font-size: 1rem; font-weight: 500; color: var(--text-secondary); transition: color var(--transition), background var(--transition); }
+    .mobile-nav-link:hover { color: var(--text); background: rgba(255,255,255,0.06); }
+
+    /* HERO */
+    .hero { padding: calc(var(--header-h) + 64px) 0 64px; position: relative; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; pointer-events: none; }
+    .hero-orb { position: absolute; border-radius: 50%; filter: blur(80px); }
+    .hero-orb-1 { width: 600px; height: 400px; top: -100px; left: 50%; transform: translateX(-50%); background: radial-gradient(ellipse, rgba(123,97,255,0.07) 0%, transparent 70%); }
+    .hero-orb-2 { width: 400px; height: 300px; top: 40%; left: -100px; background: radial-gradient(ellipse, rgba(255,79,216,0.05) 0%, transparent 70%); }
+    .hero-inner { text-align: center; max-width: 780px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-title { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.25rem; }
+    .hero-description { font-size: 1.1rem; color: var(--text-secondary); max-width: 580px; margin: 0 auto 2.5rem; line-height: 1.7; }
+    .hero-badges { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .hero-badge { display: flex; align-items: center; gap: 6px; padding: 6px 14px; background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 100px; font-size: 0.82rem; font-weight: 600; color: var(--text-secondary); }
+    .hero-badge svg { color: var(--secondary); flex-shrink: 0; }
+
+    /* TOOL CARD */
+    .tool-section { padding: 0 0 80px; }
+    .tool-card { background: var(--bg-card); border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-lg); }
+    .tool-card-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 28px; border-bottom: 1px solid var(--border); background: rgba(123,97,255,0.03); flex-wrap: wrap; gap: 12px; }
+    .tool-card-title { font-family: var(--font-display); font-size: 1rem; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+    .status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--text-muted); transition: background 0.3s; }
+    .status-dot.active { background: #22c55e; box-shadow: 0 0 8px #22c55e; animation: pulse-dot 2s infinite; }
+    .status-dot.recording { background: #ef4444; box-shadow: 0 0 8px #ef4444; animation: pulse-dot 0.8s infinite; }
+    .status-dot.error { background: #ef4444; }
+    @keyframes pulse-dot { 0%,100%{opacity:1}50%{opacity:0.4} }
+    .tool-card-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: 7px; padding: 9px 18px; border-radius: 10px; font-size: 0.875rem; font-weight: 600; transition: all var(--transition); white-space: nowrap; }
+    .btn-primary { background: var(--secondary); color: #fff; }
+    .btn-primary:hover { background: #9580ff; transform: translateY(-1px); box-shadow: 0 4px 20px rgba(123,97,255,0.35); }
+    .btn-secondary { background: rgba(255,255,255,0.06); color: var(--text-secondary); border: 1px solid var(--border-light); }
+    .btn-secondary:hover { background: rgba(255,255,255,0.1); color: var(--text); }
+    .btn-danger { background: rgba(239,68,68,0.12); color: #ef4444; border: 1px solid rgba(239,68,68,0.25); }
+    .btn-danger:hover { background: rgba(239,68,68,0.2); }
+    .btn-record { background: rgba(239,68,68,0.15); color: #fca5a5; border: 1px solid rgba(239,68,68,0.3); }
+    .btn-record.is-recording { background: #ef4444; color: #fff; animation: rec-pulse 1.5s infinite; }
+    @keyframes rec-pulse { 0%,100%{opacity:1}50%{opacity:0.7} }
+    .btn-sm { padding: 6px 12px; font-size: 0.8rem; }
+    .btn:disabled { opacity: 0.45; cursor: not-allowed; pointer-events: none; }
+
+    .tool-body { display: grid; grid-template-columns: 1fr 360px; }
+    .mic-main { display: flex; flex-direction: column; gap: 0; }
+
+    /* Visualizer */
+    .visualizer-area { background: #020408; position: relative; overflow: hidden; min-height: 280px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    #vizCanvas { width: 100%; display: block; }
+    .mic-placeholder { text-align: center; padding: 40px; }
+    .mic-placeholder svg { color: rgba(123,97,255,0.25); margin: 0 auto 16px; }
+    .mic-placeholder h3 { font-family: var(--font-display); font-size: 1.1rem; margin-bottom: 6px; }
+    .mic-placeholder p { color: var(--text-muted); font-size: 0.85rem; }
+
+    /* Volume bar */
+    .volume-bar-area { padding: 20px 28px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 10px; }
+    .vol-row { display: flex; align-items: center; gap: 12px; }
+    .vol-label { font-size: 0.82rem; color: var(--text-secondary); min-width: 50px; }
+    .vol-track { flex: 1; height: 10px; background: rgba(255,255,255,0.07); border-radius: 10px; overflow: hidden; position: relative; }
+    .vol-fill { height: 100%; border-radius: 10px; width: 0%; transition: width 0.05s; background: linear-gradient(90deg, #22c55e, #facc15, #ef4444); }
+    .vol-fill.peak { background: #ef4444; }
+    .vol-val { font-family: 'SF Mono','Fira Code',monospace; font-size: 0.8rem; color: var(--secondary); min-width: 48px; text-align: right; }
+    .peak-indicator { font-size: 0.78rem; color: #ef4444; font-weight: 600; display: none; }
+    .peak-indicator.show { display: block; }
+
+    /* Frequency display */
+    .freq-row { display: flex; gap: 4px; padding: 0 28px 20px; justify-content: space-between; }
+    .freq-band { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .freq-bar-container { width: 100%; height: 60px; background: rgba(255,255,255,0.04); border-radius: 4px 4px 0 0; display: flex; align-items: flex-end; overflow: hidden; }
+    .freq-bar { width: 100%; border-radius: 3px 3px 0 0; transition: height 0.08s; background: linear-gradient(to top, var(--secondary), var(--accent)); }
+    .freq-band-label { font-size: 0.62rem; color: var(--text-muted); text-align: center; }
+
+    /* Recordings */
+    .recordings-area { padding: 20px 28px; border-top: 1px solid var(--border); }
+    .rec-list { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+    .rec-item { display: flex; align-items: center; gap: 10px; background: var(--bg-card-2); border: 1px solid var(--border); border-radius: 10px; padding: 10px 14px; }
+    .rec-item audio { flex: 1; min-width: 0; height: 32px; filter: invert(0.8) sepia(1) saturate(2) hue-rotate(190deg); }
+    .rec-item .btn-sm { flex-shrink: 0; }
+    .rec-duration { font-size: 0.8rem; color: var(--text-muted); font-family: 'SF Mono','Fira Code',monospace; min-width: 40px; }
+
+    /* PANEL */
+    .panel { padding: 24px; display: flex; flex-direction: column; gap: 20px; border-left: 1px solid var(--border); overflow-y: auto; max-height: 700px; }
+    .panel-section { display: flex; flex-direction: column; gap: 10px; }
+    .panel-label { font-family: var(--font-display); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px; }
+    .panel-select { width: 100%; padding: 10px 14px; background: var(--bg-card-2); border: 1px solid var(--border-light); border-radius: 10px; color: var(--text); font-family: var(--font-body); font-size: 0.875rem; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgba(240,244,255,0.4)' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; cursor: pointer; transition: border-color var(--transition); }
+    .panel-select:focus { border-color: rgba(123,97,255,0.4); outline: none; }
+    .range-row { display: flex; align-items: center; gap: 10px; }
+    .range-label { font-size: 0.82rem; color: var(--text-secondary); min-width: 90px; }
+    .range-val { font-size: 0.82rem; color: var(--secondary); font-family: 'SF Mono','Fira Code',monospace; min-width: 38px; text-align: right; }
+    input[type="range"] { -webkit-appearance: none; flex: 1; height: 4px; background: var(--border-light); border-radius: 2px; outline: none; cursor: pointer; }
+    input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%; background: var(--secondary); box-shadow: 0 0 8px rgba(123,97,255,0.5); cursor: pointer; }
+    input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius: 50%; background: var(--secondary); border: none; }
+    .toggle-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .toggle-label { font-size: 0.875rem; color: var(--text-secondary); }
+    .toggle { position: relative; width: 40px; height: 22px; flex-shrink: 0; }
+    .toggle input { opacity: 0; width: 0; height: 0; }
+    .toggle-slider { position: absolute; inset: 0; background: rgba(255,255,255,0.1); border: 1px solid var(--border-light); border-radius: 100px; cursor: pointer; transition: background 0.2s; }
+    .toggle-slider::after { content: ''; position: absolute; left: 3px; top: 2px; width: 16px; height: 16px; background: var(--text-muted); border-radius: 50%; transition: transform 0.2s, background 0.2s; }
+    .toggle input:checked + .toggle-slider { background: rgba(123,97,255,0.2); border-color: rgba(123,97,255,0.4); }
+    .toggle input:checked + .toggle-slider::after { transform: translateX(18px); background: var(--secondary); }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .info-card { background: var(--bg-card-2); border: 1px solid var(--border); border-radius: 10px; padding: 12px; }
+    .info-card-label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+    .info-card-value { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--secondary); }
+    .error-msg { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.25); border-radius: 10px; padding: 14px 16px; color: #fca5a5; font-size: 0.875rem; display: none; margin: 0 28px 0; }
+    .error-msg.show { display: block; }
+
+    /* CONTENT SECTIONS */
+    section { padding: 80px 0; }
+    section:nth-child(even) { background: rgba(255,255,255,0.015); }
+    .section-header { text-align: center; margin-bottom: 4rem; }
+    .section-title { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 700; line-height: 1.15; margin-bottom: 1rem; }
+    .section-description { font-size: 1.05rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto; line-height: 1.7; }
+    .how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .how-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px 28px; transition: border-color var(--transition-md), transform var(--transition-md); }
+    .how-card:hover { border-color: rgba(123,97,255,0.3); transform: translateY(-4px); }
+    .how-num { font-family: var(--font-display); font-size: 3rem; font-weight: 800; color: rgba(123,97,255,0.1); line-height: 1; margin-bottom: 16px; }
+    .how-icon { width: 44px; height: 44px; border-radius: 12px; background: rgba(123,97,255,0.12); border: 1px solid rgba(123,97,255,0.2); display: flex; align-items: center; justify-content: center; color: var(--secondary); margin-bottom: 20px; }
+    .how-card h3 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; }
+    .how-card p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.65; }
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .feature-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px 24px; transition: border-color var(--transition-md), transform var(--transition-md); }
+    .feature-card:hover { border-color: rgba(123,97,255,0.25); transform: translateY(-3px); }
+    .feature-icon { width: 40px; height: 40px; border-radius: 10px; background: rgba(123,97,255,0.12); border: 1px solid rgba(123,97,255,0.2); display: flex; align-items: center; justify-content: center; color: var(--secondary); margin-bottom: 16px; }
+    .feature-card h3 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .feature-card p { color: var(--text-secondary); font-size: 0.875rem; line-height: 1.6; }
+    .faq-list { display: flex; flex-direction: column; gap: 12px; max-width: 800px; margin: 0 auto; }
+    .faq-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .faq-q { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; cursor: pointer; font-family: var(--font-display); font-size: 1rem; font-weight: 600; gap: 16px; transition: color var(--transition); user-select: none; }
+    .faq-q:hover { color: var(--secondary); }
+    .faq-icon { flex-shrink: 0; transition: transform 0.3s ease; color: var(--text-muted); }
+    .faq-item.is-open .faq-icon { transform: rotate(45deg); color: var(--secondary); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+    .faq-item.is-open .faq-a { max-height: 400px; }
+    .faq-a p { padding: 0 24px 20px; color: var(--text-secondary); font-size: 0.925rem; line-height: 1.7; }
+    .site-footer { background: var(--bg-dark); border-top: 1px solid var(--border); padding: 40px 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .footer-copy { font-size: 0.82rem; color: var(--text-muted); }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-link { font-size: 0.82rem; color: var(--text-muted); transition: color 0.2s; }
+    .footer-link:hover { color: var(--secondary); }
+    .ad-slot { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); min-height: 90px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 0.8rem; margin: 32px 0; overflow: hidden; }
+    .rec-timer { font-family: 'SF Mono','Fira Code',monospace; font-size: 0.85rem; color: #ef4444; font-weight: 700; }
+
+    @media (max-width: 900px) {
+      .tool-body { grid-template-columns: 1fr; }
+      .panel { border-left: none; border-top: 1px solid var(--border); max-height: none; }
+      .header-nav { display: none; }
+      .hamburger { display: flex; }
+      .how-grid { grid-template-columns: 1fr 1fr; }
+      .features-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .container { padding: 0 16px; }
+      .hero-title { font-size: 2rem; }
+      .how-grid { grid-template-columns: 1fr; }
+      .features-grid { grid-template-columns: 1fr; }
+      .freq-row { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <a href="/" class="header-logo">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" style="color:var(--secondary)">
+          <rect width="28" height="28" rx="8" fill="rgba(123,97,255,0.1)"/>
+          <path d="M14 6a2 2 0 012 2v8a2 2 0 01-4 0V8a2 2 0 012-2z" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M8 13a6 6 0 0012 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="14" y1="19" x2="14" y2="22" stroke="currentColor" stroke-width="1.5"/>
+          <line x1="10" y1="22" x2="18" y2="22" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+        <span class="logo-text">Dev<span class="logo-accent">Tools</span></span>
+      </a>
+      <nav class="header-nav">
+        <ul class="nav-list">
+          <li><a href="camera-test.html" class="nav-link">Camera Test</a></li>
+          <li><a href="mic-check.html" class="nav-link nav-link--active">Mic Check</a></li>
+          <li><a href="speaker-test.html" class="nav-link">Speaker Test</a></li>
+          <li><a href="/" class="nav-link">More Tools</a></li>
+        </ul>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+  <div class="mobile-menu" id="mobileMenu">
+    <ul class="mobile-nav-list">
+      <li><a href="camera-test.html" class="mobile-nav-link">📷 Camera Test</a></li>
+      <li><a href="mic-check.html" class="mobile-nav-link">🎤 Mic Check</a></li>
+      <li><a href="speaker-test.html" class="mobile-nav-link">🔊 Speaker Test</a></li>
+      <li><a href="/" class="mobile-nav-link">← More Tools</a></li>
+    </ul>
+  </div>
+
+  <main>
+    <div class="hero">
+      <div class="hero-bg">
+        <div class="hero-orb hero-orb-1"></div>
+        <div class="hero-orb hero-orb-2"></div>
+      </div>
+      <div class="container">
+        <div class="hero-inner reveal">
+          <span class="section-badge">Free Online Tool</span>
+          <h1 class="hero-title">Mic <span class="gradient-text">Check</span></h1>
+          <p class="hero-description">Test your microphone online — visualize audio waveforms, check volume levels, frequency response, and record test clips. Works in every browser.</p>
+          <div class="hero-badges">
+            <span class="hero-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Live Waveform</span>
+            <span class="hero-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Record & Playback</span>
+            <span class="hero-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 100% Private</span>
+            <span class="hero-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Noise Meter</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tool-section">
+      <div class="container">
+        <div class="ad-slot">
+          <ins class="adsbygoogle" style="display:block;width:100%;height:90px" data-ad-client="ca-pub-9759808041159779" data-ad-slot="auto" data-ad-format="horizontal"></ins>
+        </div>
+        <div class="tool-card reveal">
+          <div class="tool-card-header">
+            <div class="tool-card-title">
+              <span class="status-dot" id="statusDot"></span>
+              <span id="statusText">Microphone Ready — Click Start to Begin</span>
+              <span class="rec-timer" id="recTimer" style="display:none"></span>
+            </div>
+            <div class="tool-card-actions">
+              <button class="btn btn-record btn-sm" id="btnRecord" disabled>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="8"/></svg>
+                <span id="recBtnText">Record</span>
+              </button>
+              <button class="btn btn-primary" id="btnStart">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 6a2 2 0 012 2v8a2 2 0 01-4 0V8a2 2 0 012-2z"/><path d="M8 13a6 6 0 0012 0"/></svg>
+                Start Mic
+              </button>
+              <button class="btn btn-danger" id="btnStop" style="display:none">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                Stop
+              </button>
+            </div>
+          </div>
+          <div class="error-msg" id="errorMsg"></div>
+
+          <div class="tool-body">
+            <div class="mic-main">
+              <div class="visualizer-area">
+                <canvas id="vizCanvas" height="200"></canvas>
+                <div class="mic-placeholder" id="micPlaceholder">
+                  <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                    <path d="M14 6a2 2 0 012 2v8a2 2 0 01-4 0V8a2 2 0 012-2z"/>
+                    <path d="M8 13a6 6 0 0012 0"/>
+                    <line x1="14" y1="19" x2="14" y2="22"/>
+                    <line x1="10" y1="22" x2="18" y2="22"/>
+                  </svg>
+                  <h3>Audio Waveform</h3>
+                  <p>Start your microphone to see a live waveform visualization</p>
+                </div>
+              </div>
+
+              <div class="volume-bar-area">
+                <div class="vol-row">
+                  <span class="vol-label">Volume</span>
+                  <div class="vol-track"><div class="vol-fill" id="volFill"></div></div>
+                  <span class="vol-val" id="volVal">0 dB</span>
+                  <span class="peak-indicator" id="peakIndicator">PEAK</span>
+                </div>
+                <div class="vol-row">
+                  <span class="vol-label">Peak</span>
+                  <div class="vol-track"><div class="vol-fill" id="peakFill" style="background: linear-gradient(90deg, #7B61FF, #FF4FD8);"></div></div>
+                  <span class="vol-val" id="peakVal">— dB</span>
+                </div>
+              </div>
+
+              <div class="freq-row" id="freqRow">
+                <!-- frequency bands injected by JS -->
+              </div>
+
+              <div class="recordings-area">
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+                  <span class="panel-label" style="margin:0">Recordings (<span id="recCount">0</span>)</span>
+                  <button class="btn btn-secondary btn-sm" id="btnClearRecs" style="display:none">Clear All</button>
+                </div>
+                <div class="rec-list" id="recList"></div>
+              </div>
+            </div>
+
+            <!-- PANEL -->
+            <div class="panel">
+              <div class="panel-section">
+                <div class="panel-label">Microphone Device</div>
+                <select class="panel-select" id="deviceSelect">
+                  <option value="">-- Select Microphone --</option>
+                </select>
+              </div>
+              <div class="panel-section">
+                <div class="panel-label">Sample Rate</div>
+                <select class="panel-select" id="sampleRateSelect">
+                  <option value="48000">48,000 Hz (Recommended)</option>
+                  <option value="44100">44,100 Hz (CD Quality)</option>
+                  <option value="22050">22,050 Hz</option>
+                  <option value="16000">16,000 Hz (Narrow Band)</option>
+                </select>
+              </div>
+              <div class="panel-section">
+                <div class="panel-label">Visualizer Style</div>
+                <select class="panel-select" id="vizStyle">
+                  <option value="waveform">Waveform</option>
+                  <option value="bars">Frequency Bars</option>
+                  <option value="radial">Radial Burst</option>
+                </select>
+              </div>
+              <div class="panel-section">
+                <div class="panel-label">Input Gain</div>
+                <div class="range-row">
+                  <span class="range-label">Gain</span>
+                  <input type="range" id="gainRange" min="0" max="4" step="0.1" value="1">
+                  <span class="range-val" id="gainVal">1.0×</span>
+                </div>
+                <div class="range-row">
+                  <span class="range-label">Smoothing</span>
+                  <input type="range" id="smoothing" min="0" max="0.95" step="0.05" value="0.8">
+                  <span class="range-val" id="smoothingVal">0.80</span>
+                </div>
+                <div class="range-row">
+                  <span class="range-label">FFT Size</span>
+                  <select class="panel-select" id="fftSize" style="flex:1;margin:0">
+                    <option value="256">256</option>
+                    <option value="512">512</option>
+                    <option value="1024" selected>1024</option>
+                    <option value="2048">2048</option>
+                  </select>
+                </div>
+              </div>
+              <div class="panel-section">
+                <div class="panel-label">Audio Processing</div>
+                <div class="toggle-row">
+                  <span class="toggle-label">Echo Cancellation</span>
+                  <label class="toggle"><input type="checkbox" id="echoCancelToggle" checked><span class="toggle-slider"></span></label>
+                </div>
+                <div class="toggle-row">
+                  <span class="toggle-label">Noise Suppression</span>
+                  <label class="toggle"><input type="checkbox" id="noiseSuppressToggle" checked><span class="toggle-slider"></span></label>
+                </div>
+                <div class="toggle-row">
+                  <span class="toggle-label">Auto Gain Control</span>
+                  <label class="toggle"><input type="checkbox" id="autoGainToggle" checked><span class="toggle-slider"></span></label>
+                </div>
+              </div>
+              <div class="panel-section">
+                <div class="panel-label">Mic Info</div>
+                <div class="info-grid">
+                  <div class="info-card"><div class="info-card-label">Level</div><div class="info-card-value" id="infoLevel">—</div></div>
+                  <div class="info-card"><div class="info-card-label">Peak dB</div><div class="info-card-value" id="infoPeak">—</div></div>
+                  <div class="info-card"><div class="info-card-label">Channels</div><div class="info-card-value" id="infoChannels">—</div></div>
+                  <div class="info-card"><div class="info-card-label">Sample Hz</div><div class="info-card-value" id="infoSampleRate">—</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ad-slot" style="margin-top:32px">
+          <ins class="adsbygoogle" style="display:block;width:100%;height:90px" data-ad-client="ca-pub-9759808041159779" data-ad-slot="auto" data-ad-format="horizontal"></ins>
+        </div>
+      </div>
+    </div>
+
+    <!-- HOW TO -->
+    <section id="how-to">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-badge">Guide</span>
+          <h2 class="section-title">How to <span class="gradient-text">Test Your Microphone</span></h2>
+          <p class="section-description">Check your microphone in seconds with these simple steps. No software, no signup required.</p>
+        </div>
+        <div class="how-grid">
+          <div class="how-card reveal">
+            <div class="how-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 6a2 2 0 012 2v8a2 2 0 01-4 0V8a2 2 0 012-2z"/><path d="M8 13a6 6 0 0012 0"/></svg></div>
+            <div class="how-num">01</div>
+            <h3>Click "Start Mic"</h3>
+            <p>Press the Start Mic button. Allow microphone access when your browser prompts you. The live waveform visualizer will activate immediately, showing your audio input in real-time.</p>
+          </div>
+          <div class="how-card reveal">
+            <div class="how-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3z"/><path d="M3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"/></svg></div>
+            <div class="how-num">02</div>
+            <h3>Speak & Check Levels</h3>
+            <p>Speak into your microphone and watch the volume meter respond. The green zone is ideal; yellow means loud; red indicates clipping. Adjust your mic position or gain slider for optimal levels.</p>
+          </div>
+          <div class="how-card reveal">
+            <div class="how-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg></div>
+            <div class="how-num">03</div>
+            <h3>Record & Playback</h3>
+            <p>Click Record to capture an audio clip. When done, click Stop Recording. Your recording will appear in the Recordings section below — play it back to hear how your microphone sounds.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="about">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-badge">Features</span>
+          <h2 class="section-title">Advanced <span class="gradient-text">Microphone Testing</span></h2>
+          <p class="section-description">Professional audio analysis tools running entirely in your browser. No data leaves your device.</p>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card reveal">
+            <div class="feature-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+            <h3>Live Waveform Visualizer</h3>
+            <p>See a real-time animated waveform, frequency bar chart, or radial burst visualization of your microphone's audio input using the Web Audio API.</p>
+          </div>
+          <div class="feature-card reveal">
+            <div class="feature-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4 12.5-12.5z"/></svg></div>
+            <h3>dB Volume Meter</h3>
+            <p>Monitor your microphone's volume level in decibels (dB) with a color-coded meter showing real-time levels and peak hold readings.</p>
+          </div>
+          <div class="feature-card reveal">
+            <div class="feature-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg></div>
+            <h3>Record & Download</h3>
+            <p>Record unlimited audio clips directly in the browser and play them back immediately. Download recordings as WebM audio files for further analysis.</p>
+          </div>
+          <div class="feature-card reveal">
+            <div class="feature-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div>
+            <h3>Frequency Spectrum</h3>
+            <p>View a frequency band breakdown showing bass, low-mid, mid, upper-mid, presence, and treble response levels of your microphone in real-time.</p>
+          </div>
+          <div class="feature-card reveal">
+            <div class="feature-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 22h14a2 2 0 002-2V7.5L14.5 2H6a2 2 0 00-2 2v4"/><polyline points="14 2 14 8 20 8"/><path d="M2 15h10M7 10l-5 5 5 5"/></svg></div>
+            <h3>Audio Processing Controls</h3>
+            <p>Toggle echo cancellation, noise suppression, and auto gain control to test how each setting affects your microphone's audio quality independently.</p>
+          </div>
+          <div class="feature-card reveal">
+            <div class="feature-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <h3>100% Private</h3>
+            <p>All audio processing uses the Web Audio API locally. Nothing is recorded or transmitted to any server. Your microphone audio stays entirely on your device.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-badge">FAQ</span>
+          <h2 class="section-title">Frequently Asked <span class="gradient-text">Questions</span></h2>
+          <p class="section-description">Everything you need to know about testing your microphone online.</p>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item reveal">
+            <div class="faq-q">Why is my microphone not working?<svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+            <div class="faq-a"><p>The most common cause is a blocked permission. Look for the microphone icon in your browser's address bar and click it to allow access. On desktop, also check your OS settings: Windows › Privacy › Microphone, or Mac › System Preferences › Security & Privacy › Microphone. Make sure no other app (Zoom, Discord, Teams) has exclusive control of your microphone. If you're using a USB or Bluetooth microphone, try switching to it using the device selector dropdown.</p></div>
+          </div>
+          <div class="faq-item reveal">
+            <div class="faq-q">What does the waveform display show?<svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+            <div class="faq-a"><p>The waveform (oscilloscope view) shows the raw amplitude of the audio signal over time. A flat line means no sound is detected. Larger waves mean louder audio. In Frequency Bars mode, the visualization shows how much energy is present at different frequencies — useful for spotting unwanted hum, buzz, or high-frequency noise from poor cables or interference.</p></div>
+          </div>
+          <div class="faq-item reveal">
+            <div class="faq-q">What is a good microphone volume level?<svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+            <div class="faq-a"><p>For voice calls and recordings, aim to have your voice peaking in the green-to-yellow zone (roughly -12 dB to -6 dB). Consistently hitting the red zone means your mic is too loud and audio will distort or "clip". If your levels look too low, move closer to the mic, increase your OS input gain, or use the Gain slider in the settings panel to boost the signal.</p></div>
+          </div>
+          <div class="faq-item reveal">
+            <div class="faq-q">What is echo cancellation and should I enable it?<svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+            <div class="faq-a"><p>Echo cancellation is a browser-level audio processing feature that removes feedback from your speakers being picked up by your microphone during calls. It's beneficial for video calls but can reduce audio quality for music recording or podcasting. For music use, disable it along with noise suppression to capture the raw audio signal. For calls, leave it enabled for cleaner communication.</p></div>
+          </div>
+          <div class="faq-item reveal">
+            <div class="faq-q">Can I test multiple microphones?<svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+            <div class="faq-a"><p>Yes! If you have multiple microphones connected (built-in, USB, Bluetooth, or via headset), all available devices will appear in the Microphone Device dropdown after you grant permission. Simply select a different microphone and click Start Mic again to switch. This makes it easy to compare your built-in mic with an external one.</p></div>
+          </div>
+          <div class="faq-item reveal">
+            <div class="faq-q">Does this tool work on mobile phones?<svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+            <div class="faq-a"><p>Yes! The Mic Check tool works on all modern smartphones. On iOS, use Safari for the best experience (Chrome on iOS has limited microphone API support due to Apple's WebKit restrictions). On Android, Chrome works perfectly. The waveform visualizer adapts to mobile screen sizes automatically.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-copy">© 2025 Mobile Viewer — Camera Test, Mic Check, Speaker Test</span>
+        <div class="footer-links">
+          <a href="/privacy" class="footer-link">Privacy</a>
+          <a href="/terms" class="footer-link">Terms</a>
+          <a href="camera-test.html" class="footer-link">Camera Test</a>
+          <a href="speaker-test.html" class="footer-link">Speaker Test</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Header scroll
+    const hdr = document.getElementById('siteHeader');
+    window.addEventListener('scroll', () => { hdr.classList.toggle('header--scrolled', window.scrollY > 20); }, { passive: true });
+
+    // Hamburger
+    const ham = document.getElementById('hamburger');
+    const mob = document.getElementById('mobileMenu');
+    ham.addEventListener('click', () => { ham.classList.toggle('is-open'); mob.classList.toggle('is-open'); });
+
+    // Reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); observer.unobserve(e.target); }});
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
+
+    // FAQ
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.addEventListener('click', () => {
+        const item = q.parentElement;
+        const isOpen = item.classList.contains('is-open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('is-open'));
+        if (!isOpen) item.classList.add('is-open');
+      });
+    });
+
+    // Frequency bands setup
+    const FREQ_BANDS = [
+      { label: 'Sub', hz: '20Hz' },
+      { label: 'Bass', hz: '100Hz' },
+      { label: 'Lo-Mid', hz: '300Hz' },
+      { label: 'Mid', hz: '1kHz' },
+      { label: 'Hi-Mid', hz: '3kHz' },
+      { label: 'Pres', hz: '6kHz' },
+      { label: 'Treble', hz: '12kHz' },
+      { label: 'Air', hz: '16kHz' },
+    ];
+    const freqRow = document.getElementById('freqRow');
+    const freqBars = [];
+    FREQ_BANDS.forEach(b => {
+      const div = document.createElement('div');
+      div.className = 'freq-band';
+      const container = document.createElement('div');
+      container.className = 'freq-bar-container';
+      const bar = document.createElement('div');
+      bar.className = 'freq-bar';
+      bar.style.height = '0%';
+      container.appendChild(bar);
+      const label = document.createElement('div');
+      label.className = 'freq-band-label';
+      label.textContent = b.label;
+      div.appendChild(container);
+      div.appendChild(label);
+      freqRow.appendChild(div);
+      freqBars.push(bar);
+    });
+
+    // --- MIC LOGIC ---
+    const canvas = document.getElementById('vizCanvas');
+    const ctx = canvas.getContext('2d');
+    const placeholder = document.getElementById('micPlaceholder');
+    const statusDot = document.getElementById('statusDot');
+    const statusText = document.getElementById('statusText');
+    const errorMsg = document.getElementById('errorMsg');
+    const btnStart = document.getElementById('btnStart');
+    const btnStop = document.getElementById('btnStop');
+    const btnRecord = document.getElementById('btnRecord');
+    const recBtnText = document.getElementById('recBtnText');
+    const recTimer = document.getElementById('recTimer');
+    const deviceSelect = document.getElementById('deviceSelect');
+    const volFill = document.getElementById('volFill');
+    const volVal = document.getElementById('volVal');
+    const peakFill = document.getElementById('peakFill');
+    const peakVal = document.getElementById('peakVal');
+    const peakIndicator = document.getElementById('peakIndicator');
+    const recList = document.getElementById('recList');
+    const recCount = document.getElementById('recCount');
+    const btnClearRecs = document.getElementById('btnClearRecs');
+    const infoLevel = document.getElementById('infoLevel');
+    const infoPeak = document.getElementById('infoPeak');
+    const infoChannels = document.getElementById('infoChannels');
+    const infoSampleRate = document.getElementById('infoSampleRate');
+
+    let audioCtx = null, analyser = null, gainNode = null, source = null;
+    let stream = null, animFrame = null;
+    let mediaRecorder = null, recordedChunks = [];
+    let isRecording = false;
+    let recStartTime = 0, recTimerInterval = null;
+    let peakLevel = 0, peakDecay = 0;
+    let recordings = [];
+
+    function resizeCanvas() {
+      const area = canvas.parentElement;
+      canvas.width = area.clientWidth;
+      canvas.height = 200;
+    }
+
+    async function enumerateDevices() {
+      try {
+        const devices = await navigator.mediaDevices.enumerateDevices();
+        const mics = devices.filter(d => d.kind === 'audioinput');
+        deviceSelect.innerHTML = '<option value="">-- Select Microphone --</option>';
+        mics.forEach((mic, i) => {
+          const opt = document.createElement('option');
+          opt.value = mic.deviceId;
+          opt.textContent = mic.label || `Microphone ${i + 1}`;
+          deviceSelect.appendChild(opt);
+        });
+        if (mics.length) deviceSelect.value = mics[0].deviceId;
+      } catch(e) {}
+    }
+
+    async function startMic() {
+      try {
+        if (stream) stopMic();
+        errorMsg.classList.remove('show');
+
+        const echoCancelChecked = document.getElementById('echoCancelToggle').checked;
+        const noiseSuppressChecked = document.getElementById('noiseSuppressToggle').checked;
+        const autoGainChecked = document.getElementById('autoGainToggle').checked;
+
+        const constraints = {
+          audio: {
+            echoCancellation: echoCancelChecked,
+            noiseSuppression: noiseSuppressChecked,
+            autoGainControl: autoGainChecked,
+          }
+        };
+        const deviceId = deviceSelect.value;
+        if (deviceId) constraints.audio.deviceId = { exact: deviceId };
+
+        stream = await navigator.mediaDevices.getUserMedia(constraints);
+        await enumerateDevices();
+
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)({
+          sampleRate: parseInt(document.getElementById('sampleRateSelect').value)
+        });
+
+        gainNode = audioCtx.createGain();
+        gainNode.gain.value = parseFloat(document.getElementById('gainRange').value);
+
+        analyser = audioCtx.createAnalyser();
+        analyser.fftSize = parseInt(document.getElementById('fftSize').value);
+        analyser.smoothingTimeConstant = parseFloat(document.getElementById('smoothing').value);
+
+        source = audioCtx.createMediaStreamSource(stream);
+        source.connect(gainNode);
+        gainNode.connect(analyser);
+
+        const track = stream.getAudioTracks()[0];
+        const settings = track.getSettings();
+        infoChannels.textContent = settings.channelCount || '1';
+        infoSampleRate.textContent = (audioCtx.sampleRate / 1000).toFixed(1) + 'k';
+
+        placeholder.style.display = 'none';
+        canvas.style.display = 'block';
+        btnStart.style.display = 'none';
+        btnStop.style.display = '';
+        btnRecord.disabled = false;
+        statusDot.className = 'status-dot active';
+        statusText.textContent = 'Microphone Active';
+
+        resizeCanvas();
+        draw();
+
+      } catch(e) {
+        let msg = 'Could not access microphone. ';
+        if (e.name === 'NotAllowedError') msg += 'Microphone permission was denied. Please allow access in your browser.';
+        else if (e.name === 'NotFoundError') msg += 'No microphone was found on this device.';
+        else if (e.name === 'NotReadableError') msg += 'Microphone is in use by another application.';
+        else msg += e.message;
+        errorMsg.textContent = msg;
+        errorMsg.classList.add('show');
+        statusDot.className = 'status-dot error';
+        statusText.textContent = 'Microphone Error';
+      }
+    }
+
+    function stopMic() {
+      if (isRecording) stopRecording();
+      if (animFrame) cancelAnimationFrame(animFrame);
+      if (stream) { stream.getTracks().forEach(t => t.stop()); stream = null; }
+      if (audioCtx) { audioCtx.close(); audioCtx = null; }
+      canvas.style.display = 'none';
+      placeholder.style.display = '';
+      btnStart.style.display = '';
+      btnStop.style.display = 'none';
+      btnRecord.disabled = true;
+      statusDot.className = 'status-dot';
+      statusText.textContent = 'Microphone Stopped';
+      volFill.style.width = '0%'; peakFill.style.width = '0%';
+      volVal.textContent = '0 dB'; peakVal.textContent = '— dB';
+      infoLevel.textContent = infoChannels.textContent = infoSampleRate.textContent = infoPeak.textContent = '—';
+      freqBars.forEach(b => b.style.height = '0%');
+    }
+
+    let peakHoldDb = -Infinity;
+    let peakHoldTime = 0;
+
+    function draw() {
+      if (!analyser) return;
+      animFrame = requestAnimationFrame(draw);
+
+      const bufLen = analyser.frequencyBinCount;
+      const timeData = new Uint8Array(bufLen);
+      const freqData = new Uint8Array(bufLen);
+      analyser.getByteTimeDomainData(timeData);
+      analyser.getByteFrequencyData(freqData);
+
+      // Volume
+      let sumSquares = 0;
+      for (let i = 0; i < timeData.length; i++) {
+        const norm = (timeData[i] - 128) / 128;
+        sumSquares += norm * norm;
+      }
+      const rms = Math.sqrt(sumSquares / timeData.length);
+      const db = rms > 0 ? 20 * Math.log10(rms) : -Infinity;
+      const volPct = Math.max(0, Math.min(100, (db + 60) * 100 / 60));
+      volFill.style.width = volPct + '%';
+      volVal.textContent = isFinite(db) ? db.toFixed(1) + ' dB' : '-∞';
+      infoLevel.textContent = isFinite(db) ? db.toFixed(1) : '—';
+
+      // Peak hold
+      const now = Date.now();
+      if (db > peakHoldDb || now - peakHoldTime > 3000) { peakHoldDb = db; peakHoldTime = now; }
+      const peakPct = Math.max(0, Math.min(100, (peakHoldDb + 60) * 100 / 60));
+      peakFill.style.width = peakPct + '%';
+      peakVal.textContent = isFinite(peakHoldDb) ? peakHoldDb.toFixed(1) + ' dB' : '—';
+      infoPeak.textContent = isFinite(peakHoldDb) ? peakHoldDb.toFixed(1) : '—';
+      peakIndicator.classList.toggle('show', db > -3);
+
+      // Freq bands
+      const binHz = audioCtx.sampleRate / analyser.fftSize;
+      const bandFreqs = [40, 100, 300, 1000, 3000, 6000, 12000, 16000];
+      bandFreqs.forEach((f, i) => {
+        const bin = Math.round(f / binHz);
+        const val = bin < freqData.length ? freqData[bin] : 0;
+        freqBars[i].style.height = (val / 255 * 100) + '%';
+      });
+
+      // Canvas
+      const W = canvas.width, H = canvas.height;
+      ctx.clearRect(0, 0, W, H);
+
+      const vizStyle = document.getElementById('vizStyle').value;
+
+      if (vizStyle === 'waveform') {
+        ctx.beginPath();
+        ctx.strokeStyle = 'rgba(123,97,255,0.9)';
+        ctx.lineWidth = 2;
+        ctx.shadowColor = 'rgba(123,97,255,0.4)';
+        ctx.shadowBlur = 6;
+        const sliceW = W / bufLen;
+        let x = 0;
+        for (let i = 0; i < bufLen; i++) {
+          const v = timeData[i] / 128;
+          const y = v * H / 2;
+          if (i === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+          x += sliceW;
+        }
+        ctx.stroke();
+        ctx.shadowBlur = 0;
+
+      } else if (vizStyle === 'bars') {
+        const barW = Math.max(2, W / (bufLen / 2) - 1);
+        for (let i = 0; i < bufLen / 2; i++) {
+          const v = freqData[i] / 255;
+          const bH = v * H * 0.9;
+          const hue = 260 + v * 80;
+          ctx.fillStyle = `hsla(${hue},80%,60%,0.85)`;
+          ctx.fillRect(i * (barW + 1), H - bH, barW, bH);
+        }
+
+      } else if (vizStyle === 'radial') {
+        const cx = W / 2, cy = H / 2;
+        const radius = Math.min(W, H) * 0.3;
+        const bars = Math.min(bufLen / 2, 128);
+        for (let i = 0; i < bars; i++) {
+          const angle = (i / bars) * Math.PI * 2 - Math.PI / 2;
+          const v = freqData[i] / 255;
+          const len = v * radius * 0.8;
+          const x1 = cx + Math.cos(angle) * radius;
+          const y1 = cy + Math.sin(angle) * radius;
+          const x2 = cx + Math.cos(angle) * (radius + len);
+          const y2 = cy + Math.sin(angle) * (radius + len);
+          const hue = 260 + v * 100;
+          ctx.beginPath();
+          ctx.strokeStyle = `hsla(${hue},80%,65%,0.8)`;
+          ctx.lineWidth = 2;
+          ctx.moveTo(x1, y1);
+          ctx.lineTo(x2, y2);
+          ctx.stroke();
+        }
+        // Center circle
+        ctx.beginPath();
+        ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+        ctx.strokeStyle = 'rgba(123,97,255,0.2)';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+    }
+
+    // Gain slider
+    document.getElementById('gainRange').addEventListener('input', function() {
+      document.getElementById('gainVal').textContent = parseFloat(this.value).toFixed(1) + '×';
+      if (gainNode) gainNode.gain.value = parseFloat(this.value);
+    });
+    document.getElementById('smoothing').addEventListener('input', function() {
+      document.getElementById('smoothingVal').textContent = parseFloat(this.value).toFixed(2);
+      if (analyser) analyser.smoothingTimeConstant = parseFloat(this.value);
+    });
+    document.getElementById('fftSize').addEventListener('change', function() {
+      if (analyser) analyser.fftSize = parseInt(this.value);
+    });
+
+    // Recording
+    function startRecording() {
+      if (!stream) return;
+      recordedChunks = [];
+      const opts = MediaRecorder.isTypeSupported('audio/webm;codecs=opus') ? { mimeType: 'audio/webm;codecs=opus' } : {};
+      mediaRecorder = new MediaRecorder(stream, opts);
+      mediaRecorder.ondataavailable = e => { if (e.data.size > 0) recordedChunks.push(e.data); };
+      mediaRecorder.onstop = saveRecording;
+      mediaRecorder.start(100);
+      isRecording = true;
+      recStartTime = Date.now();
+      recBtnText.textContent = 'Stop Rec';
+      btnRecord.classList.add('is-recording');
+      recTimer.style.display = '';
+      statusDot.className = 'status-dot recording';
+      statusText.textContent = 'Recording…';
+      recTimerInterval = setInterval(() => {
+        const s = Math.floor((Date.now() - recStartTime) / 1000);
+        recTimer.textContent = `${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`;
+      }, 500);
+    }
+
+    function stopRecording() {
+      if (!mediaRecorder) return;
+      mediaRecorder.stop();
+      isRecording = false;
+      recBtnText.textContent = 'Record';
+      btnRecord.classList.remove('is-recording');
+      recTimer.style.display = 'none';
+      clearInterval(recTimerInterval);
+      statusDot.className = 'status-dot active';
+      statusText.textContent = 'Microphone Active';
+    }
+
+    function saveRecording() {
+      const blob = new Blob(recordedChunks, { type: 'audio/webm' });
+      const url = URL.createObjectURL(blob);
+      const duration = ((Date.now() - recStartTime) / 1000).toFixed(1);
+      recordings.push({ url, blob, duration });
+
+      const item = document.createElement('div');
+      item.className = 'rec-item';
+
+      const dur = document.createElement('span');
+      dur.className = 'rec-duration';
+      dur.textContent = duration + 's';
+
+      const audio = document.createElement('audio');
+      audio.controls = true;
+      audio.src = url;
+
+      const dlBtn = document.createElement('button');
+      dlBtn.className = 'btn btn-secondary btn-sm';
+      dlBtn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>';
+      dlBtn.title = 'Download';
+      dlBtn.addEventListener('click', () => {
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `mic-recording-${Date.now()}.webm`;
+        a.click();
+      });
+
+      item.appendChild(dur);
+      item.appendChild(audio);
+      item.appendChild(dlBtn);
+      recList.appendChild(item);
+      recCount.textContent = recordings.length;
+      btnClearRecs.style.display = '';
+    }
+
+    btnRecord.addEventListener('click', () => {
+      if (isRecording) stopRecording();
+      else startRecording();
+    });
+
+    btnClearRecs.addEventListener('click', () => {
+      recList.innerHTML = '';
+      recordings = [];
+      recCount.textContent = '0';
+      btnClearRecs.style.display = 'none';
+    });
+
+    btnStart.addEventListener('click', startMic);
+    btnStop.addEventListener('click', stopMic);
+    deviceSelect.addEventListener('change', () => { if (stream) startMic(); });
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    // Check support
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+      statusText.textContent = 'Microphone API not supported in this browser';
+      statusDot.className = 'status-dot error';
+      btnStart.disabled = true;
+    } else {
+      navigator.mediaDevices.enumerateDevices().then(d => {
+        if (d.some(x => x.kind === 'audioinput')) enumerateDevices();
+      }).catch(() => {});
+    }
+
+    try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
+    try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
+  </script>
+</body>
+</html>
