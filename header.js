@@ -25,6 +25,9 @@
     { href: '/offline-mode-tester',         label: 'Offline Mode Tester' },
     { href: '/device-frame-simulator',      label: 'Device Frame Simulator' },
     { href: '/page-speed',                  label: 'Page Speed Analyzer' },
+    { href: '/camera-test',                  label: 'Camera Tester' },
+    { href: '/speaker-test',                  label: 'Speaker Tester' },
+    { href: '/mic-check',                  label: 'Mic Tester' },
   ];
 
   function buildHeader() {
