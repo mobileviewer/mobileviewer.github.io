@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9759808041159779" crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9759808041159779" 
+    crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MBJB77SQ0K"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -85,32 +86,7 @@
     .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.55s ease, transform 0.55s ease; }
     .reveal.is-visible { opacity: 1; transform: translateY(0); }
     :focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 4px; }
-
-    /* HEADER */
-    .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; height: var(--header-h); background: rgba(8,12,18,0.85); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); border-bottom: 1px solid var(--border); transition: background 0.3s ease, border-color 0.3s ease; }
-    .site-header.header--scrolled { background: rgba(8,12,18,0.97); border-bottom-color: var(--border-light); }
-    .header-inner { max-width: var(--container); margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; gap: 2rem; }
-    .header-logo { display: flex; align-items: center; gap: 10px; }
-    .logo-icon { color: var(--primary); }
-    .logo-text { font-family: var(--font-display); font-size: 1.15rem; font-weight: 800; letter-spacing: -0.02em; color: var(--text); }
-    .logo-accent { color: var(--primary); }
-    .header-nav { margin-left: auto; }
-    .nav-list { display: flex; align-items: center; gap: 4px; }
-    .nav-link { display: flex; align-items: center; gap: 5px; padding: 6px 14px; border-radius: 8px; font-size: 0.92rem; font-weight: 500; color: var(--text-secondary); transition: color var(--transition), background var(--transition); white-space: nowrap; }
-    .nav-link:hover, .nav-link--active { color: var(--text); background: rgba(255,255,255,0.06); }
-    .nav-link--active { color: var(--primary) !important; }
-    .header-cta-btn { display: flex; align-items: center; gap: 8px; padding: 9px 18px; background: var(--primary); color: #000; font-size: 0.875rem; font-weight: 700; border-radius: 8px; transition: background var(--transition), transform var(--transition), box-shadow var(--transition); }
-    .header-cta-btn:hover { background: #29f5ff; transform: translateY(-1px); box-shadow: 0 4px 20px rgba(0,240,255,0.3); }
-    .hamburger { display: none; flex-direction: column; justify-content: space-between; width: 26px; height: 18px; padding: 0; margin-left: auto; flex-shrink: 0; }
-    .hamburger span { display: block; width: 100%; height: 2px; background: var(--text); border-radius: 2px; transition: transform 0.3s ease, opacity 0.3s ease; }
-    .hamburger.is-open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-    .hamburger.is-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
-    .hamburger.is-open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
-    .mobile-menu { display: none; position: fixed; top: var(--header-h); left: 0; right: 0; bottom: 0; background: rgba(8,12,18,0.98); backdrop-filter: blur(20px); z-index: 999; padding: 24px; overflow-y: auto; }
-    .mobile-menu.is-open { display: block; }
-    .mobile-nav-list { display: flex; flex-direction: column; gap: 4px; }
-    .mobile-nav-link { display: block; padding: 12px 16px; border-radius: 10px; font-size: 1rem; font-weight: 500; color: var(--text-secondary); transition: color var(--transition), background var(--transition); }
-    .mobile-nav-link:hover { color: var(--text); background: rgba(255,255,255,0.06); }
+    
 
     /* HERO */
     .hero { padding: calc(var(--header-h) + 64px) 0 64px; position: relative; overflow: hidden; }
@@ -234,14 +210,7 @@
     .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s ease; }
     .faq-item.is-open .faq-a { max-height: 400px; }
     .faq-a p { padding: 0 24px 20px; color: var(--text-secondary); font-size: 0.925rem; line-height: 1.7; }
-
-    /* FOOTER */
-    .site-footer { background: var(--bg-dark); border-top: 1px solid var(--border); padding: 40px 0; }
-    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
-    .footer-copy { font-size: 0.82rem; color: var(--text-muted); }
-    .footer-links { display: flex; gap: 20px; }
-    .footer-link { font-size: 0.82rem; color: var(--text-muted); transition: color 0.2s; }
-    .footer-link:hover { color: var(--primary); }
+    
 
     /* AD */
     .ad-slot { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); min-height: 90px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 0.8rem; margin: 32px 0; overflow: hidden; }
@@ -269,39 +238,8 @@
   </style>
 </head>
 <body>
-  <!-- HEADER -->
-  <header class="site-header" id="siteHeader">
-    <div class="header-inner">
-      <a href="/" class="header-logo">
-        <svg class="logo-icon" width="28" height="28" viewBox="0 0 28 28" fill="none">
-          <rect width="28" height="28" rx="8" fill="rgba(0,240,255,0.1)"/>
-          <path d="M7 10a3 3 0 013-3h8a3 3 0 013 3v8a3 3 0 01-3 3H10a3 3 0 01-3-3v-8z" stroke="currentColor" stroke-width="1.5"/>
-          <circle cx="14" cy="14" r="3" stroke="currentColor" stroke-width="1.5"/>
-          <circle cx="14" cy="14" r="1" fill="currentColor"/>
-        </svg>
-        <span class="logo-text">Dev<span class="logo-accent">Tools</span></span>
-      </a>
-      <nav class="header-nav">
-        <ul class="nav-list">
-          <li><a href="camera-test.html" class="nav-link nav-link--active">Camera Test</a></li>
-          <li><a href="mic-check.html" class="nav-link">Mic Check</a></li>
-          <li><a href="speaker-test.html" class="nav-link">Speaker Test</a></li>
-          <li><a href="/" class="nav-link">More Tools</a></li>
-        </ul>
-      </nav>
-      <button class="hamburger" id="hamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
-  <div class="mobile-menu" id="mobileMenu">
-    <ul class="mobile-nav-list">
-      <li><a href="camera-test.html" class="mobile-nav-link">📷 Camera Test</a></li>
-      <li><a href="mic-check.html" class="mobile-nav-link">🎤 Mic Check</a></li>
-      <li><a href="speaker-test.html" class="mobile-nav-link">🔊 Speaker Test</a></li>
-      <li><a href="/" class="mobile-nav-link">← More Tools</a></li>
-    </ul>
-  </div>
+   <!-- Header Component -->
+  <div id="header-placeholder"></div>
 
   <main>
     <!-- HERO -->
@@ -608,19 +546,11 @@
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-inner">
-        <span class="footer-copy">© 2025 DevTools Hub — Camera Test, Mic Check, Speaker Test</span>
-        <div class="footer-links">
-          <a href="/privacy" class="footer-link">Privacy</a>
-          <a href="/terms" class="footer-link">Terms</a>
-          <a href="mic-check.html" class="footer-link">Mic Check</a>
-          <a href="speaker-test.html" class="footer-link">Speaker Test</a>
-        </div>
-      </div>
-    </div>
-  </footer>
+  <!-- Footer Component -->
+  <div id="footer-placeholder"></div>
+
+  <script src="header.js"></script>
+  <script src="footer.js"></script>
 
   <script>
     // --- Header scroll ---
