@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-MBJB77SQ0K');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Speaker Test — Free Online Speaker & Headphone Test Tool</title>
+  <meta name="google-adsense-account" content="ca-pub-9759808041159779">
+  <meta name="description" content="Test your speakers and headphones online for free. Check left/right channel balance, frequency response, bass test, audio clarity, and stereo separation — no download needed.">
+  <meta name="keywords" content="speaker test, headphone test, test speakers online, audio test, left right speaker test, speaker check, bass test, frequency test, audio output test, stereo test, sound test online">
+  <meta name="author" content="Mobile Viewer">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://mobileviewer.github.io/speaker-test">
+  <meta property="og:title" content="Speaker Test — Free Online Speaker & Headphone Test Tool">
+  <meta property="og:description" content="Test your speakers and headphones online. Check left/right balance, bass, treble, frequency response and stereo separation. Free, no install.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mobileviewer.github.io/speaker-test">
+  <meta property="og:site_name" content="Mobile Viewer">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Speaker Test — Free Online Speaker & Headphone Test">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Speaker Test",
+    "url": "https://mobileviewer.github.io/speaker-test",
+    "description": "Free online speaker and headphone tester. Check left/right channel balance, bass, treble, frequency response, and stereo separation — no download required.",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires a modern web browser with Web Audio API support.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #FF4FD8;
+      --primary-dim: rgba(255,79,216,0.12);
+      --secondary: #00F0FF;
+      --accent: #7B61FF;
+      --bg: #080C12;
+      --bg-dark: #050810;
+      --bg-card: #0D1220;
+      --bg-card-2: #111827;
+      --border: rgba(255,255,255,0.07);
+      --border-light: rgba(255,255,255,0.12);
+      --text: #F0F4FF;
+      --text-secondary: rgba(240,244,255,0.6);
+      --text-muted: rgba(240,244,255,0.35);
+      --radius: 12px; --radius-lg: 20px; --radius-xl: 28px;
+      --shadow: 0 4px 24px rgba(0,0,0,0.4);
+      --shadow-lg: 0 12px 48px rgba(0,0,0,0.6);
+      --header-h: 70px;
+      --container: 1240px;
+      --font-display: 'Syne', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --transition: 0.2s ease;
+      --transition-md: 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 16px); }
+    body { font-family: var(--font-body); font-size: 16px; line-height: 1.6; color: var(--text); background: var(--bg); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+    ul { list-style: none; }
+    .container { width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+    .gradient-text { background: linear-gradient(90deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .section-badge { display: inline-block; font-family: var(--font-display); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--primary); background: var(--primary-dim); border: 1px solid rgba(255,79,216,0.25); padding: 5px 14px; border-radius: 100px; margin-bottom: 1.25rem; }
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    :focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 4px; }
+
+    /* HEADER */
+    .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; height: var(--header-h); background: rgba(8,12,18,0.85); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); border-bottom: 1px solid var(--border); transition: background 0.3s ease; }
+    .site-header.header--scrolled { background: rgba(8,12,18,0.97); border-bottom-color: var(--border-light); }
+    .header-inner { max-width: var(--container); margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; gap: 2rem; }
+    .header-logo { display: flex; align-items: center; gap: 10px; }
+    .logo-text { font-family: var(--font-display); font-size: 1.15rem; font-weight: 800; letter-spacing: -0.02em; color: var(--text); }
+    .logo-accent { color: var(--secondary); }
+    .header-nav { margin-left: auto; }
+    .nav-list { display: flex; align-items: center; gap: 4px; }
+    .nav-link { display: flex; align-items: center; gap: 5px; padding: 6px 14px; border-radius: 8px; font-size: 0.92rem; font-weight: 500; color: var(--text-secondary); transition: color var(--transition), background var(--transition); white-space: nowrap; }
+    .nav-link:hover, .nav-link--active { color: var(--text); background: rgba(255,255,255,0.06); }
+    .nav-link--active { color: var(--primary) !important; }
+    .hamburger { display: none; flex-direction: column; justify-content: space-between; width: 26px; height: 18px; padding: 0; margin-left: auto; flex-shrink: 0; }
+    .hamburger span { display: block; width: 100%; height: 2px; background: var(--text); border-radius: 2px; transition: transform 0.3s ease, opacity 0.3s ease; }
+    .hamburger.is-open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.is-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.is-open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; top: var(--header-h); left: 0; right: 0; bottom: 0; background: rgba(8,12,18,0.98); backdrop-filter: blur(20px); z-index: 999; padding: 24px; }
+    .mobile-menu.is-open { display: block; }
+    .mobile-nav-list { display: flex; flex-direction: column; gap: 4px; }
+    .mobile-nav-link { display: block; padding: 12px 16px; border-radius: 10px; font-size: 1rem; font-weight: 500; color: var(--text-secondary); transition: color var(--transition), background var(--transition); }
+    .mobile-nav-link:hover { color: var(--text); background: rgba(255,255,255,0.06); }
+
+    /* HERO */
+    .hero { padding: calc(var(--header-h) + 64px) 0 64px; position: relative; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; pointer-events: none; }
+    .hero-orb { position: absolute; border-radius: 50%; filter: blur(80px); }
+    .hero-orb-1 { width: 600px; height: 400px; top: -100px; left: 50%; transform: translateX(-50%); background: radial-gradient(ellipse, rgba(255,79,216,0.06) 0%, transparent 70%); }
+    .hero-orb-2 { width: 400px; height: 300px; bottom: 0; right: -100px; background: radial-gradient(ellipse, rgba(123,97,255,0.05) 0%, transparent 70%); }
+    .hero-inner { text-align: center; max-width: 780px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-title { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.25rem; }
+    .hero-description { font-size: 1.1rem; color: var(--text-secondary); max-width: 580px; margin: 0 auto 2.5rem; line-height: 1.7; }
+    .hero-badges { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .hero-badge { display: flex; align-items: center; gap: 6px; padding: 6px 14px; background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 100px; font-size: 0.82rem; font-weight: 600; color: var(--text-secondary); }
+    .hero-badge svg { color: var(--primary); flex-shrink: 0; }
+
+    /* TOOL CARD */
+    .tool-section { padding: 0 0 80px; }
+    .tool-card { background: var(--bg-card); border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-lg); }
+    .tool-card-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 28px; border-bottom: 1px solid var(--border); background: rgba(255,79,216,0.03); flex-wrap: wrap; gap: 12px; }
+    .tool-card-title { font-family: var(--font-display); font-size: 1rem; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+    .status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--text-muted); transition: background 0.3s; }
+    .status-dot.active { background: #22c55e; box-shadow: 0 0 8px #22c55e; }
+    .status-dot.playing { background: var(--primary); box-shadow: 0 0 8px var(--primary); animation: pulse-dot 1s infinite; }
+    @keyframes pulse-dot { 0%,100%{opacity:1}50%{opacity:0.4} }
+    .btn { display: inline-flex; align-items: center; gap: 7px; padding: 9px 18px; border-radius: 10px; font-size: 0.875rem; font-weight: 600; transition: all var(--transition); white-space: nowrap; }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover { background: #ff72e0; transform: translateY(-1px); box-shadow: 0 4px 20px rgba(255,79,216,0.35); }
+    .btn-secondary { background: rgba(255,255,255,0.06); color: var(--text-secondary); border: 1px solid var(--border-light); }
+    .btn-secondary:hover { background: rgba(255,255,255,0.1); color: var(--text); }
+    .btn-active { background: rgba(255,79,216,0.15); color: var(--primary); border: 1px solid rgba(255,79,216,0.3); }
+    .btn-sm { padding: 6px 12px; font-size: 0.8rem; }
+    .btn:disabled { opacity: 0.45; cursor: not-allowed; pointer-events: none; }
+
+    .tool-body { padding: 32px 28px; display: flex; flex-direction: column; gap: 32px; }
+
+    /* Test grid */
+    .test-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .test-btn-card { background: var(--bg-card-2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 20px 16px; text-align: center; cursor: pointer; transition: border-color var(--transition-md), transform var(--transition-md), background var(--transition-md); user-select: none; }
+    .test-btn-card:hover { border-color: rgba(255,79,216,0.35); transform: translateY(-2px); background: rgba(255,79,216,0.05); }
+    .test-btn-card.is-playing { border-color: var(--primary); background: rgba(255,79,216,0.1); box-shadow: 0 0 20px rgba(255,79,216,0.15); }
+    .test-btn-card .icon { font-size: 2rem; margin-bottom: 10px; display: block; }
+    .test-btn-card h3 { font-family: var(--font-display); font-size: 0.85rem; font-weight: 700; margin-bottom: 4px; }
+    .test-btn-card p { font-size: 0.75rem; color: var(--text-muted); line-height: 1.4; }
+    .test-btn-card .test-stop { display: none; margin: 8px auto 0; }
+    .test-btn-card.is-playing .test-stop { display: flex; }
+
+    /* Frequency sweep */
+    .sweep-section { background: var(--bg-card-2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; }
+    .sweep-title { font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+    .sweep-controls { display: flex; flex-direction: column; gap: 14px; }
+    .sweep-row { display: flex; align-items: center; gap: 12px; }
+    .sweep-label { font-size: 0.82rem; color: var(--text-secondary); min-width: 100px; }
+    .sweep-val { font-size: 0.82rem; color: var(--primary); font-family: 'SF Mono','Fira Code',monospace; min-width: 70px; }
+    input[type="range"] { -webkit-appearance: none; flex: 1; height: 4px; background: var(--border-light); border-radius: 2px; outline: none; cursor: pointer; }
+    input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%; background: var(--primary); box-shadow: 0 0 8px rgba(255,79,216,0.5); cursor: pointer; transition: transform 0.15s; }
+    input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.2); }
+    input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius: 50%; background: var(--primary); border: none; cursor: pointer; }
+    .sweep-btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
+
+    /* Channel test */
+    .channel-section { background: var(--bg-card-2); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 24px; }
+    .channel-title { font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; margin-bottom: 16px; }
+    .channel-vis { display: flex; gap: 16px; align-items: center; justify-content: center; margin-bottom: 16px; }
+    .channel-block { flex: 1; max-width: 180px; }
+    .channel-label { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); text-align: center; margin-bottom: 8px; font-family: var(--font-display); font-weight: 700; }
+    .channel-meter { height: 16px; background: var(--border); border-radius: 8px; overflow: hidden; }
+    .channel-fill-l { height: 100%; width: 0%; border-radius: 8px; background: linear-gradient(90deg, var(--secondary), rgba(0,240,255,0.5)); transition: width 0.05s; }
+    .channel-fill-r { height: 100%; width: 0%; border-radius: 8px; background: linear-gradient(90deg, var(--primary), rgba(255,79,216,0.5)); transition: width 0.05s; }
+    .channel-btns { display: flex; gap: 10px; justify-content: center; }
+
+    /* Oscilloscope */
+    .osc-canvas-wrap { border-radius: var(--radius); overflow: hidden; background: #020408; margin-top: 16px; }
+    #oscCanvas { display: block; width: 100%; height: 80px; }
+
+    /* Volume section */
+    .volume-section { display: flex; align-items: center; gap: 20px; }
+    .vol-label { font-size: 0.875rem; color: var(--text-secondary); min-width: 56px; }
+    .vol-track { flex: 1; }
+    input[type="range"].volume-slider { width: 100%; height: 6px; }
+    input[type="range"].volume-slider::-webkit-slider-thumb { width: 20px; height: 20px; }
+    .vol-pct { font-family: 'SF Mono','Fira Code',monospace; font-size: 0.82rem; color: var(--primary); min-width: 44px; }
+
+    /* PANEL inside same card */
+    .settings-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .setting-card { background: var(--bg-card-2); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; }
+    .setting-card-label { font-family: var(--font-display); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 10px; }
+    .panel-select { width: 100%; padding: 8px 12px; background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 8px; color: var(--text); font-family: var(--font-body); font-size: 0.85rem; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgba(240,244,255,0.4)' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; cursor: pointer; transition: border-color var(--transition); }
+    .panel-select:focus { border-color: rgba(255,79,216,0.4); outline: none; }
+    .toggle-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .toggle-label { font-size: 0.82rem; color: var(--text-secondary); }
+    .toggle { position: relative; width: 36px; height: 20px; flex-shrink: 0; }
+    .toggle input { opacity: 0; width: 0; height: 0; }
+    .toggle-slider { position: absolute; inset: 0; background: rgba(255,255,255,0.1); border: 1px solid var(--border-light); border-radius: 100px; cursor: pointer; transition: background 0.2s; }
+    .toggle-slider::after { content: ''; position: absolute; left: 3px; top: 2px; width: 14px; height: 14px; background: var(--text-muted); border-radius: 50%; transition: transform 0.2s, background 0.2s; }
+    .toggle input:checked + .toggle-slider { background: rgba(255,79,216,0.2); border-color: rgba(255,79,216,0.4); }
+    .toggle input:checked + .toggle-slider::after { transform: translateX(16px); background: var(--primary); }
+
+    /* CONTENT SECTIONS */
+    section { padding: 80px 0; }
+    section:nth-child(even) { background: rgba(255,255,255,0.015); }
+    .section-header { text-align: center; margin-bottom: 4rem; }
+    .section-title { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 700; line-height: 1.15; margin-bottom: 1rem; }
+    .section-description { font-size: 1.05rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto; line-height: 1.7; }
+    .how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .how-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px 28px; transition: border-color var(--transition-md), transform var(--transition-md); }
+    .how-card:hover { border-color: rgba(255,79,216,0.3); transform: translateY(-4px); }
+    .how-num { font-family: var(--font-display); font-size: 3rem; font-weight: 800; color: rgba(255,79,216,0.1); line-height: 1; margin-bottom: 16px; }
+    .how-icon { width: 44px; height: 44px; border-radius: 12px; background: var(--primary-dim); border: 1px solid rgba(255,79,216,0.2); display: flex; align-items: center; justify-content: center; color: var(--primary); margin-bottom: 20px; }
+    .how-card h3 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; }
+    .how-card p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.65; }
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .feature-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px 24px; transition: border-color var(--transition-md), transform var(--transition-md); }
+    .feature-card:hover { border-color: rgba(255,79,216,0.25); transform: translateY(-3px); }
+    .feature-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--primary-dim); border: 1px solid rgba(255,79,216,0.2); display: flex; align-items: center; justify-content: center; color: var(--primary); margin-bottom: 16px; }
+    .feature-card h3 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .feature-card p { color: var(--text-secondary); font-size: 0.875rem; line-height: 1.6; }
+    .faq-list { display: flex; flex-direction: column; gap: 12px; max-width: 800px; margin: 0 auto; }
+    .faq-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .faq-q { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; cursor: pointer; font-family: var(--font-display); font-size: 1rem; font-weight: 600; gap: 16px; transition: color var(--transition); user-select: none; }
+    .faq-q:hover { color: var(--primary); }
+    .faq-icon { flex-shrink: 0; transition: transform 0.3s ease; color: var(--text-muted); }
+    .faq-item.is-open .faq-icon { transform: rotate(45deg); color: var(--primary); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+    .faq-item.is-open .faq-a { max-height: 400px; }
+    .faq-a p { padding: 0 24px 20px; color: var(--text-secondary); font-size: 0.925rem; line-height: 1.7; }
+    .site-footer { background: var(--bg-dark); border-top: 1px solid var(--border); padding: 40px 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .footer-copy { font-size: 0.82rem; color: var(--text-muted); }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-link { font-size: 0.82rem; color: var(--text-muted); transition: color 0.2s; }
+    .footer-link:hover { color: var(--primary); }
+    .ad-slot { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); min-height: 90px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 0.8rem; margin: 32px 0; overflow: hidden; }
+
+    @media (max-width: 900px) {
+      .test-grid { grid-template-columns: repeat(2, 1fr); }
+      .settings-row { grid-template-columns: 1fr 1fr; }
+      .header-nav { display: none; }
+      .hamburger { display: flex; }
+      .how-grid { grid-template-columns: 1fr 1fr; }
+      .features-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .container { padding: 0 16px; }
+      .hero-title { font-size: 2rem; }
+      .test-grid { grid-template-columns: repeat(2, 1fr); }
+      .settings-row { grid-template-columns: 1fr; }
+      .how-grid { grid-template-columns: 1fr; }
+      .features-grid { grid-template-columns: 1fr; }
+      .sweep-btn-row { flex-direction: column; }
+      .channel-vis { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <a href="/" class="header-logo">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" style="color:var(--primary)">
+          <rect width="28" height="28" rx="8" fill="rgba(255,79,216,0.1)"/>
+          <path d="M7 7h14a1 1 0 011 1v12a1 1 0 01-1 1H7a1 1 0 01-1-1V8a1 1 0 011-1z" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="11" cy="14" r="3" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="11" cy="14" r="1" fill="currentColor"/>
+          <circle cx="19" cy="14" r="3" stroke="currentColor" stroke-width="1.5"/>
+          <circle cx="19" cy="14" r="1" fill="currentColor"/>
+        </svg>
+        <span class="logo-text">Dev<span class="logo-accent">Tools</span></span>
+      </a>
+      <nav class="header-nav">
+        <ul class="nav-list">
+          <li><a href="camera-test.html" class="nav-link">Camera Test</a></li>
+          <li><a href="mic-check.html" class="nav-link">Mic Check</a></li>
+          <li><a href="speaker-test.html" class="nav-link nav-link--active">Speaker Test</a></li>
+          <li><a href="/" class="nav-link">More Tools</a></li>
+        </ul>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+  <div class="mobile-menu" id="mobileMenu">
+    <ul class="mobile-nav-list">
+      <li><a href="camera-test.html" class="mobile-nav-link">📷 Camera Test</a></li>
+      <li><a href="mic-check.html" class="mobile-nav-link">🎤 Mic Check</a></li>
+      <li><a href="speaker-test.html" class="mobile-nav-link">🔊 Speaker Test</a></li>
+      <li><a href="/" class="mobile-nav-link">← More Tools</a></li>
+    </ul>
+  </div>
+
+  <main>
+    <div class="hero">
+      <div class="hero-bg">
+        <div class="hero-orb hero-orb-1"></div>
+        <div class="hero-orb hero-orb-2"></div>
+      </div>
+      <div class="container">
+        <div class="hero-inner reveal">
+          <span class="section-badge">Free Online Tool</span>
+          <h1 class="hero-title">Speaker <span class="gradient-text">Test</span></h1>
+          <p class="hero-description">Test your speakers and headphones online — check left/right channel balance, bass, treble, frequency sweep, and stereo separation. No download required.</p>
+          <div class="hero-badges">
+            <span class="hero-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> L/R Channel Test</span>
+            <span class="hero-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Frequency Sweep</span>
+            <span class="hero-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Bass & Treble Tests</span>
+            <span class="hero-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Works on Mobile</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tool-section">
+      <div class="container">
+        <div class="ad-slot">
+          <ins class="adsbygoogle" style="display:block;width:100%;height:90px" data-ad-client="ca-pub-9759808041159779" data-ad-slot="auto" data-ad-format="horizontal"></ins>
+        </div>
+        <div class="tool-card reveal">
+          <div class="tool-card-header">
+            <div class="tool-card-title">
+              <span class="status-dot" id="statusDot"></span>
+              <span id="statusText">Speaker Test Ready — Select a test below</span>
+            </div>
+            <div style="display:flex;gap:8px;align-items:center">
+              <div class="volume-section">
+                <span class="vol-label">Volume</span>
+                <div class="vol-track" style="width:120px">
+                  <input type="range" class="volume-slider" id="masterVolume" min="0" max="1" step="0.01" value="0.7" style="width:100%">
+                </div>
+                <span class="vol-pct" id="volPct">70%</span>
+              </div>
+              <button class="btn btn-secondary btn-sm" id="btnStopAll">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                Stop All
+              </button>
+            </div>
+          </div>
+
+          <div class="tool-body">
+            <!-- Quick Test Buttons -->
+            <div>
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+                <span style="font-family:var(--font-display);font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted)">Quick Tests</span>
+              </div>
+              <div class="test-grid">
+                <div class="test-btn-card" data-test="left">
+                  <span class="icon">◀️</span>
+                  <h3>Left Channel</h3>
+                  <p>Test left speaker only</p>
+                  <button class="btn btn-secondary btn-sm test-stop">■ Stop</button>
+                </div>
+                <div class="test-btn-card" data-test="right">
+                  <span class="icon">▶️</span>
+                  <h3>Right Channel</h3>
+                  <p>Test right speaker only</p>
+                  <button class="btn btn-secondary btn-sm test-stop">■ Stop</button>
+                </div>
+                <div class="test-btn-card" data-test="both">
+                  <span class="icon">🔊</span>
+                  <h3>Both Channels</h3>
+                  <p>Test both speakers together</p>
+                  <button class="btn btn-secondary btn-sm test-stop">■ Stop</button>
+                </div>
+                <div class="test-btn-card" data-test="stereo">
+                  <span class="icon">🎧</span>
+                  <h3>Stereo Ping-Pong</h3>
+                  <p>Alternating L/R stereo test</p>
+                  <button class="btn btn-secondary btn-sm test-stop">■ Stop</button>
+                </div>
+                <div class="test-btn-card" data-test="bass">
+                  <span class="icon">🎸</span>
+                  <h3>Bass Test</h3>
+                  <p>60 Hz low-frequency tone</p>
+                  <button class="btn btn-secondary btn-sm test-stop">■ Stop</button>
+                </div>
+                <div class="test-btn-card" data-test="midrange">
+                  <span class="icon">🎵</span>
+                  <h3>Midrange Test</h3>
+                  <p>1 kHz voice-range tone</p>
+                  <button class="btn btn-secondary btn-sm test-stop">■ Stop</button>
+                </div>
+                <div class="test-btn-card" data-test="treble">
+                  <span class="icon">🎼</span>
+                  <h3>Treble Test</h3>
+                  <p>8 kHz high-frequency tone</p>
+                  <button class="btn btn-secondary btn-sm test-stop">■ Stop</button>
+                </div>
+                <div class="test-btn-card" data-test="noise">
+                  <span class="icon">🌊</span>
+                  <h3>White Noise</h3>
+                  <p>Full-spectrum audio test</p>
+                  <button class="btn btn-secondary btn-sm test-stop">■ Stop</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Frequency Sweep -->
+            <div class="sweep-section">
+              <div class="sweep-title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                Frequency Sweep Generator
+              </div>
+              <div class="sweep-controls">
+                <div class="sweep-row">
+                  <span class="sweep-label">Frequency</span>
+                  <input type="range" id="freqSlider" min="20" max="20000" step="1" value="440">
+                  <span class="sweep-val" id="freqVal">440 Hz</span>
+                </div>
+                <div class="sweep-row">
+                  <span class="sweep-label">Wave Type</span>
+                  <select class="panel-select" id="waveType" style="flex:1">
+                    <option value="sine">Sine Wave</option>
+                    <option value="square">Square Wave</option>
+                    <option value="sawtooth">Sawtooth Wave</option>
+                    <option value="triangle">Triangle Wave</option>
+                  </select>
+                </div>
+                <div class="sweep-row">
+                  <span class="sweep-label">Pan</span>
+                  <input type="range" id="panSlider" min="-1" max="1" step="0.01" value="0">
+                  <span class="sweep-val" id="panVal">Center</span>
+                </div>
+                <div class="sweep-btn-row">
+                  <button class="btn btn-primary btn-sm" id="btnPlayTone">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    Play Tone
+                  </button>
+                  <button class="btn btn-secondary btn-sm" id="btnStopTone">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                    Stop Tone
+                  </button>
+                  <button class="btn btn-secondary btn-sm" id="btnSweep">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    Auto Sweep (20Hz→20kHz)
+                  </button>
+                </div>
+              </div>
+              <div class="osc-canvas-wrap">
+                <canvas id="oscCanvas"></canvas>
+              </div>
+            </div>
+
+            <!-- Channel / L-R meter -->
+            <div class="channel-section">
+              <div class="channel-title">Left / Right Channel Meter</div>
+              <div class="channel-vis">
+                <div class="channel-block">
+                  <div class="channel-label">Left (L)</div>
+                  <div class="channel-meter"><div class="channel-fill-l" id="meterL"></div></div>
+                </div>
+                <div style="font-family:var(--font-display);font-size:0.75rem;color:var(--text-muted);text-align:center;padding:0 8px;">PAN</div>
+                <div class="channel-block">
+                  <div class="channel-label">Right (R)</div>
+                  <div class="channel-meter"><div class="channel-fill-r" id="meterR"></div></div>
+                </div>
+              </div>
+              <div class="channel-btns">
+                <button class="btn btn-secondary btn-sm" onclick="runQuickTest('left')">◀ Left Only</button>
+                <button class="btn btn-secondary btn-sm" onclick="runQuickTest('both')">◀▶ Both</button>
+                <button class="btn btn-secondary btn-sm" onclick="runQuickTest('right')">Right Only ▶</button>
+              </div>
+            </div>
+
+            <!-- Settings -->
+            <div>
+              <div style="font-family:var(--font-display);font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px">Settings</div>
+              <div class="settings-row">
+                <div class="setting-card">
+                  <div class="setting-card-label">Output Device</div>
+                  <select class="panel-select" id="deviceSelect">
+                    <option value="">Default Output</option>
+                  </select>
+                </div>
+                <div class="setting-card">
+                  <div class="setting-card-label">Options</div>
+                  <div style="display:flex;flex-direction:column;gap:8px">
+                    <div class="toggle-row">
+                      <span class="toggle-label">Visualizer</span>
+                      <label class="toggle"><input type="checkbox" id="vizToggle" checked><span class="toggle-slider"></span></label>
+                    </div>
+                    <div class="toggle-row">
+                      <span class="toggle-label">Loop Tests</span>
+                      <label class="toggle"><input type="checkbox" id="loopToggle" checked><span class="toggle-slider"></span></label>
+                    </div>
+                  </div>
+                </div>
+                <div class="setting-card">
+                  <div class="setting-card-label">Current Tone Info</div>
+                  <div style="display:flex;flex-direction:column;gap:4px">
+                    <div style="display:flex;justify-content:space-between;font-size:0.82rem">
+                      <span style="color:var(--text-muted)">Frequency</span>
+                      <span id="infoFreq" style="color:var(--primary);font-family:'SF Mono','Fira Code',monospace">—</span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;font-size:0.82rem">
+                      <span style="color:var(--text-muted)">Waveform</span>
+                      <span id="infoWave" style="color:var(--primary);font-family:'SF Mono','Fira Code',monospace">—</span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;font-size:0.82rem">
+                      <span style="color:var(--text-muted)">Channel</span>
+                      <span id="infoChan" style="color:var(--primary);font-family:'SF Mono','Fira Code',monospace">—</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ad-slot" style="margin-top:32px">
+          <ins class="adsbygoogle" style="display:block;width:100%;height:90px" data-ad-client="ca-pub-9759808041159779" data-ad-slot="auto" data-ad-format="horizontal"></ins>
+        </div>
+      </div>
+    </div>
+
+    <!-- HOW TO -->
+    <section id="how-to">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-badge">Guide</span>
+          <h2 class="section-title">How to <span class="gradient-text">Test Your Speakers</span></h2>
+          <p class="section-description">Complete a full audio system check in under two minutes using our suite of audio tests.</p>
+        </div>
+        <div class="how-grid">
+          <div class="how-card reveal">
+            <div class="how-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg></div>
+            <div class="how-num">01</div>
+            <h3>Set Your Volume</h3>
+            <p>Adjust the master volume slider at the top of the tool to a comfortable level. Start at around 50–70% to avoid any sudden loud sounds. Your device's system volume also applies.</p>
+          </div>
+          <div class="how-card reveal">
+            <div class="how-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div>
+            <div class="how-num">02</div>
+            <h3>Run Channel Tests</h3>
+            <p>Click "Left Channel" — you should hear sound from your left speaker only. Then click "Right Channel" for the right. If both play at the same time during one-channel tests, your audio output may not support stereo.</p>
+          </div>
+          <div class="how-card reveal">
+            <div class="how-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+            <div class="how-num">03</div>
+            <h3>Test Frequency Range</h3>
+            <p>Use the frequency sweep generator to play tones from 20 Hz to 20,000 Hz. Listen for any frequencies that sound distorted, missing, or rattling. Use the Bass, Midrange, and Treble quick tests to check each range individually.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section id="about">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-badge">Features</span>
+          <h2 class="section-title">Professional <span class="gradient-text">Speaker Diagnostics</span></h2>
+          <p class="section-description">A comprehensive speaker and headphone testing suite powered by the Web Audio API — no plugins, no installs.</p>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card reveal">
+            <div class="feature-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M15.54 8.46a5 5 0 010 7.07"/><path d="M19.07 4.93a10 10 0 010 14.14"/></svg></div>
+            <h3>Left/Right Channel Test</h3>
+            <p>Independently test each speaker channel to verify stereo output is working correctly. Essential for catching wiring or driver issues in headphones and speaker systems.</p>
+          </div>
+          <div class="feature-card reveal">
+            <div class="feature-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+            <h3>Frequency Sweep Generator</h3>
+            <p>Generate any frequency from 20 Hz to 20,000 Hz using sine, square, sawtooth, or triangle waveforms. Use the auto-sweep to scan the entire audible spectrum automatically.</p>
+          </div>
+          <div class="feature-card reveal">
+            <div class="feature-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
+            <h3>Bass, Mid & Treble Tests</h3>
+            <p>Run dedicated frequency range tests: 60 Hz bass test, 1 kHz midrange test, and 8 kHz treble test. Quickly identify frequency response issues in your audio system.</p>
+          </div>
+          <div class="feature-card reveal">
+            <div class="feature-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1a2 2 0 01-2-2v-3a2 2 0 012-2h3z"/><path d="M3 19a2 2 0 002 2h1a2 2 0 002-2v-3a2 2 0 00-2-2H3z"/></svg></div>
+            <h3>Stereo Ping-Pong Test</h3>
+            <p>Alternating left/right audio ping-pong test to verify stereo imaging and channel separation in headphones and speaker systems. Great for checking spatial audio accuracy.</p>
+          </div>
+          <div class="feature-card reveal">
+            <div class="feature-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8M8 8h8M8 16h5"/></svg></div>
+            <h3>White Noise Generator</h3>
+            <p>Full-spectrum white noise test to identify distortion, rattle, and resonance across all frequencies simultaneously. A classic audio quality diagnostic tool.</p>
+          </div>
+          <div class="feature-card reveal">
+            <div class="feature-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="2"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
+            <h3>Oscilloscope Visualizer</h3>
+            <p>A real-time waveform oscilloscope visualization of the audio signal being generated. Visually verify waveform shape and frequency characteristics while playing tones.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-badge">FAQ</span>
+          <h2 class="section-title">Frequently Asked <span class="gradient-text">Questions</span></h2>
+          <p class="section-description">Common questions about testing speakers and headphones online.</p>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item reveal">
+            <div class="faq-q">How do I test if my left and right speakers are working?<svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+            <div class="faq-a"><p>Click the "Left Channel" card — you should hear a tone from your left speaker or the left side of your headphones only. Then click "Right Channel" and sound should come from the right side only. If you hear both speakers during either test, your audio output may be set to mono, or your headphone/speaker cable may be partially disconnected. Check your audio settings and make sure stereo output is selected.</p></div>
+          </div>
+          <div class="faq-item reveal">
+            <div class="faq-q">I can't hear anything — what should I check?<svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+            <div class="faq-a"><p>Check these in order: (1) Make sure your device's system volume is not muted or at zero. (2) Check the master volume slider at the top of the tool. (3) Verify your speakers/headphones are properly connected. (4) On mobile, check if silent/vibrate mode is enabled. (5) If using Bluetooth headphones, confirm they're connected. (6) Some browsers block audio until you interact with the page — clicking any button should trigger audio playback to activate.</p></div>
+          </div>
+          <div class="faq-item reveal">
+            <div class="faq-q">What is the frequency sweep test for?<svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+            <div class="faq-a"><p>The frequency sweep plays audio tones gradually from 20 Hz (the lowest frequency humans can hear) up to 20,000 Hz (the highest). As it plays, listen for: (1) Frequencies that seem distorted or crackly — this can indicate a blown speaker. (2) Frequencies that are barely audible — a sign of limited frequency response. (3) Physical rattling in the speaker cabinet at low frequencies — a sign of damaged suspension or loose components. This is a standard audiophile and audio engineer diagnostic technique.</p></div>
+          </div>
+          <div class="faq-item reveal">
+            <div class="faq-q">Does this tool work with Bluetooth headphones?<svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+            <div class="faq-a"><p>Yes! The Speaker Test works with any audio output device connected to your system, including Bluetooth headphones, wireless earbuds, USB DAC/amplifiers, and built-in speakers. The tool uses your browser's default audio output. To select a specific output device, use your operating system's sound settings to set the desired device as the default output before running the test.</p></div>
+          </div>
+          <div class="faq-item reveal">
+            <div class="faq-q">What does white noise test for?<svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+            <div class="faq-a"><p>White noise contains equal amounts of all audible frequencies simultaneously. This makes it excellent for: identifying rattles and resonance in speaker cabinets, checking that no frequency range sounds dramatically quieter or louder than others, and testing the overall tonal balance of your speakers. A well-functioning speaker should produce white noise that sounds like uniform static or "hiss" without any obvious tonal character.</p></div>
+          </div>
+          <div class="faq-item reveal">
+            <div class="faq-q">Why does the bass test not produce much sound?<svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+            <div class="faq-a"><p>Low-frequency reproduction (bass) requires physical speaker drivers capable of moving air at slow rates. Small laptop speakers, phone speakers, and earbuds physically cannot reproduce frequencies below 80–100 Hz regardless of volume. This is a hardware limitation, not a software issue. A very quiet or inaudible bass test result is actually expected on small speakers and means they're working normally — they simply don't have the physical driver size to reproduce bass frequencies.</p></div>
+          </div>
+          <div class="faq-item reveal">
+            <div class="faq-q">Does this test work on mobile phones and tablets?<svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+            <div class="faq-a"><p>Yes! The Speaker Test works on all modern smartphones and tablets using both iOS Safari and Android Chrome. On mobile, connect headphones to properly test left/right stereo separation, as most phone speakers are mono or very close together. Note that iOS Safari requires a user gesture (a tap/click) before audio can play, so clicking any test button will initialize the audio system automatically.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-copy">© 2025 Mobile Viewer — Camera Test, Mic Check, Speaker Test</span>
+        <div class="footer-links">
+          <a href="/privacy" class="footer-link">Privacy</a>
+          <a href="/terms" class="footer-link">Terms</a>
+          <a href="camera-test.html" class="footer-link">Camera Test</a>
+          <a href="mic-check.html" class="footer-link">Mic Check</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Header scroll
+    const hdr = document.getElementById('siteHeader');
+    window.addEventListener('scroll', () => { hdr.classList.toggle('header--scrolled', window.scrollY > 20); }, { passive: true });
+    // Hamburger
+    document.getElementById('hamburger').addEventListener('click', function() {
+      this.classList.toggle('is-open');
+      document.getElementById('mobileMenu').classList.toggle('is-open');
+    });
+    // Reveal
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); observer.unobserve(e.target); }});
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
+    // FAQ
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.addEventListener('click', () => {
+        const item = q.parentElement;
+        const isOpen = item.classList.contains('is-open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('is-open'));
+        if (!isOpen) item.classList.add('is-open');
+      });
+    });
+
+    // --- AUDIO ENGINE ---
+    let audioCtx = null;
+    let masterGain = null;
+    let currentNodes = [];
+    let sweepOsc = null, sweepGain = null;
+    let sweepInterval = null;
+    let meterLFill = document.getElementById('meterL');
+    let meterRFill = document.getElementById('meterR');
+    let meterInterval = null;
+    let oscAnimFrame = null;
+    let oscAnalyser = null;
+
+    const oscCanvas = document.getElementById('oscCanvas');
+    const oscCtx = oscCanvas.getContext('2d');
+    function resizeOscCanvas() {
+      const wrap = oscCanvas.parentElement;
+      oscCanvas.width = wrap.clientWidth;
+      oscCanvas.height = 80;
+    }
+    resizeOscCanvas();
+    window.addEventListener('resize', resizeOscCanvas);
+
+    function initAudio() {
+      if (audioCtx) return;
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      masterGain = audioCtx.createGain();
+      masterGain.gain.value = parseFloat(document.getElementById('masterVolume').value);
+      masterGain.connect(audioCtx.destination);
+    }
+
+    document.getElementById('masterVolume').addEventListener('input', function() {
+      document.getElementById('volPct').textContent = Math.round(this.value * 100) + '%';
+      if (masterGain) masterGain.gain.value = parseFloat(this.value);
+    });
+
+    function stopAllSounds() {
+      currentNodes.forEach(n => { try { n.stop(); } catch(e){} });
+      currentNodes = [];
+      if (sweepOsc) { try { sweepOsc.stop(); } catch(e){} sweepOsc = null; }
+      clearInterval(sweepInterval);
+      sweepInterval = null;
+      clearInterval(meterInterval);
+      meterInterval = null;
+      if (oscAnimFrame) cancelAnimationFrame(oscAnimFrame);
+      meterLFill.style.width = '0%';
+      meterRFill.style.width = '0%';
+      document.querySelectorAll('.test-btn-card').forEach(c => c.classList.remove('is-playing'));
+      document.getElementById('statusDot').className = 'status-dot';
+      document.getElementById('statusText').textContent = 'Speaker Test Ready — Select a test below';
+      document.getElementById('infoFreq').textContent = '—';
+      document.getElementById('infoWave').textContent = '—';
+      document.getElementById('infoChan').textContent = '—';
+    }
+
+    document.getElementById('btnStopAll').addEventListener('click', stopAllSounds);
+
+    function setStatus(text, type) {
+      document.getElementById('statusDot').className = 'status-dot ' + type;
+      document.getElementById('statusText').textContent = text;
+    }
+
+    function playTone(freq, pan, waveType, durationOrLoop) {
+      initAudio();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      const panner = audioCtx.createStereoPanner ? audioCtx.createStereoPanner() : null;
+
+      osc.type = waveType || 'sine';
+      osc.frequency.value = freq;
+      gain.gain.value = 0.5;
+
+      if (panner) {
+        panner.pan.value = pan || 0;
+        osc.connect(gain);
+        gain.connect(panner);
+        panner.connect(masterGain);
+      } else {
+        osc.connect(gain);
+        gain.connect(masterGain);
+      }
+
+      osc.start();
+      if (durationOrLoop && durationOrLoop > 0) {
+        osc.stop(audioCtx.currentTime + durationOrLoop);
+      }
+      currentNodes.push(osc);
+      return osc;
+    }
+
+    function playWhiteNoise(pan) {
+      initAudio();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+
+      const bufLen = audioCtx.sampleRate * 2;
+      const buf = audioCtx.createBuffer(2, bufLen, audioCtx.sampleRate);
+      for (let c = 0; c < 2; c++) {
+        const data = buf.getChannelData(c);
+        for (let i = 0; i < bufLen; i++) data[i] = (Math.random() * 2 - 1) * 0.3;
+      }
+      const src = audioCtx.createBufferSource();
+      src.buffer = buf;
+      src.loop = true;
+      const gain = audioCtx.createGain();
+      gain.gain.value = 0.4;
+      const panner = audioCtx.createStereoPanner ? audioCtx.createStereoPanner() : null;
+      if (panner) {
+        panner.pan.value = pan || 0;
+        src.connect(gain); gain.connect(panner); panner.connect(masterGain);
+      } else {
+        src.connect(gain); gain.connect(masterGain);
+      }
+      src.start();
+      currentNodes.push(src);
+      return src;
+    }
+
+    function updateChannelMeters(leftPct, rightPct) {
+      meterLFill.style.width = leftPct + '%';
+      meterRFill.style.width = rightPct + '%';
+    }
+
+    const TEST_CONFIGS = {
+      left:     { label: 'Left Channel', freq: 440, pan: -1, wave: 'sine', chan: 'Left Only' },
+      right:    { label: 'Right Channel', freq: 440, pan: 1, wave: 'sine', chan: 'Right Only' },
+      both:     { label: 'Both Channels', freq: 440, pan: 0, wave: 'sine', chan: 'Stereo' },
+      stereo:   { label: 'Stereo Ping-Pong', freq: 440, pan: 0, wave: 'sine', chan: 'Alternating' },
+      bass:     { label: 'Bass Test (60 Hz)', freq: 60, pan: 0, wave: 'sine', chan: 'Both' },
+      midrange: { label: 'Midrange Test (1 kHz)', freq: 1000, pan: 0, wave: 'sine', chan: 'Both' },
+      treble:   { label: 'Treble Test (8 kHz)', freq: 8000, pan: 0, wave: 'sine', chan: 'Both' },
+      noise:    { label: 'White Noise', freq: null, pan: 0, wave: 'noise', chan: 'Both' },
+    };
+
+    function runQuickTest(testKey) {
+      stopAllSounds();
+      const cfg = TEST_CONFIGS[testKey];
+      if (!cfg) return;
+
+      initAudio();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+
+      document.querySelectorAll('.test-btn-card').forEach(c => {
+        if (c.dataset.test === testKey) c.classList.add('is-playing');
+      });
+      setStatus('Playing: ' + cfg.label, 'playing');
+      document.getElementById('infoFreq').textContent = cfg.freq ? cfg.freq + ' Hz' : 'Broadband';
+      document.getElementById('infoWave').textContent = cfg.wave.charAt(0).toUpperCase() + cfg.wave.slice(1);
+      document.getElementById('infoChan').textContent = cfg.chan;
+
+      if (cfg.wave === 'noise') {
+        playWhiteNoise(0);
+        updateChannelMeters(75, 75);
+        meterInterval = setInterval(() => {
+          const v = 60 + Math.random() * 30;
+          updateChannelMeters(v, v);
+        }, 80);
+      } else if (testKey === 'stereo') {
+        let left = true;
+        const pingPong = () => {
+          if (!audioCtx) return;
+          const osc = playTone(440, left ? -1 : 1, 'sine', 0.35);
+          updateChannelMeters(left ? 80 : 5, left ? 5 : 80);
+          left = !left;
+        };
+        pingPong();
+        const interval = setInterval(() => {
+          if (!currentNodes.length && !sweepOsc) { clearInterval(interval); return; }
+          // ping-pong continues while card is active
+          const playing = document.querySelector('.test-btn-card[data-test="stereo"].is-playing');
+          if (!playing) { clearInterval(interval); return; }
+          pingPong();
+        }, 400);
+        currentNodes.push({ stop: () => clearInterval(interval) });
+      } else {
+        playTone(cfg.freq, cfg.pan, cfg.wave);
+        const lv = cfg.pan <= 0 ? 80 : (cfg.pan < 0.5 ? 80 : 10);
+        const rv = cfg.pan >= 0 ? 80 : (cfg.pan > -0.5 ? 80 : 10);
+        updateChannelMeters(lv, rv);
+        meterInterval = setInterval(() => {
+          const jitter = Math.random() * 10;
+          updateChannelMeters(lv + jitter, rv + jitter);
+        }, 80);
+      }
+
+      startOscDraw(cfg.freq, cfg.wave);
+    }
+
+    // Quick test cards
+    document.querySelectorAll('.test-btn-card').forEach(card => {
+      card.addEventListener('click', (e) => {
+        if (e.target.classList.contains('btn')) return;
+        const testKey = card.dataset.test;
+        if (card.classList.contains('is-playing')) { stopAllSounds(); return; }
+        runQuickTest(testKey);
+      });
+      const stopBtn = card.querySelector('.test-stop');
+      if (stopBtn) stopBtn.addEventListener('click', (e) => { e.stopPropagation(); stopAllSounds(); });
+    });
+
+    // Frequency sweep generator
+    const freqSlider = document.getElementById('freqSlider');
+    const freqVal = document.getElementById('freqVal');
+    const panSlider = document.getElementById('panSlider');
+    const panVal = document.getElementById('panVal');
+
+    freqSlider.addEventListener('input', function() {
+      const hz = parseInt(this.value);
+      freqVal.textContent = hz >= 1000 ? (hz / 1000).toFixed(1) + ' kHz' : hz + ' Hz';
+      if (sweepOsc) sweepOsc.frequency.value = hz;
+    });
+    panSlider.addEventListener('input', function() {
+      const p = parseFloat(this.value);
+      if (p === 0) panVal.textContent = 'Center';
+      else if (p < 0) panVal.textContent = Math.round(Math.abs(p) * 100) + '% L';
+      else panVal.textContent = Math.round(p * 100) + '% R';
+    });
+
+    document.getElementById('btnPlayTone').addEventListener('click', () => {
+      stopAllSounds();
+      initAudio();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      const freq = parseInt(freqSlider.value);
+      const pan = parseFloat(panSlider.value);
+      const wave = document.getElementById('waveType').value;
+      sweepOsc = audioCtx.createOscillator();
+      sweepGain = audioCtx.createGain();
+      sweepGain.gain.value = 0.5;
+      const panner = audioCtx.createStereoPanner ? audioCtx.createStereoPanner() : null;
+      sweepOsc.type = wave;
+      sweepOsc.frequency.value = freq;
+      if (panner) {
+        panner.pan.value = pan;
+        sweepOsc.connect(sweepGain); sweepGain.connect(panner); panner.connect(masterGain);
+      } else {
+        sweepOsc.connect(sweepGain); sweepGain.connect(masterGain);
+      }
+      sweepOsc.start();
+      currentNodes.push(sweepOsc);
+      setStatus('Playing: ' + freq + ' Hz ' + wave + ' wave', 'playing');
+      document.getElementById('infoFreq').textContent = freq + ' Hz';
+      document.getElementById('infoWave').textContent = wave;
+      document.getElementById('infoChan').textContent = pan < -0.3 ? 'Left' : pan > 0.3 ? 'Right' : 'Center';
+      startOscDraw(freq, wave);
+    });
+
+    document.getElementById('btnStopTone').addEventListener('click', stopAllSounds);
+
+    document.getElementById('btnSweep').addEventListener('click', () => {
+      stopAllSounds();
+      initAudio();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+      const wave = document.getElementById('waveType').value;
+      sweepOsc = audioCtx.createOscillator();
+      sweepGain = audioCtx.createGain();
+      sweepGain.gain.value = 0.45;
+      sweepOsc.type = wave;
+      sweepOsc.frequency.value = 20;
+      sweepOsc.connect(sweepGain);
+      sweepGain.connect(masterGain);
+      sweepOsc.start();
+      currentNodes.push(sweepOsc);
+      setStatus('Auto Sweep: 20 Hz → 20 kHz', 'playing');
+
+      let freq = 20;
+      sweepInterval = setInterval(() => {
+        if (!sweepOsc) { clearInterval(sweepInterval); return; }
+        freq = freq < 1000 ? freq + 5 : freq + 200;
+        if (freq > 20000) { freq = 20; }
+        sweepOsc.frequency.value = freq;
+        freqSlider.value = freq;
+        freqVal.textContent = freq >= 1000 ? (freq / 1000).toFixed(1) + ' kHz' : freq + ' Hz';
+        document.getElementById('infoFreq').textContent = freq >= 1000 ? (freq/1000).toFixed(1) + ' kHz' : freq + ' Hz';
+      }, 50);
+    });
+
+    // Oscilloscope
+    function startOscDraw(freq, waveType) {
+      if (!document.getElementById('vizToggle').checked) return;
+      if (oscAnimFrame) cancelAnimationFrame(oscAnimFrame);
+      if (!audioCtx) return;
+
+      oscAnalyser = audioCtx.createAnalyser();
+      oscAnalyser.fftSize = 512;
+      masterGain.connect(oscAnalyser);
+
+      const drawOsc = () => {
+        oscAnimFrame = requestAnimationFrame(drawOsc);
+        if (!document.getElementById('vizToggle').checked) { oscCtx.clearRect(0, 0, oscCanvas.width, oscCanvas.height); return; }
+        const W = oscCanvas.width, H = oscCanvas.height;
+        const bufLen = oscAnalyser.frequencyBinCount;
+        const timeData = new Uint8Array(bufLen);
+        oscAnalyser.getByteTimeDomainData(timeData);
+
+        oscCtx.clearRect(0, 0, W, H);
+        oscCtx.beginPath();
+        oscCtx.strokeStyle = 'rgba(255,79,216,0.85)';
+        oscCtx.lineWidth = 1.5;
+        oscCtx.shadowColor = 'rgba(255,79,216,0.3)';
+        oscCtx.shadowBlur = 4;
+        const sliceW = W / bufLen;
+        let x = 0;
+        for (let i = 0; i < bufLen; i++) {
+          const v = timeData[i] / 128;
+          const y = v * H / 2;
+          if (i === 0) oscCtx.moveTo(x, y);
+          else oscCtx.lineTo(x, y);
+          x += sliceW;
+        }
+        oscCtx.stroke();
+      };
+      drawOsc();
+    }
+
+    // Init ads
+    try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
+    try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
+  </script>
+</body>
+</html>
