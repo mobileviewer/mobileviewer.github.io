@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9759808041159779" 
+crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MBJB77SQ0K"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-MBJB77SQ0K');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Camera Test — Free Online Webcam Tester & Camera Check Tool</title>  
+  <meta name="description" content="Test your webcam online for free. Check camera resolution, FPS, brightness, contrast, and advanced settings instantly — no download required. Works on all devices and browsers.">
+  <meta name="keywords" content="camera test, webcam test, test webcam online, camera check, webcam checker, online camera test, test my camera, webcam tester, camera not working, check webcam, camera resolution test, FPS test">
+  <meta name="author" content="DevTools Hub">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://mobileviewer.github.io/camera-test">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  <meta property="og:title" content="Camera Test — Free Online Webcam Tester">
+  <meta property="og:description" content="Instantly test your webcam — check resolution, FPS, brightness, contrast and more. Free, no install needed.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mobileviewer.github.io/camera-test">
+  <meta property="og:image" content="https://mobileviewer.github.io/og-camera.jpg">
+  <meta property="og:site_name" content="Mobile Viewer">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Camera Test — Free Online Webcam Tester">
+  <meta name="twitter:description" content="Test your webcam online for free. Check resolution, FPS, and advanced camera settings instantly.">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Camera Test",
+    "url": "https://mobileviewer.github.io/camera-test",
+    "description": "Free online webcam tester. Check camera resolution, FPS, brightness, contrast, and advanced settings instantly — no download required.",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires a modern web browser with camera permissions.",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+    "featureList": ["Camera resolution detection","FPS measurement","Brightness & contrast controls","Device selection","Screenshot capture","Flip & mirror controls","Zoom control","Fullscreen preview"]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #00F0FF;
+      --primary-dim: rgba(0,240,255,0.15);
+      --secondary: #7B61FF;
+      --accent: #FF4FD8;
+      --bg: #080C12;
+      --bg-dark: #050810;
+      --bg-card: #0D1220;
+      --bg-card-2: #111827;
+      --border: rgba(255,255,255,0.07);
+      --border-light: rgba(255,255,255,0.12);
+      --text: #F0F4FF;
+      --text-secondary: rgba(240,244,255,0.6);
+      --text-muted: rgba(240,244,255,0.35);
+      --radius: 12px;
+      --radius-lg: 20px;
+      --radius-xl: 28px;
+      --shadow: 0 4px 24px rgba(0,0,0,0.4);
+      --shadow-lg: 0 12px 48px rgba(0,0,0,0.6);
+      --shadow-glow: 0 0 40px rgba(0,240,255,0.12);
+      --header-h: 70px;
+      --container: 1240px;
+      --font-display: 'Syne', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --transition: 0.2s ease;
+      --transition-md: 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 16px); -webkit-text-size-adjust: 100%; }
+    body { font-family: var(--font-body); font-size: 16px; line-height: 1.6; color: var(--text); background: var(--bg); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+    img, video { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+    ul { list-style: none; }
+    .container { width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+    .gradient-text { background: linear-gradient(90deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .section-badge { display: inline-block; font-family: var(--font-display); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--primary); background: var(--primary-dim); border: 1px solid rgba(0,240,255,0.25); padding: 5px 14px; border-radius: 100px; margin-bottom: 1.25rem; }
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    :focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 4px; }
+
+    /* HEADER */
+    .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; height: var(--header-h); background: rgba(8,12,18,0.85); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); border-bottom: 1px solid var(--border); transition: background 0.3s ease, border-color 0.3s ease; }
+    .site-header.header--scrolled { background: rgba(8,12,18,0.97); border-bottom-color: var(--border-light); }
+    .header-inner { max-width: var(--container); margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; gap: 2rem; }
+    .header-logo { display: flex; align-items: center; gap: 10px; }
+    .logo-icon { color: var(--primary); }
+    .logo-text { font-family: var(--font-display); font-size: 1.15rem; font-weight: 800; letter-spacing: -0.02em; color: var(--text); }
+    .logo-accent { color: var(--primary); }
+    .header-nav { margin-left: auto; }
+    .nav-list { display: flex; align-items: center; gap: 4px; }
+    .nav-link { display: flex; align-items: center; gap: 5px; padding: 6px 14px; border-radius: 8px; font-size: 0.92rem; font-weight: 500; color: var(--text-secondary); transition: color var(--transition), background var(--transition); white-space: nowrap; }
+    .nav-link:hover, .nav-link--active { color: var(--text); background: rgba(255,255,255,0.06); }
+    .nav-link--active { color: var(--primary) !important; }
+    .header-cta-btn { display: flex; align-items: center; gap: 8px; padding: 9px 18px; background: var(--primary); color: #000; font-size: 0.875rem; font-weight: 700; border-radius: 8px; transition: background var(--transition), transform var(--transition), box-shadow var(--transition); }
+    .header-cta-btn:hover { background: #29f5ff; transform: translateY(-1px); box-shadow: 0 4px 20px rgba(0,240,255,0.3); }
+    .hamburger { display: none; flex-direction: column; justify-content: space-between; width: 26px; height: 18px; padding: 0; margin-left: auto; flex-shrink: 0; }
+    .hamburger span { display: block; width: 100%; height: 2px; background: var(--text); border-radius: 2px; transition: transform 0.3s ease, opacity 0.3s ease; }
+    .hamburger.is-open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.is-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.is-open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; top: var(--header-h); left: 0; right: 0; bottom: 0; background: rgba(8,12,18,0.98); backdrop-filter: blur(20px); z-index: 999; padding: 24px; overflow-y: auto; }
+    .mobile-menu.is-open { display: block; }
+    .mobile-nav-list { display: flex; flex-direction: column; gap: 4px; }
+    .mobile-nav-link { display: block; padding: 12px 16px; border-radius: 10px; font-size: 1rem; font-weight: 500; color: var(--text-secondary); transition: color var(--transition), background var(--transition); }
+    .mobile-nav-link:hover { color: var(--text); background: rgba(255,255,255,0.06); }
+
+    /* HERO */
+    .hero { padding: calc(var(--header-h) + 64px) 0 64px; position: relative; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; pointer-events: none; }
+    .hero-orb { position: absolute; border-radius: 50%; filter: blur(80px); }
+    .hero-orb-1 { width: 600px; height: 400px; top: -100px; left: 50%; transform: translateX(-50%); background: radial-gradient(ellipse, rgba(0,240,255,0.07) 0%, transparent 70%); }
+    .hero-orb-2 { width: 400px; height: 300px; top: 40%; right: -100px; background: radial-gradient(ellipse, rgba(123,97,255,0.06) 0%, transparent 70%); }
+    .hero-inner { text-align: center; max-width: 780px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-title { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.25rem; }
+    .hero-description { font-size: 1.1rem; color: var(--text-secondary); max-width: 580px; margin: 0 auto 2.5rem; line-height: 1.7; }
+    .hero-badges { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .hero-badge { display: flex; align-items: center; gap: 6px; padding: 6px 14px; background: var(--bg-card); border: 1px solid var(--border-light); border-radius: 100px; font-size: 0.82rem; font-weight: 600; color: var(--text-secondary); }
+    .hero-badge svg { color: var(--primary); flex-shrink: 0; }
+
+    /* TOOL CARD */
+    .tool-section { padding: 0 0 80px; }
+    .tool-card { background: var(--bg-card); border: 1px solid var(--border-light); border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-lg); }
+    .tool-card-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 28px; border-bottom: 1px solid var(--border); background: rgba(0,240,255,0.03); flex-wrap: wrap; gap: 12px; }
+    .tool-card-title { font-family: var(--font-display); font-size: 1rem; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+    .status-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--text-muted); transition: background 0.3s; }
+    .status-dot.active { background: #22c55e; box-shadow: 0 0 8px #22c55e; animation: pulse-dot 2s infinite; }
+    .status-dot.error { background: #ef4444; }
+    @keyframes pulse-dot { 0%,100%{opacity:1}50%{opacity:0.5} }
+    .tool-card-actions { display: flex; gap: 8px; }
+    .btn { display: inline-flex; align-items: center; gap: 7px; padding: 9px 18px; border-radius: 10px; font-size: 0.875rem; font-weight: 600; transition: all var(--transition); white-space: nowrap; }
+    .btn-primary { background: var(--primary); color: #000; }
+    .btn-primary:hover { background: #29f5ff; transform: translateY(-1px); box-shadow: 0 4px 20px rgba(0,240,255,0.3); }
+    .btn-secondary { background: rgba(255,255,255,0.06); color: var(--text-secondary); border: 1px solid var(--border-light); }
+    .btn-secondary:hover { background: rgba(255,255,255,0.1); color: var(--text); }
+    .btn-danger { background: rgba(239,68,68,0.12); color: #ef4444; border: 1px solid rgba(239,68,68,0.25); }
+    .btn-danger:hover { background: rgba(239,68,68,0.2); }
+    .btn-sm { padding: 6px 12px; font-size: 0.8rem; }
+    .btn:disabled { opacity: 0.45; cursor: not-allowed; pointer-events: none; }
+
+    .tool-body { display: grid; grid-template-columns: 1fr 360px; min-height: 500px; }
+    .camera-preview-area { position: relative; background: #020408; display: flex; align-items: center; justify-content: center; min-height: 420px; overflow: hidden; }
+    #cameraVideo { width: 100%; height: 100%; object-fit: cover; display: none; }
+    #cameraCanvas { display: none; }
+    .camera-placeholder { text-align: center; padding: 60px 40px; }
+    .camera-placeholder svg { color: rgba(0,240,255,0.25); margin: 0 auto 20px; }
+    .camera-placeholder h3 { font-family: var(--font-display); font-size: 1.2rem; margin-bottom: 8px; }
+    .camera-placeholder p { color: var(--text-muted); font-size: 0.9rem; }
+    .camera-overlay { position: absolute; inset: 0; pointer-events: none; }
+    .camera-grid-lines { position: absolute; inset: 0; opacity: 0; transition: opacity 0.3s; }
+    .camera-grid-lines.show { opacity: 1; }
+    .camera-grid-lines::before { content: ''; position: absolute; left: 33.33%; top: 0; bottom: 0; border-left: 1px solid rgba(0,240,255,0.2); }
+    .camera-grid-lines::after { content: ''; position: absolute; left: 66.66%; top: 0; bottom: 0; border-left: 1px solid rgba(0,240,255,0.2); }
+    .camera-grid-h { position: absolute; left: 0; right: 0; top: 33.33%; border-top: 1px solid rgba(0,240,255,0.2); }
+    .camera-grid-h2 { position: absolute; left: 0; right: 0; top: 66.66%; border-top: 1px solid rgba(0,240,255,0.2); }
+    .camera-stats-overlay { position: absolute; top: 14px; left: 14px; display: flex; gap: 8px; flex-wrap: wrap; }
+    .cam-stat-chip { background: rgba(8,12,18,0.85); border: 1px solid var(--border-light); border-radius: 8px; padding: 4px 10px; font-size: 0.75rem; font-weight: 600; color: var(--primary); font-family: 'SF Mono','Fira Code',monospace; display: none; }
+    .cam-stat-chip.show { display: block; }
+    .screenshot-flash { position: absolute; inset: 0; background: white; opacity: 0; pointer-events: none; transition: opacity 0.1s; }
+    .screenshot-flash.flash { animation: flash-anim 0.3s ease; }
+    @keyframes flash-anim { 0%{opacity:0.8}100%{opacity:0} }
+    .camera-controls-bottom { position: absolute; bottom: 0; left: 0; right: 0; padding: 16px; display: none; flex-direction: row; gap: 8px; justify-content: center; background: linear-gradient(transparent, rgba(8,12,18,0.9)); }
+    .camera-controls-bottom.show { display: flex; }
+
+    .panel { padding: 24px; display: flex; flex-direction: column; gap: 20px; border-left: 1px solid var(--border); overflow-y: auto; max-height: 620px; }
+    .panel-section { display: flex; flex-direction: column; gap: 10px; }
+    .panel-label { font-family: var(--font-display); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px; }
+    .panel-select { width: 100%; padding: 10px 14px; background: var(--bg-card-2); border: 1px solid var(--border-light); border-radius: 10px; color: var(--text); font-family: var(--font-body); font-size: 0.875rem; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgba(240,244,255,0.4)' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; transition: border-color var(--transition); cursor: pointer; }
+    .panel-select:hover, .panel-select:focus { border-color: rgba(0,240,255,0.4); outline: none; }
+    .range-row { display: flex; align-items: center; gap: 10px; }
+    .range-label { font-size: 0.82rem; color: var(--text-secondary); min-width: 90px; }
+    .range-val { font-size: 0.82rem; color: var(--primary); font-family: 'SF Mono','Fira Code',monospace; min-width: 38px; text-align: right; }
+    input[type="range"] { -webkit-appearance: none; flex: 1; height: 4px; background: var(--border-light); border-radius: 2px; outline: none; cursor: pointer; }
+    input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%; background: var(--primary); box-shadow: 0 0 8px rgba(0,240,255,0.5); cursor: pointer; transition: transform 0.15s; }
+    input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.2); }
+    input[type="range"]::-moz-range-thumb { width: 16px; height: 16px; border-radius: 50%; background: var(--primary); border: none; cursor: pointer; }
+    .toggle-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+    .toggle-label { font-size: 0.875rem; color: var(--text-secondary); }
+    .toggle { position: relative; width: 40px; height: 22px; flex-shrink: 0; }
+    .toggle input { opacity: 0; width: 0; height: 0; }
+    .toggle-slider { position: absolute; inset: 0; background: rgba(255,255,255,0.1); border: 1px solid var(--border-light); border-radius: 100px; cursor: pointer; transition: background 0.2s, border-color 0.2s; }
+    .toggle-slider::after { content: ''; position: absolute; left: 3px; top: 2px; width: 16px; height: 16px; background: var(--text-muted); border-radius: 50%; transition: transform 0.2s, background 0.2s; }
+    .toggle input:checked + .toggle-slider { background: var(--primary-dim); border-color: rgba(0,240,255,0.4); }
+    .toggle input:checked + .toggle-slider::after { transform: translateX(18px); background: var(--primary); }
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .info-card { background: var(--bg-card-2); border: 1px solid var(--border); border-radius: 10px; padding: 12px; }
+    .info-card-label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+    .info-card-value { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--primary); }
+    .snapshot-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+    .snapshot-thumb { aspect-ratio: 16/9; background: var(--bg-card-2); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; cursor: pointer; transition: border-color var(--transition), transform var(--transition); }
+    .snapshot-thumb:hover { border-color: rgba(0,240,255,0.4); transform: scale(1.04); }
+    .snapshot-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .error-msg { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.25); border-radius: 10px; padding: 14px 16px; color: #fca5a5; font-size: 0.875rem; display: none; }
+    .error-msg.show { display: block; }
+
+    /* CONTENT SECTIONS */
+    section { padding: 80px 0; }
+    section:nth-child(even) { background: rgba(255,255,255,0.015); }
+    .section-header { text-align: center; margin-bottom: 4rem; }
+    .section-title { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 700; line-height: 1.15; margin-bottom: 1rem; }
+    .section-description { font-size: 1.05rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto; line-height: 1.7; }
+
+    /* HOW TO */
+    .how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .how-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 32px 28px; position: relative; transition: border-color var(--transition-md), transform var(--transition-md); }
+    .how-card:hover { border-color: rgba(0,240,255,0.3); transform: translateY(-4px); }
+    .how-num { font-family: var(--font-display); font-size: 3rem; font-weight: 800; color: rgba(0,240,255,0.1); line-height: 1; margin-bottom: 16px; }
+    .how-card h3 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; }
+    .how-card p { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.65; }
+    .how-icon { width: 44px; height: 44px; border-radius: 12px; background: var(--primary-dim); border: 1px solid rgba(0,240,255,0.2); display: flex; align-items: center; justify-content: center; color: var(--primary); margin-bottom: 20px; }
+
+    /* FEATURES */
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .feature-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px 24px; transition: border-color var(--transition-md), transform var(--transition-md); }
+    .feature-card:hover { border-color: rgba(0,240,255,0.25); transform: translateY(-3px); }
+    .feature-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--primary-dim); border: 1px solid rgba(0,240,255,0.2); display: flex; align-items: center; justify-content: center; color: var(--primary); margin-bottom: 16px; }
+    .feature-card h3 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .feature-card p { color: var(--text-secondary); font-size: 0.875rem; line-height: 1.6; }
+
+    /* FAQ */
+    .faq-list { display: flex; flex-direction: column; gap: 12px; max-width: 800px; margin: 0 auto; }
+    .faq-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .faq-q { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; cursor: pointer; font-family: var(--font-display); font-size: 1rem; font-weight: 600; gap: 16px; transition: color var(--transition); user-select: none; }
+    .faq-q:hover { color: var(--primary); }
+    .faq-icon { flex-shrink: 0; transition: transform 0.3s ease; color: var(--text-muted); }
+    .faq-item.is-open .faq-icon { transform: rotate(45deg); color: var(--primary); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.35s ease; }
+    .faq-item.is-open .faq-a { max-height: 400px; }
+    .faq-a p { padding: 0 24px 20px; color: var(--text-secondary); font-size: 0.925rem; line-height: 1.7; }
+
+    /* FOOTER */
+    .site-footer { background: var(--bg-dark); border-top: 1px solid var(--border); padding: 40px 0; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+    .footer-copy { font-size: 0.82rem; color: var(--text-muted); }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-link { font-size: 0.82rem; color: var(--text-muted); transition: color 0.2s; }
+    .footer-link:hover { color: var(--primary); }
+
+    /* AD */
+    .ad-slot { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); min-height: 90px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 0.8rem; margin: 32px 0; overflow: hidden; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .tool-body { grid-template-columns: 1fr; }
+      .panel { border-left: none; border-top: 1px solid var(--border); max-height: none; }
+      .header-nav, .header-cta { display: none; }
+      .hamburger { display: flex; }
+      .how-grid { grid-template-columns: 1fr 1fr; }
+      .features-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .container { padding: 0 16px; }
+      .hero-title { font-size: 2rem; }
+      .how-grid { grid-template-columns: 1fr; }
+      .features-grid { grid-template-columns: 1fr; }
+      .tool-card-header { flex-direction: column; align-items: flex-start; }
+      .info-grid { grid-template-columns: 1fr 1fr 1fr 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header Component -->
+  <div id="header-placeholder"></div>
+
+  <main>
+    <!-- HERO -->
+    <div class="hero">
+      <div class="hero-bg">
+        <div class="hero-orb hero-orb-1"></div>
+        <div class="hero-orb hero-orb-2"></div>
+      </div>
+      <div class="container">
+        <div class="hero-inner reveal">
+          <span class="section-badge">Free Online Tool</span>
+          <h1 class="hero-title">Camera <span class="gradient-text">Test</span></h1>
+          <p class="hero-description">Instantly test your webcam online — check resolution, FPS, brightness, contrast, and advanced camera settings. No install. No signup.</p>
+          <div class="hero-badges">
+            <span class="hero-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> No Install</span>
+            <span class="hero-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Works on Mobile</span>
+            <span class="hero-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 100% Private</span>
+            <span class="hero-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> All Browsers</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOOL -->
+    <div class="tool-section">
+      <div class="container">
+        <div class="ad-slot">
+          <ins class="adsbygoogle" style="display:block;width:100%;height:90px" data-ad-client="ca-pub-9759808041159779" data-ad-slot="auto" data-ad-format="horizontal"></ins>
+        </div>
+        <div class="tool-card reveal">
+          <div class="tool-card-header">
+            <div class="tool-card-title">
+              <span class="status-dot" id="statusDot"></span>
+              <span id="statusText">Camera Ready — Click Start to Begin</span>
+            </div>
+            <div class="tool-card-actions">
+              <button class="btn btn-secondary btn-sm" id="btnFullscreen" style="display:none">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+                Fullscreen
+              </button>
+              <button class="btn btn-secondary btn-sm" id="btnScreenshot" disabled>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="12" cy="12" r="4"/></svg>
+                Capture
+              </button>
+              <button class="btn btn-primary" id="btnStart">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                Start Camera
+              </button>
+              <button class="btn btn-danger" id="btnStop" style="display:none">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>
+                Stop
+              </button>
+            </div>
+          </div>
+          <div class="error-msg" id="errorMsg"></div>
+          <div class="tool-body">
+            <div class="camera-preview-area" id="previewArea">
+              <video id="cameraVideo" autoplay muted playsinline></video>
+              <canvas id="cameraCanvas"></canvas>
+              <div class="camera-placeholder" id="cameraPlaceholder">
+                <svg width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                  <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/>
+                  <circle cx="12" cy="13" r="4"/>
+                </svg>
+                <h3>Camera Preview</h3>
+                <p>Click "Start Camera" to begin testing your webcam</p>
+              </div>
+              <div class="camera-overlay">
+                <div class="camera-grid-lines" id="gridLines">
+                  <div class="camera-grid-h"></div>
+                  <div class="camera-grid-h2"></div>
+                </div>
+              </div>
+              <div class="camera-stats-overlay">
+                <span class="cam-stat-chip" id="chipRes"></span>
+                <span class="cam-stat-chip" id="chipFps"></span>
+                <span class="cam-stat-chip" id="chipDevice"></span>
+              </div>
+              <div class="screenshot-flash" id="flash"></div>
+              <div class="camera-controls-bottom" id="camBottomControls">
+                <button class="btn btn-secondary btn-sm" id="btnFlip" title="Flip Horizontal">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3L4 7l4 4M16 3l4 4-4 4M4 7h16"/></svg>
+                  Flip
+                </button>
+                <button class="btn btn-secondary btn-sm" id="btnMirror" title="Mirror">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="3" x2="12" y2="21"/><polyline points="16 7 12 3 8 7"/><polyline points="16 17 12 21 8 17"/></svg>
+                  Mirror
+                </button>
+              </div>
+            </div>
+
+            <!-- PANEL -->
+            <div class="panel">
+              <div class="panel-section">
+                <div class="panel-label">Camera Device</div>
+                <select class="panel-select" id="deviceSelect">
+                  <option value="">-- Select Camera --</option>
+                </select>
+              </div>
+              <div class="panel-section">
+                <div class="panel-label">Resolution</div>
+                <select class="panel-select" id="resolutionSelect">
+                  <option value="default">Auto (Recommended)</option>
+                  <option value="3840x2160">4K — 3840×2160</option>
+                  <option value="1920x1080">Full HD — 1920×1080</option>
+                  <option value="1280x720">HD — 1280×720</option>
+                  <option value="960x540">qHD — 960×540</option>
+                  <option value="640x480">VGA — 640×480</option>
+                  <option value="320x240">QVGA — 320×240</option>
+                </select>
+              </div>
+              <div class="panel-section">
+                <div class="panel-label">Frame Rate</div>
+                <select class="panel-select" id="fpsSelect">
+                  <option value="0">Auto</option>
+                  <option value="60">60 FPS</option>
+                  <option value="30">30 FPS</option>
+                  <option value="24">24 FPS</option>
+                  <option value="15">15 FPS</option>
+                </select>
+              </div>
+
+              <div class="panel-section">
+                <div class="panel-label">Image Controls</div>
+                <div class="range-row">
+                  <span class="range-label">Brightness</span>
+                  <input type="range" id="brightness" min="0" max="200" value="100">
+                  <span class="range-val" id="brightnessVal">100%</span>
+                </div>
+                <div class="range-row">
+                  <span class="range-label">Contrast</span>
+                  <input type="range" id="contrast" min="0" max="200" value="100">
+                  <span class="range-val" id="contrastVal">100%</span>
+                </div>
+                <div class="range-row">
+                  <span class="range-label">Saturation</span>
+                  <input type="range" id="saturation" min="0" max="200" value="100">
+                  <span class="range-val" id="saturationVal">100%</span>
+                </div>
+                <div class="range-row">
+                  <span class="range-label">Zoom</span>
+                  <input type="range" id="zoomRange" min="1" max="3" step="0.1" value="1">
+                  <span class="range-val" id="zoomVal">1.0×</span>
+                </div>
+              </div>
+
+              <div class="panel-section">
+                <div class="panel-label">Options</div>
+                <div class="toggle-row">
+                  <span class="toggle-label">Show Grid Lines</span>
+                  <label class="toggle"><input type="checkbox" id="gridToggle"><span class="toggle-slider"></span></label>
+                </div>
+                <div class="toggle-row">
+                  <span class="toggle-label">Show Stats Overlay</span>
+                  <label class="toggle"><input type="checkbox" id="statsToggle" checked><span class="toggle-slider"></span></label>
+                </div>
+                <div class="toggle-row">
+                  <span class="toggle-label">Mirror Horizontally</span>
+                  <label class="toggle"><input type="checkbox" id="mirrorToggle"><span class="toggle-slider"></span></label>
+                </div>
+              </div>
+
+              <div class="panel-section">
+                <div class="panel-label">Camera Info</div>
+                <div class="info-grid">
+                  <div class="info-card"><div class="info-card-label">Width</div><div class="info-card-value" id="infoW">—</div></div>
+                  <div class="info-card"><div class="info-card-label">Height</div><div class="info-card-value" id="infoH">—</div></div>
+                  <div class="info-card"><div class="info-card-label">FPS</div><div class="info-card-value" id="infoFps">—</div></div>
+                  <div class="info-card"><div class="info-card-label">Aspect</div><div class="info-card-value" id="infoAspect">—</div></div>
+                </div>
+              </div>
+
+              <div class="panel-section">
+                <div class="panel-label">Screenshots (<span id="snapCount">0</span>)</div>
+                <div class="snapshot-grid" id="snapshotGrid"></div>
+                <button class="btn btn-secondary" id="btnDownloadAll" style="display:none; width:100%; margin-top:8px; justify-content:center">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                  Download All
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ad-slot" style="margin-top:32px">
+          <ins class="adsbygoogle" style="display:block;width:100%;height:90px" data-ad-client="ca-pub-9759808041159779" data-ad-slot="auto" data-ad-format="horizontal"></ins>
+        </div>
+      </div>
+    </div>
+
+    <!-- HOW TO -->
+    <section id="how-to">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-badge">Guide</span>
+          <h2 class="section-title">How to <span class="gradient-text">Test Your Camera</span></h2>
+          <p class="section-description">Get your webcam tested in seconds with these simple steps. No software installation required.</p>
+        </div>
+        <div class="how-grid">
+          <div class="how-card reveal">
+            <div class="how-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+            <div class="how-num">01</div>
+            <h3>Click "Start Camera"</h3>
+            <p>Press the Start Camera button. Your browser will ask for camera permission — click Allow. Your webcam stream will appear instantly in the preview area.</p>
+          </div>
+          <div class="how-card reveal">
+            <div class="how-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93A10 10 0 1020.11 8M22 2L20 8l-6-2"/></svg></div>
+            <div class="how-num">02</div>
+            <h3>Check Camera Quality</h3>
+            <p>View the live stats overlay showing your camera's resolution and FPS. Use the panel controls to adjust brightness, contrast, saturation, and zoom to check your camera's capabilities.</p>
+          </div>
+          <div class="how-card reveal">
+            <div class="how-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="12" cy="12" r="4"/></svg></div>
+            <div class="how-num">03</div>
+            <h3>Capture & Compare</h3>
+            <p>Use the Capture button to take screenshots and evaluate image quality. Try different resolutions and FPS settings using the panel dropdowns to find the best setup for your needs.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DESCRIPTION / FEATURES -->
+    <section id="about">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-badge">Features</span>
+          <h2 class="section-title">Everything You Need to <span class="gradient-text">Test Your Webcam</span></h2>
+          <p class="section-description">A professional-grade camera diagnostic tool that runs entirely in your browser. Your video never leaves your device.</p>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card reveal">
+            <div class="feature-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+            <h3>Live Resolution Detection</h3>
+            <p>Automatically detects and displays your camera's actual output resolution in real-time, including width, height, and aspect ratio.</p>
+          </div>
+          <div class="feature-card reveal">
+            <div class="feature-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <h3>FPS Measurement</h3>
+            <p>Measure your webcam's actual frames-per-second in real-time. Test whether your camera achieves 30 FPS, 60 FPS, or another rate.</p>
+          </div>
+          <div class="feature-card reveal">
+            <div class="feature-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg></div>
+            <h3>Brightness & Contrast</h3>
+            <p>Adjust brightness, contrast, and saturation via CSS filter controls to see how your camera handles different lighting conditions.</p>
+          </div>
+          <div class="feature-card reveal">
+            <div class="feature-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></div>
+            <h3>Multi-Camera Support</h3>
+            <p>If you have multiple cameras (built-in + external webcam), easily switch between them using the device selector to test each one.</p>
+          </div>
+          <div class="feature-card reveal">
+            <div class="feature-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="12" cy="12" r="4"/></svg></div>
+            <h3>Screenshot Capture</h3>
+            <p>Capture still images from your webcam directly in the browser. View thumbnails and download individual snapshots to your device.</p>
+          </div>
+          <div class="feature-card reveal">
+            <div class="feature-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+            <h3>100% Private & Secure</h3>
+            <p>All processing happens locally in your browser using the WebRTC API. Your camera feed is never uploaded or transmitted to any server.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-badge">FAQ</span>
+          <h2 class="section-title">Frequently Asked <span class="gradient-text">Questions</span></h2>
+          <p class="section-description">Everything you need to know about testing your webcam online.</p>
+        </div>
+        <div class="faq-list">
+          <div class="faq-item reveal">
+            <div class="faq-q">Why is my camera not working on this test?<svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+            <div class="faq-a"><p>Most camera issues are permission-related. Make sure you click "Allow" when your browser prompts for camera access. If you previously denied permission, click the camera icon in your browser's address bar to reset it. Also ensure no other application (Zoom, Teams, Skype) is using the camera simultaneously. On mobile, check your browser app's camera permissions in your device settings.</p></div>
+          </div>
+          <div class="faq-item reveal">
+            <div class="faq-q">Does this camera test work on iPhone or Android?<svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+            <div class="faq-a"><p>Yes! The Camera Test tool works on all modern smartphones and tablets. On iOS, it works in Safari and Chrome. On Android, it works in Chrome, Firefox, and other modern browsers. You can even switch between the front (selfie) and rear camera using the device selector that appears after granting camera permission.</p></div>
+          </div>
+          <div class="faq-item reveal">
+            <div class="faq-q">Is my video feed saved or sent anywhere?<svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+            <div class="faq-a"><p>Absolutely not. This tool uses the browser's built-in WebRTC (Web Real-Time Communication) API, which provides direct access to your camera hardware. All video processing and display happens locally on your device. Nothing is uploaded, recorded, or transmitted. We cannot see your camera feed at all — we don't even have a server to receive it.</p></div>
+          </div>
+          <div class="faq-item reveal">
+            <div class="faq-q">What does the FPS number mean?<svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+            <div class="faq-a"><p>FPS stands for Frames Per Second — how many images your camera captures and displays every second. Most webcams support 30 FPS, while high-quality cameras support 60 FPS. A higher FPS means smoother video, which is especially important for video calls and streaming. If your FPS is lower than expected, it could indicate poor lighting, a USB bandwidth issue, or background apps consuming resources.</p></div>
+          </div>
+          <div class="faq-item reveal">
+            <div class="faq-q">How do I test camera resolution?<svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+            <div class="faq-a"><p>After starting the camera, you'll see the current resolution displayed in the stats overlay (e.g., "1920×1080"). You can also use the Resolution dropdown in the settings panel to request a specific resolution and see if your camera supports it. Note that the actual delivered resolution may be limited by your camera hardware — requesting 4K won't upgrade an HD webcam.</p></div>
+          </div>
+          <div class="faq-item reveal">
+            <div class="faq-q">Why does the resolution show differently than my camera's specs?<svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+            <div class="faq-a"><p>Browser-based camera access uses the WebRTC media constraints API, which negotiates resolution with your hardware and OS drivers. The browser may choose a different resolution based on available system resources, USB bandwidth, or driver limitations. Some cameras also have firmware-level resolution limits that override software requests.</p></div>
+          </div>
+          <div class="faq-item reveal">
+            <div class="faq-q">My camera shows a black screen — what should I do?<svg class="faq-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+            <div class="faq-a"><p>A black screen usually means the camera is accessed but not outputting video. Try: (1) Check if a physical lens cover is closed. (2) Restart your browser and try again. (3) Check if another app has exclusive camera access. (4) Update your webcam drivers (Windows) or check System Preferences › Security & Privacy (Mac). (5) Try selecting a different camera from the device dropdown if you have multiple cameras connected.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Component -->
+  <div id="footer-placeholder"></div>
+
+  <script src="header.js"></script>
+  <script src="footer.js"></script>
+
+
+  <script>
+    // --- Header scroll ---
+    const hdr = document.getElementById('siteHeader');
+    window.addEventListener('scroll', () => { hdr.classList.toggle('header--scrolled', window.scrollY > 20); }, { passive: true });
+
+    // --- Hamburger ---
+    const ham = document.getElementById('hamburger');
+    const mob = document.getElementById('mobileMenu');
+    ham.addEventListener('click', () => { ham.classList.toggle('is-open'); mob.classList.toggle('is-open'); });
+
+    // --- Reveal ---
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); observer.unobserve(e.target); }});
+    }, { threshold: 0.1 });
+    reveals.forEach(r => observer.observe(r));
+
+    // --- FAQ ---
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.addEventListener('click', () => {
+        const item = q.parentElement;
+        const isOpen = item.classList.contains('is-open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('is-open'));
+        if (!isOpen) item.classList.add('is-open');
+      });
+    });
+
+    // --- CAMERA LOGIC ---
+    const video = document.getElementById('cameraVideo');
+    const canvas = document.getElementById('cameraCanvas');
+    const ctx = canvas.getContext('2d');
+    const placeholder = document.getElementById('cameraPlaceholder');
+    const statusDot = document.getElementById('statusDot');
+    const statusText = document.getElementById('statusText');
+    const errorMsg = document.getElementById('errorMsg');
+    const btnStart = document.getElementById('btnStart');
+    const btnStop = document.getElementById('btnStop');
+    const btnScreenshot = document.getElementById('btnScreenshot');
+    const btnFullscreen = document.getElementById('btnFullscreen');
+    const deviceSelect = document.getElementById('deviceSelect');
+    const resSelect = document.getElementById('resolutionSelect');
+    const fpsSelect = document.getElementById('fpsSelect');
+    const chipRes = document.getElementById('chipRes');
+    const chipFps = document.getElementById('chipFps');
+    const chipDevice = document.getElementById('chipDevice');
+    const infoW = document.getElementById('infoW');
+    const infoH = document.getElementById('infoH');
+    const infoFps = document.getElementById('infoFps');
+    const infoAspect = document.getElementById('infoAspect');
+    const flash = document.getElementById('flash');
+    const gridLines = document.getElementById('gridLines');
+    const snapGrid = document.getElementById('snapshotGrid');
+    const snapCount = document.getElementById('snapCount');
+    const btnDownloadAll = document.getElementById('btnDownloadAll');
+    const camBottomControls = document.getElementById('camBottomControls');
+
+    let stream = null;
+    let fpsInterval = null;
+    let frameCount = 0;
+    let lastTime = performance.now();
+    let currentFps = 0;
+    let mirrorOn = false;
+    let snapshots = [];
+
+    // CSS filter
+    function applyFilters() {
+      const b = document.getElementById('brightness').value;
+      const c = document.getElementById('contrast').value;
+      const s = document.getElementById('saturation').value;
+      video.style.filter = `brightness(${b}%) contrast(${c}%) saturate(${s}%)`;
+    }
+    ['brightness','contrast','saturation'].forEach(id => {
+      const el = document.getElementById(id);
+      el.addEventListener('input', () => {
+        document.getElementById(id + 'Val').textContent = el.value + '%';
+        applyFilters();
+      });
+    });
+
+    // Zoom
+    const zoomRange = document.getElementById('zoomRange');
+    const zoomVal = document.getElementById('zoomVal');
+    zoomRange.addEventListener('input', () => {
+      const z = parseFloat(zoomRange.value);
+      zoomVal.textContent = z.toFixed(1) + '×';
+      video.style.transform = `scale(${z}) ${mirrorOn ? 'scaleX(-1)' : ''}`;
+    });
+
+    // Grid toggle
+    document.getElementById('gridToggle').addEventListener('change', e => {
+      gridLines.classList.toggle('show', e.target.checked);
+    });
+
+    // Stats toggle
+    document.getElementById('statsToggle').addEventListener('change', e => {
+      [chipRes, chipFps, chipDevice].forEach(c => c.classList.toggle('show', e.target.checked && stream));
+    });
+
+    // Mirror toggle
+    document.getElementById('mirrorToggle').addEventListener('change', e => {
+      mirrorOn = e.target.checked;
+      const z = parseFloat(zoomRange.value);
+      video.style.transform = mirrorOn ? `scale(${z}) scaleX(-1)` : `scale(${z})`;
+    });
+
+    // Flip btn
+    document.getElementById('btnFlip').addEventListener('click', () => {
+      document.getElementById('mirrorToggle').checked = !document.getElementById('mirrorToggle').checked;
+      document.getElementById('mirrorToggle').dispatchEvent(new Event('change'));
+    });
+    document.getElementById('btnMirror').addEventListener('click', () => {
+      document.getElementById('mirrorToggle').checked = !document.getElementById('mirrorToggle').checked;
+      document.getElementById('mirrorToggle').dispatchEvent(new Event('change'));
+    });
+
+    // Fullscreen
+    btnFullscreen.addEventListener('click', () => {
+      const area = document.getElementById('previewArea');
+      if (area.requestFullscreen) area.requestFullscreen();
+      else if (area.webkitRequestFullscreen) area.webkitRequestFullscreen();
+    });
+
+    // Enumerate devices
+    async function enumerateDevices() {
+      try {
+        const devices = await navigator.mediaDevices.enumerateDevices();
+        const cams = devices.filter(d => d.kind === 'videoinput');
+        deviceSelect.innerHTML = '<option value="">-- Select Camera --</option>';
+        cams.forEach((cam, i) => {
+          const opt = document.createElement('option');
+          opt.value = cam.deviceId;
+          opt.textContent = cam.label || `Camera ${i + 1}`;
+          deviceSelect.appendChild(opt);
+        });
+        if (cams.length) deviceSelect.value = cams[0].deviceId;
+      } catch(e) {}
+    }
+
+    async function startCamera() {
+      try {
+        if (stream) stopCamera();
+        errorMsg.classList.remove('show');
+
+        const constraints = { audio: false, video: { facingMode: 'user' } };
+        const deviceId = deviceSelect.value;
+        if (deviceId) constraints.video = { deviceId: { exact: deviceId } };
+
+        const res = resSelect.value;
+        if (res !== 'default') {
+          const [w, h] = res.split('x').map(Number);
+          if (typeof constraints.video === 'object') {
+            constraints.video.width = { ideal: w };
+            constraints.video.height = { ideal: h };
+          }
+        }
+        const fps = parseInt(fpsSelect.value);
+        if (fps > 0 && typeof constraints.video === 'object') {
+          constraints.video.frameRate = { ideal: fps };
+        }
+
+        stream = await navigator.mediaDevices.getUserMedia(constraints);
+        await enumerateDevices();
+
+        video.srcObject = stream;
+        video.style.display = 'block';
+        placeholder.style.display = 'none';
+        camBottomControls.classList.add('show');
+        btnStart.style.display = 'none';
+        btnStop.style.display = '';
+        btnScreenshot.disabled = false;
+        btnFullscreen.style.display = '';
+        statusDot.className = 'status-dot active';
+        statusText.textContent = 'Camera Active';
+
+        video.addEventListener('loadedmetadata', () => {
+          canvas.width = video.videoWidth;
+          canvas.height = video.videoHeight;
+          infoW.textContent = video.videoWidth;
+          infoH.textContent = video.videoHeight;
+          const gcd = (a, b) => b ? gcd(b, a % b) : a;
+          const g = gcd(video.videoWidth, video.videoHeight);
+          infoAspect.textContent = `${video.videoWidth/g}:${video.videoHeight/g}`;
+          chipRes.textContent = `${video.videoWidth}×${video.videoHeight}`;
+
+          // Show device name
+          const track = stream.getVideoTracks()[0];
+          if (track) {
+            const label = track.label.split(' ').slice(0, 3).join(' ');
+            chipDevice.textContent = label;
+          }
+
+          const showStats = document.getElementById('statsToggle').checked;
+          if (showStats) { chipRes.classList.add('show'); chipFps.classList.add('show'); chipDevice.classList.add('show'); }
+        });
+
+        // FPS counter
+        frameCount = 0;
+        lastTime = performance.now();
+        function countFps() {
+          if (!stream) return;
+          frameCount++;
+          const now = performance.now();
+          if (now - lastTime >= 1000) {
+            currentFps = Math.round(frameCount * 1000 / (now - lastTime));
+            frameCount = 0;
+            lastTime = now;
+            infoFps.textContent = currentFps;
+            chipFps.textContent = `${currentFps} FPS`;
+          }
+          requestAnimationFrame(countFps);
+        }
+        video.addEventListener('play', () => requestAnimationFrame(countFps), { once: true });
+
+      } catch(e) {
+        let msg = 'Could not access camera. ';
+        if (e.name === 'NotAllowedError') msg += 'Camera permission was denied. Please allow camera access in your browser.';
+        else if (e.name === 'NotFoundError') msg += 'No camera was found on this device.';
+        else if (e.name === 'NotReadableError') msg += 'Camera is in use by another application.';
+        else msg += e.message;
+        errorMsg.textContent = msg;
+        errorMsg.classList.add('show');
+        statusDot.className = 'status-dot error';
+        statusText.textContent = 'Camera Error';
+      }
+    }
+
+    function stopCamera() {
+      if (stream) { stream.getTracks().forEach(t => t.stop()); stream = null; }
+      video.style.display = 'none';
+      placeholder.style.display = '';
+      camBottomControls.classList.remove('show');
+      btnStart.style.display = '';
+      btnStop.style.display = 'none';
+      btnScreenshot.disabled = true;
+      btnFullscreen.style.display = 'none';
+      statusDot.className = 'status-dot';
+      statusText.textContent = 'Camera Stopped';
+      [chipRes, chipFps, chipDevice].forEach(c => c.classList.remove('show'));
+      infoW.textContent = infoH.textContent = infoFps.textContent = infoAspect.textContent = '—';
+    }
+
+    btnStart.addEventListener('click', startCamera);
+    btnStop.addEventListener('click', stopCamera);
+    deviceSelect.addEventListener('change', () => { if (stream) startCamera(); });
+
+    // Screenshot
+    btnScreenshot.addEventListener('click', () => {
+      if (!stream) return;
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      if (mirrorOn) { ctx.save(); ctx.scale(-1,1); ctx.drawImage(video, -canvas.width, 0); ctx.restore(); }
+      else { ctx.drawImage(video, 0, 0); }
+
+      const dataUrl = canvas.toDataURL('image/png');
+      snapshots.push(dataUrl);
+
+      const thumb = document.createElement('div');
+      thumb.className = 'snapshot-thumb';
+      const img = document.createElement('img');
+      img.src = dataUrl;
+      img.alt = `Snapshot ${snapshots.length}`;
+      thumb.appendChild(img);
+      thumb.addEventListener('click', () => {
+        const a = document.createElement('a');
+        a.href = dataUrl;
+        a.download = `camera-snapshot-${Date.now()}.png`;
+        a.click();
+      });
+      snapGrid.appendChild(thumb);
+      snapCount.textContent = snapshots.length;
+      if (snapshots.length > 0) btnDownloadAll.style.display = 'flex';
+
+      flash.classList.add('flash');
+      setTimeout(() => flash.classList.remove('flash'), 400);
+    });
+
+    btnDownloadAll.addEventListener('click', () => {
+      snapshots.forEach((url, i) => {
+        setTimeout(() => {
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = `camera-snapshot-${i+1}.png`;
+          a.click();
+        }, i * 200);
+      });
+    });
+
+    // Init
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+      navigator.mediaDevices.enumerateDevices().then(d => {
+        if (d.some(x => x.kind === 'videoinput')) enumerateDevices();
+      }).catch(() => {});
+    } else {
+      statusText.textContent = 'Camera API not supported in this browser';
+      statusDot.className = 'status-dot error';
+    }
+
+    // Init ads
+    try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
+    try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
+  </script>
+</body>
+</html>
