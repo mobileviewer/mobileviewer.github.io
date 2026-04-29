@@ -42,7 +42,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
   <style>
     :root {
       --primary: #00F0FF;
@@ -85,7 +84,31 @@
     .reveal.is-visible { opacity: 1; transform: translateY(0); }
     :focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 4px; }
 
-    
+    /* HEADER */
+    .site-header { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; height: var(--header-h); background: rgba(8,12,18,0.85); backdrop-filter: blur(20px) saturate(180%); -webkit-backdrop-filter: blur(20px) saturate(180%); border-bottom: 1px solid var(--border); transition: background 0.3s ease, border-color 0.3s ease; }
+    .site-header.header--scrolled { background: rgba(8,12,18,0.97); border-bottom-color: var(--border-light); }
+    .header-inner { max-width: var(--container); margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; gap: 2rem; }
+    .header-logo { display: flex; align-items: center; gap: 10px; }
+    .logo-icon { color: var(--primary); }
+    .logo-text { font-family: var(--font-display); font-size: 1.15rem; font-weight: 800; letter-spacing: -0.02em; color: var(--text); }
+    .logo-accent { color: var(--primary); }
+    .header-nav { margin-left: auto; }
+    .nav-list { display: flex; align-items: center; gap: 4px; }
+    .nav-link { display: flex; align-items: center; gap: 5px; padding: 6px 14px; border-radius: 8px; font-size: 0.92rem; font-weight: 500; color: var(--text-secondary); transition: color var(--transition), background var(--transition); white-space: nowrap; }
+    .nav-link:hover, .nav-link--active { color: var(--text); background: rgba(255,255,255,0.06); }
+    .nav-link--active { color: var(--primary) !important; }
+    .header-cta-btn { display: flex; align-items: center; gap: 8px; padding: 9px 18px; background: var(--primary); color: #000; font-size: 0.875rem; font-weight: 700; border-radius: 8px; transition: background var(--transition), transform var(--transition), box-shadow var(--transition); }
+    .header-cta-btn:hover { background: #29f5ff; transform: translateY(-1px); box-shadow: 0 4px 20px rgba(0,240,255,0.3); }
+    .hamburger { display: none; flex-direction: column; justify-content: space-between; width: 26px; height: 18px; padding: 0; margin-left: auto; flex-shrink: 0; }
+    .hamburger span { display: block; width: 100%; height: 2px; background: var(--text); border-radius: 2px; transition: transform 0.3s ease, opacity 0.3s ease; }
+    .hamburger.is-open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.is-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.is-open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; top: var(--header-h); left: 0; right: 0; bottom: 0; background: rgba(8,12,18,0.98); backdrop-filter: blur(20px); z-index: 999; padding: 24px; overflow-y: auto; }
+    .mobile-menu.is-open { display: block; }
+    .mobile-nav-list { display: flex; flex-direction: column; gap: 4px; }
+    .mobile-nav-link { display: block; padding: 12px 16px; border-radius: 10px; font-size: 1rem; font-weight: 500; color: var(--text-secondary); transition: color var(--transition), background var(--transition); }
+    .mobile-nav-link:hover { color: var(--text); background: rgba(255,255,255,0.06); }
 
     /* HERO */
     .hero { padding: calc(var(--header-h) + 64px) 0 64px; position: relative; overflow: hidden; }
@@ -244,9 +267,70 @@
   </style>
 </head>
 <body>
-  <!-- HEADER --> 
-  <div id="header-placeholder"></div>
-  
+  <!-- HEADER -->
+  <header id="site-header" class="site-header" role="banner">
+  <div class="header-inner">
+    <a href="/" class="header-logo" aria-label="Mobile Viewer — Home">
+      <div class="logo-icon" aria-hidden="true">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <rect x="7" y="2" width="14" height="22" rx="3" stroke="currentColor" stroke-width="2"/>
+          <path d="M12 19h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <rect x="2" y="7" width="24" height="14" rx="2" stroke="currentColor" stroke-width="1.5" opacity=".45"/>
+        </svg>
+      </div>
+      <span class="logo-text">Mobile<span class="logo-accent">Viewer</span></span>
+    </a>
+
+    <nav class="header-nav" aria-label="Main navigation">
+      <ul class="nav-list" role="list">
+        ${navLinks}
+      </ul>
+    </nav>
+
+    <div class="header-cta">
+      <a href="/#viewer" class="header-cta-btn" onclick="scrollToViewer(); return false;" aria-label="Launch Mobile Viewer">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <rect x="4" y="1" width="8" height="14" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M7 12h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        Launch Viewer
+      </a>
+    </div>
+
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true" role="navigation" aria-label="Mobile navigation">
+    <ul class="mobile-nav-list" role="list">
+      <li><a href="/" class="mobile-nav-link">Home</a></li>
+      <li class="mobile-nav-item--dropdown">
+        <button class="mobile-nav-link mobile-dropdown-trigger" data-mobile-dropdown="mobile-tools-dd" aria-expanded="false">
+          Tools
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true" class="dropdown-arrow">
+            <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <ul class="mobile-dropdown-menu" id="mobile-tools-dd" style="display: none;">${mobileToolItems}</ul>
+      </li>
+      <li><a href="#features" class="mobile-nav-link">Features</a></li>
+      <li><a href="#how-to-guide" class="mobile-nav-link">Guide</a></li>
+      <li><a href="#faq" class="mobile-nav-link">FAQ</a></li>
+      <li class="mobile-nav-divider" aria-hidden="true"></li>
+      <li><a href="#viewer" class="mobile-nav-link mobile-nav-link--cta" onclick="scrollToViewer()">🚀 Launch Viewer</a></li>
+    </ul>
+    <div class="mobile-tools-grid">
+      <p class="mobile-tools-label">Quick Access Tools</p>
+      ${TOOL_DROPDOWN.slice(0, 6).map(t => `<a href="${t.href}" class="mobile-tool-link">${t.label}</a>`).join('')}
+    </div>
+  </div>
+  <div class="header-overlay" id="headerOverlay" aria-hidden="true"></div>
+</header>
+
   <main>
     <!-- HERO -->
     <div class="hero">
@@ -552,12 +636,55 @@
     </section>
   </main>
 
-  <!-- Footer Component -->
-  <div id="footer-placeholder"></div>
+  <footer id="site-footer" class="site-footer" role="contentinfo">
+  <div class="footer-glow" aria-hidden="true"></div>
+  <div class="container footer-inner">
 
-  <script src="header.js"></script>
-  <script src="footer.js"></script>
-  <script src="script.js"></script>
+    <!-- Brand Column -->
+    <div class="footer-brand">
+      <a href="/" class="footer-logo" aria-label="Mobile Viewer Home">
+        <div class="logo-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <rect x="7" y="2" width="14" height="22" rx="3" stroke="currentColor" stroke-width="2"/>
+            <path d="M12 19h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <rect x="2" y="7" width="24" height="14" rx="2" stroke="currentColor" stroke-width="1.5" opacity=".45"/>
+          </svg>
+        </div>
+        <span class="logo-text">Mobile<span class="logo-accent">Viewer</span></span>
+      </a>
+      <p class="footer-tagline">The free, professional-grade responsive design tester trusted by 50,000+ developers worldwide.</p>
+      <div class="footer-socials" aria-label="Social media links">
+        <a href="https://github.com/mobileviewer" class="social-link" aria-label="GitHub" rel="noopener" target="_blank">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        </a>        
+      </div>
+      <div class="footer-badge-row">
+        <span class="footer-badge">✓ Free Forever</span>
+        <span class="footer-badge">✓ No Sign-up</span>
+        <span class="footer-badge">✓ No Install</span>
+      </div>
+    </div>
+
+    <!-- Link Columns -->
+    <nav class="footer-links-wrapper" aria-label="Footer navigation">
+      ${colsHTML}
+    </nav>
+  </div>
+
+  <!-- Bottom Bar -->
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <p class="footer-copy">© ${year} Mobile Viewer. All rights reserved. Made for developers, by developers.</p>
+      <p class="footer-legal">
+        <a href="/privacy-policy" class="footer-legal-link">Privacy</a>
+        <span aria-hidden="true">·</span>
+        <a href="/terms-of-service" class="footer-legal-link">Terms</a>
+        <span aria-hidden="true">·</span>
+        <a href="/sitemap.xml" class="footer-legal-link">Sitemap</a>
+      </p>
+    </div>
+  </div>
+</footer>
 
   <script>
     // --- Header scroll ---
