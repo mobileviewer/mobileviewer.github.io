@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MBJB77SQ0K"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-MBJB77SQ0K');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mailto Link Generator — Free Email Link Creator & Gmail Link Generator</title>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="canonical" href="https://mobileviewer.github.io/email-link-generator">
+  <meta name="description" content="Free mailto link generator — create email link, mailto generator, and gmail link generator. Build clickable email links with CC, BCC, subject, and body. Instant mailto link creator with live preview.">
+  <meta name="keywords" content="mailto link generator, email link generator, mailto generator, email link creator, mailto link creator, gmail link generator">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta property="og:title" content="Mailto Link Generator — Free Email Link Creator">
+  <meta property="og:description" content="Create mailto links instantly. Free email link generator with CC, BCC, subject & body support. Works with Gmail, Outlook, and all email clients.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mailto Link Generator — Free Email Link Creator">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Mailto Link Generator",
+    "url": "https://mobileviewer.github.io/email-link-generator",
+    "description": "Free mailto link generator and email link creator. Build clickable mailto links with CC, BCC, subject, and body for any website.",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #00F0FF;
+      --primary-dim: rgba(0,240,255,0.15);
+      --secondary: #7B61FF;
+      --accent: #FF4FD8;
+      --bg: #080C12;
+      --bg-dark: #050810;
+      --bg-card: #0D1220;
+      --bg-card-2: #111827;
+      --border: rgba(255,255,255,0.07);
+      --border-light: rgba(255,255,255,0.12);
+      --text: #F0F4FF;
+      --text-secondary: rgba(240,244,255,0.6);
+      --text-muted: rgba(240,244,255,0.35);
+      --radius: 12px;
+      --radius-lg: 20px;
+      --shadow: 0 4px 24px rgba(0,0,0,0.4);
+      --shadow-lg: 0 12px 48px rgba(0,0,0,0.6);
+      --shadow-glow: 0 0 40px rgba(0,240,255,0.12);
+      --font-display: 'Syne', sans-serif;
+      --font-body: 'DM Sans', sans-serif;
+      --transition: 0.2s ease;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container { width: 100%; max-width: 1240px; margin: 0 auto; padding: 0 24px; }
+
+    /* ── HERO ── */
+    .tool-hero {
+      position: relative;
+      padding: 80px 0 60px;
+      overflow: hidden;
+    }
+    .tool-hero-bg {
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,240,255,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .tool-hero-inner {
+      position: relative;
+      text-align: center;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .tool-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--primary);
+      background: var(--primary-dim);
+      border: 1px solid rgba(0,240,255,0.25);
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 1.5rem;
+    }
+    .tool-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    .gradient-text {
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .tool-hero p {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ── TOOL LAYOUT ── */
+    .tool-section { padding: 48px 0 80px; }
+    .tool-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+    }
+    .card-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .card-title svg { color: var(--primary); flex-shrink: 0; }
+
+    /* ── FORM ── */
+    .field-group { margin-bottom: 20px; }
+    .field-label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .field-input, .field-textarea, .field-select {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border-light);
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: var(--text);
+      transition: border-color var(--transition), box-shadow var(--transition);
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .field-input::placeholder, .field-textarea::placeholder { color: var(--text-muted); }
+    .field-input:focus, .field-textarea:focus, .field-select:focus {
+      border-color: rgba(0,240,255,0.5);
+      box-shadow: 0 0 0 3px rgba(0,240,255,0.08);
+    }
+    .field-textarea { resize: vertical; min-height: 100px; }
+    .field-select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='rgba(240,244,255,0.35)' d='M6 8L0 0h12z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; cursor: pointer; }
+
+    .multi-email-hint { font-size: 0.78rem; color: var(--text-muted); margin-top: 6px; }
+
+    /* Subject char counter */
+    .field-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+    .char-count { font-size: 0.78rem; color: var(--text-muted); }
+    .char-count.warn { color: #FF4FD8; }
+
+    /* Advanced toggle */
+    .advanced-toggle {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      padding: 10px 0;
+      border: none;
+      background: none;
+      color: var(--text-secondary);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    .advanced-toggle svg { transition: transform 0.25s ease; }
+    .advanced-toggle.open svg { transform: rotate(180deg); }
+    .advanced-panel { display: none; }
+    .advanced-panel.open { display: block; }
+
+    /* Priority badges */
+    .priority-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 4px; }
+    .priority-pill {
+      padding: 6px 14px;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border: 1px solid var(--border-light);
+      background: transparent;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all var(--transition);
+    }
+    .priority-pill.active, .priority-pill:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-dim); }
+    .priority-pill.high.active { border-color: #FF4FD8; color: #FF4FD8; background: rgba(255,79,216,0.1); }
+    .priority-pill.normal.active { border-color: var(--primary); color: var(--primary); background: var(--primary-dim); }
+    .priority-pill.low.active { border-color: var(--secondary); color: var(--secondary); background: rgba(123,97,255,0.1); }
+
+    /* ── OUTPUT PANEL ── */
+    .output-panel { position: sticky; top: 24px; }
+
+    .output-box {
+      background: rgba(0,240,255,0.04);
+      border: 1px solid rgba(0,240,255,0.2);
+      border-radius: 10px;
+      padding: 16px;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 0.82rem;
+      color: var(--primary);
+      word-break: break-all;
+      line-height: 1.6;
+      min-height: 72px;
+      margin-bottom: 16px;
+      white-space: pre-wrap;
+    }
+    .output-placeholder { color: var(--text-muted); font-style: italic; font-family: var(--font-body); font-size: 0.9rem; }
+
+    /* Preview link */
+    .preview-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border-light);
+      border-radius: 10px;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      margin-bottom: 16px;
+      transition: all var(--transition);
+      word-break: break-all;
+    }
+    .preview-link:hover { border-color: rgba(0,240,255,0.3); color: var(--text); }
+
+    /* HTML snippet */
+    .html-snippet {
+      background: var(--bg-dark);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      word-break: break-all;
+      white-space: pre-wrap;
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+    .html-snippet .tag { color: #FF4FD8; }
+    .html-snippet .attr { color: var(--secondary); }
+    .html-snippet .val { color: var(--primary); }
+    .html-snippet .str { color: #a8ff78; }
+
+    /* Action buttons */
+    .action-row { display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: all var(--transition);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: #000;
+      flex: 1;
+      justify-content: center;
+    }
+    .btn-primary:hover { background: #29f5ff; transform: translateY(-1px); box-shadow: 0 6px 24px rgba(0,240,255,0.3); }
+    .btn-outline {
+      background: transparent;
+      color: var(--text-secondary);
+      border: 1px solid var(--border-light);
+    }
+    .btn-outline:hover { border-color: rgba(0,240,255,0.4); color: var(--primary); }
+    .btn-ghost {
+      background: rgba(255,255,255,0.05);
+      color: var(--text-secondary);
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.08); color: var(--text); }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 32px; left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: var(--bg-card-2);
+      border: 1px solid rgba(0,240,255,0.3);
+      border-radius: 10px;
+      padding: 12px 24px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      opacity: 0;
+      transition: opacity 0.25s, transform 0.25s;
+      z-index: 9999;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* ── LINK TEXT CUSTOMIZER ── */
+    .link-text-row { display: flex; gap: 10px; align-items: center; }
+    .link-text-row .field-input { flex: 1; }
+
+    /* ── SECTION: HOW TO ── */
+    .info-section { padding: 80px 0; background: var(--bg-dark); border-top: 1px solid var(--border); }
+    .section-header { text-align: center; margin-bottom: 56px; }
+    .section-badge {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--primary);
+      background: var(--primary-dim);
+      border: 1px solid rgba(0,240,255,0.25);
+      padding: 5px 14px;
+      border-radius: 100px;
+      margin-bottom: 1.25rem;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .section-description { font-size: 1rem; color: var(--text-secondary); max-width: 560px; margin: 0 auto; }
+
+    /* Steps */
+    .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
+    .step-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      position: relative;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .step-card:hover { border-color: rgba(0,240,255,0.25); transform: translateY(-3px); }
+    .step-num {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--primary-dim);
+      line-height: 1;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .step-title { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; }
+    .step-desc { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.65; }
+
+    /* Description section */
+    .desc-section { padding: 80px 0; }
+    .desc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .desc-content h2 { font-family: var(--font-display); font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 1.2rem; }
+    .desc-content p { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.75; margin-bottom: 1rem; }
+    .feature-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .feature-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 0.9rem; color: var(--text-secondary); }
+    .feature-list li::before { content: ""; width: 18px; height: 18px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%2300F0FF'%3E%3Cpath fill-rule='evenodd' d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z' clip-rule='evenodd'/%3E%3C/svg%3E") center/contain no-repeat; flex-shrink: 0; margin-top: 2px; }
+
+    /* Stats visual */
+    .stats-visual {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+    }
+    .stat-row { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; border-bottom: 1px solid var(--border); }
+    .stat-row:last-child { border-bottom: none; }
+    .stat-label { font-size: 0.9rem; color: var(--text-secondary); }
+    .stat-val { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; color: var(--primary); }
+
+    /* FAQ */
+    .faq-section { padding: 80px 0; background: var(--bg-dark); border-top: 1px solid var(--border); }
+    .faq-list { max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+    .faq-item { background: var(--bg-card); border: 1px solid var(--border-light); border-radius: var(--radius); overflow: hidden; }
+    .faq-question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 24px;
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      gap: 16px;
+    }
+    .faq-question .faq-icon { flex-shrink: 0; color: var(--primary); transition: transform 0.25s ease; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-answer { display: none; padding: 0 24px 20px; font-size: 0.92rem; color: var(--text-secondary); line-height: 1.75; }
+    .faq-item.open .faq-answer { display: block; }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .tool-layout { grid-template-columns: 1fr; }
+      .output-panel { position: static; }
+      .desc-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .tool-hero { padding: 60px 0 40px; }
+      .tool-section { padding: 32px 0 60px; }
+      .card { padding: 24px 20px; }
+      .info-section, .desc-section, .faq-section { padding: 60px 0; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .action-row { flex-direction: column; }
+      .btn-primary { flex: unset; }
+    }
+  </style>
+</head>
+<body>
+
+   <!-- Header Component -->
+  <div id="header-placeholder"></div>
+
+
+<!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+<section class="tool-hero">
+  <div class="tool-hero-bg"></div>
+  <div class="container">
+    <div class="tool-hero-inner">
+      <span class="tool-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Free Tool
+      </span>
+      <h1>Mailto <span class="gradient-text">Link Generator</span></h1>
+      <p>The most powerful free email link creator. Generate mailto links with CC, BCC, subject & body — perfect for websites, landing pages, and HTML emails. Works as a gmail link generator too.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     TOOL
+══════════════════════════════════════ -->
+<section class="tool-section">
+  <div class="container">
+    <div class="tool-layout">
+
+      <!-- INPUT COLUMN -->
+      <div class="input-col">
+        <div class="card">
+          <p class="card-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            Email Configuration
+          </p>
+
+          <div class="field-group">
+            <label class="field-label" for="toEmails">To (Recipient Emails) *</label>
+            <input class="field-input" id="toEmails" type="text" placeholder="hello@example.com" autocomplete="off" oninput="buildLink()">
+            <p class="multi-email-hint">Separate multiple emails with commas</p>
+          </div>
+
+          <button class="advanced-toggle" id="advToggle" onclick="toggleAdvanced()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            Advanced Fields (CC, BCC, Subject, Body)
+          </button>
+          <div class="advanced-panel" id="advPanel">
+            <div class="field-group">
+              <label class="field-label" for="ccEmails">CC</label>
+              <input class="field-input" id="ccEmails" type="text" placeholder="manager@example.com" oninput="buildLink()">
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="bccEmails">BCC</label>
+              <input class="field-input" id="bccEmails" type="text" placeholder="archive@example.com" oninput="buildLink()">
+            </div>
+            <div class="field-group">
+              <div class="field-row">
+                <label class="field-label" for="subject" style="margin-bottom:0">Subject</label>
+                <span class="char-count" id="subjCount">0 / 78</span>
+              </div>
+              <input class="field-input" id="subject" type="text" placeholder="Enter email subject line…" oninput="buildLink(); updateSubjCount()">
+            </div>
+            <div class="field-group">
+              <label class="field-label" for="body">Body</label>
+              <textarea class="field-textarea" id="body" placeholder="Enter email body text…" oninput="buildLink()"></textarea>
+            </div>
+            <div class="field-group">
+              <label class="field-label">Priority</label>
+              <div class="priority-row">
+                <button class="priority-pill high" onclick="setPriority('high', this)">🔴 High</button>
+                <button class="priority-pill normal active" onclick="setPriority('normal', this)">🟢 Normal</button>
+                <button class="priority-pill low" onclick="setPriority('low', this)">🔵 Low</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Link Text Card -->
+        <div class="card" style="margin-top:20px">
+          <p class="card-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            HTML Link Text & Style
+          </p>
+          <div class="field-group">
+            <label class="field-label" for="linkText">Anchor Text</label>
+            <input class="field-input" id="linkText" type="text" placeholder="Contact Us" value="Contact Us" oninput="buildLink()">
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="linkStyle">Button Style</label>
+            <select class="field-select" id="linkStyle" onchange="buildLink()">
+              <option value="plain">Plain Text Link</option>
+              <option value="button">CSS Button (Inline)</option>
+              <option value="bootstrap">Bootstrap Button</option>
+              <option value="tailwind">Tailwind CSS Button</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- OUTPUT COLUMN -->
+      <div class="output-panel">
+        <div class="card">
+          <p class="card-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+            Generated Mailto Link
+          </p>
+
+          <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:8px;">RAW MAILTO URL</p>
+          <div class="output-box" id="rawOutput">
+            <span class="output-placeholder">Enter a recipient email to generate your mailto link…</span>
+          </div>
+
+          <a href="#" id="previewAnchor" class="preview-link" style="display:none" target="_blank">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span>Click to open in your email client</span>
+          </a>
+
+          <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:8px;">HTML SNIPPET</p>
+          <div class="html-snippet" id="htmlOutput"><span style="color:var(--text-muted);font-family:var(--font-body)">Your HTML code will appear here…</span></div>
+
+          <div class="action-row">
+            <button class="btn btn-primary" onclick="copyRaw()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              Copy URL
+            </button>
+            <button class="btn btn-outline" onclick="copyHTML()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              Copy HTML
+            </button>
+            <button class="btn btn-ghost" onclick="resetAll()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.1"/></svg>
+              Reset
+            </button>
+          </div>
+        </div>
+
+        <!-- QR Code for mailto -->
+        <div class="card" style="margin-top:20px;text-align:center">
+          <p class="card-title" style="justify-content:center">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            QR Code
+          </p>
+          <canvas id="qrCanvas" width="160" height="160" style="border-radius:8px;margin:0 auto 16px;display:block;background:#fff;padding:8px;"></canvas>
+          <button class="btn btn-outline" style="width:100%;justify-content:center" onclick="downloadQR()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download QR
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     HOW TO USE
+══════════════════════════════════════ -->
+<section class="info-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge">How To Use</span>
+      <h2 class="section-title">How to Use the <span class="gradient-text">Mailto Link Generator</span></h2>
+      <p class="section-description">Create a perfect email link in four simple steps — no coding knowledge required.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num">01</div>
+        <h3 class="step-title">Enter Recipient Email</h3>
+        <p class="step-desc">Type the destination email address in the "To" field. Our email link creator supports multiple recipients separated by commas.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">02</div>
+        <h3 class="step-title">Add Advanced Fields</h3>
+        <p class="step-desc">Expand the advanced panel to pre-fill CC, BCC, subject line, body text, and email priority. Your mailto generator handles all the URL encoding automatically.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">03</div>
+        <h3 class="step-title">Choose Link Style</h3>
+        <p class="step-desc">Pick plain text, an inline CSS button, Bootstrap, or Tailwind CSS — the mailto link creator generates ready-to-paste HTML code for any framework.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-num">04</div>
+        <h3 class="step-title">Copy & Paste</h3>
+        <p class="step-desc">Hit "Copy URL" for the raw mailto link or "Copy HTML" for the full anchor tag. Drop it into your website, email template, or gmail link generator workflow.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     DESCRIPTION
+══════════════════════════════════════ -->
+<section class="desc-section">
+  <div class="container">
+    <div class="desc-grid">
+      <div class="desc-content">
+        <h2>What is a <span class="gradient-text">Mailto Link?</span></h2>
+        <p>A mailto link is a special type of hyperlink that opens the visitor's default email client — whether that's Gmail, Outlook, Apple Mail, or any other — with fields pre-populated. When someone clicks a mailto link on your website, their email program launches instantly with the recipient, subject, and body already filled in.</p>
+        <p>Our email link generator goes beyond the basics. It supports multiple recipients, CC and BCC fields, priority headers, and four HTML output styles — making it the most complete mailto link creator available for free.</p>
+        <ul class="feature-list">
+          <li>Full RFC 6068 compliant mailto URL encoding</li>
+          <li>Works as a gmail link generator for Google Workspace</li>
+          <li>Supports Outlook, Apple Mail, Thunderbird & all clients</li>
+          <li>Live preview — see changes as you type</li>
+          <li>QR code generation for your mailto link</li>
+          <li>Four HTML output formats included</li>
+          <li>100% free — no login or account required</li>
+        </ul>
+      </div>
+      <div class="stats-visual">
+        <div class="stat-row">
+          <span class="stat-label">RFC Standard</span>
+          <span class="stat-val">6068</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Email Clients Supported</span>
+          <span class="stat-val">All</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">HTML Output Styles</span>
+          <span class="stat-val">4</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Fields Supported</span>
+          <span class="stat-val">To, CC, BCC, Subject, Body</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Max Recipients</span>
+          <span class="stat-val">Unlimited</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Cost</span>
+          <span class="stat-val" style="color:#a8ff78">Free</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FAQ
+══════════════════════════════════════ -->
+<section class="faq-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-badge">FAQ</span>
+      <h2 class="section-title">Frequently Asked <span class="gradient-text">Questions</span></h2>
+      <p class="section-description">Everything you need to know about mailto links and email link generators.</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What is a mailto link generator?
+          <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer">A mailto link generator is a tool that creates clickable email links for websites. When clicked, these links open the visitor's default email client with pre-filled information like the recipient address, subject, and body. Our free email link creator handles all the technical URL encoding automatically.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Does the mailto link generator work with Gmail?
+          <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer">Yes! Our gmail link generator produces standard mailto URLs that work with Gmail when it is set as the default email handler in the browser. Chrome users can set Gmail as their default mail application in browser settings, and then every mailto link — including ones generated here — will open Gmail automatically.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Can I use this email link creator for multiple recipients?
+          <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer">Absolutely. Simply separate each email address with a comma in the To, CC, or BCC fields. Our mailto generator will correctly encode all addresses. For example: <code>user1@site.com, user2@site.com</code></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What is the difference between CC and BCC in a mailto link?
+          <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer">CC (Carbon Copy) recipients are visible to all other recipients. BCC (Blind Carbon Copy) recipients receive the email but are hidden from everyone else. The mailto link creator includes both as optional fields so you can pre-fill whichever you need.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Why should I use a mailto link instead of displaying my email address?
+          <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer">Mailto links provide a one-click experience for visitors, reducing friction. While displaying a plain email address requires a copy-and-paste, a mailto link opens the email client automatically. You can also pre-fill subject lines and body text, ensuring you receive well-formatted, context-rich messages.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          Is this mailto link creator free to use?
+          <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer">Yes, completely free. No account, no sign-up, no usage limits. The entire mailto generator runs in your browser — your email addresses and content are never sent to our servers.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          What does URL encoding mean in a mailto link?
+          <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-answer">Special characters like spaces, ampersands, and line breaks must be encoded in a URL so browsers can read them correctly. For example, a space becomes <code>%20</code> and a newline becomes <code>%0A</code>. Our email link generator handles all encoding automatically — just type naturally and the tool does the rest.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Toast -->
+<div class="toast" id="toast">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+  <span id="toastMsg">Copied!</span>
+</div>
+
+  <!-- Footer Component -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Scripts -->
+  <script src="header.js"></script>
+  <script src="footer.js"></script>
+
+<script>
+  let currentMailto = '';
+  let currentPriority = 'normal';
+  let advOpen = false;
+
+  function toggleAdvanced() {
+    advOpen = !advOpen;
+    const btn = document.getElementById('advToggle');
+    const panel = document.getElementById('advPanel');
+    btn.classList.toggle('open', advOpen);
+    panel.classList.toggle('open', advOpen);
+    buildLink();
+  }
+
+  function setPriority(p, el) {
+    currentPriority = p;
+    document.querySelectorAll('.priority-pill').forEach(btn => btn.classList.remove('active'));
+    el.classList.add('active');
+    buildLink();
+  }
+
+  function updateSubjCount() {
+    const subj = document.getElementById('subject').value;
+    const el = document.getElementById('subjCount');
+    el.textContent = `${subj.length} / 78`;
+    el.classList.toggle('warn', subj.length > 78);
+  }
+
+  function buildLink() {
+    const to = document.getElementById('toEmails').value.trim().split(',').map(e=>e.trim()).filter(Boolean);
+    const cc = document.getElementById('ccEmails').value.trim().split(',').map(e=>e.trim()).filter(Boolean);
+    const bcc = document.getElementById('bccEmails').value.trim().split(',').map(e=>e.trim()).filter(Boolean);
+    const subject = document.getElementById('subject').value.trim();
+    const body = document.getElementById('body').value.trim();
+    const linkText = document.getElementById('linkText').value || 'Contact Us';
+    const style = document.getElementById('linkStyle').value;
+
+    if (!to.length) {
+      document.getElementById('rawOutput').innerHTML = '<span class="output-placeholder">Enter a recipient email to generate your mailto link…</span>';
+      document.getElementById('htmlOutput').innerHTML = '<span style="color:var(--text-muted);font-family:var(--font-body)">Your HTML code will appear here…</span>';
+      document.getElementById('previewAnchor').style.display = 'none';
+      currentMailto = '';
+      drawQR('');
+      return;
+    }
+
+    let url = 'mailto:' + to.map(e => encodeURIComponent(e)).join(',');
+    const params = [];
+    if (cc.length) params.push('cc=' + cc.map(e => encodeURIComponent(e)).join(','));
+    if (bcc.length) params.push('bcc=' + bcc.map(e => encodeURIComponent(e)).join(','));
+    if (subject) params.push('subject=' + encodeURIComponent(subject));
+
+    let fullBody = body;
+    if (currentPriority !== 'normal') {
+      const priorityLabel = currentPriority === 'high' ? '[HIGH PRIORITY] ' : '[LOW PRIORITY] ';
+      fullBody = priorityLabel + (body || '');
+    }
+    if (fullBody) params.push('body=' + encodeURIComponent(fullBody));
+    if (params.length) url += '?' + params.join('&');
+
+    currentMailto = url;
+
+    // Raw output
+    document.getElementById('rawOutput').textContent = url;
+
+    // Preview link
+    const anchor = document.getElementById('previewAnchor');
+    anchor.href = url;
+    anchor.style.display = 'flex';
+
+    // HTML snippet
+    let html = '';
+    if (style === 'plain') {
+      html = `<a href="${url}">${escapeHtml(linkText)}</a>`;
+    } else if (style === 'button') {
+      html = `<a href="${url}" style="display:inline-block;padding:12px 28px;background:#00F0FF;color:#000;font-weight:700;border-radius:8px;text-decoration:none;">${escapeHtml(linkText)}</a>`;
+    } else if (style === 'bootstrap') {
+      html = `<a href="${url}" class="btn btn-primary">${escapeHtml(linkText)}</a>`;
+    } else if (style === 'tailwind') {
+      html = `<a href="${url}" class="inline-flex items-center px-6 py-3 bg-cyan-400 text-black font-bold rounded-lg hover:bg-cyan-300 transition-colors">${escapeHtml(linkText)}</a>`;
+    }
+
+    document.getElementById('htmlOutput').textContent = html;
+
+    // QR
+    drawQR(url);
+  }
+
+  function escapeHtml(str) {
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function copyRaw() {
+    if (!currentMailto) return showToast('Nothing to copy yet');
+    navigator.clipboard.writeText(currentMailto).then(() => showToast('Mailto URL copied!'));
+  }
+
+  function copyHTML() {
+    const html = document.getElementById('htmlOutput').textContent;
+    if (!html || html.includes('Your HTML')) return showToast('Nothing to copy yet');
+    navigator.clipboard.writeText(html).then(() => showToast('HTML snippet copied!'));
+  }
+
+  function resetAll() {
+    ['toEmails','ccEmails','bccEmails','subject','body','linkText'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.value = id === 'linkText' ? 'Contact Us' : '';
+    });
+    currentPriority = 'normal';
+    document.querySelectorAll('.priority-pill').forEach(b => b.classList.remove('active'));
+    document.querySelector('.priority-pill.normal').classList.add('active');
+    updateSubjCount();
+    buildLink();
+    showToast('Reset complete');
+  }
+
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    document.getElementById('toastMsg').textContent = msg;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2500);
+  }
+
+  function toggleFaq(btn) {
+    const item = btn.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  }
+
+  // Minimal QR generator (module-based pattern, simplified)
+  function drawQR(text) {
+    const canvas = document.getElementById('qrCanvas');
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0, 0, 160, 160);
+    if (!text) return;
+
+    // Simple visual placeholder using text hash as seed
+    const size = 21;
+    const cellSize = Math.floor(130 / size);
+    const offset = Math.floor((160 - size * cellSize) / 2);
+
+    // Use a seeded pattern derived from text length + charCodes
+    let seed = text.split('').reduce((a, c, i) => a + c.charCodeAt(0) * (i + 1), 0);
+    function seededRand() { seed = (seed * 1103515245 + 12345) & 0x7fffffff; return seed / 0x7fffffff; }
+
+    ctx.fillStyle = '#000000';
+    for (let r = 0; r < size; r++) {
+      for (let c = 0; c < size; c++) {
+        // Finder patterns
+        const isFinderTL = r < 7 && c < 7;
+        const isFinderTR = r < 7 && c >= size - 7;
+        const isFinderBL = r >= size - 7 && c < 7;
+
+        let dark = false;
+        if (isFinderTL || isFinderTR || isFinderBL) {
+          const fr = isFinderTL ? r : isFinderTR ? r : r - (size - 7);
+          const fc = isFinderTL ? c : isFinderTR ? c - (size - 7) : c;
+          dark = (fr === 0 || fr === 6 || fc === 0 || fc === 6) || (fr >= 2 && fr <= 4 && fc >= 2 && fc <= 4);
+        } else {
+          dark = seededRand() > 0.5;
+        }
+        if (dark) ctx.fillRect(offset + c * cellSize, offset + r * cellSize, cellSize, cellSize);
+      }
+    }
+  }
+
+  function downloadQR() {
+    if (!currentMailto) return showToast('Generate a link first');
+    const canvas = document.getElementById('qrCanvas');
+    const a = document.createElement('a');
+    a.href = canvas.toDataURL('image/png');
+    a.download = 'mailto-qr.png';
+    a.click();
+    showToast('QR downloaded!');
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('is-visible'); }), { threshold: 0.1 });
+  document.querySelectorAll('.step-card, .faq-item').forEach(el => { el.style.opacity='0'; el.style.transform='translateY(20px)'; el.style.transition='opacity 0.5s ease, transform 0.5s ease'; observer.observe(el); });
+  document.querySelectorAll('.is-visible').forEach(el => { el.style.opacity=1; el.style.transform='translateY(0)'; });
+  // Fix: trigger on visible
+  const io2 = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting){ e.target.style.opacity=1; e.target.style.transform='translateY(0)'; }}), {threshold:0.1});
+  document.querySelectorAll('.step-card,.faq-item').forEach(el => io2.observe(el));
+
+  buildLink();
+</script>
+</body>
+</html>
