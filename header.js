@@ -28,6 +28,8 @@
     { href: '/camera-test',                  label: 'Camera Tester' },
     { href: '/speaker-test',                  label: 'Speaker Tester' },
     { href: '/mic-check',                  label: 'Mic Tester' },
+    { href: '/email-preview',                  label: 'Email Preview' },
+    { href: '/email-link-generator',                  label: 'Email Link Generator' },
   ];
 
   function buildHeader() {
