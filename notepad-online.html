@@ -1,0 +1,1778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MBJB77SQ0K"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-MBJB77SQ0K');
+  </script>
+  <!-- ═══════════════════════════════════════════════
+       NOTEPAD ONLINE — SEO & Meta
+  ════════════════════════════════════════════════ -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notepad Online — Free Online Notepad, Text Editor & Notes App</title>
+
+  <!-- Primary SEO -->
+  <meta name="description" content="Notepad Online is a free, instant online notepad. Write, edit, format and save notes directly in your browser — no login, no download. The fastest online text editor with autosave, word count, find & replace, markdown preview and more.">
+  <meta name="keywords" content="notepad online, online notepad, free notepad online, notepad online free, online text editor, online notes, text editor online, write notes online, notepad no login">
+  <meta name="author" content="Mobile Viewer">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://mobileviewer.github.io/notepad-online">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Notepad Online — Free Online Notepad & Text Editor">
+  <meta property="og:description" content="Write and save notes instantly in your browser. Free online notepad with autosave, formatting, word count, find & replace and markdown preview.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mobileviewer.github.io/notepad-online">
+  <meta property="og:site_name" content="Mobile Viewer">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Notepad Online — Free Online Notepad & Text Editor">
+  <meta name="twitter:description" content="Instant online notepad. Write notes in your browser — no login, no download, autosave included.">
+
+  <!-- Schema: WebApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Mobile Viewer",
+    "url": "https://mobileviewer.github.io/notepad-online",
+    "description": "A free, browser-based online notepad and text editor with autosave, word count, find and replace, markdown preview, font controls, and file export.",
+    "applicationCategory": "ProductivityApplication",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires a modern web browser with JavaScript enabled.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    },
+    "featureList": [
+      "Autosave to localStorage",
+      "Multiple notes / tabs",
+      "Word and character count",
+      "Find and Replace",
+      "Markdown Preview",
+      "Rich text formatting toolbar",
+      "Font family and size controls",
+      "Dark and Light theme",
+      "Download as TXT, HTML or MD",
+      "Print support",
+      "Focus / distraction-free mode",
+      "Undo / Redo history"
+    ],
+    "author": {
+      "@type": "Organization",
+      "name": "Mobile Viewer"
+    }
+  }
+  </script>
+
+  <!-- FAQ Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is Notepad Online free to use?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Notepad Online is completely free with no account, no sign-up and no usage limits." }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Notepad Online autosave my notes?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every note is automatically saved to your browser's localStorage as you type. Your notes persist across page reloads until you clear browser data." }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I use Notepad Online without an internet connection?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Once loaded, the notepad editor works fully offline. Autosave uses localStorage so your notes are stored locally on your device." }
+      },
+      {
+        "@type": "Question",
+        "name": "What file formats can I download from Notepad Online?",
+        "acceptedAnswer": { "@type": "Answer", "text": "You can download your notes as plain text (.txt), HTML (.html) or Markdown (.md) files directly from the toolbar." }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  <style>
+    /* ══════════════════════════════════════════════
+       DESIGN TOKENS — matches site palette exactly
+    ══════════════════════════════════════════════ */
+    :root {
+      --primary:        #00F0FF;
+      --primary-dim:    rgba(0,240,255,0.12);
+      --primary-glow:   rgba(0,240,255,0.2);
+      --secondary:      #7B61FF;
+      --secondary-dim:  rgba(123,97,255,0.15);
+      --accent:         #FF4FD8;
+
+      --bg:             #080C12;
+      --bg-dark:        #050810;
+      --bg-card:        #0D1220;
+      --bg-card-2:      #111827;
+      --bg-editor:      #0A0F1A;
+
+      --border:         rgba(255,255,255,0.07);
+      --border-light:   rgba(255,255,255,0.12);
+      --border-focus:   rgba(0,240,255,0.35);
+
+      --text:           #F0F4FF;
+      --text-secondary: rgba(240,244,255,0.6);
+      --text-muted:     rgba(240,244,255,0.35);
+
+      --radius:         12px;
+      --radius-lg:      20px;
+
+      --shadow:         0 4px 24px rgba(0,0,0,0.4);
+      --shadow-lg:      0 16px 56px rgba(0,0,0,0.65);
+      --shadow-glow:    0 0 40px rgba(0,240,255,0.1);
+
+      --font-display:   'Syne', sans-serif;
+      --font-body:      'DM Sans', sans-serif;
+      --font-mono:      'JetBrains Mono', monospace;
+
+      --toolbar-h:      52px;
+      --statusbar-h:    32px;
+      --tabs-h:         44px;
+      --transition:     0.2s ease;
+
+      /* Light editor theme vars (toggled by JS) */
+      --editor-bg:      #0A0F1A;
+      --editor-text:    #E8EDF8;
+      --editor-line:    rgba(255,255,255,0.04);
+      --editor-sel:     rgba(0,240,255,0.18);
+    }
+
+    [data-editor-theme="light"] {
+      --editor-bg:    #FAFBFF;
+      --editor-text:  #1A1F2E;
+      --editor-line:  rgba(0,0,0,0.03);
+      --editor-sel:   rgba(0,150,255,0.18);
+    }
+
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; height: 100%; }
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+    button { font-family: inherit; cursor: pointer; border: none; background: none; }
+    ul { list-style: none; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ══════════════════════════════════════════════
+       CONTAINER
+    ══════════════════════════════════════════════ */
+    .page-wrap { max-width: 1400px; margin: 0 auto; padding: 0 20px; }
+
+    /* ══════════════════════════════════════════════
+       HERO SECTION
+    ══════════════════════════════════════════════ */
+    .hero {
+      position: relative;
+      padding: 72px 0 52px;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero-glow {
+      position: absolute;
+      top: -60px; left: 50%; transform: translateX(-50%);
+      width: 900px; height: 400px;
+      background: radial-gradient(ellipse 60% 50% at 50% 40%, rgba(0,240,255,0.07) 0%, rgba(123,97,255,0.05) 50%, transparent 80%);
+      pointer-events: none;
+    }
+    .hero-inner { position: relative; z-index: 1; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-display);
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--primary);
+      background: var(--primary-dim);
+      border: 1px solid rgba(0,240,255,0.22);
+      padding: 5px 16px; border-radius: 100px;
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.6s ease both;
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 800;
+      line-height: 1.08;
+      margin-bottom: 1.1rem;
+      animation: fadeUp 0.6s 0.08s ease both;
+    }
+    .hero h1 .grad {
+      background: linear-gradient(100deg, var(--primary) 0%, var(--secondary) 60%, var(--accent) 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      max-width: 580px; margin: 0 auto 2rem;
+      line-height: 1.75;
+      animation: fadeUp 0.6s 0.16s ease both;
+    }
+    .hero-chips {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
+      animation: fadeUp 0.6s 0.24s ease both;
+    }
+    .hero-chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 6px 14px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border-light);
+      border-radius: 100px;
+      font-size: 0.8rem; font-weight: 500; color: var(--text-secondary);
+    }
+    .hero-chip svg { color: var(--primary); }
+
+    /* ══════════════════════════════════════════════
+       APP SHELL
+    ══════════════════════════════════════════════ */
+    .app-shell {
+      position: relative;
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg), 0 0 0 1px rgba(0,240,255,0.06);
+      animation: fadeUp 0.65s 0.3s ease both;
+      margin-bottom: 80px;
+    }
+    .app-shell::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0,240,255,0.4), rgba(123,97,255,0.4), transparent);
+    }
+
+    /* ── TABS BAR ── */
+    .tabs-bar {
+      display: flex;
+      align-items: center;
+      height: var(--tabs-h);
+      background: var(--bg-dark);
+      border-bottom: 1px solid var(--border);
+      overflow-x: auto;
+      scrollbar-width: none;
+      gap: 0;
+      padding-left: 4px;
+    }
+    .tabs-bar::-webkit-scrollbar { display: none; }
+    .tab-item {
+      display: flex; align-items: center; gap: 8px;
+      height: 100%;
+      padding: 0 14px 0 16px;
+      font-size: 0.82rem; font-weight: 500;
+      color: var(--text-muted);
+      cursor: pointer;
+      border-right: 1px solid var(--border);
+      white-space: nowrap;
+      transition: background var(--transition), color var(--transition);
+      flex-shrink: 0;
+      position: relative;
+      max-width: 180px;
+    }
+    .tab-item.active {
+      color: var(--text);
+      background: var(--bg-card);
+    }
+    .tab-item.active::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+    }
+    .tab-item:hover:not(.active) { background: rgba(255,255,255,0.04); color: var(--text-secondary); }
+    .tab-name {
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+      flex: 1; min-width: 0;
+    }
+    .tab-close {
+      width: 18px; height: 18px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 4px; color: var(--text-muted);
+      transition: background var(--transition), color var(--transition);
+      flex-shrink: 0;
+    }
+    .tab-close:hover { background: rgba(255,255,255,0.1); color: var(--text); }
+    .tab-add {
+      width: 44px; height: var(--tabs-h);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-muted); flex-shrink: 0;
+      transition: color var(--transition), background var(--transition);
+      border-right: 1px solid var(--border);
+    }
+    .tab-add:hover { color: var(--primary); background: var(--primary-dim); }
+
+    /* ── TOOLBAR ── */
+    .toolbar {
+      display: flex;
+      align-items: center;
+      height: var(--toolbar-h);
+      background: var(--bg-card-2);
+      border-bottom: 1px solid var(--border);
+      padding: 0 8px;
+      gap: 4px;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .toolbar::-webkit-scrollbar { display: none; }
+    .tb-divider { width: 1px; height: 24px; background: var(--border-light); margin: 0 4px; flex-shrink: 0; }
+    .tb-btn {
+      display: flex; align-items: center; justify-content: center;
+      min-width: 34px; height: 34px; padding: 0 8px;
+      border-radius: 8px;
+      color: var(--text-secondary);
+      font-size: 0.82rem; font-weight: 600;
+      transition: all var(--transition);
+      flex-shrink: 0;
+      position: relative;
+      gap: 5px;
+    }
+    .tb-btn:hover { background: rgba(255,255,255,0.07); color: var(--text); }
+    .tb-btn.active { background: var(--primary-dim); color: var(--primary); }
+    .tb-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+    .tb-btn[title]:hover::after {
+      content: attr(title);
+      position: absolute; top: calc(100% + 6px); left: 50%; transform: translateX(-50%);
+      background: var(--bg-card-2); border: 1px solid var(--border-light);
+      padding: 4px 10px; border-radius: 6px; font-size: 0.72rem;
+      color: var(--text); white-space: nowrap; z-index: 100;
+      pointer-events: none;
+    }
+    .tb-select {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text-secondary);
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      padding: 4px 8px;
+      cursor: pointer;
+      outline: none;
+      transition: border-color var(--transition);
+      flex-shrink: 0;
+    }
+    .tb-select:focus { border-color: var(--border-focus); }
+    .tb-select option { background: var(--bg-card-2); }
+    .tb-spacer { flex: 1; }
+
+    /* ── EDITOR AREA ── */
+    .editor-wrap {
+      position: relative;
+      display: flex;
+      background: var(--editor-bg);
+    }
+    /* Line numbers */
+    .line-numbers {
+      width: 48px;
+      min-height: 520px;
+      background: var(--bg-dark);
+      border-right: 1px solid var(--border);
+      padding: 20px 0;
+      text-align: right;
+      padding-right: 10px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      user-select: none;
+      overflow: hidden;
+      flex-shrink: 0;
+      transition: width var(--transition);
+    }
+    .line-numbers.hidden { width: 0; padding: 0; border: none; }
+    .line-num { display: block; height: 1.65em; }
+
+    /* Main textarea */
+    .editor-textarea {
+      flex: 1;
+      min-height: 520px;
+      padding: 20px 24px;
+      background: var(--editor-bg);
+      color: var(--editor-text);
+      font-family: var(--font-body);
+      font-size: 15px;
+      line-height: 1.65;
+      border: none;
+      outline: none;
+      resize: none;
+      tab-size: 2;
+      caret-color: var(--primary);
+      transition: background var(--transition), color var(--transition), font-size var(--transition);
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+    .editor-textarea::selection { background: var(--editor-sel); }
+    .editor-textarea:focus { outline: none; }
+    .editor-textarea.mono { font-family: var(--font-mono); font-size: 13px; }
+    .editor-textarea.serif { font-family: 'Georgia', serif; }
+
+    /* Markdown preview pane */
+    .preview-pane {
+      flex: 1;
+      min-height: 520px;
+      padding: 24px 28px;
+      background: var(--editor-bg);
+      color: var(--editor-text);
+      overflow-y: auto;
+      border-left: 1px solid var(--border);
+      font-size: 15px;
+      line-height: 1.75;
+      display: none;
+    }
+    .preview-pane.visible { display: block; }
+    .preview-pane h1,.preview-pane h2,.preview-pane h3 { font-family: var(--font-display); margin: 1.2em 0 0.5em; font-weight: 700; }
+    .preview-pane h1 { font-size: 1.7rem; border-bottom: 1px solid var(--border); padding-bottom: 0.4em; color: var(--primary); }
+    .preview-pane h2 { font-size: 1.3rem; color: var(--text); }
+    .preview-pane h3 { font-size: 1.1rem; color: var(--text-secondary); }
+    .preview-pane p { margin: 0.75em 0; }
+    .preview-pane code { font-family: var(--font-mono); font-size: 0.85em; background: rgba(0,240,255,0.08); color: var(--primary); padding: 2px 6px; border-radius: 4px; }
+    .preview-pane pre { background: var(--bg-dark); border: 1px solid var(--border); border-radius: 10px; padding: 16px; overflow-x: auto; margin: 1em 0; }
+    .preview-pane pre code { background: none; padding: 0; color: var(--text-secondary); }
+    .preview-pane blockquote { border-left: 3px solid var(--primary); padding-left: 16px; color: var(--text-secondary); margin: 1em 0; }
+    .preview-pane ul,.preview-pane ol { padding-left: 1.5em; margin: 0.75em 0; }
+    .preview-pane li { margin: 0.35em 0; }
+    .preview-pane a { color: var(--primary); border-bottom: 1px solid rgba(0,240,255,0.3); }
+    .preview-pane strong { color: var(--text); font-weight: 700; }
+    .preview-pane em { color: var(--accent); }
+    .preview-pane hr { border: none; border-top: 1px solid var(--border-light); margin: 1.5em 0; }
+    .preview-pane table { width: 100%; border-collapse: collapse; margin: 1em 0; }
+    .preview-pane th { background: rgba(0,240,255,0.07); color: var(--primary); padding: 8px 12px; text-align: left; border: 1px solid var(--border); font-family: var(--font-display); font-size: 0.85rem; }
+    .preview-pane td { padding: 8px 12px; border: 1px solid var(--border); font-size: 0.9rem; color: var(--text-secondary); }
+
+    /* ── STATUS BAR ── */
+    .status-bar {
+      display: flex; align-items: center;
+      height: var(--statusbar-h);
+      background: var(--bg-dark);
+      border-top: 1px solid var(--border);
+      padding: 0 16px;
+      gap: 20px;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .status-bar::-webkit-scrollbar { display: none; }
+    .status-item { display: flex; align-items: center; gap: 5px; white-space: nowrap; flex-shrink: 0; }
+    .status-dot { width: 6px; height: 6px; border-radius: 50%; background: #22c55e; }
+    .status-dot.saving { background: #facc15; animation: pulse 1s infinite; }
+    .status-item b { color: var(--text-secondary); font-weight: 600; }
+    .status-spacer { flex: 1; }
+
+    /* ── FIND & REPLACE PANEL ── */
+    .find-panel {
+      display: none;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      background: var(--bg-card-2);
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .find-panel.open { display: flex; }
+    .find-input {
+      flex: 1; min-width: 160px; max-width: 260px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      padding: 6px 12px;
+      font-family: var(--font-body); font-size: 0.85rem;
+      color: var(--text); outline: none;
+      transition: border-color var(--transition);
+    }
+    .find-input:focus { border-color: var(--border-focus); }
+    .find-label { font-size: 0.78rem; color: var(--text-muted); font-weight: 600; white-space: nowrap; }
+    .find-count { font-size: 0.78rem; color: var(--primary); font-family: var(--font-mono); white-space: nowrap; }
+    .find-btn {
+      display: flex; align-items: center; gap: 5px;
+      padding: 6px 12px; border-radius: 8px;
+      font-size: 0.8rem; font-weight: 600;
+      transition: all var(--transition);
+    }
+    .find-btn-primary { background: var(--primary); color: #000; }
+    .find-btn-primary:hover { background: #29f5ff; }
+    .find-btn-ghost { background: rgba(255,255,255,0.06); color: var(--text-secondary); border: 1px solid var(--border); }
+    .find-btn-ghost:hover { background: rgba(255,255,255,0.1); color: var(--text); }
+    .find-close { color: var(--text-muted); padding: 4px; border-radius: 6px; }
+    .find-close:hover { color: var(--text); background: rgba(255,255,255,0.07); }
+
+    /* ── FOCUS MODE ── */
+    body.focus-mode .app-shell { position: fixed; inset: 0; z-index: 9000; border-radius: 0; margin: 0; border: none; }
+    body.focus-mode .hero, body.focus-mode .info-sections { display: none; }
+    body.focus-mode .editor-textarea { min-height: calc(100vh - var(--tabs-h) - var(--toolbar-h) - var(--statusbar-h) - 40px); }
+    .focus-exit { display: none; position: fixed; top: 16px; right: 16px; z-index: 9100; background: rgba(8,12,18,0.85); border: 1px solid var(--border-light); border-radius: 10px; padding: 8px 16px; font-size: 0.8rem; color: var(--text-secondary); }
+    body.focus-mode .focus-exit { display: flex; align-items: center; gap: 8px; }
+
+    /* ══════════════════════════════════════════════
+       FEATURE CHIPS ROW
+    ══════════════════════════════════════════════ */
+    .features-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 80px;
+    }
+    .feature-chip-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      display: flex; align-items: flex-start; gap: 14px;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .feature-chip-card:hover { border-color: rgba(0,240,255,0.2); transform: translateY(-2px); }
+    .fc-icon {
+      width: 38px; height: 38px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--primary-dim); color: var(--primary);
+      flex-shrink: 0;
+    }
+    .fc-icon.violet { background: var(--secondary-dim); color: var(--secondary); }
+    .fc-icon.pink { background: rgba(255,79,216,0.12); color: var(--accent); }
+    .fc-title { font-family: var(--font-display); font-size: 0.88rem; font-weight: 700; margin-bottom: 4px; }
+    .fc-desc { font-size: 0.78rem; color: var(--text-muted); line-height: 1.5; }
+
+    /* ══════════════════════════════════════════════
+       INFO SECTIONS
+    ══════════════════════════════════════════════ */
+    .info-sections { }
+
+    .section-wrap { padding: 80px 0; }
+    .section-wrap.dark-bg { background: var(--bg-dark); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+    .section-header { text-align: center; margin-bottom: 52px; }
+    .section-badge {
+      display: inline-block;
+      font-family: var(--font-display);
+      font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.13em; text-transform: uppercase;
+      color: var(--primary);
+      background: var(--primary-dim);
+      border: 1px solid rgba(0,240,255,0.22);
+      padding: 5px 14px; border-radius: 100px;
+      margin-bottom: 1.1rem;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.7rem, 3.5vw, 2.5rem);
+      font-weight: 700; line-height: 1.15;
+      margin-bottom: 0.9rem;
+    }
+    .section-desc {
+      font-size: 1rem; color: var(--text-secondary);
+      max-width: 580px; margin: 0 auto; line-height: 1.75;
+    }
+    .grad-text {
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+
+    /* How-to Steps */
+    .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+    .step-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 28px 24px;
+      position: relative; overflow: hidden;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .step-card:hover { border-color: rgba(0,240,255,0.22); transform: translateY(-3px); }
+    .step-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      opacity: 0; transition: opacity var(--transition);
+    }
+    .step-card:hover::before { opacity: 1; }
+    .step-num {
+      font-family: var(--font-display); font-size: 2.6rem; font-weight: 800;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      line-height: 1; margin-bottom: 16px;
+    }
+    .step-title { font-family: var(--font-display); font-size: 1.02rem; font-weight: 700; margin-bottom: 10px; }
+    .step-text { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.68; }
+
+    /* About / Description columns */
+    .desc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+    .desc-content h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
+      font-weight: 700; margin-bottom: 1.2rem; line-height: 1.2;
+    }
+    .desc-content p { font-size: 0.93rem; color: var(--text-secondary); line-height: 1.8; margin-bottom: 1rem; }
+    .check-list { display: flex; flex-direction: column; gap: 12px; margin-top: 1.2rem; }
+    .check-list li {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: 0.9rem; color: var(--text-secondary);
+    }
+    .check-list li .ci {
+      width: 20px; height: 20px; border-radius: 50%;
+      background: var(--primary-dim); border: 1px solid rgba(0,240,255,0.25);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 1px;
+      color: var(--primary);
+    }
+
+    /* Showcase / stat cards */
+    .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .stat-card {
+      background: var(--bg-card-2); border: 1px solid var(--border-light);
+      border-radius: var(--radius); padding: 22px;
+    }
+    .stat-val {
+      font-family: var(--font-display); font-size: 2rem; font-weight: 800;
+      color: var(--primary); line-height: 1; margin-bottom: 6px;
+    }
+    .stat-label { font-size: 0.82rem; color: var(--text-muted); }
+
+    /* Keyboard shortcuts table */
+    .shortcuts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
+    .shortcut-row {
+      display: flex; align-items: center; justify-content: space-between;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: 10px; padding: 12px 16px;
+      transition: border-color var(--transition);
+    }
+    .shortcut-row:hover { border-color: var(--border-light); }
+    .shortcut-name { font-size: 0.88rem; color: var(--text-secondary); }
+    .shortcut-keys { display: flex; gap: 4px; }
+    .kbd {
+      background: var(--bg-dark); border: 1px solid var(--border-light);
+      border-bottom: 2px solid rgba(0,240,255,0.3);
+      border-radius: 5px; padding: 2px 8px;
+      font-family: var(--font-mono); font-size: 0.72rem; color: var(--primary);
+      white-space: nowrap;
+    }
+
+    /* FAQ */
+    .faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+    .faq-item {
+      background: var(--bg-card); border: 1px solid var(--border-light);
+      border-radius: var(--radius); overflow: hidden;
+    }
+    .faq-q {
+      width: 100%; display: flex; align-items: center; justify-content: space-between;
+      padding: 19px 24px; gap: 16px;
+      font-family: var(--font-display); font-size: 0.97rem; font-weight: 600;
+      color: var(--text); background: none; border: none;
+      cursor: pointer; text-align: left;
+    }
+    .faq-icon { flex-shrink: 0; color: var(--primary); transition: transform 0.25s ease; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-a { display: none; padding: 0 24px 20px; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.78; }
+    .faq-item.open .faq-a { display: block; }
+    .faq-a code { font-family: var(--font-mono); font-size: 0.83em; background: rgba(0,240,255,0.08); color: var(--primary); padding: 2px 6px; border-radius: 4px; }
+
+    /* ── MODAL: Rename Tab ── */
+    .modal-overlay {
+      position: fixed; inset: 0; z-index: 8000;
+      background: rgba(5,8,16,0.75);
+      backdrop-filter: blur(8px);
+      display: none; align-items: center; justify-content: center;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-box {
+      background: var(--bg-card); border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg); padding: 28px;
+      width: 100%; max-width: 380px; box-shadow: var(--shadow-lg);
+    }
+    .modal-title { font-family: var(--font-display); font-size: 1rem; font-weight: 700; margin-bottom: 16px; }
+    .modal-input {
+      width: 100%; background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border-light); border-radius: 10px;
+      padding: 11px 14px; font-family: var(--font-body); font-size: 0.95rem;
+      color: var(--text); outline: none; margin-bottom: 16px;
+      transition: border-color var(--transition);
+    }
+    .modal-input:focus { border-color: var(--border-focus); }
+    .modal-actions { display: flex; gap: 10px; justify-content: flex-end; }
+    .modal-btn {
+      padding: 9px 20px; border-radius: 9px;
+      font-family: var(--font-display); font-size: 0.83rem; font-weight: 700;
+      transition: all var(--transition);
+    }
+    .modal-btn-primary { background: var(--primary); color: #000; }
+    .modal-btn-primary:hover { background: #29f5ff; }
+    .modal-btn-ghost { background: rgba(255,255,255,0.07); color: var(--text-secondary); border: 1px solid var(--border); }
+    .modal-btn-ghost:hover { background: rgba(255,255,255,0.1); color: var(--text); }
+
+    /* ── TOAST ── */
+    .toast {
+      position: fixed; bottom: 28px; left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: var(--bg-card-2);
+      border: 1px solid rgba(0,240,255,0.25); border-radius: 10px;
+      padding: 11px 22px;
+      font-size: 0.85rem; font-weight: 600; color: var(--primary);
+      display: flex; align-items: center; gap: 8px;
+      opacity: 0; transition: opacity 0.22s, transform 0.22s;
+      z-index: 9999; pointer-events: none; white-space: nowrap;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; } 50% { opacity: 0.5; }
+    }
+
+    /* Scroll reveal */
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.52s ease, transform 0.52s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ══════════════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════════════ */
+    @media (max-width: 1024px) {
+      .desc-grid { grid-template-columns: 1fr; gap: 36px; }
+    }
+    @media (max-width: 768px) {
+      .hero { padding: 52px 0 36px; }
+      .hero h1 { font-size: 2rem; }
+      .line-numbers { display: none; }
+      .section-wrap { padding: 56px 0; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .stat-grid { grid-template-columns: 1fr 1fr; }
+      .shortcuts-grid { grid-template-columns: 1fr; }
+      .tb-select { max-width: 90px; }
+    }
+    @media (max-width: 480px) {
+      .hero-chips { gap: 6px; }
+      .hero-chip { font-size: 0.72rem; padding: 5px 10px; }
+      .tab-item { max-width: 130px; }
+      .editor-textarea { padding: 16px; }
+      .stat-grid { grid-template-columns: 1fr; }
+    }
+
+    @media print {
+      .hero, .app-shell .tabs-bar, .toolbar, .status-bar, .find-panel,
+      .features-strip, .info-sections { display: none !important; }
+      .editor-textarea { min-height: auto; border: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Component -->
+  <div id="header-placeholder"></div>
+
+<!-- Focus mode exit button -->
+<button class="focus-exit" onclick="toggleFocus()" title="Exit Focus Mode">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+  Exit Focus Mode <kbd style="font-family:var(--font-mono);font-size:0.68rem;background:rgba(255,255,255,0.08);padding:1px 6px;border-radius:4px">Esc</kbd>
+</button>
+
+<!-- Rename tab modal -->
+<div class="modal-overlay" id="renameModal">
+  <div class="modal-box">
+    <p class="modal-title">Rename Note</p>
+    <input class="modal-input" id="renameInput" type="text" placeholder="Note name…" maxlength="40">
+    <div class="modal-actions">
+      <button class="modal-btn modal-btn-ghost" onclick="closeRename()">Cancel</button>
+      <button class="modal-btn modal-btn-primary" onclick="confirmRename()">Rename</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast notification -->
+<div class="toast" id="toast">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+  <span id="toastMsg">Done!</span>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════════════ -->
+<div class="page-wrap">
+  <section class="hero" aria-label="Notepad Online heading">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="hero-inner">
+      <span class="hero-badge" role="text">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        Free Online Notepad
+      </span>
+      <h1>The Smartest <span class="grad">Notepad Online</span></h1>
+      <p class="hero-sub">Write, format, and save notes instantly — no login, no download, no limits. Your notes autosave to your browser so they're always there when you return.</p>
+      <div class="hero-chips" role="list">
+        <span class="hero-chip" role="listitem"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>Autosave</span>
+        <span class="hero-chip" role="listitem"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>Markdown Preview</span>
+        <span class="hero-chip" role="listitem"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>Find &amp; Replace</span>
+        <span class="hero-chip" role="listitem"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>Multiple Notes</span>
+        <span class="hero-chip" role="listitem"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Export TXT / HTML / MD</span>
+        <span class="hero-chip" role="listitem"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>No Login Required</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════════
+       APP SHELL
+  ════════════════════════════════════════════════════ -->
+  <main class="app-shell" id="appShell" role="main" aria-label="Notepad Online Editor">
+
+    <!-- TABS -->
+    <div class="tabs-bar" id="tabsBar" role="tablist" aria-label="Open notes">
+      <!-- Tabs are generated by JS -->
+      <button class="tab-add" onclick="addNote()" title="New Note" aria-label="Add new note">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+    </div>
+
+    <!-- FIND & REPLACE PANEL -->
+    <div class="find-panel" id="findPanel" role="search" aria-label="Find and replace">
+      <span class="find-label">Find</span>
+      <input class="find-input" id="findInput" type="text" placeholder="Search text…" oninput="doFind()" aria-label="Find text">
+      <span class="find-count" id="findCount"></span>
+      <button class="find-btn find-btn-ghost" onclick="findPrev()" title="Previous">↑</button>
+      <button class="find-btn find-btn-ghost" onclick="findNext()" title="Next">↓</button>
+      <span class="find-label" style="margin-left:8px">Replace</span>
+      <input class="find-input" id="replaceInput" type="text" placeholder="Replace with…" aria-label="Replace text">
+      <button class="find-btn find-btn-ghost" onclick="doReplace()">Replace</button>
+      <button class="find-btn find-btn-primary" onclick="doReplaceAll()">All</button>
+      <button class="find-close" onclick="closeFind()" aria-label="Close find panel">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <!-- TOOLBAR -->
+    <div class="toolbar" id="toolbar" role="toolbar" aria-label="Formatting tools">
+      <!-- Undo / Redo -->
+      <button class="tb-btn" onclick="document.execCommand('undo')" title="Undo (Ctrl+Z)" aria-label="Undo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 14 4 9 9 4"/><path d="M20 20v-7a4 4 0 0 0-4-4H4"/></svg>
+      </button>
+      <button class="tb-btn" onclick="document.execCommand('redo')" title="Redo (Ctrl+Y)" aria-label="Redo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 14 20 9 15 4"/><path d="M4 20v-7a4 4 0 0 1 4-4h12"/></svg>
+      </button>
+      <div class="tb-divider"></div>
+
+      <!-- Font family -->
+      <select class="tb-select" id="fontFamily" onchange="applyFont()" title="Font Family" aria-label="Font family">
+        <option value="sans">Sans-serif</option>
+        <option value="mono">Monospace</option>
+        <option value="serif">Serif</option>
+      </select>
+
+      <!-- Font size -->
+      <select class="tb-select" id="fontSize" onchange="applyFontSize()" title="Font Size" aria-label="Font size">
+        <option value="12">12px</option>
+        <option value="13">13px</option>
+        <option value="14">14px</option>
+        <option value="15" selected>15px</option>
+        <option value="16">16px</option>
+        <option value="18">18px</option>
+        <option value="20">20px</option>
+        <option value="24">24px</option>
+      </select>
+      <div class="tb-divider"></div>
+
+      <!-- Find & Replace -->
+      <button class="tb-btn" id="findBtn" onclick="toggleFind()" title="Find &amp; Replace (Ctrl+F)" aria-label="Find and replace">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+      <div class="tb-divider"></div>
+
+      <!-- Line numbers -->
+      <button class="tb-btn" id="lineNumBtn" onclick="toggleLineNumbers()" title="Toggle Line Numbers" aria-label="Toggle line numbers">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+      </button>
+
+      <!-- Word wrap -->
+      <button class="tb-btn active" id="wrapBtn" onclick="toggleWrap()" title="Toggle Word Wrap" aria-label="Toggle word wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="17 10 21 6 17 2"/><path d="M3 12h16a2 2 0 0 1 0 4h-3"/><polyline points="13 18 9 22 5 18"/><path d="M3 6h8"/></svg>
+      </button>
+      <div class="tb-divider"></div>
+
+      <!-- Markdown toggle -->
+      <button class="tb-btn" id="mdBtn" onclick="toggleMarkdown()" title="Markdown Preview (Ctrl+M)" aria-label="Markdown preview">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+        <span style="font-size:0.75rem">MD</span>
+      </button>
+
+      <!-- Focus mode -->
+      <button class="tb-btn" onclick="toggleFocus()" title="Focus / Distraction-free Mode (F11)" aria-label="Focus mode">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+      </button>
+
+      <!-- Light/dark editor -->
+      <button class="tb-btn" id="themeBtn" onclick="toggleEditorTheme()" title="Toggle Editor Theme" aria-label="Toggle editor light/dark theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      </button>
+      <div class="tb-divider"></div>
+
+      <!-- Download -->
+      <button class="tb-btn" onclick="downloadAs('txt')" title="Download as .txt" aria-label="Download as TXT">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span style="font-size:0.72rem">TXT</span>
+      </button>
+      <button class="tb-btn" onclick="downloadAs('html')" title="Download as .html" aria-label="Download as HTML">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span style="font-size:0.72rem">HTML</span>
+      </button>
+      <button class="tb-btn" onclick="downloadAs('md')" title="Download as .md" aria-label="Download as Markdown">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        <span style="font-size:0.72rem">MD</span>
+      </button>
+
+      <!-- Copy & Print -->
+      <button class="tb-btn" onclick="copyAll()" title="Copy All Text" aria-label="Copy all text">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      </button>
+      <button class="tb-btn" onclick="window.print()" title="Print" aria-label="Print">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+      </button>
+
+      <div class="tb-spacer"></div>
+
+      <!-- Clear -->
+      <button class="tb-btn" onclick="clearNote()" title="Clear Note" aria-label="Clear current note" style="color:var(--accent)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+      </button>
+    </div>
+
+    <!-- EDITOR + PREVIEW -->
+    <div class="editor-wrap" id="editorWrap">
+      <div class="line-numbers hidden" id="lineNumbers" aria-hidden="true"></div>
+      <textarea
+        class="editor-textarea"
+        id="mainEditor"
+        spellcheck="true"
+        autocorrect="on"
+        autocapitalize="sentences"
+        placeholder="Start writing your note… Your work is saved automatically."
+        aria-label="Note editor"
+        aria-multiline="true"
+        role="textbox"
+      ></textarea>
+      <div class="preview-pane" id="previewPane" aria-label="Markdown preview" role="region"></div>
+    </div>
+
+    <!-- STATUS BAR -->
+    <div class="status-bar" role="status" aria-live="polite">
+      <div class="status-item">
+        <span class="status-dot" id="saveDot"></span>
+        <span id="saveStatus">Saved</span>
+      </div>
+      <div class="status-item">
+        <b id="wordCount">0</b>&nbsp;words
+      </div>
+      <div class="status-item">
+        <b id="charCount">0</b>&nbsp;chars
+      </div>
+      <div class="status-item">
+        <b id="lineCount">1</b>&nbsp;lines
+      </div>
+      <div class="status-item">
+        <b id="readTime">0</b>&nbsp;min read
+      </div>
+      <div class="status-item">
+        Ln <b id="cursorLine">1</b>, Col <b id="cursorCol">1</b>
+      </div>
+      <div class="status-spacer"></div>
+      <div class="status-item">
+        <span id="noteName" style="color:var(--text-secondary)">Untitled</span>
+      </div>
+      <div class="status-item">
+        <button onclick="openRename()" style="font-size:0.7rem;color:var(--text-muted);padding:2px 8px;border-radius:5px;border:1px solid var(--border);transition:all var(--transition)" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">Rename</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- ══════════════════════════════════════════════════
+       FEATURE CARDS STRIP
+  ════════════════════════════════════════════════════ -->
+  <section class="features-strip" aria-label="Notepad Online features">
+    <article class="feature-chip-card reveal">
+      <div class="fc-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <div><div class="fc-title">Autosave</div><div class="fc-desc">Every keystroke is saved to localStorage. Reopen the tab and your notes are right where you left them.</div></div>
+    </article>
+    <article class="feature-chip-card reveal">
+      <div class="fc-icon violet"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+      <div><div class="fc-title">Multiple Notes</div><div class="fc-desc">Work on several notes at once with a tabbed interface. Add, rename, and delete notes in one click.</div></div>
+    </article>
+    <article class="feature-chip-card reveal">
+      <div class="fc-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+      <div><div class="fc-title">Find &amp; Replace</div><div class="fc-desc">Quickly locate and replace text across your entire note with match count and navigation controls.</div></div>
+    </article>
+    <article class="feature-chip-card reveal">
+      <div class="fc-icon pink"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+      <div><div class="fc-title">Markdown Preview</div><div class="fc-desc">Toggle a live side-by-side Markdown preview. Write in MD syntax and watch it render in real time.</div></div>
+    </article>
+    <article class="feature-chip-card reveal">
+      <div class="fc-icon violet"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
+      <div><div class="fc-title">Export Files</div><div class="fc-desc">Download your notes as .txt, .html or .md files directly — no account or cloud service needed.</div></div>
+    </article>
+    <article class="feature-chip-card reveal">
+      <div class="fc-icon pink"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg></div>
+      <div><div class="fc-title">Focus Mode</div><div class="fc-desc">Go full-screen and eliminate every distraction. Pure writing mode that hides the entire UI.</div></div>
+    </article>
+  </section>
+</div>
+
+<!-- ══════════════════════════════════════════════════
+     INFO SECTIONS  (outside page-wrap for full-bleed)
+════════════════════════════════════════════════════ -->
+<div class="info-sections">
+
+  <!-- HOW TO USE -->
+  <section class="section-wrap dark-bg" aria-labelledby="howto-title">
+    <div class="page-wrap">
+      <div class="section-header">
+        <span class="section-badge">How To Use</span>
+        <h2 class="section-title" id="howto-title">How to Use <span class="grad-text">Notepad Online</span></h2>
+        <p class="section-desc">Start writing in seconds — no setup, no sign-in. Here's everything the free online notepad can do for you.</p>
+      </div>
+      <div class="steps-grid">
+        <article class="step-card reveal">
+          <div class="step-num">01</div>
+          <h3 class="step-title">Open &amp; Start Typing</h3>
+          <p class="step-text">Click inside the editor and start typing immediately. Notepad Online is a zero-friction free online notepad — no sign-up, no modal, no waiting. Your first note is ready the moment the page loads.</p>
+        </article>
+        <article class="step-card reveal">
+          <div class="step-num">02</div>
+          <h3 class="step-title">Manage Multiple Notes</h3>
+          <p class="step-text">Click the <strong>+</strong> button in the tab bar to open a new note. Each tab stores its own content. Rename any tab by clicking <em>Rename</em> in the status bar. Switch between notes with a single click.</p>
+        </article>
+        <article class="step-card reveal">
+          <div class="step-num">03</div>
+          <h3 class="step-title">Format &amp; Customise</h3>
+          <p class="step-text">Use the toolbar to choose your font (sans-serif, monospace, or serif), adjust the text size, toggle line numbers, and switch between a dark or light editor background to suit your working style.</p>
+        </article>
+        <article class="step-card reveal">
+          <div class="step-num">04</div>
+          <h3 class="step-title">Find &amp; Replace</h3>
+          <p class="step-text">Press <kbd style="font-family:var(--font-mono);font-size:0.78rem;background:rgba(0,240,255,0.08);color:var(--primary);padding:2px 7px;border-radius:4px">Ctrl+F</kbd> to open the find panel. Type your search term, see the match count, navigate with the arrow buttons, and replace one or all occurrences instantly.</p>
+        </article>
+        <article class="step-card reveal">
+          <div class="step-num">05</div>
+          <h3 class="step-title">Preview Markdown</h3>
+          <p class="step-text">Click the <strong>MD</strong> toolbar button or press <kbd style="font-family:var(--font-mono);font-size:0.78rem;background:rgba(0,240,255,0.08);color:var(--primary);padding:2px 7px;border-radius:4px">Ctrl+M</kbd> to toggle a live Markdown preview pane alongside your editor. Headings, links, code blocks, tables and blockquotes all render correctly.</p>
+        </article>
+        <article class="step-card reveal">
+          <div class="step-num">06</div>
+          <h3 class="step-title">Export or Copy</h3>
+          <p class="step-text">Hit the download buttons to save your note as a <code>.txt</code>, <code>.html</code>, or <code>.md</code> file. Use the copy button to copy all text to your clipboard. Print directly from the browser with the print button.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT / DESCRIPTION -->
+  <section class="section-wrap" aria-labelledby="about-title">
+    <div class="page-wrap">
+      <div class="desc-grid">
+        <div class="desc-content reveal">
+          <h2 id="about-title">What is <span class="grad-text">Notepad Online?</span></h2>
+          <p>Notepad Online is a free, browser-based text editor that works like a supercharged version of the classic Windows Notepad — but accessible from any device, anywhere, with no installation required. It is the fastest way to write notes online without opening a heavy word processor or signing into a cloud account.</p>
+          <p>Unlike traditional desktop notepads, this online notepad persists your work using your browser's localStorage API. Every note you write is automatically saved as you type and survives page refreshes and browser restarts — until you choose to delete it. Your content never leaves your device.</p>
+          <p>Whether you're a developer jotting down a code snippet, a student drafting an essay outline, or a professional keeping quick reference notes, Notepad Online gives you a distraction-free environment that's always one tab away.</p>
+          <ul class="check-list" role="list">
+            <li role="listitem"><span class="ci" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Works on any device — desktop, tablet, or mobile</li>
+            <li role="listitem"><span class="ci" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>All data stored locally — 100% private</li>
+            <li role="listitem"><span class="ci" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>No account, no email, no subscription required</li>
+            <li role="listitem"><span class="ci" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Supports unlimited notes via multi-tab interface</li>
+            <li role="listitem"><span class="ci" aria-hidden="true"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Full keyboard shortcut support for power users</li>
+          </ul>
+        </div>
+        <div class="stat-grid reveal">
+          <div class="stat-card">
+            <div class="stat-val">∞</div>
+            <div class="stat-label">Notes you can create</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-val">0</div>
+            <div class="stat-label">Login required</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-val">3</div>
+            <div class="stat-label">Export formats (TXT, HTML, MD)</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-val">100%</div>
+            <div class="stat-label">Private — data stays on your device</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KEYBOARD SHORTCUTS -->
+  <section class="section-wrap dark-bg" aria-labelledby="shortcuts-title">
+    <div class="page-wrap">
+      <div class="section-header">
+        <span class="section-badge">Power User</span>
+        <h2 class="section-title" id="shortcuts-title">Keyboard <span class="grad-text">Shortcuts</span></h2>
+        <p class="section-desc">Work faster in the free online notepad with these keyboard shortcuts — no mouse needed.</p>
+      </div>
+      <div class="shortcuts-grid">
+        <div class="shortcut-row reveal"><span class="shortcut-name">Save / Autosave</span><span class="shortcut-keys"><kbd class="kbd">Ctrl</kbd><kbd class="kbd">S</kbd></span></div>
+        <div class="shortcut-row reveal"><span class="shortcut-name">Find &amp; Replace</span><span class="shortcut-keys"><kbd class="kbd">Ctrl</kbd><kbd class="kbd">F</kbd></span></div>
+        <div class="shortcut-row reveal"><span class="shortcut-name">Markdown Preview</span><span class="shortcut-keys"><kbd class="kbd">Ctrl</kbd><kbd class="kbd">M</kbd></span></div>
+        <div class="shortcut-row reveal"><span class="shortcut-name">New Note Tab</span><span class="shortcut-keys"><kbd class="kbd">Ctrl</kbd><kbd class="kbd">T</kbd></span></div>
+        <div class="shortcut-row reveal"><span class="shortcut-name">Focus Mode</span><span class="shortcut-keys"><kbd class="kbd">F11</kbd></span></div>
+        <div class="shortcut-row reveal"><span class="shortcut-name">Close Find Panel</span><span class="shortcut-keys"><kbd class="kbd">Esc</kbd></span></div>
+        <div class="shortcut-row reveal"><span class="shortcut-name">Select All</span><span class="shortcut-keys"><kbd class="kbd">Ctrl</kbd><kbd class="kbd">A</kbd></span></div>
+        <div class="shortcut-row reveal"><span class="shortcut-name">Undo</span><span class="shortcut-keys"><kbd class="kbd">Ctrl</kbd><kbd class="kbd">Z</kbd></span></div>
+        <div class="shortcut-row reveal"><span class="shortcut-name">Redo</span><span class="shortcut-keys"><kbd class="kbd">Ctrl</kbd><kbd class="kbd">Y</kbd></span></div>
+        <div class="shortcut-row reveal"><span class="shortcut-name">Copy All</span><span class="shortcut-keys"><kbd class="kbd">Ctrl</kbd><kbd class="kbd">Shift</kbd><kbd class="kbd">C</kbd></span></div>
+        <div class="shortcut-row reveal"><span class="shortcut-name">Print Note</span><span class="shortcut-keys"><kbd class="kbd">Ctrl</kbd><kbd class="kbd">P</kbd></span></div>
+        <div class="shortcut-row reveal"><span class="shortcut-name">Close Tab</span><span class="shortcut-keys"><kbd class="kbd">Ctrl</kbd><kbd class="kbd">W</kbd></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section-wrap" aria-labelledby="faq-title">
+    <div class="page-wrap">
+      <div class="section-header">
+        <span class="section-badge">FAQ</span>
+        <h2 class="section-title" id="faq-title">Frequently Asked <span class="grad-text">Questions</span></h2>
+        <p class="section-desc">Everything you need to know about the free online notepad.</p>
+      </div>
+      <div class="faq-list" role="list">
+
+        <div class="faq-item reveal" role="listitem">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+            What is Notepad Online?
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-a">Notepad Online is a free, browser-based text editor that lets you write and save notes without downloading any software or creating an account. It offers a clean, distraction-free writing environment with advanced features like autosave, multiple note tabs, Markdown preview, find and replace, and file export — all running entirely in your browser.</div>
+        </div>
+
+        <div class="faq-item reveal" role="listitem">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+            Is the online notepad completely free?
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-a">Yes — 100% free with no hidden costs, no subscription tier, and no feature paywalls. Notepad Online is a free notepad online that will remain free. There are no ads inside the editor itself. All features including autosave, multi-tab notes, Markdown preview, and file export are available to everyone without signing up.</div>
+        </div>
+
+        <div class="faq-item reveal" role="listitem">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+            Does Notepad Online save my notes automatically?
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-a">Yes. The online notepad autosaves every note to your browser's <code>localStorage</code> as you type. You'll see the status dot turn green and the status bar show "Saved" within a second of each keystroke. Your notes persist through page reloads, tab closures, and browser restarts — they will be there the next time you open the page on the same device and browser.</div>
+        </div>
+
+        <div class="faq-item reveal" role="listitem">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+            Are my notes private and secure?
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-a">Completely. Everything you write in the free online notepad stays on your device. Notes are stored in the browser's localStorage — a local storage area that is never transmitted to any server. We have no access to your note content. There is no user account, no cloud sync, and no analytics tied to your text.</div>
+        </div>
+
+        <div class="faq-item reveal" role="listitem">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+            Can I use Notepad Online on my phone or tablet?
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-a">Yes. The online notepad is fully responsive and works on smartphones and tablets running any modern browser (Chrome, Safari, Firefox, Edge). The toolbar and interface adapt to smaller screens. On mobile, line numbers are automatically hidden to maximise writing space. Autosave and all core features work identically on mobile.</div>
+        </div>
+
+        <div class="faq-item reveal" role="listitem">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+            How does Markdown Preview work in this online notepad?
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-a">Click the <strong>MD</strong> button in the toolbar or press <code>Ctrl+M</code>. A preview pane appears to the right of the editor and renders your Markdown in real time as you type. Supported elements include headings (H1–H3), bold, italic, code, code blocks, blockquotes, unordered and ordered lists, links, horizontal rules, and tables. The preview pane matches the current editor theme (dark or light).</div>
+        </div>
+
+        <div class="faq-item reveal" role="listitem">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+            What file formats can I download from the online notepad?
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-a">You can download your note as a plain text file (<code>.txt</code>), a standalone HTML file (<code>.html</code>) that renders the text in a styled webpage, or a Markdown file (<code>.md</code>) ready to open in any Markdown editor. All downloads are generated entirely in the browser — no server upload required.</div>
+        </div>
+
+        <div class="faq-item reveal" role="listitem">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+            What is Focus Mode in the online notepad?
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-a">Focus Mode expands the editor to fill the entire screen, hiding the page header, hero section, and all surrounding content — leaving only the notepad itself. It's the ultimate distraction-free writing experience. Press <code>F11</code> or click the expand icon in the toolbar to enter. Press <code>Esc</code> or click "Exit Focus Mode" to return to the normal view.</div>
+        </div>
+
+        <div class="faq-item reveal" role="listitem">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+            How do I create and manage multiple notes?
+            <svg class="faq-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-a">Click the <strong>+</strong> icon in the tab bar to add a new note. Click any tab to switch to it. Each note is saved independently. To rename a note, click the "Rename" button in the status bar and type a new name. To close a tab, click the × on the tab — you'll be prompted to confirm if the note contains text. All notes persist in localStorage across sessions.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</div><!-- /info-sections -->
+
+<!-- Footer Component -->
+  <div id="footer-placeholder"></div>
+
+  <script src="header.js"></script>
+  <script src="footer.js"></script>
+<script>
+/* ═══════════════════════════════════════════════
+   STATE
+═══════════════════════════════════════════════ */
+const STORAGE_KEY = 'notepad_online_v2';
+let notes = [];
+let activeId = null;
+let saveTimer = null;
+let findMatches = [];
+let findIndex = 0;
+let lineNumsOn = false;
+let wrapOn = true;
+let mdOn = false;
+let editorLight = false;
+let renameTarget = null;
+
+/* ═══════════════════════════════════════════════
+   DOM REFS
+═══════════════════════════════════════════════ */
+const editor    = document.getElementById('mainEditor');
+const tabsBar   = document.getElementById('tabsBar');
+const lineNums  = document.getElementById('lineNumbers');
+const prevPane  = document.getElementById('previewPane');
+const findPanel = document.getElementById('findPanel');
+const findInput = document.getElementById('findInput');
+const replInput = document.getElementById('replaceInput');
+const findCount = document.getElementById('findCount');
+const saveDot   = document.getElementById('saveDot');
+const saveStatus= document.getElementById('saveStatus');
+const wordCount = document.getElementById('wordCount');
+const charCount = document.getElementById('charCount');
+const lineCount = document.getElementById('lineCount');
+const readTime  = document.getElementById('readTime');
+const curLine   = document.getElementById('cursorLine');
+const curCol    = document.getElementById('cursorCol');
+const noteNameEl= document.getElementById('noteName');
+const addTabBtn = document.querySelector('.tab-add');
+
+/* ═══════════════════════════════════════════════
+   INIT
+═══════════════════════════════════════════════ */
+function init() {
+  loadFromStorage();
+  if (!notes.length) {
+    notes.push({ id: uid(), name: 'Note 1', content: '' });
+  }
+  activeId = notes[0].id;
+  renderTabs();
+  loadNote(activeId);
+}
+
+function uid() {
+  return Math.random().toString(36).slice(2, 10);
+}
+
+/* ═══════════════════════════════════════════════
+   STORAGE
+═══════════════════════════════════════════════ */
+function loadFromStorage() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) notes = JSON.parse(raw);
+  } catch(e) { notes = []; }
+}
+
+function save() {
+  clearTimeout(saveTimer);
+  saveDot.className = 'status-dot saving';
+  saveStatus.textContent = 'Saving…';
+  const note = notes.find(n => n.id === activeId);
+  if (note) note.content = editor.value;
+  saveTimer = setTimeout(() => {
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(notes)); } catch(e) {}
+    saveDot.className = 'status-dot';
+    saveStatus.textContent = 'Saved';
+  }, 600);
+}
+
+/* ═══════════════════════════════════════════════
+   TABS
+═══════════════════════════════════════════════ */
+function renderTabs() {
+  // Remove existing tab items (keep add button)
+  document.querySelectorAll('.tab-item').forEach(t => t.remove());
+  const addBtn = document.querySelector('.tab-add');
+
+  notes.forEach(note => {
+    const tab = document.createElement('div');
+    tab.className = 'tab-item' + (note.id === activeId ? ' active' : '');
+    tab.role = 'tab';
+    tab.setAttribute('aria-selected', note.id === activeId ? 'true' : 'false');
+    tab.innerHTML = `
+      <span class="tab-name" ondblclick="openRename('${note.id}')" title="${note.name}">${note.name}</span>
+      <span class="tab-close" onclick="removeNote('${note.id}', event)" title="Close note" aria-label="Close ${note.name}">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </span>`;
+    tab.addEventListener('click', (e) => {
+      if (!e.target.closest('.tab-close')) switchNote(note.id);
+    });
+    tabsBar.insertBefore(tab, addBtn);
+  });
+}
+
+function switchNote(id) {
+  const cur = notes.find(n => n.id === activeId);
+  if (cur) cur.content = editor.value;
+  activeId = id;
+  renderTabs();
+  loadNote(id);
+}
+
+function loadNote(id) {
+  const note = notes.find(n => n.id === id);
+  if (!note) return;
+  editor.value = note.content || '';
+  noteNameEl.textContent = note.name;
+  updateStats();
+  updateLineNumbers();
+  if (mdOn) renderMarkdown();
+}
+
+function addNote() {
+  const cur = notes.find(n => n.id === activeId);
+  if (cur) cur.content = editor.value;
+  const n = { id: uid(), name: `Note ${notes.length + 1}`, content: '' };
+  notes.push(n);
+  activeId = n.id;
+  renderTabs();
+  loadNote(n.id);
+  editor.focus();
+  save();
+  showToast('New note created');
+}
+
+function removeNote(id, e) {
+  e.stopPropagation();
+  const note = notes.find(n => n.id === id);
+  if (note && note.content && !confirm(`Delete "${note.name}"? This cannot be undone.`)) return;
+  notes = notes.filter(n => n.id !== id);
+  if (!notes.length) notes.push({ id: uid(), name: 'Note 1', content: '' });
+  activeId = notes[0].id;
+  renderTabs();
+  loadNote(activeId);
+  save();
+}
+
+/* ═══════════════════════════════════════════════
+   RENAME MODAL
+═══════════════════════════════════════════════ */
+function openRename(id) {
+  renameTarget = id || activeId;
+  const note = notes.find(n => n.id === renameTarget);
+  if (!note) return;
+  document.getElementById('renameInput').value = note.name;
+  document.getElementById('renameModal').classList.add('open');
+  setTimeout(() => document.getElementById('renameInput').focus(), 50);
+}
+
+function closeRename() {
+  document.getElementById('renameModal').classList.remove('open');
+  renameTarget = null;
+}
+
+function confirmRename() {
+  const val = document.getElementById('renameInput').value.trim();
+  if (!val) return;
+  const note = notes.find(n => n.id === renameTarget);
+  if (note) {
+    note.name = val.slice(0, 40);
+    if (renameTarget === activeId) noteNameEl.textContent = note.name;
+    renderTabs();
+    save();
+    showToast('Note renamed');
+  }
+  closeRename();
+}
+
+/* ═══════════════════════════════════════════════
+   EDITOR EVENTS
+═══════════════════════════════════════════════ */
+editor.addEventListener('input', () => {
+  save();
+  updateStats();
+  updateLineNumbers();
+  if (mdOn) renderMarkdown();
+  if (findPanel.classList.contains('open')) doFind();
+});
+
+editor.addEventListener('keyup', updateCursor);
+editor.addEventListener('click', updateCursor);
+
+function updateCursor() {
+  const val = editor.value;
+  const pos = editor.selectionStart;
+  const lines = val.substring(0, pos).split('\n');
+  curLine.textContent = lines.length;
+  curCol.textContent  = lines[lines.length - 1].length + 1;
+}
+
+/* ═══════════════════════════════════════════════
+   STATS
+═══════════════════════════════════════════════ */
+function updateStats() {
+  const val = editor.value;
+  const words = val.trim() ? val.trim().split(/\s+/).length : 0;
+  const chars = val.length;
+  const lines = val.split('\n').length;
+  const rt    = Math.max(1, Math.ceil(words / 200));
+  wordCount.textContent = words.toLocaleString();
+  charCount.textContent = chars.toLocaleString();
+  lineCount.textContent = lines;
+  readTime.textContent  = rt;
+}
+
+/* ═══════════════════════════════════════════════
+   LINE NUMBERS
+═══════════════════════════════════════════════ */
+function updateLineNumbers() {
+  if (!lineNumsOn) return;
+  const lines = editor.value.split('\n').length;
+  lineNums.innerHTML = Array.from({ length: lines }, (_, i) =>
+    `<span class="line-num">${i + 1}</span>`
+  ).join('');
+}
+
+function toggleLineNumbers() {
+  lineNumsOn = !lineNumsOn;
+  lineNums.classList.toggle('hidden', !lineNumsOn);
+  document.getElementById('lineNumBtn').classList.toggle('active', lineNumsOn);
+  if (lineNumsOn) updateLineNumbers();
+}
+
+/* ═══════════════════════════════════════════════
+   WORD WRAP
+═══════════════════════════════════════════════ */
+function toggleWrap() {
+  wrapOn = !wrapOn;
+  editor.style.whiteSpace = wrapOn ? 'pre-wrap' : 'pre';
+  editor.style.overflowX  = wrapOn ? 'hidden' : 'auto';
+  document.getElementById('wrapBtn').classList.toggle('active', wrapOn);
+}
+
+/* ═══════════════════════════════════════════════
+   FIND & REPLACE
+═══════════════════════════════════════════════ */
+function toggleFind() {
+  const open = findPanel.classList.toggle('open');
+  document.getElementById('findBtn').classList.toggle('active', open);
+  if (open) { findInput.focus(); doFind(); }
+  else { findCount.textContent = ''; }
+}
+
+function closeFind() {
+  findPanel.classList.remove('open');
+  document.getElementById('findBtn').classList.remove('active');
+  findCount.textContent = '';
+  findMatches = []; findIndex = 0;
+}
+
+function doFind() {
+  const term = findInput.value;
+  if (!term) { findCount.textContent = ''; findMatches = []; return; }
+  const text = editor.value;
+  const re = new RegExp(term.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'), 'gi');
+  findMatches = [];
+  let m;
+  while ((m = re.exec(text)) !== null) findMatches.push(m.index);
+  findCount.textContent = findMatches.length ? `${Math.min(findIndex+1, findMatches.length)} / ${findMatches.length}` : '0 matches';
+  if (findMatches.length) highlightFind();
+}
+
+function highlightFind() {
+  if (!findMatches.length) return;
+  findIndex = Math.max(0, Math.min(findIndex, findMatches.length - 1));
+  const pos = findMatches[findIndex];
+  editor.focus();
+  editor.setSelectionRange(pos, pos + findInput.value.length);
+  findCount.textContent = `${findIndex + 1} / ${findMatches.length}`;
+  scrollEditorToSelection();
+}
+
+function scrollEditorToSelection() {
+  const text = editor.value.substring(0, editor.selectionStart);
+  const lineH = parseInt(getComputedStyle(editor).lineHeight);
+  const line = text.split('\n').length;
+  editor.scrollTop = (line - 3) * lineH;
+}
+
+function findNext() { findIndex = (findIndex + 1) % (findMatches.length || 1); highlightFind(); }
+function findPrev() { findIndex = (findIndex - 1 + (findMatches.length || 1)) % (findMatches.length || 1); highlightFind(); }
+
+function doReplace() {
+  if (!findMatches.length) return;
+  const pos = findMatches[findIndex];
+  const term = findInput.value;
+  const repl = replInput.value;
+  editor.value = editor.value.substring(0, pos) + repl + editor.value.substring(pos + term.length);
+  editor.setSelectionRange(pos, pos + repl.length);
+  save(); updateStats(); doFind();
+}
+
+function doReplaceAll() {
+  if (!findInput.value) return;
+  const re = new RegExp(findInput.value.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'), 'gi');
+  const count = (editor.value.match(re) || []).length;
+  editor.value = editor.value.replace(re, replInput.value);
+  save(); updateStats(); doFind();
+  showToast(`Replaced ${count} occurrence${count !== 1 ? 's' : ''}`);
+}
+
+/* ═══════════════════════════════════════════════
+   MARKDOWN PREVIEW
+═══════════════════════════════════════════════ */
+function toggleMarkdown() {
+  mdOn = !mdOn;
+  prevPane.classList.toggle('visible', mdOn);
+  document.getElementById('mdBtn').classList.toggle('active', mdOn);
+  if (mdOn) renderMarkdown();
+}
+
+function renderMarkdown() {
+  const md = editor.value;
+  prevPane.innerHTML = parseMarkdown(md);
+}
+
+function parseMarkdown(md) {
+  let h = md
+    // Code blocks
+    .replace(/```([\s\S]*?)```/g, (_, c) => `<pre><code>${escHtml(c.trim())}</code></pre>`)
+    // Tables
+    .replace(/\|(.+)\|\n\|[-| :]+\|\n((?:\|.+\|\n?)*)/g, (_, head, body) => {
+      const ths = head.split('|').filter(c=>c.trim()).map(c=>`<th>${c.trim()}</th>`).join('');
+      const trs = body.trim().split('\n').map(r => '<tr>' + r.split('|').filter(c=>c.trim()).map(c=>`<td>${c.trim()}</td>`).join('') + '</tr>').join('');
+      return `<table><thead><tr>${ths}</tr></thead><tbody>${trs}</tbody></table>`;
+    })
+    // Headings
+    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+    .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+    .replace(/^# (.+)$/gm, '<h1>$1</h1>')
+    // Blockquote
+    .replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>')
+    // HR
+    .replace(/^---+$/gm, '<hr>')
+    // Bold + Italic
+    .replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>')
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    .replace(/__(.+?)__/g, '<strong>$1</strong>')
+    .replace(/_(.+?)_/g, '<em>$1</em>')
+    // Inline code
+    .replace(/`([^`]+)`/g, '<code>$1</code>')
+    // Links
+    .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
+    // Unordered list
+    .replace(/^\s*[-*+] (.+)$/gm, '<li>$1</li>')
+    .replace(/(<li>[\s\S]+?<\/li>)/g, '<ul>$1</ul>')
+    // Ordered list
+    .replace(/^\s*\d+\. (.+)$/gm, '<li>$1</li>')
+    // Paragraphs
+    .replace(/^(?!<[a-z]).+$/gm, p => p.trim() ? `<p>${p}</p>` : '')
+    // Line breaks
+    .replace(/\n{2,}/g, '\n');
+  return h;
+}
+
+function escHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+/* ═══════════════════════════════════════════════
+   FONT CONTROLS
+═══════════════════════════════════════════════ */
+function applyFont() {
+  const v = document.getElementById('fontFamily').value;
+  editor.className = 'editor-textarea' + (v === 'mono' ? ' mono' : v === 'serif' ? ' serif' : '');
+}
+
+function applyFontSize() {
+  const v = document.getElementById('fontSize').value;
+  editor.style.fontSize = v + 'px';
+}
+
+/* ═══════════════════════════════════════════════
+   EDITOR THEME
+═══════════════════════════════════════════════ */
+function toggleEditorTheme() {
+  editorLight = !editorLight;
+  document.getElementById('editorWrap').setAttribute('data-editor-theme', editorLight ? 'light' : 'dark');
+  document.getElementById('themeBtn').classList.toggle('active', editorLight);
+}
+
+/* ═══════════════════════════════════════════════
+   FOCUS MODE
+═══════════════════════════════════════════════ */
+function toggleFocus() {
+  document.body.classList.toggle('focus-mode');
+}
+
+/* ═══════════════════════════════════════════════
+   DOWNLOAD
+═══════════════════════════════════════════════ */
+function downloadAs(fmt) {
+  const note = notes.find(n => n.id === activeId);
+  const name = (note ? note.name : 'note').replace(/[^a-z0-9_\-]/gi, '_');
+  const text = editor.value;
+  let content, mime, ext;
+
+  if (fmt === 'txt') {
+    content = text; mime = 'text/plain'; ext = 'txt';
+  } else if (fmt === 'md') {
+    content = text; mime = 'text/markdown'; ext = 'md';
+  } else {
+    content = `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escHtml(note ? note.name : 'Note')}</title><style>body{font-family:'DM Sans',sans-serif;max-width:780px;margin:40px auto;padding:0 24px;line-height:1.7;color:#1a1a2e}pre{background:#f4f4f4;padding:16px;border-radius:8px;overflow-x:auto}</style></head><body><pre style="white-space:pre-wrap;font-family:inherit">${escHtml(text)}</pre></body></html>`;
+    mime = 'text/html'; ext = 'html';
+  }
+
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([content], { type: mime }));
+  a.download = `${name}.${ext}`;
+  a.click();
+  URL.revokeObjectURL(a.href);
+  showToast(`Downloaded as .${ext}`);
+}
+
+/* ═══════════════════════════════════════════════
+   COPY ALL
+═══════════════════════════════════════════════ */
+function copyAll() {
+  navigator.clipboard.writeText(editor.value).then(() => showToast('Copied to clipboard!'));
+}
+
+/* ═══════════════════════════════════════════════
+   CLEAR
+═══════════════════════════════════════════════ */
+function clearNote() {
+  if (editor.value && !confirm('Clear this note? This cannot be undone.')) return;
+  editor.value = '';
+  save(); updateStats(); updateLineNumbers();
+  if (mdOn) renderMarkdown();
+  showToast('Note cleared');
+}
+
+/* ═══════════════════════════════════════════════
+   TOAST
+═══════════════════════════════════════════════ */
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  document.getElementById('toastMsg').textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2400);
+}
+
+/* ═══════════════════════════════════════════════
+   FAQ
+═══════════════════════════════════════════════ */
+function toggleFaq(btn) {
+  const item = btn.parentElement;
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => {
+    i.classList.remove('open');
+    i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+  });
+  if (!wasOpen) {
+    item.classList.add('open');
+    btn.setAttribute('aria-expanded', 'true');
+  }
+}
+
+/* ═══════════════════════════════════════════════
+   KEYBOARD SHORTCUTS
+═══════════════════════════════════════════════ */
+document.addEventListener('keydown', e => {
+  const ctrl = e.ctrlKey || e.metaKey;
+  if (ctrl && e.key === 's') { e.preventDefault(); save(); showToast('Saved!'); }
+  if (ctrl && e.key === 'f') { e.preventDefault(); toggleFind(); }
+  if (ctrl && e.key === 'm') { e.preventDefault(); toggleMarkdown(); }
+  if (ctrl && e.key === 't') { e.preventDefault(); addNote(); }
+  if (ctrl && e.shiftKey && e.key === 'C') { e.preventDefault(); copyAll(); }
+  if (e.key === 'F11') { e.preventDefault(); toggleFocus(); }
+  if (e.key === 'Escape') {
+    if (document.body.classList.contains('focus-mode')) toggleFocus();
+    if (findPanel.classList.contains('open')) closeFind();
+    if (document.getElementById('renameModal').classList.contains('open')) closeRename();
+  }
+  // Ctrl+W close tab (prevent browser default only in app context)
+  if (ctrl && e.key === 'w' && notes.length > 1) {
+    e.preventDefault();
+    removeNote(activeId, { stopPropagation: () => {} });
+  }
+  // Tab key inserts spaces
+  if (e.key === 'Tab' && document.activeElement === editor) {
+    e.preventDefault();
+    const s = editor.selectionStart;
+    const e2 = editor.selectionEnd;
+    editor.value = editor.value.substring(0, s) + '  ' + editor.value.substring(e2);
+    editor.setSelectionRange(s + 2, s + 2);
+  }
+});
+
+// Rename modal enter key
+document.getElementById('renameInput').addEventListener('keydown', e => {
+  if (e.key === 'Enter') confirmRename();
+  if (e.key === 'Escape') closeRename();
+});
+
+// Close rename modal on overlay click
+document.getElementById('renameModal').addEventListener('click', e => {
+  if (e.target === document.getElementById('renameModal')) closeRename();
+});
+
+/* ═══════════════════════════════════════════════
+   SCROLL REVEAL
+═══════════════════════════════════════════════ */
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 60);
+      revealObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+/* ═══════════════════════════════════════════════
+   BOOT
+═══════════════════════════════════════════════ */
+init();
+updateStats();
+</script>
+</body>
+</html>
