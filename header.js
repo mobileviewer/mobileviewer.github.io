@@ -30,6 +30,7 @@
     { href: '/mic-check',                  label: 'Mic Tester' },
     { href: '/email-preview',                  label: 'Email Preview' },
     { href: '/email-link-generator',                  label: 'Email Link Generator' },
+    { href: '/notepad-online',                  label: 'Notepad Online' },    
   ];
 
   function buildHeader() {
