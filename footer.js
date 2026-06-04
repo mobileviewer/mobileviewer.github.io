@@ -21,7 +21,7 @@
       { href: '#features',     label: 'Features' },
       { href: '/blog',     label: 'Blog' },
     ],
-    Company: [
+    Pages: [
       { href: '/about',   label: 'About Us' },
       { href: '/contact', label: 'Contact' },
       { href: '/privacy-policy', label: 'Privacy Policy' },
