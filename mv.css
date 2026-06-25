@@ -352,3 +352,27 @@
       .tool-btn { font-size: 0.78rem; padding: 7px 10px; }
       .custom-size { grid-template-columns: 1fr auto 1fr; }
     }
+/* ═══════════════════════════════════════════════════════════
+   ADSENSE AUTO-ADS FIX FOR APPS & GRIDS
+   ═══════════════════════════════════════════════════════════ */
+
+/* 1. Prevent unfilled or auto-placed nodes from breaking the CSS Grid properties */
+.google-auto-placed,
+google-adsense-child,
+ins.adsbygoogle[data-ad-status="unfilled"],
+ins.adsbygoogle[data-google-query-id] {
+  display: none !important;
+  height: 0px !important;
+  width: 0px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: absolute !important;
+  pointer-events: none !important;
+}
+
+/* 2. Lock down the app container to make sure injected scripts can't force layout shifts */
+.viewer-stage > ins,
+.viewer-area > ins,
+.device-frame > ins {
+  display: none !important;
+}
