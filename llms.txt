@@ -1,0 +1,54 @@
+# Mobile Viewer — Free Website Tester & Mobile Preview Tool
+
+> A professional‑grade mobile viewer trusted by 50,000+ developers and designers. Preview, test, and perfect any website's responsive design across 20+ real device presets — no installation, no limits, 100% free. Simulate iPhones, Samsung Galaxy, iPads, Pixel devices, and custom resolutions instantly in your browser.
+
+## Quick Links
+- [Tool](https://mobileviewer.github.io/): Enter any URL and instantly preview it on mobile, tablet, or desktop with advanced controls.
+- [Device Presets](#device-presets): iPhone 15, iPhone 15 Pro Max, iPhone SE, Samsung Galaxy S23, Google Pixel 8, OnePlus 12, iPad, iPad Pro 11", Android tablets, and more.
+- [Power Tools](#power-tools): Responsive Viewport Resizer, QR Code Generator, Website Screenshot Capturer, Accessibility Contrast Checker, User Agent Switcher, Multi‑Device Preview Grid, Breakpoint Tester, Offline Mode Tester, Device Frame Simulator, Page Speed Analyzer, Speaker Test, Mic Test, Camera Test.
+- [How It Works](#how-it-works): Enter URL → Select Device → Load & Preview → Inspect & Test → Iterate & Re‑Test.
+- [FAQ](#faq): Frequently asked questions about free usage, iframe restrictions, localhost testing, and accuracy.
+
+## Why Use Mobile Viewer?
+- **63% of web traffic is mobile** — a broken mobile experience costs you rankings, conversions, and credibility[reference:0].
+- **Identify layout breaks** — spot text overlaps, oversized images, horizontal scrollbars, and broken navigation menus instantly[reference:1].
+- **Boost SEO rankings** — Google's mobile‑first indexing means your mobile experience directly affects search rankings[reference:2].
+- **Test without hardware** — simulate iPhones, Android phones, iPads, and custom resolutions right in your browser for free[reference:3].
+- **Improve conversions** — mobile‑optimized CTAs and forms convert up to 5× better[reference:4].
+
+## Key Features
+- **Instant Live Preview** — Load any website instantly with real‑time interactive preview — not a static screenshot. Scroll, click, and navigate as a real user would[reference:5].
+- **20+ Device Presets** — Test on iPhone 15, iPhone 15 Pro Max, iPhone SE, Samsung Galaxy S23, Google Pixel 8, OnePlus 12, iPad, iPad Pro 11", Android tablets, and more. Every preset uses exact viewport dimensions of the real device[reference:6][reference:7].
+- **Orientation Toggle** — Switch between portrait and landscape modes instantly to ensure your layout handles CSS orientation changes correctly[reference:8].
+- **QR Code Sharing** — Generate a QR code for any preview URL and scan with a real phone — the fastest way to cross‑validate simulator results with physical hardware[reference:9].
+- **Zero Installation** — 100% browser‑based. No Chrome extensions, no npm packages, no Electron apps. Just open and start testing in seconds[reference:10].
+- **Free Forever** — All core features are completely free with no sign‑up required[reference:11].
+
+## Power Tools — Complete Testing Suite
+- **Responsive Viewport Resizer** — Dynamically adjust iframe width and height to simulate any device breakpoint[reference:12].
+- **QR Code Generator** — Generate a QR code for any URL and instantly test mobile access by scanning with your phone[reference:13].
+- **Website Screenshot Capturer** — Capture screenshots at multiple device resolutions for visual comparison and stakeholder reports[reference:14].
+- **Accessibility Contrast Checker** — Test color contrast ratios against WCAG AA/AAA standards[reference:15].
+- **User Agent Switcher** — Simulate different browsers and crawlers including Googlebot[reference:16].
+- **Multi‑Device Preview Grid** — View your URL simultaneously across multiple device sizes in a grid layout[reference:17].
+- **Breakpoint Tester** — A draggable overlay that shows CSS breakpoints in real‑time on any loaded page[reference:18].
+- **Offline Mode Tester** — Simulate network offline conditions to test PWA behavior, service workers, and cached content[reference:19].
+- **Device Frame Simulator** — Wrap your website preview in realistic device frames — perfect for client presentations and marketing materials[reference:20].
+- **Page Speed Analyzer** — Test page speed and Core Web Vitals with actionable recommendations to improve LCP, FID, CLS, and mobile performance scores[reference:21].
+- **Speaker Test** — Ensure audio elements and accessibility cues sound correct[reference:22].
+- **Mic Test** — Verify microphone permissions and audio input quality for voice commands, recording, or WebRTC[reference:23].
+- **Camera Test** — Debug webcam streams and test photo‑capture functionality[reference:24].
+
+## Who Uses Mobile Viewer?
+- **Developers** — Test responsive layouts, debug breakpoints, and ensure cross‑device compatibility without physical hardware.
+- **Designers** — Preview designs on accurate device frames and share visual comparisons with stakeholders.
+- **QA Engineers** — Identify layout breaks, test interactions, and validate fixes across multiple viewports.
+- **Digital Professionals** — Ensure websites perform perfectly on every screen size before launch.
+
+## FAQ
+- **Is it really free?** Yes — 100% free with no hidden charges, no registration, and no premium tiers[reference:25].
+- **Why can't I preview some websites?** Some sites block iframe embedding using `X‑Frame‑Options` or CSP headers. This is a security policy on the target website, not a limitation of Mobile Viewer[reference:26].
+- **Can I test localhost or staging sites?** Yes — load `http://localhost:3000`, local IP addresses, or staging server URLs. For QR code scanning, your phone must be on the same network[reference:27].
+- **How accurate is the simulation?** The tool uses exact CSS viewport dimensions of each device preset, giving highly accurate visual representation of layout, font scaling, and responsive breakpoints[reference:28]. For full fidelity testing (GPU rendering, browser‑specific behavior), supplement with physical device testing[reference:29].
+- **What device presets are available?** iPhone 15, iPhone 15 Pro Max, iPhone SE, Samsung Galaxy S23, Google Pixel 8, OnePlus 12, iPad, iPad Pro 11", and Android tablets[reference:30]. You can also set any custom width and height.
+- **Do I need to install anything?** No — 100% browser‑based. No extensions, no downloads, no setup[reference:31].
