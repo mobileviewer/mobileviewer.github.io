@@ -44,18 +44,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles.css">
   <style>
+    /* All styles remain the same as in the original file */
     :root {
-      --primary: #2563EB;      /* Blue */
+      --primary: #2563EB;
       --primary-dim: rgba(37,99,235,0.10);
-      --secondary: #7C3AED;    /* Purple */
-      --accent: #10B981;       /* Green */
+      --secondary: #7C3AED;
+      --accent: #10B981;
       --bg: #FFFFFF;
       --bg-dark: #F8FAFC;
       --bg-card: #FFFFFF;
       --bg-card-2: #F1F5F9;
       --border: rgba(0,0,0,0.08);
       --border-light: rgba(0,0,0,0.12);
-      --text: #000000;         /* Black */
+      --text: #000000;
       --text-secondary: #1A1A1A;
       --text-muted: #4B5563;
       --radius: 12px; --radius-lg: 20px; --radius-xl: 28px;
@@ -233,7 +234,6 @@
     .footer-links { display: flex; gap: 20px; }
     .footer-link { font-size: 0.82rem; color: var(--text-muted); transition: color 0.2s; }
     .footer-link:hover { color: var(--primary); }
-    .ad-slot { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); min-height: 90px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 0.8rem; margin: 32px 0; overflow: hidden; box-shadow: var(--shadow); }
 
     @media (max-width: 900px) {
       .test-grid { grid-template-columns: repeat(2, 1fr); }
@@ -259,8 +259,39 @@
   </style>
 </head>
 <body>
- <!-- Header Component -->
-  <div id="header-placeholder"></div>
+  <!-- Header Component - Direct HTML (matches index.html structure) -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <div class="header-logo">
+        <a href="/" aria-label="Mobile Viewer home">
+          <span class="logo-text">📱 <span class="logo-accent">Mobile</span>Viewer</span>
+        </a>
+      </div>
+      <nav class="header-nav">
+        <ul class="nav-list">
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/#viewer" class="nav-link">Viewer</a></li>
+          <li><a href="/#tools" class="nav-link">Tools</a></li>
+          <li><a href="/about" class="nav-link">About</a></li>
+          <li><a href="/contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul class="mobile-nav-list">
+      <li><a href="/" class="mobile-nav-link">Home</a></li>
+      <li><a href="/#viewer" class="mobile-nav-link">Viewer</a></li>
+      <li><a href="/#tools" class="mobile-nav-link">Tools</a></li>
+      <li><a href="/about" class="mobile-nav-link">About</a></li>
+      <li><a href="/contact" class="mobile-nav-link">Contact</a></li>
+    </ul>
+  </div>
 
   <main>
     <div class="hero">
@@ -274,10 +305,10 @@
           <h1 class="hero-title">Speaker <span class="gradient-text">Test</span></h1>
           <p class="hero-description">Test your speakers and headphones online — check left/right channel balance, bass, treble, frequency sweep, and stereo separation. No download required.</p>
           <div class="hero-badges">
-            <span class="hero-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> L/R Channel Test</span>
-            <span class="hero-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Frequency Sweep</span>
-            <span class="hero-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Bass & Treble Tests</span>
-            <span class="hero-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Works on Mobile</span>
+            <span class="hero-badge">🎵 L/R Channel Test</span>
+            <span class="hero-badge">📊 Frequency Sweep</span>
+            <span class="hero-badge">🎸 Bass & Treble Tests</span>
+            <span class="hero-badge">📱 Works on Mobile</span>
           </div>
         </div>
       </div>
@@ -595,16 +626,30 @@
     </section>
   </main>
 
-  <!-- Footer Component -->
-  <div id="footer-placeholder"></div>
-  <div id="tools-sidebar-root"></div>
+  <!-- Footer Component - Direct HTML (matches index.html structure) -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-copy">© 2026 Mobile Viewer. All rights reserved.</span>
+        <div class="footer-links">
+          <a href="/" class="footer-link">Home</a>
+          <a href="/privacy-policy" class="footer-link">Privacy</a>
+          <a href="/terms-of-service" class="footer-link">Terms</a>
+          <a href="/about" class="footer-link">About</a>
+          <a href="/contact" class="footer-link">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
-  <!-- Scripts -->
+  <!-- Scripts - All external references kept as placeholders -->
   <script src="/header.js"></script>
   <script src="/footer.js"></script> 
-  <script src="/js/sidebar.js"></script>  
+  <script src="/script.js"></script>
+  <script src="/js/sidebar.js"></script>
 
   <script>
+    // All JavaScript remains the same as in the original file
     // Header scroll
     const hdr = document.getElementById('siteHeader');
     window.addEventListener('scroll', () => { hdr.classList.toggle('header--scrolled', window.scrollY > 20); }, { passive: true });
@@ -796,7 +841,6 @@
         pingPong();
         const interval = setInterval(() => {
           if (!currentNodes.length && !sweepOsc) { clearInterval(interval); return; }
-          // ping-pong continues while card is active
           const playing = document.querySelector('.test-btn-card[data-test="stereo"].is-playing');
           if (!playing) { clearInterval(interval); return; }
           pingPong();
