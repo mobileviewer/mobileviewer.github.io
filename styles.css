@@ -42,9 +42,9 @@
 /* Design direction: Developer light theme — white base,
    black text, green/blue/purple accents, terminal touches */
 :root {
-  --primary:      #16A34A;   /* terminal green */
+  --primary:      #2563EB;   /* terminal green */
   --primary-dim:  rgba(22,163,74,0.12);
-  --secondary:    #2563EB;   /* dev blue */
+  --secondary:    #16A34A;   /* dev blue */
   --accent:       #7C3AED;   /* dev purple */
 
   --bg:           #FFFFFF;
