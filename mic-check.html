@@ -39,20 +39,19 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css">
   <style>
     :root {
-      --primary: #2563EB;      /* Blue */
+      --primary: #2563EB;
       --primary-dim: rgba(37,99,235,0.10);
-      --secondary: #7C3AED;    /* Purple */
-      --accent: #10B981;       /* Green */
+      --secondary: #7C3AED;
+      --accent: #10B981;
       --bg: #FFFFFF;
       --bg-dark: #F8FAFC;
       --bg-card: #FFFFFF;
       --bg-card-2: #F1F5F9;
       --border: rgba(0,0,0,0.08);
       --border-light: rgba(0,0,0,0.12);
-      --text: #000000;         /* Black */
+      --text: #000000;
       --text-secondary: #1A1A1A;
       --text-muted: #4B5563;
       --radius: 12px; --radius-lg: 20px; --radius-xl: 28px;
@@ -262,8 +261,33 @@
 </head>
 <body>
   
-  <!-- Header Component -->
-  <div id="header-placeholder"></div> 
+  <!-- Header Component - Fixed -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <div class="header-logo">
+        <span class="logo-text">🎙️ <span class="logo-accent">Mic</span>Check</span>
+      </div>
+      <nav class="header-nav">
+        <ul class="nav-list">
+          <li><a href="#how-to" class="nav-link">How To</a></li>
+          <li><a href="#about" class="nav-link">Features</a></li>
+          <li><a href="#faq" class="nav-link">FAQ</a></li>
+        </ul>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul class="mobile-nav-list">
+      <li><a href="#how-to" class="mobile-nav-link">How To</a></li>
+      <li><a href="#about" class="mobile-nav-link">Features</a></li>
+      <li><a href="#faq" class="mobile-nav-link">FAQ</a></li>
+    </ul>
+  </div>
 
   <main>
     <div class="hero">
@@ -277,10 +301,10 @@
           <h1 class="hero-title">Mic <span class="gradient-text">Check</span></h1>
           <p class="hero-description">Test your microphone online — visualize audio waveforms, check volume levels, frequency response, and record test clips. Works in every browser.</p>
           <div class="hero-badges">
-            <span class="hero-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Live Waveform</span>
-            <span class="hero-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Record & Playback</span>
-            <span class="hero-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> 100% Private</span>
-            <span class="hero-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Noise Meter</span>
+            <span class="hero-badge">🎵 Live Waveform</span>
+            <span class="hero-badge">🎙️ Record & Playback</span>
+            <span class="hero-badge">🔒 100% Private</span>
+            <span class="hero-badge">📊 Noise Meter</span>
           </div>
         </div>
       </div>
@@ -545,432 +569,484 @@
     </section>
   </main> 
 
-  <!-- Footer Component -->
-  <div id="footer-placeholder"></div>  
-  <div id="tools-sidebar-root"></div>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-copy">© 2026 Mobile Viewer. All rights reserved. Made for developers, by developers.</span>
+        <div class="footer-links">
+          <a href="/" class="footer-link">Home</a>
+          <a href="/privacy-policy" class="footer-link">Privacy</a>
+          <a href="/terms-of-service" class="footer-link">Terms</a>
+          <a href="/about" class="footer-link">About</a>
+          <a href="/contact" class="footer-link">Contact</a>
+        </div>
+      </div>
+    </div>
+  </footer>  
 
-
-  <script src="/header.js"></script>
-  <script src="/footer.js"></script>  
-  <script src="/js/sidebar.js"></script> 
   <script>
-    // Header scroll
-    const hdr = document.getElementById('siteHeader');
-    window.addEventListener('scroll', () => { hdr.classList.toggle('header--scrolled', window.scrollY > 20); }, { passive: true });
+    // Main JavaScript - All logic in one place
+    document.addEventListener('DOMContentLoaded', function() {
+      // Header scroll
+      const hdr = document.getElementById('siteHeader');
+      window.addEventListener('scroll', () => { 
+        if (hdr) hdr.classList.toggle('header--scrolled', window.scrollY > 20); 
+      }, { passive: true });
 
-    // Hamburger
-    const ham = document.getElementById('hamburger');
-    const mob = document.getElementById('mobileMenu');
-    ham.addEventListener('click', () => { ham.classList.toggle('is-open'); mob.classList.toggle('is-open'); });
-
-    // Reveal
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); observer.unobserve(e.target); }});
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
-
-    // FAQ
-    document.querySelectorAll('.faq-q').forEach(q => {
-      q.addEventListener('click', () => {
-        const item = q.parentElement;
-        const isOpen = item.classList.contains('is-open');
-        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('is-open'));
-        if (!isOpen) item.classList.add('is-open');
-      });
-    });
-
-    // Frequency bands setup
-    const FREQ_BANDS = [
-      { label: 'Sub', hz: '20Hz' },
-      { label: 'Bass', hz: '100Hz' },
-      { label: 'Lo-Mid', hz: '300Hz' },
-      { label: 'Mid', hz: '1kHz' },
-      { label: 'Hi-Mid', hz: '3kHz' },
-      { label: 'Pres', hz: '6kHz' },
-      { label: 'Treble', hz: '12kHz' },
-      { label: 'Air', hz: '16kHz' },
-    ];
-    const freqRow = document.getElementById('freqRow');
-    const freqBars = [];
-    FREQ_BANDS.forEach(b => {
-      const div = document.createElement('div');
-      div.className = 'freq-band';
-      const container = document.createElement('div');
-      container.className = 'freq-bar-container';
-      const bar = document.createElement('div');
-      bar.className = 'freq-bar';
-      bar.style.height = '0%';
-      container.appendChild(bar);
-      const label = document.createElement('div');
-      label.className = 'freq-band-label';
-      label.textContent = b.label;
-      div.appendChild(container);
-      div.appendChild(label);
-      freqRow.appendChild(div);
-      freqBars.push(bar);
-    });
-
-    // --- MIC LOGIC ---
-    const canvas = document.getElementById('vizCanvas');
-    const ctx = canvas.getContext('2d');
-    const placeholder = document.getElementById('micPlaceholder');
-    const statusDot = document.getElementById('statusDot');
-    const statusText = document.getElementById('statusText');
-    const errorMsg = document.getElementById('errorMsg');
-    const btnStart = document.getElementById('btnStart');
-    const btnStop = document.getElementById('btnStop');
-    const btnRecord = document.getElementById('btnRecord');
-    const recBtnText = document.getElementById('recBtnText');
-    const recTimer = document.getElementById('recTimer');
-    const deviceSelect = document.getElementById('deviceSelect');
-    const volFill = document.getElementById('volFill');
-    const volVal = document.getElementById('volVal');
-    const peakFill = document.getElementById('peakFill');
-    const peakVal = document.getElementById('peakVal');
-    const peakIndicator = document.getElementById('peakIndicator');
-    const recList = document.getElementById('recList');
-    const recCount = document.getElementById('recCount');
-    const btnClearRecs = document.getElementById('btnClearRecs');
-    const infoLevel = document.getElementById('infoLevel');
-    const infoPeak = document.getElementById('infoPeak');
-    const infoChannels = document.getElementById('infoChannels');
-    const infoSampleRate = document.getElementById('infoSampleRate');
-
-    let audioCtx = null, analyser = null, gainNode = null, source = null;
-    let stream = null, animFrame = null;
-    let mediaRecorder = null, recordedChunks = [];
-    let isRecording = false;
-    let recStartTime = 0, recTimerInterval = null;
-    let peakLevel = 0, peakDecay = 0;
-    let recordings = [];
-
-    function resizeCanvas() {
-      const area = canvas.parentElement;
-      canvas.width = area.clientWidth;
-      canvas.height = 200;
-    }
-
-    async function enumerateDevices() {
-      try {
-        const devices = await navigator.mediaDevices.enumerateDevices();
-        const mics = devices.filter(d => d.kind === 'audioinput');
-        deviceSelect.innerHTML = '<option value="">-- Select Microphone --</option>';
-        mics.forEach((mic, i) => {
-          const opt = document.createElement('option');
-          opt.value = mic.deviceId;
-          opt.textContent = mic.label || `Microphone ${i + 1}`;
-          deviceSelect.appendChild(opt);
+      // Hamburger
+      const ham = document.getElementById('hamburger');
+      const mob = document.getElementById('mobileMenu');
+      if (ham && mob) {
+        ham.addEventListener('click', () => { 
+          ham.classList.toggle('is-open'); 
+          mob.classList.toggle('is-open'); 
         });
-        if (mics.length) deviceSelect.value = mics[0].deviceId;
-      } catch(e) {}
-    }
+      }
 
-    async function startMic() {
-      try {
-        if (stream) stopMic();
-        errorMsg.classList.remove('show');
-
-        const echoCancelChecked = document.getElementById('echoCancelToggle').checked;
-        const noiseSuppressChecked = document.getElementById('noiseSuppressToggle').checked;
-        const autoGainChecked = document.getElementById('autoGainToggle').checked;
-
-        const constraints = {
-          audio: {
-            echoCancellation: echoCancelChecked,
-            noiseSuppression: noiseSuppressChecked,
-            autoGainControl: autoGainChecked,
+      // Reveal
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => { 
+          if (e.isIntersecting) { 
+            e.target.classList.add('is-visible'); 
+            observer.unobserve(e.target); 
           }
-        };
-        const deviceId = deviceSelect.value;
-        if (deviceId) constraints.audio.deviceId = { exact: deviceId };
-
-        stream = await navigator.mediaDevices.getUserMedia(constraints);
-        await enumerateDevices();
-
-        audioCtx = new (window.AudioContext || window.webkitAudioContext)({
-          sampleRate: parseInt(document.getElementById('sampleRateSelect').value)
         });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
 
-        gainNode = audioCtx.createGain();
-        gainNode.gain.value = parseFloat(document.getElementById('gainRange').value);
-
-        analyser = audioCtx.createAnalyser();
-        analyser.fftSize = parseInt(document.getElementById('fftSize').value);
-        analyser.smoothingTimeConstant = parseFloat(document.getElementById('smoothing').value);
-
-        source = audioCtx.createMediaStreamSource(stream);
-        source.connect(gainNode);
-        gainNode.connect(analyser);
-
-        const track = stream.getAudioTracks()[0];
-        const settings = track.getSettings();
-        infoChannels.textContent = settings.channelCount || '1';
-        infoSampleRate.textContent = (audioCtx.sampleRate / 1000).toFixed(1) + 'k';
-
-        placeholder.style.display = 'none';
-        canvas.style.display = 'block';
-        btnStart.style.display = 'none';
-        btnStop.style.display = '';
-        btnRecord.disabled = false;
-        statusDot.className = 'status-dot active';
-        statusText.textContent = 'Microphone Active';
-
-        resizeCanvas();
-        draw();
-
-      } catch(e) {
-        let msg = 'Could not access microphone. ';
-        if (e.name === 'NotAllowedError') msg += 'Microphone permission was denied. Please allow access in your browser.';
-        else if (e.name === 'NotFoundError') msg += 'No microphone was found on this device.';
-        else if (e.name === 'NotReadableError') msg += 'Microphone is in use by another application.';
-        else msg += e.message;
-        errorMsg.textContent = msg;
-        errorMsg.classList.add('show');
-        statusDot.className = 'status-dot error';
-        statusText.textContent = 'Microphone Error';
-      }
-    }
-
-    function stopMic() {
-      if (isRecording) stopRecording();
-      if (animFrame) cancelAnimationFrame(animFrame);
-      if (stream) { stream.getTracks().forEach(t => t.stop()); stream = null; }
-      if (audioCtx) { audioCtx.close(); audioCtx = null; }
-      canvas.style.display = 'none';
-      placeholder.style.display = '';
-      btnStart.style.display = '';
-      btnStop.style.display = 'none';
-      btnRecord.disabled = true;
-      statusDot.className = 'status-dot';
-      statusText.textContent = 'Microphone Stopped';
-      volFill.style.width = '0%'; peakFill.style.width = '0%';
-      volVal.textContent = '0 dB'; peakVal.textContent = '— dB';
-      infoLevel.textContent = infoChannels.textContent = infoSampleRate.textContent = infoPeak.textContent = '—';
-      freqBars.forEach(b => b.style.height = '0%');
-    }
-
-    let peakHoldDb = -Infinity;
-    let peakHoldTime = 0;
-
-    function draw() {
-      if (!analyser) return;
-      animFrame = requestAnimationFrame(draw);
-
-      const bufLen = analyser.frequencyBinCount;
-      const timeData = new Uint8Array(bufLen);
-      const freqData = new Uint8Array(bufLen);
-      analyser.getByteTimeDomainData(timeData);
-      analyser.getByteFrequencyData(freqData);
-
-      // Volume
-      let sumSquares = 0;
-      for (let i = 0; i < timeData.length; i++) {
-        const norm = (timeData[i] - 128) / 128;
-        sumSquares += norm * norm;
-      }
-      const rms = Math.sqrt(sumSquares / timeData.length);
-      const db = rms > 0 ? 20 * Math.log10(rms) : -Infinity;
-      const volPct = Math.max(0, Math.min(100, (db + 60) * 100 / 60));
-      volFill.style.width = volPct + '%';
-      volVal.textContent = isFinite(db) ? db.toFixed(1) + ' dB' : '-∞';
-      infoLevel.textContent = isFinite(db) ? db.toFixed(1) : '—';
-
-      // Peak hold
-      const now = Date.now();
-      if (db > peakHoldDb || now - peakHoldTime > 3000) { peakHoldDb = db; peakHoldTime = now; }
-      const peakPct = Math.max(0, Math.min(100, (peakHoldDb + 60) * 100 / 60));
-      peakFill.style.width = peakPct + '%';
-      peakVal.textContent = isFinite(peakHoldDb) ? peakHoldDb.toFixed(1) + ' dB' : '—';
-      infoPeak.textContent = isFinite(peakHoldDb) ? peakHoldDb.toFixed(1) : '—';
-      peakIndicator.classList.toggle('show', db > -3);
-
-      // Freq bands
-      const binHz = audioCtx.sampleRate / analyser.fftSize;
-      const bandFreqs = [40, 100, 300, 1000, 3000, 6000, 12000, 16000];
-      bandFreqs.forEach((f, i) => {
-        const bin = Math.round(f / binHz);
-        const val = bin < freqData.length ? freqData[bin] : 0;
-        freqBars[i].style.height = (val / 255 * 100) + '%';
+      // FAQ
+      document.querySelectorAll('.faq-q').forEach(q => {
+        q.addEventListener('click', () => {
+          const item = q.parentElement;
+          const isOpen = item.classList.contains('is-open');
+          document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('is-open'));
+          if (!isOpen) item.classList.add('is-open');
+        });
       });
 
-      // Canvas
-      const W = canvas.width, H = canvas.height;
-      ctx.clearRect(0, 0, W, H);
+      // Frequency bands setup
+      const FREQ_BANDS = [
+        { label: 'Sub', hz: '20Hz' },
+        { label: 'Bass', hz: '100Hz' },
+        { label: 'Lo-Mid', hz: '300Hz' },
+        { label: 'Mid', hz: '1kHz' },
+        { label: 'Hi-Mid', hz: '3kHz' },
+        { label: 'Pres', hz: '6kHz' },
+        { label: 'Treble', hz: '12kHz' },
+        { label: 'Air', hz: '16kHz' },
+      ];
+      const freqRow = document.getElementById('freqRow');
+      const freqBars = [];
+      if (freqRow) {
+        FREQ_BANDS.forEach(b => {
+          const div = document.createElement('div');
+          div.className = 'freq-band';
+          const container = document.createElement('div');
+          container.className = 'freq-bar-container';
+          const bar = document.createElement('div');
+          bar.className = 'freq-bar';
+          bar.style.height = '0%';
+          container.appendChild(bar);
+          const label = document.createElement('div');
+          label.className = 'freq-band-label';
+          label.textContent = b.label;
+          div.appendChild(container);
+          div.appendChild(label);
+          freqRow.appendChild(div);
+          freqBars.push(bar);
+        });
+      }
 
-      const vizStyle = document.getElementById('vizStyle').value;
+      // --- MIC LOGIC ---
+      const canvas = document.getElementById('vizCanvas');
+      const ctx = canvas ? canvas.getContext('2d') : null;
+      const placeholder = document.getElementById('micPlaceholder');
+      const statusDot = document.getElementById('statusDot');
+      const statusText = document.getElementById('statusText');
+      const errorMsg = document.getElementById('errorMsg');
+      const btnStart = document.getElementById('btnStart');
+      const btnStop = document.getElementById('btnStop');
+      const btnRecord = document.getElementById('btnRecord');
+      const recBtnText = document.getElementById('recBtnText');
+      const recTimer = document.getElementById('recTimer');
+      const deviceSelect = document.getElementById('deviceSelect');
+      const volFill = document.getElementById('volFill');
+      const volVal = document.getElementById('volVal');
+      const peakFill = document.getElementById('peakFill');
+      const peakVal = document.getElementById('peakVal');
+      const peakIndicator = document.getElementById('peakIndicator');
+      const recList = document.getElementById('recList');
+      const recCount = document.getElementById('recCount');
+      const btnClearRecs = document.getElementById('btnClearRecs');
+      const infoLevel = document.getElementById('infoLevel');
+      const infoPeak = document.getElementById('infoPeak');
+      const infoChannels = document.getElementById('infoChannels');
+      const infoSampleRate = document.getElementById('infoSampleRate');
 
-      if (vizStyle === 'waveform') {
-        ctx.beginPath();
-        ctx.strokeStyle = 'rgba(123,97,255,0.9)';
-        ctx.lineWidth = 2;
-        ctx.shadowColor = 'rgba(123,97,255,0.4)';
-        ctx.shadowBlur = 6;
-        const sliceW = W / bufLen;
-        let x = 0;
-        for (let i = 0; i < bufLen; i++) {
-          const v = timeData[i] / 128;
-          const y = v * H / 2;
-          if (i === 0) ctx.moveTo(x, y);
-          else ctx.lineTo(x, y);
-          x += sliceW;
+      let audioCtx = null, analyser = null, gainNode = null, source = null;
+      let stream = null, animFrame = null;
+      let mediaRecorder = null, recordedChunks = [];
+      let isRecording = false;
+      let recStartTime = 0, recTimerInterval = null;
+      let peakLevel = 0, peakDecay = 0;
+      let recordings = [];
+
+      function resizeCanvas() {
+        if (!canvas) return;
+        const area = canvas.parentElement;
+        canvas.width = area.clientWidth;
+        canvas.height = 200;
+      }
+
+      async function enumerateDevices() {
+        try {
+          const devices = await navigator.mediaDevices.enumerateDevices();
+          const mics = devices.filter(d => d.kind === 'audioinput');
+          if (!deviceSelect) return;
+          deviceSelect.innerHTML = '<option value="">-- Select Microphone --</option>';
+          mics.forEach((mic, i) => {
+            const opt = document.createElement('option');
+            opt.value = mic.deviceId;
+            opt.textContent = mic.label || `Microphone ${i + 1}`;
+            deviceSelect.appendChild(opt);
+          });
+          if (mics.length) deviceSelect.value = mics[0].deviceId;
+        } catch(e) {}
+      }
+
+      async function startMic() {
+        try {
+          if (stream) stopMic();
+          if (errorMsg) errorMsg.classList.remove('show');
+
+          const echoCancelChecked = document.getElementById('echoCancelToggle')?.checked ?? true;
+          const noiseSuppressChecked = document.getElementById('noiseSuppressToggle')?.checked ?? true;
+          const autoGainChecked = document.getElementById('autoGainToggle')?.checked ?? true;
+
+          const constraints = {
+            audio: {
+              echoCancellation: echoCancelChecked,
+              noiseSuppression: noiseSuppressChecked,
+              autoGainControl: autoGainChecked,
+            }
+          };
+          const deviceId = deviceSelect?.value;
+          if (deviceId) constraints.audio.deviceId = { exact: deviceId };
+
+          stream = await navigator.mediaDevices.getUserMedia(constraints);
+          await enumerateDevices();
+
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)({
+            sampleRate: parseInt(document.getElementById('sampleRateSelect')?.value || 48000)
+          });
+
+          gainNode = audioCtx.createGain();
+          gainNode.gain.value = parseFloat(document.getElementById('gainRange')?.value || 1);
+
+          analyser = audioCtx.createAnalyser();
+          analyser.fftSize = parseInt(document.getElementById('fftSize')?.value || 1024);
+          analyser.smoothingTimeConstant = parseFloat(document.getElementById('smoothing')?.value || 0.8);
+
+          source = audioCtx.createMediaStreamSource(stream);
+          source.connect(gainNode);
+          gainNode.connect(analyser);
+
+          const track = stream.getAudioTracks()[0];
+          const settings = track.getSettings();
+          if (infoChannels) infoChannels.textContent = settings.channelCount || '1';
+          if (infoSampleRate) infoSampleRate.textContent = (audioCtx.sampleRate / 1000).toFixed(1) + 'k';
+
+          if (placeholder) placeholder.style.display = 'none';
+          if (canvas) canvas.style.display = 'block';
+          if (btnStart) btnStart.style.display = 'none';
+          if (btnStop) btnStop.style.display = '';
+          if (btnRecord) btnRecord.disabled = false;
+          if (statusDot) statusDot.className = 'status-dot active';
+          if (statusText) statusText.textContent = 'Microphone Active';
+
+          resizeCanvas();
+          draw();
+
+        } catch(e) {
+          let msg = 'Could not access microphone. ';
+          if (e.name === 'NotAllowedError') msg += 'Microphone permission was denied. Please allow access in your browser.';
+          else if (e.name === 'NotFoundError') msg += 'No microphone was found on this device.';
+          else if (e.name === 'NotReadableError') msg += 'Microphone is in use by another application.';
+          else msg += e.message;
+          if (errorMsg) {
+            errorMsg.textContent = msg;
+            errorMsg.classList.add('show');
+          }
+          if (statusDot) statusDot.className = 'status-dot error';
+          if (statusText) statusText.textContent = 'Microphone Error';
         }
-        ctx.stroke();
-        ctx.shadowBlur = 0;
+      }
 
-      } else if (vizStyle === 'bars') {
-        const barW = Math.max(2, W / (bufLen / 2) - 1);
-        for (let i = 0; i < bufLen / 2; i++) {
-          const v = freqData[i] / 255;
-          const bH = v * H * 0.9;
-          const hue = 260 + v * 80;
-          ctx.fillStyle = `hsla(${hue},80%,60%,0.85)`;
-          ctx.fillRect(i * (barW + 1), H - bH, barW, bH);
+      function stopMic() {
+        if (isRecording) stopRecording();
+        if (animFrame) cancelAnimationFrame(animFrame);
+        if (stream) { stream.getTracks().forEach(t => t.stop()); stream = null; }
+        if (audioCtx) { audioCtx.close(); audioCtx = null; }
+        if (canvas) canvas.style.display = 'none';
+        if (placeholder) placeholder.style.display = '';
+        if (btnStart) btnStart.style.display = '';
+        if (btnStop) btnStop.style.display = 'none';
+        if (btnRecord) btnRecord.disabled = true;
+        if (statusDot) statusDot.className = 'status-dot';
+        if (statusText) statusText.textContent = 'Microphone Stopped';
+        if (volFill) volFill.style.width = '0%';
+        if (peakFill) peakFill.style.width = '0%';
+        if (volVal) volVal.textContent = '0 dB';
+        if (peakVal) peakVal.textContent = '— dB';
+        if (infoLevel) infoLevel.textContent = '—';
+        if (infoChannels) infoChannels.textContent = '—';
+        if (infoSampleRate) infoSampleRate.textContent = '—';
+        if (infoPeak) infoPeak.textContent = '—';
+        freqBars.forEach(b => b.style.height = '0%');
+      }
+
+      let peakHoldDb = -Infinity;
+      let peakHoldTime = 0;
+
+      function draw() {
+        if (!analyser) return;
+        animFrame = requestAnimationFrame(draw);
+
+        const bufLen = analyser.frequencyBinCount;
+        const timeData = new Uint8Array(bufLen);
+        const freqData = new Uint8Array(bufLen);
+        analyser.getByteTimeDomainData(timeData);
+        analyser.getByteFrequencyData(freqData);
+
+        // Volume
+        let sumSquares = 0;
+        for (let i = 0; i < timeData.length; i++) {
+          const norm = (timeData[i] - 128) / 128;
+          sumSquares += norm * norm;
         }
+        const rms = Math.sqrt(sumSquares / timeData.length);
+        const db = rms > 0 ? 20 * Math.log10(rms) : -Infinity;
+        const volPct = Math.max(0, Math.min(100, (db + 60) * 100 / 60));
+        if (volFill) volFill.style.width = volPct + '%';
+        if (volVal) volVal.textContent = isFinite(db) ? db.toFixed(1) + ' dB' : '-∞';
+        if (infoLevel) infoLevel.textContent = isFinite(db) ? db.toFixed(1) : '—';
 
-      } else if (vizStyle === 'radial') {
-        const cx = W / 2, cy = H / 2;
-        const radius = Math.min(W, H) * 0.3;
-        const bars = Math.min(bufLen / 2, 128);
-        for (let i = 0; i < bars; i++) {
-          const angle = (i / bars) * Math.PI * 2 - Math.PI / 2;
-          const v = freqData[i] / 255;
-          const len = v * radius * 0.8;
-          const x1 = cx + Math.cos(angle) * radius;
-          const y1 = cy + Math.sin(angle) * radius;
-          const x2 = cx + Math.cos(angle) * (radius + len);
-          const y2 = cy + Math.sin(angle) * (radius + len);
-          const hue = 260 + v * 100;
+        // Peak hold
+        const now = Date.now();
+        if (db > peakHoldDb || now - peakHoldTime > 3000) { peakHoldDb = db; peakHoldTime = now; }
+        const peakPct = Math.max(0, Math.min(100, (peakHoldDb + 60) * 100 / 60));
+        if (peakFill) peakFill.style.width = peakPct + '%';
+        if (peakVal) peakVal.textContent = isFinite(peakHoldDb) ? peakHoldDb.toFixed(1) + ' dB' : '—';
+        if (infoPeak) infoPeak.textContent = isFinite(peakHoldDb) ? peakHoldDb.toFixed(1) : '—';
+        if (peakIndicator) peakIndicator.classList.toggle('show', db > -3);
+
+        // Freq bands
+        const binHz = audioCtx.sampleRate / analyser.fftSize;
+        const bandFreqs = [40, 100, 300, 1000, 3000, 6000, 12000, 16000];
+        bandFreqs.forEach((f, i) => {
+          const bin = Math.round(f / binHz);
+          const val = bin < freqData.length ? freqData[bin] : 0;
+          if (freqBars[i]) freqBars[i].style.height = (val / 255 * 100) + '%';
+        });
+
+        // Canvas
+        if (!ctx || !canvas) return;
+        const W = canvas.width, H = canvas.height;
+        ctx.clearRect(0, 0, W, H);
+
+        const vizStyle = document.getElementById('vizStyle')?.value || 'waveform';
+
+        if (vizStyle === 'waveform') {
           ctx.beginPath();
-          ctx.strokeStyle = `hsla(${hue},80%,65%,0.8)`;
+          ctx.strokeStyle = 'rgba(123,97,255,0.9)';
           ctx.lineWidth = 2;
-          ctx.moveTo(x1, y1);
-          ctx.lineTo(x2, y2);
+          ctx.shadowColor = 'rgba(123,97,255,0.4)';
+          ctx.shadowBlur = 6;
+          const sliceW = W / bufLen;
+          let x = 0;
+          for (let i = 0; i < bufLen; i++) {
+            const v = timeData[i] / 128;
+            const y = v * H / 2;
+            if (i === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+            x += sliceW;
+          }
+          ctx.stroke();
+          ctx.shadowBlur = 0;
+
+        } else if (vizStyle === 'bars') {
+          const barW = Math.max(2, W / (bufLen / 2) - 1);
+          for (let i = 0; i < bufLen / 2; i++) {
+            const v = freqData[i] / 255;
+            const bH = v * H * 0.9;
+            const hue = 260 + v * 80;
+            ctx.fillStyle = `hsla(${hue},80%,60%,0.85)`;
+            ctx.fillRect(i * (barW + 1), H - bH, barW, bH);
+          }
+
+        } else if (vizStyle === 'radial') {
+          const cx = W / 2, cy = H / 2;
+          const radius = Math.min(W, H) * 0.3;
+          const bars = Math.min(bufLen / 2, 128);
+          for (let i = 0; i < bars; i++) {
+            const angle = (i / bars) * Math.PI * 2 - Math.PI / 2;
+            const v = freqData[i] / 255;
+            const len = v * radius * 0.8;
+            const x1 = cx + Math.cos(angle) * radius;
+            const y1 = cy + Math.sin(angle) * radius;
+            const x2 = cx + Math.cos(angle) * (radius + len);
+            const y2 = cy + Math.sin(angle) * (radius + len);
+            const hue = 260 + v * 100;
+            ctx.beginPath();
+            ctx.strokeStyle = `hsla(${hue},80%,65%,0.8)`;
+            ctx.lineWidth = 2;
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x2, y2);
+            ctx.stroke();
+          }
+          ctx.beginPath();
+          ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+          ctx.strokeStyle = 'rgba(123,97,255,0.2)';
+          ctx.lineWidth = 1;
           ctx.stroke();
         }
-        // Center circle
-        ctx.beginPath();
-        ctx.arc(cx, cy, radius, 0, Math.PI * 2);
-        ctx.strokeStyle = 'rgba(123,97,255,0.2)';
-        ctx.lineWidth = 1;
-        ctx.stroke();
       }
-    }
 
-    // Gain slider
-    document.getElementById('gainRange').addEventListener('input', function() {
-      document.getElementById('gainVal').textContent = parseFloat(this.value).toFixed(1) + '×';
-      if (gainNode) gainNode.gain.value = parseFloat(this.value);
+      // Gain slider
+      const gainRange = document.getElementById('gainRange');
+      if (gainRange) {
+        gainRange.addEventListener('input', function() {
+          const gainVal = document.getElementById('gainVal');
+          if (gainVal) gainVal.textContent = parseFloat(this.value).toFixed(1) + '×';
+          if (gainNode) gainNode.gain.value = parseFloat(this.value);
+        });
+      }
+
+      const smoothingRange = document.getElementById('smoothing');
+      if (smoothingRange) {
+        smoothingRange.addEventListener('input', function() {
+          const smoothingVal = document.getElementById('smoothingVal');
+          if (smoothingVal) smoothingVal.textContent = parseFloat(this.value).toFixed(2);
+          if (analyser) analyser.smoothingTimeConstant = parseFloat(this.value);
+        });
+      }
+
+      const fftSizeSelect = document.getElementById('fftSize');
+      if (fftSizeSelect) {
+        fftSizeSelect.addEventListener('change', function() {
+          if (analyser) analyser.fftSize = parseInt(this.value);
+        });
+      }
+
+      // Recording
+      function startRecording() {
+        if (!stream) return;
+        recordedChunks = [];
+        const opts = MediaRecorder.isTypeSupported('audio/webm;codecs=opus') ? { mimeType: 'audio/webm;codecs=opus' } : {};
+        mediaRecorder = new MediaRecorder(stream, opts);
+        mediaRecorder.ondataavailable = e => { if (e.data.size > 0) recordedChunks.push(e.data); };
+        mediaRecorder.onstop = saveRecording;
+        mediaRecorder.start(100);
+        isRecording = true;
+        recStartTime = Date.now();
+        if (recBtnText) recBtnText.textContent = 'Stop Rec';
+        if (btnRecord) btnRecord.classList.add('is-recording');
+        if (recTimer) recTimer.style.display = '';
+        if (statusDot) statusDot.className = 'status-dot recording';
+        if (statusText) statusText.textContent = 'Recording…';
+        recTimerInterval = setInterval(() => {
+          const s = Math.floor((Date.now() - recStartTime) / 1000);
+          if (recTimer) recTimer.textContent = `${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`;
+        }, 500);
+      }
+
+      function stopRecording() {
+        if (!mediaRecorder) return;
+        mediaRecorder.stop();
+        isRecording = false;
+        if (recBtnText) recBtnText.textContent = 'Record';
+        if (btnRecord) btnRecord.classList.remove('is-recording');
+        if (recTimer) recTimer.style.display = 'none';
+        clearInterval(recTimerInterval);
+        if (statusDot) statusDot.className = 'status-dot active';
+        if (statusText) statusText.textContent = 'Microphone Active';
+      }
+
+      function saveRecording() {
+        const blob = new Blob(recordedChunks, { type: 'audio/webm' });
+        const url = URL.createObjectURL(blob);
+        const duration = ((Date.now() - recStartTime) / 1000).toFixed(1);
+        recordings.push({ url, blob, duration });
+
+        const item = document.createElement('div');
+        item.className = 'rec-item';
+
+        const dur = document.createElement('span');
+        dur.className = 'rec-duration';
+        dur.textContent = duration + 's';
+
+        const audio = document.createElement('audio');
+        audio.controls = true;
+        audio.src = url;
+
+        const dlBtn = document.createElement('button');
+        dlBtn.className = 'btn btn-secondary btn-sm';
+        dlBtn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>';
+        dlBtn.title = 'Download';
+        dlBtn.addEventListener('click', () => {
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = `mic-recording-${Date.now()}.webm`;
+          a.click();
+        });
+
+        item.appendChild(dur);
+        item.appendChild(audio);
+        item.appendChild(dlBtn);
+        if (recList) recList.appendChild(item);
+        if (recCount) recCount.textContent = recordings.length;
+        if (btnClearRecs) btnClearRecs.style.display = '';
+      }
+
+      if (btnRecord) {
+        btnRecord.addEventListener('click', () => {
+          if (isRecording) stopRecording();
+          else startRecording();
+        });
+      }
+
+      if (btnClearRecs) {
+        btnClearRecs.addEventListener('click', () => {
+          if (recList) recList.innerHTML = '';
+          recordings = [];
+          if (recCount) recCount.textContent = '0';
+          btnClearRecs.style.display = 'none';
+        });
+      }
+
+      if (btnStart) btnStart.addEventListener('click', startMic);
+      if (btnStop) btnStop.addEventListener('click', stopMic);
+      if (deviceSelect) {
+        deviceSelect.addEventListener('change', () => { if (stream) startMic(); });
+      }
+
+      window.addEventListener('resize', resizeCanvas);
+      resizeCanvas();
+
+      // Check support
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        if (statusText) statusText.textContent = 'Microphone API not supported in this browser';
+        if (statusDot) statusDot.className = 'status-dot error';
+        if (btnStart) btnStart.disabled = true;
+      } else {
+        navigator.mediaDevices.enumerateDevices().then(d => {
+          if (d.some(x => x.kind === 'audioinput')) enumerateDevices();
+        }).catch(() => {});
+      }
+
+      try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
+      try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
     });
-    document.getElementById('smoothing').addEventListener('input', function() {
-      document.getElementById('smoothingVal').textContent = parseFloat(this.value).toFixed(2);
-      if (analyser) analyser.smoothingTimeConstant = parseFloat(this.value);
-    });
-    document.getElementById('fftSize').addEventListener('change', function() {
-      if (analyser) analyser.fftSize = parseInt(this.value);
-    });
-
-    // Recording
-    function startRecording() {
-      if (!stream) return;
-      recordedChunks = [];
-      const opts = MediaRecorder.isTypeSupported('audio/webm;codecs=opus') ? { mimeType: 'audio/webm;codecs=opus' } : {};
-      mediaRecorder = new MediaRecorder(stream, opts);
-      mediaRecorder.ondataavailable = e => { if (e.data.size > 0) recordedChunks.push(e.data); };
-      mediaRecorder.onstop = saveRecording;
-      mediaRecorder.start(100);
-      isRecording = true;
-      recStartTime = Date.now();
-      recBtnText.textContent = 'Stop Rec';
-      btnRecord.classList.add('is-recording');
-      recTimer.style.display = '';
-      statusDot.className = 'status-dot recording';
-      statusText.textContent = 'Recording…';
-      recTimerInterval = setInterval(() => {
-        const s = Math.floor((Date.now() - recStartTime) / 1000);
-        recTimer.textContent = `${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`;
-      }, 500);
-    }
-
-    function stopRecording() {
-      if (!mediaRecorder) return;
-      mediaRecorder.stop();
-      isRecording = false;
-      recBtnText.textContent = 'Record';
-      btnRecord.classList.remove('is-recording');
-      recTimer.style.display = 'none';
-      clearInterval(recTimerInterval);
-      statusDot.className = 'status-dot active';
-      statusText.textContent = 'Microphone Active';
-    }
-
-    function saveRecording() {
-      const blob = new Blob(recordedChunks, { type: 'audio/webm' });
-      const url = URL.createObjectURL(blob);
-      const duration = ((Date.now() - recStartTime) / 1000).toFixed(1);
-      recordings.push({ url, blob, duration });
-
-      const item = document.createElement('div');
-      item.className = 'rec-item';
-
-      const dur = document.createElement('span');
-      dur.className = 'rec-duration';
-      dur.textContent = duration + 's';
-
-      const audio = document.createElement('audio');
-      audio.controls = true;
-      audio.src = url;
-
-      const dlBtn = document.createElement('button');
-      dlBtn.className = 'btn btn-secondary btn-sm';
-      dlBtn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>';
-      dlBtn.title = 'Download';
-      dlBtn.addEventListener('click', () => {
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `mic-recording-${Date.now()}.webm`;
-        a.click();
-      });
-
-      item.appendChild(dur);
-      item.appendChild(audio);
-      item.appendChild(dlBtn);
-      recList.appendChild(item);
-      recCount.textContent = recordings.length;
-      btnClearRecs.style.display = '';
-    }
-
-    btnRecord.addEventListener('click', () => {
-      if (isRecording) stopRecording();
-      else startRecording();
-    });
-
-    btnClearRecs.addEventListener('click', () => {
-      recList.innerHTML = '';
-      recordings = [];
-      recCount.textContent = '0';
-      btnClearRecs.style.display = 'none';
-    });
-
-    btnStart.addEventListener('click', startMic);
-    btnStop.addEventListener('click', stopMic);
-    deviceSelect.addEventListener('change', () => { if (stream) startMic(); });
-
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-
-    // Check support
-    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-      statusText.textContent = 'Microphone API not supported in this browser';
-      statusDot.className = 'status-dot error';
-      btnStart.disabled = true;
-    } else {
-      navigator.mediaDevices.enumerateDevices().then(d => {
-        if (d.some(x => x.kind === 'audioinput')) enumerateDevices();
-      }).catch(() => {});
-    }
-
-    try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
-    try { (adsbygoogle = window.adsbygoogle || []).push({}); } catch(e) {}
   </script>
 </body>
 </html>
