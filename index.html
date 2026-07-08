@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mobile Viewer — Free Website Tester & Mobile Preview Tool</title>
+  <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9759808041159779"
      crossorigin="anonymous"></script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MBJB77SQ0K"></script>
@@ -10,10 +15,7 @@
     gtag('js', new Date());
     gtag('config', 'G-MBJB77SQ0K');
   </script>
-  <meta charset="UTF-8">
   <link rel="llms" href="/llms.txt" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mobile Viewer — Free Website Tester & Mobile Preview Tool</title>
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
   <meta name="google-adsense-account" content="ca-pub-9759808041159779">   
@@ -270,7 +272,7 @@
   <section id="viewer" class="viewer-section" aria-labelledby="viewer-heading">    
       <div class="container">
         <div class="viewer-header">
-          <h2>Mobile Viewer Tool</h2>
+          <h2 id="viewer-heading">Mobile Viewer Tool</h2>
           <p>Enter any URL and instantly preview it on mobile, tablet, or desktop — with advanced controls</p>
         </div>
 
@@ -394,6 +396,66 @@
       </div>
     </section>
   
+
+  <!-- ═══════════════════════════════════════════
+       SECTION 3B: SUPPORTED DEVICES
+  ═══════════════════════════════════════════ -->
+  <section id="supported-devices" class="devices-section" aria-labelledby="devices-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Device Library</span>
+        <h2 class="section-title" id="devices-heading">Mobile Website Viewer — <span class="gradient-text">Supported Devices</span></h2>
+        <p class="section-description">Click any device below to instantly load its exact screen size in the viewer above — iPhones, Android phones, tablets, and more.</p>
+      </div>
+
+      <div class="device-category">
+        <h3 class="device-category-title">📱 iPhone</h3>
+        <div class="device-chip-grid" role="group" aria-label="iPhone device presets">
+          <button type="button" class="device-chip" data-device="iphone15"><span class="device-chip-icon" aria-hidden="true">📱</span><span class="device-chip-name">iPhone 15</span><span class="device-chip-dim">393×852</span></button>
+          <button type="button" class="device-chip" data-device="iphone15pm"><span class="device-chip-icon" aria-hidden="true">📱</span><span class="device-chip-name">iPhone 15 Pro Max</span><span class="device-chip-dim">430×932</span></button>
+          <button type="button" class="device-chip" data-device="iphone14"><span class="device-chip-icon" aria-hidden="true">📱</span><span class="device-chip-name">iPhone 14</span><span class="device-chip-dim">390×844</span></button>
+          <button type="button" class="device-chip" data-device="iphone14pm"><span class="device-chip-icon" aria-hidden="true">📱</span><span class="device-chip-name">iPhone 14 Plus</span><span class="device-chip-dim">428×926</span></button>
+          <button type="button" class="device-chip" data-device="iphone13"><span class="device-chip-icon" aria-hidden="true">📱</span><span class="device-chip-name">iPhone 13</span><span class="device-chip-dim">390×844</span></button>
+          <button type="button" class="device-chip" data-device="iphone13m"><span class="device-chip-icon" aria-hidden="true">📱</span><span class="device-chip-name">iPhone 13 Mini</span><span class="device-chip-dim">375×812</span></button>
+          <button type="button" class="device-chip" data-device="iphone-se"><span class="device-chip-icon" aria-hidden="true">📱</span><span class="device-chip-name">iPhone SE (3rd)</span><span class="device-chip-dim">375×667</span></button>
+          <button type="button" class="device-chip" data-device="iphone12"><span class="device-chip-icon" aria-hidden="true">📱</span><span class="device-chip-name">iPhone 12</span><span class="device-chip-dim">390×844</span></button>
+          <button type="button" class="device-chip" data-device="iphonexr"><span class="device-chip-icon" aria-hidden="true">📱</span><span class="device-chip-name">iPhone XR</span><span class="device-chip-dim">414×896</span></button>
+        </div>
+      </div>
+
+      <div class="device-category">
+        <h3 class="device-category-title">🤖 Android</h3>
+        <div class="device-chip-grid" role="group" aria-label="Android device presets">
+          <button type="button" class="device-chip" data-device="pixel8"><span class="device-chip-icon" aria-hidden="true">🤖</span><span class="device-chip-name">Google Pixel 8</span><span class="device-chip-dim">412×915</span></button>
+          <button type="button" class="device-chip" data-device="pixel8pro"><span class="device-chip-icon" aria-hidden="true">🤖</span><span class="device-chip-name">Google Pixel 8 Pro</span><span class="device-chip-dim">448×998</span></button>
+          <button type="button" class="device-chip" data-device="pixel7"><span class="device-chip-icon" aria-hidden="true">🤖</span><span class="device-chip-name">Google Pixel 7</span><span class="device-chip-dim">412×915</span></button>
+          <button type="button" class="device-chip" data-device="galaxy-s24"><span class="device-chip-icon" aria-hidden="true">🤖</span><span class="device-chip-name">Samsung Galaxy S24</span><span class="device-chip-dim">360×780</span></button>
+          <button type="button" class="device-chip" data-device="galaxy-s24u"><span class="device-chip-icon" aria-hidden="true">🤖</span><span class="device-chip-name">Galaxy S24 Ultra</span><span class="device-chip-dim">412×915</span></button>
+          <button type="button" class="device-chip" data-device="galaxy-s23"><span class="device-chip-icon" aria-hidden="true">🤖</span><span class="device-chip-name">Samsung Galaxy S23</span><span class="device-chip-dim">360×780</span></button>
+          <button type="button" class="device-chip" data-device="fold"><span class="device-chip-icon" aria-hidden="true">🤖</span><span class="device-chip-name">Galaxy Z Fold 5</span><span class="device-chip-dim">344×882</span></button>
+          <button type="button" class="device-chip" data-device="fold-open"><span class="device-chip-icon" aria-hidden="true">🤖</span><span class="device-chip-name">Z Fold 5 (Open)</span><span class="device-chip-dim">812×882</span></button>
+          <button type="button" class="device-chip" data-device="oneplus12"><span class="device-chip-icon" aria-hidden="true">🤖</span><span class="device-chip-name">OnePlus 12</span><span class="device-chip-dim">412×919</span></button>
+          <button type="button" class="device-chip" data-device="xiaomi14"><span class="device-chip-icon" aria-hidden="true">🤖</span><span class="device-chip-name">Xiaomi 14</span><span class="device-chip-dim">393×852</span></button>
+          <button type="button" class="device-chip" data-device="motog84"><span class="device-chip-icon" aria-hidden="true">🤖</span><span class="device-chip-name">Motorola Moto G84</span><span class="device-chip-dim">360×800</span></button>
+        </div>
+      </div>
+
+      <div class="device-category">
+        <h3 class="device-category-title">📟 Tablets &amp; Desktop</h3>
+        <div class="device-chip-grid" role="group" aria-label="Tablet and desktop device presets">
+          <button type="button" class="device-chip" data-device="ipad"><span class="device-chip-icon" aria-hidden="true">📟</span><span class="device-chip-name">iPad Pro 12.9"</span><span class="device-chip-dim">1024×1366</span></button>
+          <button type="button" class="device-chip" data-device="ipad-mini"><span class="device-chip-icon" aria-hidden="true">📟</span><span class="device-chip-name">iPad Mini 6</span><span class="device-chip-dim">744×1133</span></button>
+          <button type="button" class="device-chip" data-device="ipad-air"><span class="device-chip-icon" aria-hidden="true">📟</span><span class="device-chip-name">iPad Air 5</span><span class="device-chip-dim">820×1180</span></button>
+          <button type="button" class="device-chip" data-device="ipad-10"><span class="device-chip-icon" aria-hidden="true">📟</span><span class="device-chip-name">iPad (10th Gen)</span><span class="device-chip-dim">820×1180</span></button>
+          <button type="button" class="device-chip" data-device="galaxy-tab"><span class="device-chip-icon" aria-hidden="true">📟</span><span class="device-chip-name">Samsung Galaxy Tab S9</span><span class="device-chip-dim">800×1280</span></button>
+          <button type="button" class="device-chip" data-device="galaxy-tabs9u"><span class="device-chip-icon" aria-hidden="true">📟</span><span class="device-chip-name">Galaxy Tab S9 Ultra</span><span class="device-chip-dim">960×1600</span></button>
+          <button type="button" class="device-chip" data-device="surface-pro"><span class="device-chip-icon" aria-hidden="true">📟</span><span class="device-chip-name">Surface Pro 9</span><span class="device-chip-dim">912×1368</span></button>
+          <button type="button" class="device-chip" data-device="kindle-fire"><span class="device-chip-icon" aria-hidden="true">📟</span><span class="device-chip-name">Kindle Fire HD 10</span><span class="device-chip-dim">800×1280</span></button>
+        </div>
+      </div>
+    </div>
+  </section>
+
 
   <!-- ═══════════════════════════════════════════
        SECTION 4: WHY MOBILE VIEWER
@@ -826,12 +888,47 @@
   <!-- Footer Component -->
   <div id="footer-placeholder"></div>
   <div id="tools-sidebar-root"></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <!-- Scripts -->
-  <script src="/header.js"></script>
-  <script src="/footer.js"></script>
-  <script src="/script.js"></script>
-  <script src="/mv.js"></script>  
-  <script src="/js/sidebar.js"></script>  
+  <script src="/header.js" defer></script>
+  <script src="/footer.js" defer></script>
+  <script src="/script.js" defer></script>
+  <script src="/mv.js" defer></script>
+  <script src="/js/sidebar.js" defer></script>
+  <script defer>
+    // Wire up the "Supported Devices" chips: select the device on the
+    // live viewer and scroll the user to it. Relies on globals exposed
+    // by mv.js (state, applyDevice, updateQuickDevices), so this must
+    // run after mv.js has executed.
+    document.addEventListener('DOMContentLoaded', function () {
+      var chips = document.querySelectorAll('.device-chip');
+      if (!chips.length || typeof applyDevice !== 'function') return;
+
+      chips.forEach(function (chip) {
+        chip.addEventListener('click', function () {
+          var id = chip.getAttribute('data-device');
+          if (!id) return;
+
+          state.device = id;
+          state.isLandscape = false;
+          applyDevice(id, false);
+          if (typeof updateQuickDevices === 'function') updateQuickDevices();
+
+          document.querySelectorAll('.device-btn').forEach(function (b) {
+            var isMatch = b.getAttribute('data-device') === id;
+            b.classList.toggle('active', isMatch);
+            b.setAttribute('aria-pressed', isMatch ? 'true' : 'false');
+          });
+
+          chips.forEach(function (c) { c.classList.remove('active'); });
+          chip.classList.add('active');
+
+          var viewer = document.getElementById('viewer');
+          if (viewer) viewer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+    });
+  </script>
 </body>
 </html>
