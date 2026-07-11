@@ -49,7 +49,7 @@
     /* Floating Launch Trigger Button */
     .tools-floating-trigger {
       position: fixed;
-      bottom: 24px;
+      bottom: 40px;
       right: 24px;
       z-index: 9999;
       width: 52px;
