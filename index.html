@@ -868,5 +868,37 @@
   
   <script src="/mv.js"></script>  
   <script src="/js/sidebar.js"></script>  
+<script>
+  // ─── FAQ Accordion Toggle ───
+function toggleFaq(button) {
+  const item = button.closest('.faq-item');
+  const isOpen = item.classList.contains('is-open');
+  const answer = item.querySelector('.faq-a');
+  const chevron = button.querySelector('.faq-chevron');
+
+  // Close all other open FAQs
+  document.querySelectorAll('.faq-item.is-open').forEach((openItem) => {
+    if (openItem !== item) {
+      openItem.classList.remove('is-open');
+      openItem.querySelector('.faq-a').style.maxHeight = '0';
+      openItem.querySelector('.faq-a').style.opacity = '0';
+      openItem.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Toggle the clicked one
+  if (isOpen) {
+    item.classList.remove('is-open');
+    answer.style.maxHeight = '0';
+    answer.style.opacity = '0';
+    button.setAttribute('aria-expanded', 'false');
+  } else {
+    item.classList.add('is-open');
+    answer.style.maxHeight = answer.scrollHeight + 'px';
+    answer.style.opacity = '1';
+    button.setAttribute('aria-expanded', 'true');
+  }
+}
+  </script>
 </body>
 </html>
