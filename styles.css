@@ -574,7 +574,7 @@ code {
   width: 100%;
 }
 
-.hero-text { max-width: 580px; }
+.hero-text { max-width: 450px; }
 
 .badge {
   display: inline-flex;
