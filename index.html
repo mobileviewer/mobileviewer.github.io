@@ -140,586 +140,86 @@
   <!-- ═══════════════════════════════════════════
        SECTION 1: HERO
   ═══════════════════════════════════════════ -->
- <!-- ═══════════════════════════════════════════
-     MERGED HERO + VIEWER SECTION
-     Design: Hero content on top, Viewer app directly below
-     No hero visual animation, compact & SEO-optimized
-═══════════════════════════════════════════ -->
-<section id="home-viewer" class="hero-viewer-section" aria-labelledby="hero-viewer-heading">
-  <div class="container hero-viewer-grid">
-    <!-- Hero Text (compact, no animation) -->
-    <div class="hero-viewer-text">
-      <span class="badge">
-        <span class="badge-dot"></span>
-        Mobile-First Indexing Tool — Free Forever
-      </span>
-      <h1 class="hero-viewer-title" id="hero-viewer-heading">
-        Mobile Website Viewer — Test Your<br>
-        <span class="gradient-text">Site Now</span>
-      </h1>
-      <p class="hero-viewer-description">
-        The professional-grade mobile website viewer trusted by 50,000+ developers and designers. Preview, test, and perfect your responsive design — no installations, no limits.
-      </p>
-      <div class="hero-viewer-actions">
-        <a href="#viewer-app" class="primary-button" aria-label="Launch Mobile Viewer Tool">
-          <span>Launch Viewer</span>
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-            <path d="M7.5 5L12.5 10L7.5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-        <a href="/contact" class="secondary-button" aria-label="Contact Mobile Viewer">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-            <path d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V5z" stroke="currentColor" stroke-width="1.5"/>
-            <path d="M3 5l9 6 9-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-          <span>Contact Us</span>
-        </a>
-      </div>
-      <!-- Compact stats (optional, keeps engagement) -->
-      <div class="hero-viewer-stats">
-        <div class="stat-item"><span class="stat-number">50K+</span><span class="stat-label">Users</span></div>
-        <div class="stat-divider"></div>
-        <div class="stat-item"><span class="stat-number">20+</span><span class="stat-label">Devices</span></div>
-        <div class="stat-divider"></div>
-        <div class="stat-item"><span class="stat-number">100%</span><span class="stat-label">Free</span></div>
-      </div>
+  <section id="home" class="hero" aria-label="Hero">
+    <div class="hero-bg" aria-hidden="true">
+      <div class="grid-overlay"></div>
+      <div class="glow-orb orb-1"></div>
+      <div class="glow-orb orb-2"></div>
+      <div class="glow-orb orb-3"></div>
+      <div class="noise-overlay"></div>
     </div>
-
-    <!-- Viewer App (directly below hero text) -->
-    <div id="viewer-app" class="viewer-app-compact">
-      <div class="viewer-controls-compact">
-        <div class="url-input-group-compact">
-          <svg class="url-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-          <input type="url" id="urlInputCompact" class="url-input" placeholder="https://example.com" aria-label="Enter website URL to preview" />
-          <button class="btn btn-primary btn-load" id="loadBtnCompact" aria-label="Load website preview">
-            <span>Preview</span>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    <div class="container hero-content">
+      <div class="hero-text">
+        <span class="badge">
+          <span class="badge-dot"></span>
+          Mobile-First Indexing Tool — Free Forever
+        </span>
+        <h1 class="hero-title">
+          Mobile Website Viewer — Test Your<br>
+          <span class="gradient-text">Site Now</span>
+        </h1>
+        <p class="hero-description">
+          The professional-grade mobile website viewer trusted by 50,000+ developers and designers. Preview, test, and perfect your responsive design — no installations, no limits.
+        </p>
+        <div class="hero-actions">
+          <a href="/#viewer" class="primary-button" onclick="scrollToViewer()" aria-label="Launch Mobile Viewer Tool">
+            <span>Launch Viewer</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M7.5 5L12.5 10L7.5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
           </button>
-        </div>
-
-        <div class="device-picker-compact" role="group" aria-label="Select device">
-          <button class="device-btn active" data-device="iphone15" aria-pressed="true">iPhone 15</button>
-          <button class="device-btn" data-device="pixel8" aria-pressed="false">Pixel 8</button>
-          <button class="device-btn" data-device="galaxy-s24" aria-pressed="false">Galaxy S24</button>
-          <button class="device-btn" data-device="ipad" aria-pressed="false">iPad Pro</button>
-          <button class="device-btn" data-device="fold" aria-pressed="false">Z Fold 5</button>
-          <button class="device-btn" data-device="custom" aria-pressed="false">Custom</button>
-        </div>
-
-        <div class="viewer-tools-compact">
-          <button class="tool-btn" id="rotateBtnCompact" title="Rotate device">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
-            Rotate
-          </button>
-          <button class="tool-btn" id="screenshotBtnCompact" title="Take screenshot">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
-            Screenshot
-          </button>
-          <button class="tool-btn" id="shareBtnCompact" title="Share URL">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-            Share
-          </button>
-          <div class="zoom-ctrl">
-            <button class="tool-btn zoom-btn" id="zoomOutCompact">−</button>
-            <span id="zoomLevelCompact">100%</span>
-            <button class="tool-btn zoom-btn" id="zoomInCompact">+</button>
-          </div>
+          <a href="/contact" class="secondary-button" aria-label="Contact Mobile Viewer">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V5z" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M3 5l9 6 9-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+            <span>Contact Us</span>
+          </a>               
         </div>
       </div>
-
-      <!-- Preview Stage (simplified, no sidebar, keeps the frame) -->
-      <div class="viewer-stage-compact" id="viewerStageCompact">
-        <div class="stage-info-compact">
-          <span id="deviceLabelCompact">iPhone 15</span>
-          <span class="dim-sep">|</span>
-          <span id="deviceDimsCompact">393 × 852 px</span>
-          <span class="dim-sep">|</span>
-          <span id="orientationLabelCompact">Portrait</span>
-        </div>
-        <div class="preview-wrap-compact" id="previewWrapCompact">
-          <div class="preview-device" id="previewDeviceCompact">
-            <div class="pd-notch" id="pdNotchCompact"></div>
-            <div class="pd-screen" id="pdScreenCompact">
-              <div class="pd-placeholder" id="pdPlaceholderCompact">
-                <div class="pdp-icon">
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
-                </div>
-                <h3>Ready to Preview</h3>
-                <p>Enter a URL above and click Preview to see your website on this device</p>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="hero-device-showcase">
+          <div class="showcase-phone">
+            <div class="showcase-notch"></div>
+            <div class="showcase-screen">
+              <div class="showcase-browser-bar">
+                <span></span><span></span><span></span>
               </div>
-              <iframe id="mainIframeCompact" class="pd-iframe" src="about:blank" title="Mobile website preview" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+              <div class="showcase-content">
+                <div class="sc-line sc-line--full"></div>
+                <div class="sc-line sc-line--3q"></div>
+                <div class="sc-line sc-line--half"></div>
+                <div class="sc-img"></div>
+                <div class="sc-line sc-line--full"></div>
+                <div class="sc-line sc-line--3q"></div>
+              </div>
             </div>
-            <div class="pd-home-bar" id="pdHomeBarCompact"></div>
-            <div class="pd-side-btn left" id="pdSideLeftCompact"></div>
-            <div class="pd-side-btn right" id="pdSideRightCompact"></div>
+          </div>
+          <div class="showcase-desktop">
+            <div class="showcase-screen showcase-screen--desktop">
+              <div class="showcase-browser-bar">
+                <span></span><span></span><span></span>
+                <div class="showcase-url-bar"></div>
+              </div>
+              <div class="showcase-content">
+                <div class="sc-line sc-line--full"></div>
+                <div class="sc-line sc-line--3q"></div>
+                <div class="sc-img sc-img--wide"></div>
+                <div class="sc-line sc-line--half"></div>
+              </div>
+            </div>
+            <div class="showcase-stand"></div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+    <div class="hero-scroll-hint" aria-hidden="true">
+      <div class="scroll-mouse">
+        <div class="scroll-wheel"></div>
+      </div>
+    </div>
+  </section>
 
-  <style>
-  /* ─── MERGED HERO+VIEWER SECTION ─── */
-  .hero-viewer-section {
-    padding: calc(var(--header-h) + 20px) 0 60px;
-    background: var(--bg);
-    position: relative;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .hero-viewer-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 3rem;
-    align-items: start;
-  }
-
-  /* Hero text (compact, no animation) */
-  .hero-viewer-text {
-    padding-top: 0.5rem;
-  }
-
-  .hero-viewer-title {
-    font-family: var(--font-display);
-    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-    font-weight: 800;
-    line-height: 1.15;
-    letter-spacing: -0.02em;
-    margin-bottom: 1rem;
-  }
-
-  .hero-viewer-description {
-    font-size: 1rem;
-    color: var(--text-secondary);
-    line-height: 1.7;
-    max-width: 90%;
-    margin-bottom: 1.5rem;
-  }
-
-  .hero-viewer-actions {
-    display: flex;
-    gap: 14px;
-    flex-wrap: wrap;
-    margin-bottom: 1.8rem;
-  }
-
-  .hero-viewer-stats {
-    display: flex;
-    align-items: center;
-    gap: 0;
-    flex-wrap: wrap;
-    margin-top: 0.5rem;
-  }
-  .hero-viewer-stats .stat-item {
-    padding: 0 20px 0 0;
-  }
-  .hero-viewer-stats .stat-divider {
-    width: 1px;
-    height: 28px;
-    background: var(--border);
-    margin-right: 16px;
-  }
-  .hero-viewer-stats .stat-number {
-    font-family: var(--font-display);
-    font-size: 1.4rem;
-    font-weight: 800;
-    color: var(--primary);
-    line-height: 1;
-    display: block;
-  }
-  .hero-viewer-stats .stat-label {
-    font-size: 0.75rem;
-    color: var(--text-muted);
-    font-weight: 500;
-  }
-
-  /* Viewer app compact (no sidebar) */
-  .viewer-app-compact {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-xl);
-    overflow: hidden;
-    box-shadow: var(--shadow-lg);
-  }
-
-  .viewer-controls-compact {
-    padding: 16px 20px;
-    background: var(--bg-card-2);
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .url-input-group-compact {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(10,14,20,0.04);
-    border: 1.5px solid var(--border-light);
-    border-radius: 10px;
-    padding: 0 8px;
-    transition: border-color 0.2s;
-  }
-  .url-input-group-compact:focus-within {
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(22,163,74,0.1);
-  }
-  .url-input-group-compact .url-icon {
-    color: var(--text-muted);
-    flex-shrink: 0;
-  }
-  .url-input-group-compact .url-input {
-    flex: 1;
-    border: none;
-    background: transparent;
-    padding: 10px 6px;
-    font-size: 0.95rem;
-    font-family: var(--font-body);
-    color: var(--text);
-    outline: none;
-    min-width: 0;
-  }
-  .url-input-group-compact .url-input::placeholder {
-    color: var(--text-muted);
-  }
-  .url-input-group-compact .btn-load {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 18px;
-    background: var(--primary);
-    color: #fff;
-    border-radius: 8px;
-    font-weight: 700;
-    font-size: 0.9rem;
-    border: none;
-    transition: background 0.2s, transform 0.2s;
-    white-space: nowrap;
-  }
-  .url-input-group-compact .btn-load:hover {
-    background: #0e9350;
-    transform: translateY(-1px);
-  }
-
-  .device-picker-compact {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
-  }
-  .device-picker-compact .device-btn {
-    padding: 5px 12px;
-    border-radius: 6px;
-    font-size: 0.78rem;
-    font-weight: 600;
-    color: var(--text-secondary);
-    background: transparent;
-    border: 1px solid transparent;
-    transition: all 0.2s;
-    cursor: pointer;
-    white-space: nowrap;
-  }
-  .device-picker-compact .device-btn:hover {
-    background: rgba(10,14,20,0.05);
-  }
-  .device-picker-compact .device-btn.active {
-    background: var(--primary);
-    color: #fff;
-    border-color: var(--primary);
-  }
-
-  .viewer-tools-compact {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    flex-wrap: wrap;
-  }
-  .viewer-tools-compact .tool-btn {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    padding: 6px 12px;
-    border-radius: 6px;
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: var(--text-secondary);
-    background: transparent;
-    border: 1px solid transparent;
-    transition: all 0.2s;
-    cursor: pointer;
-  }
-  .viewer-tools-compact .tool-btn:hover {
-    background: rgba(10,14,20,0.05);
-    border-color: var(--border-light);
-  }
-  .viewer-tools-compact .zoom-ctrl {
-    display: flex;
-    align-items: center;
-    gap: 2px;
-    margin-left: auto;
-  }
-  .viewer-tools-compact .zoom-btn {
-    width: 28px;
-    height: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 6px;
-    background: rgba(10,14,20,0.04);
-    border: 1px solid var(--border);
-    font-weight: 700;
-    padding: 0;
-  }
-  .viewer-tools-compact .zoom-btn:hover {
-    background: var(--primary-dim);
-    border-color: var(--primary);
-    color: var(--primary);
-  }
-  #zoomLevelCompact {
-    font-family: var(--font-display);
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: var(--text-secondary);
-    min-width: 38px;
-    text-align: center;
-  }
-
-  /* Stage */
-  .viewer-stage-compact {
-    padding: 24px 20px 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 480px;
-    background: var(--bg);
-  }
-
-  .stage-info-compact {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.78rem;
-    color: var(--text-muted);
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 16px;
-    font-family: var(--font-mono);
-  }
-  .stage-info-compact .dim-sep {
-    color: var(--border-light);
-  }
-
-  .preview-wrap-compact {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-
-  .preview-device {
-    position: relative;
-    background: #1A1F2E;
-    border-radius: 36px;
-    padding: 12px;
-    box-shadow: 0 0 0 2px #2a3042, 0 0 0 3px #1a1f2e, 0 20px 60px rgba(0,0,0,0.4);
-    width: 280px;
-    transition: width 0.3s ease;
-  }
-  .preview-device .pd-notch {
-    position: absolute;
-    top: 0; left: 50%;
-    transform: translateX(-50%);
-    width: 90px; height: 24px;
-    background: #000;
-    border-radius: 0 0 14px 14px;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-  }
-  .preview-device .pd-notch::before {
-    content: '';
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: #1a1a1a;
-    border: 1px solid #333;
-  }
-  .preview-device .pd-notch::after {
-    content: '';
-    width: 32px; height: 4px;
-    background: #1a1a1a;
-    border-radius: 2px;
-  }
-  .preview-device .pd-screen {
-    background: #000;
-    border-radius: 24px;
-    overflow: hidden;
-    position: relative;
-    height: 560px;
-  }
-  .preview-device .pd-iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-    display: block;
-  }
-  .preview-device .pd-home-bar {
-    position: absolute;
-    bottom: 6px; left: 50%;
-    transform: translateX(-50%);
-    width: 70px; height: 4px;
-    background: rgba(255,255,255,0.25);
-    border-radius: 2px;
-    z-index: 10;
-  }
-  .preview-device .pd-side-btn {
-    position: absolute;
-    width: 3px;
-    background: #2a3042;
-    border-radius: 2px;
-  }
-  .preview-device .pd-side-btn.left {
-    left: -3px;
-    top: 90px;
-    height: 30px;
-  }
-  .preview-device .pd-side-btn.right {
-    right: -3px;
-    top: 110px;
-    height: 40px;
-  }
-
-  .pd-placeholder {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: var(--bg-card);
-    color: var(--text-muted);
-    text-align: center;
-    padding: 20px;
-    z-index: 5;
-  }
-  .pd-placeholder .pdp-icon {
-    color: var(--primary);
-    margin-bottom: 12px;
-    opacity: 0.6;
-  }
-  .pd-placeholder h3 {
-    font-family: var(--font-display);
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--text);
-    margin-bottom: 6px;
-  }
-  .pd-placeholder p {
-    font-size: 0.85rem;
-    max-width: 200px;
-    line-height: 1.5;
-  }
-
-  /* Responsive */
-  @media (max-width: 1100px) {
-    .hero-viewer-grid {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-    .hero-viewer-text {
-      max-width: 100%;
-    }
-    .hero-viewer-description {
-      max-width: 100%;
-    }
-    .preview-device {
-      width: 240px;
-    }
-    .preview-device .pd-screen {
-      height: 480px;
-    }
-  }
-
-  @media (max-width: 640px) {
-    .hero-viewer-section {
-      padding-top: calc(var(--header-h) + 10px);
-      padding-bottom: 40px;
-    }
-    .hero-viewer-title {
-      font-size: 1.8rem;
-    }
-    .hero-viewer-actions {
-      flex-direction: column;
-      align-items: stretch;
-    }
-    .hero-viewer-actions .primary-button,
-    .hero-viewer-actions .secondary-button {
-      justify-content: center;
-      width: 100%;
-    }
-    .hero-viewer-stats {
-      justify-content: center;
-    }
-    .hero-viewer-stats .stat-item {
-      padding: 0 12px;
-    }
-    .viewer-controls-compact {
-      padding: 12px 14px;
-    }
-    .url-input-group-compact {
-      flex-wrap: wrap;
-    }
-    .url-input-group-compact .btn-load {
-      width: 100%;
-      justify-content: center;
-    }
-    .device-picker-compact .device-btn {
-      font-size: 0.7rem;
-      padding: 4px 10px;
-    }
-    .viewer-tools-compact {
-      gap: 4px;
-    }
-    .viewer-tools-compact .tool-btn {
-      padding: 4px 8px;
-      font-size: 0.75rem;
-    }
-    .preview-device {
-      width: 200px;
-      padding: 8px;
-      border-radius: 28px;
-    }
-    .preview-device .pd-screen {
-      height: 400px;
-      border-radius: 18px;
-    }
-    .preview-device .pd-notch {
-      width: 70px;
-      height: 18px;
-    }
-    .preview-device .pd-home-bar {
-      width: 50px;
-      height: 3px;
-    }
-    .stage-info-compact {
-      font-size: 0.7rem;
-      flex-wrap: wrap;
-    }
-  }
-
-  @media (max-width: 400px) {
-    .preview-device {
-      width: 170px;
-    }
-    .preview-device .pd-screen {
-      height: 340px;
-    }
-  }
-</style>
-
-  
   <!-- ═══════════════════════════════════════════
        SECTION 2: TRUST BAR
   ═══════════════════════════════════════════ -->
@@ -741,7 +241,137 @@
   </section>
    
 
- 
+  <!-- ═══════════════════════════════════════════
+       SECTION 3: MAIN VIEWER TOOL
+  ═══════════════════════════════════════════ -->  
+
+   <!-- Viewer App Section -->
+  <section id="viewer" class="viewer-section" aria-labelledby="viewer-heading">    
+      <div class="container">
+        <div class="viewer-header">
+          <h2>Mobile Viewer Tool</h2>
+          <p>Enter any URL and instantly preview it on mobile, tablet, or desktop — with advanced controls</p>
+        </div>
+
+        <div class="viewer-controls">
+          <div class="url-bar-wrap">
+            <div class="url-input-group">
+              <svg class="url-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+              <input type="url" id="urlInput" class="url-input" placeholder="https://example.com" aria-label="Enter website URL to preview" />
+              <button class="btn btn-primary btn-load" id="loadBtn" aria-label="Load website preview">
+                <span>Preview</span>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="device-picker" role="group" aria-label="Select device">
+            <button class="device-btn active" data-device="iphone15" aria-pressed="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="5" y="2" width="14" height="20" rx="2"/></svg>
+              iPhone 15
+            </button>
+            <button class="device-btn" data-device="iphone-se" aria-pressed="false">iPhone SE</button>
+            <button class="device-btn" data-device="pixel8" aria-pressed="false">Pixel 8</button>
+            <button class="device-btn" data-device="galaxy-s24" aria-pressed="false">Galaxy S24</button>
+            <button class="device-btn" data-device="ipad" aria-pressed="false">iPad Pro</button>
+            <button class="device-btn" data-device="ipad-mini" aria-pressed="false">iPad Mini</button>
+            <button class="device-btn" data-device="galaxy-tab" aria-pressed="false">Galaxy Tab</button>
+            <button class="device-btn" data-device="fold" aria-pressed="false">Z Fold 5</button>
+          </div>
+
+          <div class="viewer-tools">
+            <button class="tool-btn" id="rotateBtn" title="Rotate device">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+              Rotate
+            </button>
+            <button class="tool-btn" id="screenshotBtn" title="Take screenshot">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+              Screenshot
+            </button>
+            <button class="tool-btn" id="shareBtn" title="Share URL">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+              Share
+            </button>
+            <div class="zoom-ctrl">
+              <button class="tool-btn zoom-btn" id="zoomOut">−</button>
+              <span id="zoomLevel">100%</span>
+              <button class="tool-btn zoom-btn" id="zoomIn">+</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="viewer-stage" id="viewerStage">
+          <div class="stage-info" id="stageInfo">
+            <span id="deviceLabel">iPhone 15</span>
+            <span class="dim-sep">|</span>
+            <span id="deviceDims">393 × 852 px</span>
+            <span class="dim-sep">|</span>
+            <span id="orientationLabel">Portrait</span>
+          </div>
+
+          <div class="preview-wrap" id="previewWrap">
+            <div class="preview-device" id="previewDevice">
+              <div class="pd-notch" id="pdNotch"></div>
+              <div class="pd-screen" id="pdScreen">
+                <div class="pd-placeholder" id="pdPlaceholder">
+                  <div class="pdp-icon">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+                  </div>
+                  <h3>Ready to Preview</h3>
+                  <p>Enter a URL above and click Preview to see your website on this device</p>
+                  <div class="pdp-hints">
+                    <div class="pdp-hint">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                      Instant preview
+                    </div>
+                    <div class="pdp-hint">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                      Real dimensions
+                    </div>
+                    <div class="pdp-hint">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                      Live rendering
+                    </div>
+                  </div>
+                </div>
+                <iframe id="mainIframe" class="pd-iframe" src="about:blank" title="Mobile website preview" sandbox="allow-scripts allow-same-origin allow-forms allow-popups"></iframe>
+              </div>
+              <div class="pd-home-bar" id="pdHomeBar"></div>
+              <div class="pd-side-btn left" id="pdSideLeft"></div>
+              <div class="pd-side-btn right" id="pdSideRight"></div>
+            </div>
+          </div>
+
+          <div class="viewer-sidebar">
+            <div class="sidebar-card" id="deviceInfoCard">
+              <h4>Device Info</h4>
+              <div class="info-row"><span>Model</span><strong id="siModel">iPhone 15</strong></div>
+              <div class="info-row"><span>Width</span><strong id="siWidth">393px</strong></div>
+              <div class="info-row"><span>Height</span><strong id="siHeight">852px</strong></div>
+              <div class="info-row"><span>DPR</span><strong id="siDpr">3x</strong></div>
+              <div class="info-row"><span>OS</span><strong id="siOs">iOS 17</strong></div>
+            </div>
+
+            <div class="sidebar-card" id="quickDevices">
+              <h4>Quick Switch</h4>
+              <div class="quick-device-list" id="quickDeviceList">
+                <!-- Populated by JS -->
+              </div>
+            </div>
+
+            <div class="sidebar-card">
+              <h4>Custom Size</h4>
+              <div class="custom-size">
+                <input type="number" id="customW" placeholder="Width" min="200" max="1600" aria-label="Custom width" />
+                <span>×</span>
+                <input type="number" id="customH" placeholder="Height" min="300" max="1600" aria-label="Custom height" />
+                <button class="btn btn-sm" id="applyCustom">Apply</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
   <section id="supported-devices" class="devices-section" aria-labelledby="devices-heading">
     <div class="container">
