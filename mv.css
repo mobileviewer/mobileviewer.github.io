@@ -4,7 +4,7 @@
        White base, black text, green/blue/purple accents
     ============================ */
     :root {
-      --bg: #ffffff;
+      --bg: #f0f4f8;
       --bg-2: #f6f8fb;
       --bg-3: #f1f4f9;
       --surface: #ffffff;
@@ -166,7 +166,7 @@
       display: flex;
       justify-content: center;
       padding: 30px 20px;
-      background: var(--bg);
+      background: #e8edf3; 
       border: 1px solid var(--border);
       border-radius: var(--radius-lg);
       min-height: 600px;
