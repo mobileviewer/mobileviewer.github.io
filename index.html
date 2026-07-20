@@ -209,20 +209,7 @@
               <button class="tool-btn zoom-btn" id="zoomIn">+</button>
             </div>
           </div>
-        </div>
-
-        <!-- ✅ AD PLACEMENT: Correctly placed between options (.viewer-controls) and mobile preview (.viewer-stage) -->
-        <div class="ad-container" style="max-width: 728px; margin: 16px auto; text-align: center; min-height: 90px;">
-          <ins class="adsbygoogle"
-               style="display:block"
-               data-ad-client="ca-pub-9759808041159779"
-               data-ad-slot="6601821575"
-               data-ad-format="auto"
-               data-full-width-responsive="true"></ins>
-          <script>
-               (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
-        </div>
+        </div>        
 
         <div class="viewer-stage" id="viewerStage">
           <div class="stage-info" id="stageInfo">
@@ -844,5 +831,50 @@ function toggleFaq(button) {
   }
 }
   </script>
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+  const loadBtn = document.getElementById('loadBtn');
+  const urlInput = document.getElementById('urlInput');
+  const viewerStage = document.getElementById('viewerStage');
+  
+  // Function to scroll to viewer
+  function scrollToViewer() {
+    viewerStage.scrollIntoView({ 
+      behavior: 'smooth', 
+      block: 'start' 
+    });
+  }
+  
+  // Preview button click handler
+  loadBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    
+    // Get the URL
+    const url = urlInput.value.trim();
+    
+    // If URL is empty, show a message and scroll anyway
+    if (!url) {
+      // You might want to show a validation message
+      alert('Please enter a URL first');
+      scrollToViewer();
+      return;
+    }
+    
+    // Load the URL in the iframe
+    const iframe = document.getElementById('mainIframe');
+    iframe.src = url;
+    
+    // Scroll to the viewer
+    scrollToViewer();
+  });
+  
+  // Also support Enter key on URL input
+  urlInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+      loadBtn.click();
+    }
+  });
+});
+    </script>
 </body>
 </html>
