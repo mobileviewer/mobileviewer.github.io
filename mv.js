@@ -397,32 +397,133 @@
     });
 
     // ─── Screenshot ───
-    screenshotBtn.addEventListener('click', () => {
-      if (typeof html2canvas !== 'undefined') {
-        html2canvas(previewDevice).then(canvas => {
-          const a = document.createElement('a');
-          a.download = `mobileviewer-${state.device}-${Date.now()}.png`;
-          a.href = canvas.toDataURL('image/png');
-          a.click();
-          showToast('📸 Screenshot saved!');
-        });
-      } else {
-        showToast('💡 Use your browser\'s built-in screenshot or Cmd+Shift+4 (Mac)');
+screenshotBtn.addEventListener('click', async () => {
+  try {
+    showToast('📸 Capturing screenshot...');
+    screenshotBtn.disabled = true;
+    screenshotBtn.innerHTML = `<span class="loading">⏳</span>`;
+    
+    if (typeof html2canvas === 'undefined') {
+      showToast('Loading screenshot library...');
+      await loadHtml2Canvas();
+    }
+    
+    const previewDeviceEl = document.getElementById('previewDevice');
+    if (!previewDeviceEl) {
+      throw new Error('Preview device not found');
+    }
+    
+    // Get the iframe content
+    const iframe = document.getElementById('mainIframe');
+    
+    // Take screenshot of the device frame
+    const canvas = await html2canvas(previewDeviceEl, {
+      scale: 2,
+      backgroundColor: '#1a1a2e',
+      allowTaint: true,
+      useCORS: true,
+      logging: false,
+      width: previewDeviceEl.scrollWidth,
+      height: previewDeviceEl.scrollHeight,
+      onclone: function(document) {
+        // Ensure iframe content is loaded
+        const iframeClone = document.querySelector('iframe');
+        if (iframeClone) {
+          try {
+            // Try to get iframe content
+            const iframeDoc = iframeClone.contentDocument || iframeClone.contentWindow?.document;
+          } catch (e) {
+            // Cross-origin iframe, can't access
+          }
+        }
       }
     });
+    
+    const link = document.createElement('a');
+    link.download = `mobileviewer-${state.device}-${Date.now()}.png`;
+    link.href = canvas.toDataURL('image/png', 0.95);
+    link.click();
+    
+    showToast('📸 Screenshot saved successfully!');
+  } catch (error) {
+    console.error('Screenshot error:', error);
+    showToast('💡 Use browser screenshot: Ctrl+Shift+S (Windows) or Cmd+Shift+4 (Mac)');
+  } finally {
+    screenshotBtn.disabled = false;
+    screenshotBtn.innerHTML = `
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg>
+      Screenshot
+    `;
+  }
+});
 
-    // ─── Share ───
-    shareBtn.addEventListener('click', async () => {
-      const url = window.location.href;
-      if (navigator.share) {
-        try {
-          await navigator.share({ title: 'MobileViewer.pro Preview', url });
-        } catch (e) { /* user cancelled */ }
-      } else {
-        await navigator.clipboard.writeText(url).catch(() => {});
-        showToast('🔗 Share link copied to clipboard!');
+function loadHtml2Canvas() {
+  return new Promise((resolve, reject) => {
+    if (typeof html2canvas !== 'undefined') {
+      resolve();
+      return;
+    }
+    
+    const script = document.createElement('script');
+    script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
+    script.onload = () => {
+      setTimeout(resolve, 200);
+    };
+    script.onerror = () => {
+      reject(new Error('Failed to load html2canvas'));
+    };
+    document.head.appendChild(script);
+  });
+}
+
+// ─── Share ───
+shareBtn.addEventListener('click', async () => {
+  try {
+    const url = window.location.href;
+    const shareData = {
+      title: 'Mobile Viewer - Test Websites on Any Device',
+      text: 'Free mobile preview tool - test your website on iPhone, Android, and tablets instantly!',
+      url: url
+    };
+    
+    // Try native share API
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData);
+        showToast('✓ Shared successfully!');
+        return;
+      } catch (shareError) {
+        if (shareError.name === 'AbortError') {
+          // User cancelled, do nothing
+          return;
+        }
+        console.warn('Share error:', shareError);
+        // Fall through to clipboard
       }
-    });
+    }
+    
+    // Fallback: Copy to clipboard
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      await navigator.clipboard.writeText(url);
+      showToast('🔗 Link copied to clipboard!');
+    } else {
+      // Fallback for older browsers
+      const tempInput = document.createElement('input');
+      tempInput.value = url;
+      tempInput.style.position = 'fixed';
+      tempInput.style.opacity = '0';
+      tempInput.style.pointerEvents = 'none';
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempInput);
+      showToast('🔗 Link copied to clipboard!');
+    }
+  } catch (error) {
+    console.error('Share error:', error);
+    showToast('📋 Copy the URL from your browser address bar');
+  }
+});
 
     // ─── Custom Size ───
     applyCustom.addEventListener('click', () => {
