@@ -136,6 +136,9 @@
 
       const visualH = frameH * finalScale + 80;
       previewWrap.style.minHeight = Math.max(400, visualH) + 'px';
+      
+      // Update dropdown to show current selection
+      updateDeviceDropdown();
     }
 
     // ─── Load URL ───
@@ -207,43 +210,143 @@
       });
     }
 
+    // ─── Device Dropdown ───
+    function setupDeviceDropdown() {
+      const dropdownBtn = document.getElementById('deviceDropdownBtn');
+      const dropdownMenu = document.getElementById('deviceDropdownMenu');
+      
+      if (!dropdownBtn || !dropdownMenu) return;
+      
+      // Toggle dropdown
+      dropdownBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        dropdownMenu.classList.toggle('show');
+      });
+      
+      // Close dropdown when clicking outside
+      document.addEventListener('click', () => {
+        dropdownMenu.classList.remove('show');
+      });
+      
+      // Populate dropdown with all devices
+      function populateDropdown() {
+        const categories = {
+          'iphone': '📱 iPhone',
+          'android': '🤖 Android',
+          'tablet': '📟 Tablets'
+        };
+        
+        let html = '';
+        Object.keys(categories).forEach(cat => {
+          const devices = DEVICES.filter(d => d.cat === cat);
+          if (devices.length > 0) {
+            html += `<div class="dropdown-category">${categories[cat]}</div>`;
+            devices.forEach(dev => {
+              const isActive = dev.id === state.device;
+              html += `
+                <div class="dropdown-item ${isActive ? 'active' : ''}" data-device="${dev.id}">
+                  <span>${dev.icon} ${dev.name}</span>
+                  <span class="dropdown-dim">${dev.w}×${dev.h}</span>
+                  ${isActive ? '<span class="dropdown-check">✓</span>' : ''}
+                </div>
+              `;
+            });
+          }
+        });
+        dropdownMenu.innerHTML = html;
+        
+        // Add click handlers to dropdown items
+        dropdownMenu.querySelectorAll('.dropdown-item').forEach(item => {
+          item.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const deviceId = item.dataset.device;
+            selectDevice(deviceId);
+            dropdownMenu.classList.remove('show');
+          });
+        });
+      }
+      
+      populateDropdown();
+      
+      // Update dropdown button text
+      function updateDropdownButton() {
+        const dev = getDevice(state.device);
+        if (dropdownBtn) {
+          dropdownBtn.innerHTML = `
+            <span>${dev.icon} ${dev.name}</span>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M2 4l4 4 4-4"/>
+            </svg>
+          `;
+        }
+      }
+      
+      // Override updateDeviceDropdown to update both
+      window.updateDeviceDropdown = function() {
+        populateDropdown();
+        updateDropdownButton();
+      };
+      
+      // Initial update
+      updateDropdownButton();
+    }
+
+    // ─── Select Device (shared function) ───
+    function selectDevice(deviceId) {
+      const dev = getDevice(deviceId);
+      if (!dev) return;
+      
+      state.device = deviceId;
+      state.isLandscape = false;
+      
+      // Apply the device
+      applyDevice(deviceId, false);
+      
+      // Update device picker buttons
+      document.querySelectorAll('.device-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.device === deviceId);
+        btn.setAttribute('aria-pressed', btn.dataset.device === deviceId ? 'true' : 'false');
+      });
+      
+      // Update quick devices
+      updateQuickDevices();
+      
+      // Update dropdown
+      updateDeviceDropdown();
+      
+      // Show toast
+      showToast(`📱 Switched to ${dev.name} (${dev.w}×${dev.h})`);
+    }
+
     // ─── Device Chip Clicks (from Device Library section) ───
     function setupDeviceChips() {
       const chips = document.querySelectorAll('.device-chip');
       chips.forEach(chip => {
-        chip.addEventListener('click', function() {
+        chip.addEventListener('click', function(e) {
+          e.preventDefault();
           const deviceId = this.dataset.device;
           if (!deviceId) return;
           
-          // Get the device from the database
-          const dev = getDevice(deviceId);
-          if (!dev) return;
+          // Select the device
+          selectDevice(deviceId);
           
-          // Update state
-          state.device = deviceId;
-          state.isLandscape = false;
-          
-          // Apply the device
-          applyDevice(deviceId, false);
-          
-          // Update the device picker buttons
-          document.querySelectorAll('.device-btn').forEach(btn => {
-            btn.classList.toggle('active', btn.dataset.device === deviceId);
-            btn.setAttribute('aria-pressed', btn.dataset.device === deviceId ? 'true' : 'false');
-          });
-          
-          // Update quick devices sidebar
-          updateQuickDevices();
-          
-          // Show a toast notification
-          showToast(`📱 Switched to ${dev.name} (${dev.w}×${dev.h})`);
-          
-          // Scroll to the viewer
+          // Scroll to the viewer with smooth behavior
           const viewerStage = document.getElementById('viewerStage');
           if (viewerStage) {
-            viewerStage.scrollIntoView({ 
-              behavior: 'smooth', 
-              block: 'start' 
+            // Get the header height to offset the scroll
+            const header = document.querySelector('header') || document.querySelector('#header-placeholder');
+            let offset = 80; // default offset
+            if (header) {
+              const headerHeight = header.offsetHeight || 80;
+              offset = headerHeight + 20;
+            }
+            
+            const elementPosition = viewerStage.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - offset;
+            
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
             });
           }
         });
@@ -262,13 +365,8 @@
 
       quickDeviceList.querySelectorAll('.qd-item').forEach(item => {
         const activate = () => {
-          state.device = item.dataset.id;
-          state.isLandscape = false;
-          applyDevice(state.device, false);
-          updateQuickDevices();
-          document.querySelectorAll('.device-btn').forEach(b => {
-            b.classList.toggle('active', b.dataset.device === state.device);
-          });
+          const deviceId = item.dataset.id;
+          selectDevice(deviceId);
         };
         item.addEventListener('click', activate);
         item.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') activate(); });
@@ -348,9 +446,19 @@
       // Scroll to the viewer
       const viewerStage = document.getElementById('viewerStage');
       if (viewerStage) {
-        viewerStage.scrollIntoView({ 
-          behavior: 'smooth', 
-          block: 'start' 
+        const header = document.querySelector('header') || document.querySelector('#header-placeholder');
+        let offset = 80;
+        if (header) {
+          const headerHeight = header.offsetHeight || 80;
+          offset = headerHeight + 20;
+        }
+        
+        const elementPosition = viewerStage.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - offset;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
         });
       }
     });
@@ -371,8 +479,9 @@
     // ─── Init ───
     function init() {
       setupDevicePicker();
+      setupDeviceDropdown();
       updateQuickDevices();
-      setupDeviceChips(); // Add this line to enable device chip clicks
+      setupDeviceChips();
       applyDevice(state.device, false);
     }
 
