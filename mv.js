@@ -207,6 +207,49 @@
       });
     }
 
+    // ─── Device Chip Clicks (from Device Library section) ───
+    function setupDeviceChips() {
+      const chips = document.querySelectorAll('.device-chip');
+      chips.forEach(chip => {
+        chip.addEventListener('click', function() {
+          const deviceId = this.dataset.device;
+          if (!deviceId) return;
+          
+          // Get the device from the database
+          const dev = getDevice(deviceId);
+          if (!dev) return;
+          
+          // Update state
+          state.device = deviceId;
+          state.isLandscape = false;
+          
+          // Apply the device
+          applyDevice(deviceId, false);
+          
+          // Update the device picker buttons
+          document.querySelectorAll('.device-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.device === deviceId);
+            btn.setAttribute('aria-pressed', btn.dataset.device === deviceId ? 'true' : 'false');
+          });
+          
+          // Update quick devices sidebar
+          updateQuickDevices();
+          
+          // Show a toast notification
+          showToast(`📱 Switched to ${dev.name} (${dev.w}×${dev.h})`);
+          
+          // Scroll to the viewer
+          const viewerStage = document.getElementById('viewerStage');
+          if (viewerStage) {
+            viewerStage.scrollIntoView({ 
+              behavior: 'smooth', 
+              block: 'start' 
+            });
+          }
+        });
+      });
+    }
+
     // ─── Quick Device Sidebar ───
     function updateQuickDevices() {
       const items = DEVICES.slice(0, 8);
@@ -301,6 +344,15 @@
       applyDevice('custom', false);
       updateQuickDevices();
       showToast(`Custom size applied: ${w}×${h}px`);
+      
+      // Scroll to the viewer
+      const viewerStage = document.getElementById('viewerStage');
+      if (viewerStage) {
+        viewerStage.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'start' 
+        });
+      }
     });
 
     // ─── Load URL on Enter ───
@@ -320,6 +372,7 @@
     function init() {
       setupDevicePicker();
       updateQuickDevices();
+      setupDeviceChips(); // Add this line to enable device chip clicks
       applyDevice(state.device, false);
     }
 
