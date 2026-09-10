@@ -2,8 +2,14 @@
 <html lang="fr">
 <head>
   <script src="https://www.gstatic.com/preferredsources/badge.js" async></script>
+  
+  <!-- ✅ FIX 1: AdSense script (was already present — kept) -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9759808041159779"
      crossorigin="anonymous"></script>
+  
+  <!-- ✅ FIX 2: html2canvas added (was missing — screenshot tool was broken) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+  
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MBJB77SQ0K"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -15,31 +21,43 @@
   <meta charset="UTF-8">
   <link rel="llms" href="/llms.txt" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mobile Viewer — Testeur de site Web gratuit et outil d'aperçu mobile</title>
+  
+  <!-- ✅ FIX 3: Title now uses native French keywords (Aperçu Mobile + Visualiseur Web) -->
+  <title>Aperçu Mobile — Visualiseur Web Gratuit &amp; Testeur de Site Mobile</title>
+  
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  <!-- ✅ AdSense meta already present -->
   <meta name="google-adsense-account" content="ca-pub-9759808041159779">   
 
   <!-- Primary SEO - French -->
-  <meta name="description" content="Visionneuse mobile gratuite pour tester n'importe quel site Web sur iPhone, Android, iPad et bureau. Vérifiez le design responsive instantanément — sans inscription, sans téléchargement.">
-  <meta name="keywords" content="visionneuse mobile, visionneuse de site web mobile, afficher un site web sur mobile, vérifier la vue mobile, testeur de site web mobile, tester un site web sur mobile, vérificateur de design responsive, outil d'aperçu mobile, tester un site web mobile, comment vérifier la vue mobile d'un site web, visionneuse mobile en ligne, testeur de site mobile, simulateur d'appareils">
+  <!-- ✅ FIX 4: Meta description rewritten with native keywords -->
+  <meta name="description" content="Aperçu mobile et visualiseur web gratuit. Visualiser site sur mobile sur iPhone, Android, iPad — prévisualisation web instantanée. Sans inscription, sans téléchargement.">
+  <meta name="keywords" content="aperçu mobile, visualiseur web, visualiseur de sites web, visualiseur de site mobile, visualiser site sur mobile, voir site en version mobile, prévisualisation web, prévisualiser site web, vérifier version mobile, tester site mobile, testeur de site mobile, vérificateur de design responsive, outil d'aperçu mobile, visionneuse mobile en ligne, testeur de site mobile, simulateur d'appareils">
   <meta name="author" content="Mobile Viewer">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://mobileviewer.github.io/fr/">
   
   <!-- Open Graph - French -->
-  <meta property="og:title" content="Mobile Viewer — Testeur de site Web gratuit et outil d'aperçu mobile">
-  <meta property="og:description" content="Visionneuse mobile gratuite pour tester n'importe quel site Web sur iPhone, Android, iPad et bureau. Vérifiez le design responsive instantanément — sans inscription, sans téléchargement.">
+  <meta property="og:title" content="Aperçu Mobile — Visualiseur Web Gratuit &amp; Testeur de Site Mobile">
+  <!-- ✅ FIX 5: og:description aligned with new meta description -->
+  <meta property="og:description" content="Aperçu mobile et visualiseur web gratuit. Visualiser site sur mobile sur iPhone, Android, iPad — prévisualisation web instantanée.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mobileviewer.github.io/fr/">
   <meta property="og:image" content="https://mobileviewer.github.io/og-image.png">
   <meta property="og:site_name" content="Mobile Viewer">
   <meta property="og:locale" content="fr_FR">
+  <!-- ✅ FIX 6: og:locale:alternate tags added -->
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:locale:alternate" content="de_DE">
+  <meta property="og:locale:alternate" content="es_ES">
+  <meta property="og:locale:alternate" content="it_IT">
   
   <!-- Twitter Card - French -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Mobile Viewer — Testeur de site Web responsive gratuit">
-  <meta name="twitter:description" content="Testez votre site Web sur n'importe quel appareil instantanément. Outil d'aperçu mobile gratuit pour développeurs et designers.">
+  <!-- ✅ FIX 7: Twitter title + description aligned with page title -->
+  <meta name="twitter:title" content="Aperçu Mobile — Visualiseur Web Gratuit &amp; Testeur de Site Mobile">
+  <meta name="twitter:description" content="Aperçu mobile et visualiseur web gratuit. Visualiser site sur mobile sur iPhone, Android, iPad — prévisualisation web instantanée.">
   <meta name="twitter:image" content="https://mobileviewer.github.io/twitter-image.jpg">
   <meta name="twitter:site" content="@mobileviewer">
   
@@ -88,6 +106,7 @@
   </script>
   
   <!-- Schema: FAQPage - French -->
+  <!-- ✅ FIX 8: FAQ schema now matches ALL visible FAQ items (7 total, was 4) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -114,15 +133,39 @@
         "name": "Quels appareils mobiles puis-je simuler avec Mobile Viewer ?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Mobile Viewer inclut des préréglages pour iPhone 15, iPhone 15 Pro Max, iPhone SE, Samsung Galaxy S23, Google Pixel 8, OnePlus 12, iPad, iPad Pro 11\" et tablettes Android. Vous pouvez également définir n'importe quelle largeur et hauteur personnalisées pour des tests à des points de rupture non standard."
+          "text": "Mobile Viewer inclut des préréglages pour iPhone 15, iPhone 15 Pro Max, iPhone SE, Samsung Galaxy S23, Google Pixel 8, OnePlus 12, iPad, iPad Pro 11 pouces et tablettes Android. Vous pouvez également définir n'importe quelle largeur et hauteur personnalisées pour des tests à des points de rupture non standard."
         }
       },
       {
         "@type": "Question",
-        "name": "Mobile Viewer fonctionne-t-il sans rien installer ?",
+        "name": "Pourquoi mon site Web ne se charge-t-il pas dans la visionneuse ?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Absolument. Mobile Viewer est 100% basé sur navigateur. Aucun téléchargement, plugin ou extension requis. Ouvrez simplement le site Web et commencez à tester."
+          "text": "Certains sites Web bloquent le chargement dans des iframes en utilisant les en-têtes HTTP X-Frame-Options ou Content-Security-Policy. C'est une politique de sécurité du site Web cible, pas une limitation de Mobile Viewer. Pour les sites que vous possédez, vous pouvez ajuster ces en-têtes. Vous pouvez également utiliser notre fonctionnalité Code QR pour scanner l'URL sur un appareil réel."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quelle est la précision de la simulation mobile ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La simulation utilise les dimensions exactes du viewport CSS de chaque appareil prédéfini, offrant une représentation visuelle hautement précise du layout, de l'échelle des polices et des points de rupture responsifs. Pour des tests haute fidélité (incluant les différences de rendu GPU et les comportements spécifiques aux navigateurs), nous recommandons de compléter par des tests sur des appareils physiques — utilisez notre fonctionnalité Code QR pour la vérification physique la plus rapide."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Puis-je tester une URL localhost ou un serveur de staging ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oui. Vous pouvez charger n'importe quelle URL incluant http://localhost:3000, des adresses IP locales ou des URL de serveurs de staging. Assurez-vous que le serveur est accessible depuis votre navigateur. Pour les sites hébergés localement, la fonctionnalité Code QR nécessite que votre téléphone soit sur le même réseau."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Puis-je utiliser Mobile Viewer comme aperçu mobile pour les présentations clients ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Oui. Mobile Viewer fonctionne comme un aperçu mobile professionnel et un visualiseur de sites web — idéal pour montrer aux clients exactement à quoi ressemble leur site mobile sur iPhone, Android ou tablette. Vous pouvez visualiser un site sur mobile et partager la vue mobile via code QR pour une validation sur appareil réel."
         }
       }
     ]
@@ -139,6 +182,30 @@
       { "@type": "ListItem", "position": 2, "name": "Outil Mobile Viewer", "item": "https://mobileviewer.github.io/fr/#viewer" },
       { "@type": "ListItem", "position": 3, "name": "Outils", "item": "https://mobileviewer.github.io/fr/#tools" }
     ]
+  }
+  </script>
+  
+  <!-- ✅ FIX 9: WebPage schema added with inLanguage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Aperçu Mobile — Visualiseur Web Gratuit & Testeur de Site Mobile",
+    "url": "https://mobileviewer.github.io/fr/",
+    "inLanguage": "fr-FR",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Mobile Viewer",
+      "url": "https://mobileviewer.github.io/"
+    },
+    "about": {
+      "@type": "Thing",
+      "name": "Aperçu Mobile Web"
+    },
+    "primaryImageOfPage": {
+      "@type": "ImageObject",
+      "url": "https://mobileviewer.github.io/og-image.png"
+    }
   }
   </script>
   
@@ -162,12 +229,15 @@
           <span class="badge-dot"></span>
           Outil d'Indexation Mobile-First
         </span>
-        <h1 class="hero-title">
-          Visionneuse de Sites Web Mobiles — Testez Votre
-          <span class="gradient-text">Site Maintenant</span>
+        
+        <!-- ✅ FIX 10: H1 rewritten with native French keywords + natural grammar -->
+        <h1 class="hero-title" id="viewer-heading">
+          Aperçu Mobile &amp; Visualiseur Web — <span class="gradient-text">Visualiser Site sur Mobile Instantanément</span>
         </h1>
+        
+        <!-- ✅ FIX 11: Hero description rewritten with native keywords -->
         <p class="hero-description">
-          La visionneuse de sites Web mobiles de qualité professionnelle en qui 50 000+ développeurs et designers ont confiance. Aperçu, testez et perfectionnez votre design responsive — sans installations, sans limites.
+          L'<strong>aperçu mobile</strong> et le <strong>visualiseur web</strong> de qualité professionnelle en qui plus de 50 000 développeurs et designers ont confiance. <strong>Visualiser site sur mobile</strong> sur iPhone, Android ou tablette — <strong>prévisualisation web</strong> instantanée, sans installations, sans limites.
         </p>
         <div style="display: flex; justify-content: center; margin-top: 28px;">
           <div id="google_preferred_sources_badge"></div>
@@ -322,12 +392,15 @@
     <div class="container">
       <div class="section-header">
         <span class="section-badge">Bibliothèque d'Appareils</span>
-        <h2 class="section-title" id="devices-heading">Visionneuse de Sites Web Mobiles — <span class="gradient-text">Appareils Pris en Charge</span></h2>        
-        <p class="section-description">Cliquez sur n'importe quel appareil ci-dessous pour charger instantanément sa taille d'écran exacte dans la visionneuse ci-dessus — iPhones, téléphones Android, tablettes et plus.</p>
+        <!-- ✅ FIX 12: H2 rewritten with native French keywords -->
+        <h2 class="section-title" id="devices-heading">Visualiseur de Sites Web Mobile — <span class="gradient-text">Visualiser Site sur Mobile sur N'importe Quel Appareil</span></h2>        
+        <!-- ✅ FIX 13: Description rewritten with native keywords -->
+        <p class="section-description">Cliquez sur n'importe quel appareil ci-dessous pour charger instantanément sa taille d'écran exacte dans le visualiseur ci-dessus. Utilisez ce <strong>visualiseur de sites web mobile</strong> pour <strong>visualiser site sur mobile</strong> sur iPhones, téléphones Android, tablettes et bureau — vérifiez la <strong>version mobile</strong> en quelques secondes.</p>
         <div class="device-showcase">
+          <!-- ✅ FIX 14: Alt text enhanced with native keywords -->
           <img 
             src="/images/supported-devices.webp" 
-            alt="Aperçu de design responsive montrant des sites Web sur iPhone 15, Samsung Galaxy S24, iPad Pro et moniteurs de bureau" 
+            alt="Aperçu mobile montrant site web en version mobile sur iPhone 15, Samsung Galaxy S24, iPad Pro — visualiseur de sites web mobile gratuit et testeur de version mobile" 
             width="800" 
             height="350" 
             loading="lazy"
@@ -391,8 +464,9 @@
     <div class="container">
       <div class="section-header">
         <span class="section-badge">La Stratégie</span>
-        <h2 class="section-title" id="why-heading">Pourquoi Vous Avez Besoin d'une <span class="gradient-text">Visionneuse de Sites Mobiles</span></h2>
-        <p class="section-description">Plus de 63 % du trafic Web total provient désormais d'appareils mobiles. Une mauvaise expérience mobile ne frustre pas seulement les visiteurs — elle vous coûte des classements, des conversions et de la crédibilité.</p>
+        <h2 class="section-title" id="why-heading">Pourquoi Vous Avez Besoin d'un <span class="gradient-text">Aperçu Mobile</span> et d'un Visualiseur Web</h2>
+        <!-- ✅ FIX 15: Why description now includes Aperçu Mobile + Visualiser Site sur Mobile -->
+        <p class="section-description">Plus de 63 % du trafic Web total provient désormais d'appareils mobiles. Utilisez un <strong>aperçu mobile</strong> et un <strong>visualiseur web</strong> pour <strong>visualiser site sur mobile</strong> avant vos visiteurs — une mauvaise expérience mobile vous coûte des classements, des conversions et de la crédibilité.</p>
       </div>
       <div class="why-grid">
         <div class="why-card why-card--large">
@@ -447,7 +521,7 @@
     <div class="container">
       <div class="section-header">
         <span class="section-badge">Guide Pas à Pas</span>
-        <h2 class="section-title" id="guide-heading">Comment Vérifier la <span class="gradient-text">Vue Mobile</span> d'un Site Web</h2>
+        <h2 class="section-title" id="guide-heading">Comment Vérifier la <span class="gradient-text">Version Mobile</span> d'un Site Web</h2>
         <p class="section-description">Suivez ce flux de travail professionnel pour vous assurer que votre site est parfait sur toutes les tailles d'écran</p>
       </div>
       <div class="guide-steps">
@@ -470,7 +544,8 @@
         <div class="guide-step">
           <div class="guide-step-num">03</div>
           <div class="guide-step-body">
-            <h3>Charger &amp; Aperçu</h3>
+            <!-- ✅ FIX 16: Heading grammar corrected -->
+            <h3>Charger et Afficher l'Aperçu</h3>
             <p>Cliquez sur <strong>Charger</strong> et le site est rendu dans un cadre d'appareil précis. Alternez entre portrait et paysage, zoomez et interagissez avec l'aperçu en direct exactement comme le ferait un vrai utilisateur.</p>
           </div>
         </div>
@@ -587,9 +662,10 @@
           <div class="tool-icon">
             <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="2" y="6" width="11" height="20" rx="2" stroke="currentColor" stroke-width="2"/><rect x="16" y="10" width="14" height="12" rx="2" stroke="currentColor" stroke-width="2"/></svg>
           </div>
-          <h3 class="tool-title">Grille d'Aperçu Multi-appareils</h3>
-          <p class="tool-description">Visualisez votre URL simultanément sur plusieurs tailles d'appareil dans une grille. Repérez les incohérences responsives en un coup d'œil.</p>
-          <button class="tool-button" onclick="window.location.href='/fr/multi-device-preview'" aria-label="Lancer l'outil Grille d'Aperçu Multi-appareils">Lancer l'outil →</button>
+          <!-- ✅ FIX 17: Tool card renamed with native keyword -->
+          <h3 class="tool-title">Aperçu Mobile Multi-appareils</h3>
+          <p class="tool-description">Visualisez votre URL simultanément sur plusieurs tailles d'appareil dans une grille. Comparez les résultats d'<strong>aperçu mobile</strong> côte à côte et repérez les incohérences responsives en un coup d'œil.</p>
+          <button class="tool-button" onclick="window.location.href='/fr/multi-device-preview'" aria-label="Lancer l'outil Aperçu Mobile Multi-appareils">Lancer l'outil →</button>
         </article>
 
         <article class="tool-card">
@@ -734,11 +810,12 @@
       <div class="faq-list" role="list">
         <div class="faq-item" role="listitem">
           <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
-            Comment vérifier la vue mobile de mon site Web ?
+            <!-- ✅ FIX 18: Question optimized to match native search query -->
+            Comment vérifier la version mobile de mon site web ?
             <span class="faq-chevron" aria-hidden="true">▾</span>
           </button>
           <div class="faq-a">
-            <p>Pour vérifier la vue mobile de votre site Web avec Mobile Viewer, collez votre URL dans la barre de saisie, sélectionnez <strong>Mobile</strong> comme type d'appareil, choisissez un appareil prédéfini (comme iPhone 15 ou Samsung Galaxy) et cliquez sur <strong>Charger</strong>. L'outil affiche votre site dans un cadre de téléphone réaliste avec la résolution exacte de l'appareil, pour que vous puissiez voir exactement comment les visiteurs mobiles vivent votre page.</p>
+            <p>Pour vérifier la version mobile de votre site web avec Mobile Viewer, collez votre URL dans la barre de saisie, sélectionnez <strong>Mobile</strong> comme type d'appareil, choisissez un appareil prédéfini (comme iPhone 15 ou Samsung Galaxy) et cliquez sur <strong>Charger</strong>. L'outil affiche votre site dans un cadre de téléphone réaliste avec la résolution exacte de l'appareil, pour que vous puissiez voir exactement comment les visiteurs mobiles vivent votre page.</p>
           </div>
         </div>
         <div class="faq-item" role="listitem">
@@ -786,6 +863,16 @@
             <p>Oui. Vous pouvez charger n'importe quelle URL incluant <code>http://localhost:3000</code>, des adresses IP locales ou des URL de serveurs de staging. Assurez-vous que le serveur est accessible depuis votre navigateur. Pour les sites hébergés localement, la fonctionnalité Code QR nécessite que votre téléphone soit sur le même réseau.</p>
           </div>
         </div>
+        <!-- ✅ FIX 19: New FAQ entry targeting "Aperçu Mobile" + "Visualiser Site sur Mobile" -->
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+            Puis-je utiliser Mobile Viewer comme aperçu mobile pour les présentations clients ?
+            <span class="faq-chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>Oui. Mobile Viewer fonctionne comme un <strong>aperçu mobile</strong> professionnel et un <strong>visualiseur de sites web</strong> — idéal pour montrer aux clients exactement à quoi ressemble leur <strong>site mobile</strong> sur iPhone, Android ou tablette. Vous pouvez <strong>visualiser site sur mobile</strong> et partager la <strong>version mobile</strong> via code QR pour une validation sur appareil réel.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -798,7 +885,8 @@
       <div class="cta-card">
         <div class="cta-glow" aria-hidden="true"></div>
         <div class="cta-badge">Gratuit · Sans Inscription · Instantané</div>
-        <h2 class="cta-title">Commencez à tester votre site Web sur mobile dès maintenant</h2>
+        <!-- ✅ FIX 20: CTA heading now includes native keywords -->
+        <h2 class="cta-title">Visualiser site sur mobile — aperçu mobile gratuit &amp; visualiseur web</h2>
         <p class="cta-description">Rejoignez plus de 50 000 développeurs et designers qui utilisent Mobile Viewer pour créer de meilleurs sites Web responsifs</p>
         <div class="cta-actions">
           <a href="/fr/#viewer" class="primary-button" onclick="scrollToViewer()" aria-label="Lancer Mobile Viewer">
