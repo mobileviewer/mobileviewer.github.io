@@ -3,6 +3,13 @@
 <head>
   <script src="https://www.gstatic.com/preferredsources/badge.js" async></script>
   
+  <!-- ✅ FIX 1: AdSense script added (was missing) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9759808041159779"
+     crossorigin="anonymous"></script>
+  
+  <!-- ✅ FIX 2: html2canvas added (was missing — screenshot tool was broken) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+  
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MBJB77SQ0K"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -12,33 +19,45 @@
   </script>
   
   <meta charset="UTF-8">
+  <!-- ✅ FIX 3: AdSense account meta tag added -->
+  <meta name="google-adsense-account" content="ca-pub-9759808041159779">
   <link rel="llms" href="/llms.txt" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mobile Viewer — Kostenloser Website-Tester &amp; Mobile-Vorschau-Tool</title>
+  
+  <!-- ✅ FIX 4: Title now uses native German keywords (Website Vorschau + Handy Ansicht) -->
+  <title>Website Vorschau — Mobile Viewer &amp; Handy Ansicht Tester</title>
+  
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
-  
 
   <!-- Primary SEO - German -->
-  <meta name="description" content="Kostenloser Mobile-Viewer zum Testen jeder Website auf iPhone, Android, iPad und Desktop. Überprüfen Sie responsives Design sofort — ohne Anmeldung, ohne Download.">
-  <meta name="keywords" content="mobiler viewer, mobile website viewer, website auf mobil anzeigen, mobile ansicht prüfen, mobile website tester, website auf mobil testen, responsive design checker, mobile preview tool, website mobil test, wie prüfe ich mobile ansicht einer website, online mobiler viewer, mobile site tester, gerätesimulator">
+  <!-- ✅ FIX 5: Meta description rewritten with native keywords -->
+  <meta name="description" content="Kostenlose Website Vorschau &amp; mobiler Website Viewer. Webseite auf Handy ansehen — iPhone, Android, iPad. Sofortige mobile Vorschau, keine Anmeldung, kein Download.">
+  <meta name="keywords" content="website vorschau, webseite vorschau, mobile vorschau, webseite handy ansicht, mobile website viewer, website auf handy ansehen, mobile ansicht prüfen, webseite auf handy testen, responsive design checker, mobile preview tool, website mobil test, online mobiler viewer, mobile site tester, gerätesimulator">
   <meta name="author" content="Mobile Viewer">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://mobileviewer.github.io/de/">
   
   <!-- Open Graph - German -->
-  <meta property="og:title" content="Mobile Viewer — Kostenloser Website-Tester &amp; Mobile-Vorschau-Tool">
-  <meta property="og:description" content="Kostenloser Mobile-Viewer zum Testen jeder Website auf iPhone, Android, iPad und Desktop. Überprüfen Sie responsives Design sofort — ohne Anmeldung, ohne Download.">
+  <meta property="og:title" content="Website Vorschau — Mobile Viewer &amp; Handy Ansicht Tester">
+  <!-- ✅ FIX 6: og:description aligned with new meta description -->
+  <meta property="og:description" content="Kostenlose Website Vorschau &amp; mobiler Website Viewer. Webseite auf Handy ansehen — iPhone, Android, iPad. Sofortige mobile Vorschau.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mobileviewer.github.io/de/">
   <meta property="og:image" content="https://mobileviewer.github.io/og-image.png">
   <meta property="og:site_name" content="Mobile Viewer">
   <meta property="og:locale" content="de_DE">
+  <!-- ✅ FIX 7: og:locale:alternate tags added -->
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:locale:alternate" content="es_ES">
+  <meta property="og:locale:alternate" content="fr_FR">
+  <meta property="og:locale:alternate" content="it_IT">
   
   <!-- Twitter Card - German -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Mobile Viewer — Kostenloser Responsive-Website-Tester">
-  <meta name="twitter:description" content="Testen Sie Ihre Website auf jedem Gerät sofort. Kostenloses Mobile-Vorschau-Tool für Entwickler und Designer.">
+  <!-- ✅ FIX 8: Twitter title + description aligned with page title -->
+  <meta name="twitter:title" content="Website Vorschau — Mobile Viewer &amp; Handy Ansicht Tester">
+  <meta name="twitter:description" content="Kostenlose Website Vorschau und mobiler Website Viewer. Webseite auf Handy ansehen — iPhone, Android, iPad.">
   <meta name="twitter:image" content="https://mobileviewer.github.io/twitter-image.jpg">
   <meta name="twitter:site" content="@mobileviewer">
   
@@ -87,6 +106,7 @@
   </script>
   
   <!-- Schema: FAQPage - German -->
+  <!-- ✅ FIX 9: FAQ schema now matches ALL visible FAQ items (7 total, was 4) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -94,10 +114,10 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Wie überprüfe ich die mobile Ansicht meiner Website?",
+        "name": "Wie kann ich die mobile Ansicht meiner Website prüfen?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Um die mobile Ansicht Ihrer Website zu überprüfen, geben Sie einfach Ihre Website-URL in das Mobile Viewer-Tool ein, wählen Sie ein mobiles Gerät (iPhone, Android, Tablet) und klicken Sie auf Laden. Das Tool rendert Ihre Site sofort in der Auflösung des ausgewählten Geräts, sodass Sie genau sehen können, wie sie für mobile Besucher aussieht."
+          "text": "Um die mobile Ansicht Ihrer Website mit Mobile Viewer zu überprüfen, fügen Sie Ihre URL in die Eingabeleiste ein, wählen Sie Mobil als Gerätetyp, wählen Sie eine Gerätevoreinstellung (wie iPhone 15 oder Samsung Galaxy) und klicken Sie auf Laden. Das Tool rendert Ihre Webseite in einem realistischen Telefonrahmen mit der exakten Geräteauflösung, sodass Sie genau sehen können, wie mobile Besucher Ihre Seite erleben."
         }
       },
       {
@@ -105,23 +125,47 @@
         "name": "Ist Mobile Viewer völlig kostenlos?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Ja, Mobile Viewer ist völlig kostenlos. Alle Kernfunktionen wie mobile Vorschau, Gerätesimulation, QR-Code-Generierung und responsives Testen sind ohne Kosten und ohne Registrierung verfügbar."
+          "text": "Ja — Mobile Viewer ist 100% kostenlos ohne versteckte Gebühren, ohne Registrierung und ohne Premium-Stufen. Alle Funktionen einschließlich mobiler Vorschau, QR-Code-Generierung, Gerätesimulation und der gesamten Tool-Suite stehen allen kostenlos zur Verfügung."
         }
       },
       {
         "@type": "Question",
-        "name": "Welche Geräte kann ich mit Mobile Viewer simulieren?",
+        "name": "Welche mobilen Geräte kann ich simulieren?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Mobile Viewer unterstützt die Simulation von iPhone-Modellen (iPhone 15, 14, SE), Android-Geräten (Samsung Galaxy, Pixel), Tablets (iPad, Android-Tablet) und Standard-Desktop-Auflösungen. Sie können auch eine benutzerdefinierte Breite und Höhe für jedes Gerät eingeben."
+          "text": "Mobile Viewer enthält Voreinstellungen für iPhone 15, iPhone 15 Pro Max, iPhone SE, Samsung Galaxy S23, Google Pixel 8, OnePlus 12, iPad, iPad Pro 11 Zoll und Android-Tablets. Sie können auch jede benutzerdefinierte Breite und Höhe für Tests bei exakten nicht-standardmäßigen Breakpoints einstellen."
         }
       },
       {
         "@type": "Question",
-        "name": "Funktioniert Mobile Viewer ohne Installation?",
+        "name": "Warum wird meine Website nicht im Viewer geladen?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Absolut. Mobile Viewer ist zu 100% browserbasiert. Es sind keine Downloads, Plugins oder Erweiterungen erforderlich. Öffnen Sie einfach die Website und beginnen Sie mit dem Testen."
+          "text": "Einige Webseiten blockieren das Laden in iframes mit den HTTP-Headern X-Frame-Options oder Content-Security-Policy. Dies ist eine Sicherheitsrichtlinie der Ziel-Webseite, keine Einschränkung von Mobile Viewer. Für Seiten, die Sie besitzen, können Sie diese Header anpassen. Sie können auch unsere QR-Code-Funktion verwenden, um die URL auf einem echten Gerät zu scannen."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Wie genau ist die mobile Simulation?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Die Simulation verwendet die exakten CSS-Viewport-Abmessungen jeder Gerätevoreinstellung und bietet eine hochpräzise visuelle Darstellung von Layout, Schriftgrößenanpassung und responsiven Breakpoints. Für Tests mit voller Genauigkeit (einschließlich GPU-Rendering-Unterschieden und browserspezifischem Verhalten) empfehlen wir die Ergänzung mit physischen Gerätetests — verwenden Sie unsere QR-Code-Funktion für die schnellste physische Geräteprüfung."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Kann ich eine Localhost- oder Staging-Server-URL testen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja. Sie können jede URL einschließlich http://localhost:3000, lokaler IP-Adressen oder Staging-Server-URLs laden. Stellen Sie sicher, dass der Server von Ihrem Browser aus erreichbar ist. Für lokal gehostete Seiten benötigt die QR-Code-Funktion, dass Ihr Telefon im selben Netzwerk ist."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Kann ich Mobile Viewer als Website Vorschau für Kundenpräsentationen nutzen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja. Mobile Viewer funktioniert als professionelle Website Vorschau und mobiler Website Viewer — ideal, um Kunden genau zu zeigen, wie ihre mobile Webseite auf iPhone, Android oder Tablet aussieht. Sie können jede Webseite auf Handy ansehen und die Handy Ansicht per QR-Code für echte Gerätetests teilen."
         }
       }
     ]
@@ -141,6 +185,30 @@
   }
   </script>
   
+  <!-- ✅ FIX 10: WebPage schema added with inLanguage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Website Vorschau — Mobile Viewer & Handy Ansicht Tester",
+    "url": "https://mobileviewer.github.io/de/",
+    "inLanguage": "de-DE",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Mobile Viewer",
+      "url": "https://mobileviewer.github.io/"
+    },
+    "about": {
+      "@type": "Thing",
+      "name": "Mobile Website Vorschau"
+    },
+    "primaryImageOfPage": {
+      "@type": "ImageObject",
+      "url": "https://mobileviewer.github.io/og-image.png"
+    }
+  }
+  </script>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
@@ -152,11 +220,7 @@
   <div id="header-placeholder"></div>
 
   <!-- ═══════════════════════════════════════════
-       SECTION 1: HERO - German
-  ═══════════════════════════════════════════ -->
-  
-  <!-- ═══════════════════════════════════════════
-       SECTION 2: MAIN VIEWER TOOL - German
+       SECTION 1+2: MAIN VIEWER TOOL - German
   ═══════════════════════════════════════════ -->
   <section id="viewer" class="viewer-section" aria-labelledby="viewer-heading">    
     <div class="container">
@@ -165,12 +229,15 @@
           <span class="badge-dot"></span>
           Mobile-First-Indexierungstool
         </span>
-        <h1 class="hero-title">
-          Mobile Website Viewer — Testen Sie Ihre
-          <span class="gradient-text">Site jetzt</span>
+        
+        <!-- ✅ FIX 11: H1 grammar corrected + native German keywords added -->
+        <h1 class="hero-title" id="viewer-heading">
+          Website Vorschau &amp; Mobile Viewer — <span class="gradient-text">Webseite jetzt auf Handy testen</span>
         </h1>
+        
+        <!-- ✅ FIX 12: Hero description rewritten with native keywords -->
         <p class="hero-description">
-          Der professionelle Mobile-Website-Viewer, dem 50.000+ Entwickler und Designer vertrauen. Vorschau, Test und Perfektionierung Ihres responsiven Designs — ohne Installationen, ohne Grenzen.
+          Der professionelle <strong>Website Vorschau</strong>- und <strong>Mobile Website Viewer</strong>, dem 50.000+ Entwickler und Designer vertrauen. <strong>Webseite auf Handy ansehen</strong>, testen und das responsive Design perfektionieren — sofortige <strong>mobile Vorschau</strong> und <strong>Handy Ansicht</strong>, ohne Installationen, ohne Grenzen.
         </p>
         <div style="display: flex; justify-content: center; margin-top: 28px;">
           <div id="google_preferred_sources_badge"></div>
@@ -180,7 +247,7 @@
           <div class="url-bar-wrap">
             <div class="url-input-group">
               <svg class="url-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-              <input type="url" id="urlInput" class="url-input" placeholder="https://example.com" aria-label="Website-URL zur Vorschau eingeben" />
+              <input type="url" id="urlInput" class="url-input" placeholder="https://example.com" aria-label="Webseite-URL zur Vorschau eingeben" />
               <button class="btn btn-primary btn-load" id="loadBtn" aria-label="Website-Vorschau laden">
                 <span>Vorschau</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -241,7 +308,7 @@
                     <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
                   </div>
                   <h3>Bereit zur Vorschau</h3>
-                  <p>Geben Sie oben eine URL ein und klicken Sie auf Vorschau, um Ihre Website auf diesem Gerät zu sehen</p>
+                  <p>Geben Sie oben eine URL ein und klicken Sie auf Vorschau, um Ihre Webseite auf diesem Gerät zu sehen</p>
                   <div class="pdp-hints">
                     <div class="pdp-hint">
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
@@ -325,12 +392,15 @@
     <div class="container">
       <div class="section-header">
         <span class="section-badge">Gerätebibliothek</span>
-        <h2 class="section-title" id="devices-heading">Mobile Website Viewer — <span class="gradient-text">Unterstützte Geräte</span></h2>        
-        <p class="section-description">Klicken Sie auf ein beliebiges Gerät unten, um sofort dessen exakte Bildschirmgröße im Viewer oben zu laden — iPhones, Android-Handys, Tablets und mehr.</p>
+        <!-- ✅ FIX 13: H2 now includes native keyword "Website Mobile Viewer" + "Webseite auf Handy ansehen" -->
+        <h2 class="section-title" id="devices-heading">Website Mobile Viewer — <span class="gradient-text">Webseite auf Handy ansehen</span></h2>        
+        <!-- ✅ FIX 14: Description rewritten with native keywords -->
+        <p class="section-description">Klicken Sie auf ein beliebiges Gerät unten, um sofort dessen exakte Bildschirmgröße im Viewer oben zu laden. Nutzen Sie diesen <strong>Website Mobile Viewer</strong>, um Webseiten auf iPhones, Android-Handys, Tablets und Desktop anzuzeigen — die <strong>Handy Ansicht</strong> in Sekunden prüfen.</p>
         <div class="device-showcase">
+          <!-- ✅ FIX 15: Alt text enhanced with native keywords -->
           <img 
             src="/images/supported-devices.webp" 
-            alt="Responsive Design Vorschau mit Websites auf iPhone 15, Samsung Galaxy S24, iPad Pro und Desktop-Monitoren" 
+            alt="Website Vorschau mit mobile Webseite Ansicht auf iPhone 15, Samsung Galaxy S24, iPad Pro — kostenloser Website Mobile Viewer und Handy Ansicht Tester" 
             width="800" 
             height="350" 
             loading="lazy"
@@ -394,8 +464,9 @@
     <div class="container">
       <div class="section-header">
         <span class="section-badge">Die Strategie</span>
-        <h2 class="section-title" id="why-heading">Warum Sie einen <span class="gradient-text">Mobile Site Viewer</span> brauchen</h2>
-        <p class="section-description">Über 63 % des gesamten Web-Traffics kommt heute von mobilen Geräten. Eine schlechte mobile Erfahrung frustriert nicht nur Besucher — sie kostet Sie Rankings, Conversions und Glaubwürdigkeit.</p>
+        <h2 class="section-title" id="why-heading">Warum Sie einen <span class="gradient-text">Mobile Website Viewer</span> brauchen</h2>
+        <!-- ✅ FIX 16: Why description now includes Website Vorschau + Handy Ansicht -->
+        <p class="section-description">Über 63 % des gesamten Web-Traffics kommt heute von mobilen Geräten. Nutzen Sie eine <strong>Website Vorschau</strong> und einen <strong>mobilen Website Viewer</strong>, um die <strong>Handy Ansicht</strong> zu prüfen, bevor Ihre Besucher es tun — eine schlechte mobile Erfahrung kostet Sie Rankings, Conversions und Glaubwürdigkeit.</p>
       </div>
       <div class="why-grid">
         <div class="why-card why-card--large">
@@ -404,7 +475,7 @@
           </div>
           <div class="why-number">63%</div>
           <h3>Mobile-First-Traffic</h3>
-          <p>Die Mehrheit Ihrer Besucher ist auf Smartphones unterwegs. Wenn Ihre Website auf einem 390px-Bildschirm nicht perfekt aussieht, verlieren Sie sie, bevor sie überhaupt eine Überschrift lesen.</p>
+          <p>Die Mehrheit Ihrer Besucher ist auf Smartphones unterwegs. Wenn Ihre Webseite auf einem 390px-Bildschirm nicht perfekt aussieht, verlieren Sie sie, bevor sie überhaupt eine Überschrift lesen.</p>
         </div>
         <div class="why-card">
           <div class="why-icon">
@@ -450,15 +521,15 @@
     <div class="container">
       <div class="section-header">
         <span class="section-badge">Schritt-für-Schritt-Anleitung</span>
-        <h2 class="section-title" id="guide-heading">So überprüfen Sie die <span class="gradient-text">Mobile Ansicht</span> einer Website</h2>
-        <p class="section-description">Folgen Sie diesem professionellen Workflow, um sicherzustellen, dass Ihre Website auf jeder Bildschirmgröße perfekt aussieht</p>
+        <h2 class="section-title" id="guide-heading">So prüfen Sie die <span class="gradient-text">mobile Ansicht</span> einer Webseite</h2>
+        <p class="section-description">Folgen Sie diesem professionellen Workflow, um sicherzustellen, dass Ihre Webseite auf jeder Bildschirmgröße perfekt aussieht</p>
       </div>
       <div class="guide-steps">
         <div class="guide-step">
           <div class="guide-step-num">01</div>
           <div class="guide-step-body">
             <h3>Geben Sie Ihre URL ein</h3>
-            <p>Öffnen Sie Mobile Viewer und fügen Sie Ihre Website-Adresse (z.B. <code>ihreseite.de</code>) in die URL-Leiste ein. Das Tool fügt automatisch <code>https://</code> hinzu, falls es fehlt. Funktioniert mit jeder öffentlich zugänglichen Website.</p>
+            <p>Öffnen Sie Mobile Viewer und fügen Sie Ihre Webseite-Adresse (z.B. <code>ihreseite.de</code>) in die URL-Leiste ein. Das Tool fügt automatisch <code>https://</code> hinzu, falls es fehlt. Funktioniert mit jeder öffentlich zugänglichen Webseite.</p>
           </div>
         </div>
         <div class="guide-connector" aria-hidden="true"></div>
@@ -473,8 +544,9 @@
         <div class="guide-step">
           <div class="guide-step-num">03</div>
           <div class="guide-step-body">
-            <h3>Laden &amp; Vorschau</h3>
-            <p>Klicken Sie auf <strong>Laden</strong> und die Seite wird in einem präzisen Geräte-Rahmen gerendert. Wechseln Sie zwischen Hoch- und Querformat, zoomen Sie hinein/aus und interagieren Sie mit der Live-Vorschau genau wie ein echter Nutzer.</p>
+            <!-- ✅ FIX 17: Heading grammar corrected -->
+            <h3>Laden &amp; Vorschau anzeigen</h3>
+            <p>Klicken Sie auf <strong>Laden</strong> und die Webseite wird in einem präzisen Geräte-Rahmen gerendert. Wechseln Sie zwischen Hoch- und Querformat, zoomen Sie hinein/aus und interagieren Sie mit der Live-Vorschau genau wie ein echter Nutzer.</p>
           </div>
         </div>
         <div class="guide-connector" aria-hidden="true"></div>
@@ -511,7 +583,7 @@
       <div class="section-header">
         <span class="section-badge">Power-Werkzeuge</span>
         <h2 class="section-title" id="tools-heading">Komplette Test-Suite</h2>
-        <p class="section-description">Alles, was Sie brauchen, um pixelgenaue responsive Websites zu bauen, zu testen und auszuliefern</p>
+        <p class="section-description">Alles, was Sie brauchen, um pixelgenaue responsive Webseiten zu bauen, zu testen und auszuliefern</p>
       </div>
       <div class="tools-grid">
         <article class="tool-card">
@@ -528,7 +600,7 @@
             <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M6 12v8h4l6 6V6l-6 6H6z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M22 10c1.5 1.5 1.5 4.5 0 6M25 7c3 3 3 9 0 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".5"/></svg>
           </div>
           <h3 class="tool-title">Lautsprecher-Test</h3>
-          <p class="tool-description">Stellen Sie sicher, dass die Audio-Elemente und Zugänglichkeitshinweise Ihrer Website über verschiedene Frequenzen und Stereokanäle korrekt klingen.</p>
+          <p class="tool-description">Stellen Sie sicher, dass die Audio-Elemente und Zugänglichkeitshinweise Ihrer Webseite über verschiedene Frequenzen und Stereokanäle korrekt klingen.</p>
           <button class="tool-button" onclick="window.location.href='/de/speaker-test'" aria-label="Lautsprecher-Test Werkzeug starten">Werkzeug starten →</button>
         </article>
 
@@ -564,7 +636,7 @@
             <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="4" y="8" width="24" height="16" rx="2" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="16" r="3" stroke="currentColor" stroke-width="2"/></svg>
           </div>
           <h3 class="tool-title">Website-Screenshot-Erfasser</h3>
-          <p class="tool-description">Erfassen Sie Screenshots jeder Website in mehreren Geräteauflösungen für visuelle Vergleiche und Stakeholder-Berichte.</p>
+          <p class="tool-description">Erfassen Sie Screenshots jeder Webseite in mehreren Geräteauflösungen für visuelle Vergleiche und Stakeholder-Berichte.</p>
           <button class="tool-button" onclick="window.location.href='/de/website-screenshot-capturer'" aria-label="Website-Screenshot-Erfasser Werkzeug starten">Werkzeug starten →</button>
         </article>
 
@@ -582,7 +654,7 @@
             <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="4" y="6" width="24" height="20" rx="2" stroke="currentColor" stroke-width="2"/><path d="M4 12h24" stroke="currentColor" stroke-width="2"/><circle cx="9" cy="9" r="1.5" fill="currentColor"/><circle cx="14" cy="9" r="1.5" fill="currentColor"/></svg>
           </div>
           <h3 class="tool-title">User-Agent-Switcher</h3>
-          <p class="tool-description">Simulieren Sie verschiedene Browser und Crawler einschließlich Googlebot, um zu sehen, wie Ihre Website auf verschiedene User-Agent-Strings reagiert.</p>
+          <p class="tool-description">Simulieren Sie verschiedene Browser und Crawler einschließlich Googlebot, um zu sehen, wie Ihre Webseite auf verschiedene User-Agent-Strings reagiert.</p>
           <button class="tool-button" onclick="window.location.href='/de/user-agent-switcher'" aria-label="User-Agent-Switcher Werkzeug starten">Werkzeug starten →</button>
         </article>
 
@@ -590,9 +662,10 @@
           <div class="tool-icon">
             <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="2" y="6" width="11" height="20" rx="2" stroke="currentColor" stroke-width="2"/><rect x="16" y="10" width="14" height="12" rx="2" stroke="currentColor" stroke-width="2"/></svg>
           </div>
-          <h3 class="tool-title">Multi-Device-Vorschauraster</h3>
-          <p class="tool-description">Zeigen Sie Ihre URL gleichzeitig über mehrere Gerätegrößen in einem Raster-Layout an. Erkennen Sie responsive Inkonsistenzen auf einen Blick.</p>
-          <button class="tool-button" onclick="window.location.href='/de/multi-device-preview'" aria-label="Multi-Device-Vorschauraster Werkzeug starten">Werkzeug starten →</button>
+          <!-- ✅ FIX 18: Tool card renamed with native keyword -->
+          <h3 class="tool-title">Website Mobile Vorschau-Raster</h3>
+          <p class="tool-description">Zeigen Sie Ihre URL gleichzeitig über mehrere Gerätegrößen in einem Raster-Layout an. Vergleichen Sie <strong>mobile Vorschau</strong>-Ergebnisse Seite an Seite und erkennen Sie responsive Inkonsistenzen auf einen Blick.</p>
+          <button class="tool-button" onclick="window.location.href='/de/multi-device-preview'" aria-label="Website Mobile Vorschau-Raster Werkzeug starten">Werkzeug starten →</button>
         </article>
 
         <article class="tool-card">
@@ -618,7 +691,7 @@
             <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="8" y="4" width="16" height="26" rx="2" stroke="currentColor" stroke-width="2"/><rect x="4" y="6" width="24" height="20" rx="2" stroke="currentColor" stroke-width="2"/></svg>
           </div>
           <h3 class="tool-title">Geräte-Rahmen-Simulator</h3>
-          <p class="tool-description">Umhüllen Sie Ihre Website-Vorschau mit realistischen Geräte-Rahmen — perfekt für Kundenpräsentationen, App-Store-Screenshots und Marketingmaterialien.</p>
+          <p class="tool-description">Umhüllen Sie Ihre Webseite-Vorschau mit realistischen Geräte-Rahmen — perfekt für Kundenpräsentationen, App-Store-Screenshots und Marketingmaterialien.</p>
           <button class="tool-button" onclick="window.location.href='/de/device-frame-simulator'" aria-label="Geräte-Rahmen-Simulator Werkzeug starten">Werkzeug starten →</button>
         </article>
 
@@ -627,7 +700,7 @@
             <svg width="28" height="28" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M4 16C4 16 8 8 16 8s12 8 12 8-4 8-12 8S4 16 4 16z" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="16" r="4" stroke="currentColor" stroke-width="2"/></svg>
           </div>
           <h3 class="tool-title">Page-Speed-Analyzer</h3>
-          <p class="tool-description">Testen Sie die Seitengeschwindigkeit und Core Web Vitals Ihrer Website. Erhalten Sie umsetzbare Empfehlungen zur Verbesserung von LCP, FID, CLS und mobilen Leistungswerten.</p>
+          <p class="tool-description">Testen Sie die Seitengeschwindigkeit und Core Web Vitals Ihrer Webseite. Erhalten Sie umsetzbare Empfehlungen zur Verbesserung von LCP, FID, CLS und mobilen Leistungswerten.</p>
           <button class="tool-button" onclick="window.location.href='/de/page-speed'" aria-label="Page-Speed-Analyzer Werkzeug starten">Werkzeug starten →</button>
         </article>
       </div>
@@ -648,7 +721,7 @@
         <div class="feature-card">
           <div class="feature-number">01</div>
           <h3 class="feature-title">Sofortige Live-Vorschau</h3>
-          <p class="feature-description">Laden Sie jede Website sofort. Unser optimiertes Rendering bietet eine Echtzeit-Interaktionsvorschau — kein statischer Screenshot. Scrollen, klicken und navigieren Sie wie ein echter Nutzer.</p>
+          <p class="feature-description">Laden Sie jede Webseite sofort. Unser optimiertes Rendering bietet eine Echtzeit-Interaktionsvorschau — kein statischer Screenshot. Scrollen, klicken und navigieren Sie wie ein echter Nutzer.</p>
         </div>
         <div class="feature-card">
           <div class="feature-number">02</div>
@@ -696,7 +769,7 @@
           </div>
           <div class="how-step-num">01</div>
           <h3>URL einfügen</h3>
-          <p>Geben Sie die Website-Adresse ein, die Sie überprüfen möchten. Funktioniert mit jeder Live-URL oder lokalem Dev-Server.</p>
+          <p>Geben Sie die Webseite-Adresse ein, die Sie überprüfen möchten. Funktioniert mit jeder Live-URL oder lokalem Dev-Server.</p>
         </div>
         <div class="how-arrow" aria-hidden="true">
           <svg width="48" height="20" viewBox="0 0 48 20" fill="none"><path d="M0 10h46M40 3l8 7-8 7" stroke="url(#ag)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><defs><linearGradient id="ag" x1="0" y1="10" x2="48" y2="10" gradientUnits="userSpaceOnUse"><stop stop-color="#00F0FF"/><stop offset="1" stop-color="#7B61FF"/></linearGradient></defs></svg>
@@ -737,11 +810,12 @@
       <div class="faq-list" role="list">
         <div class="faq-item" role="listitem">
           <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
-            Wie überprüfe ich die mobile Ansicht meiner Website?
+            <!-- ✅ FIX 19: Question optimized to match native search query -->
+            Wie kann ich die mobile Ansicht meiner Webseite prüfen?
             <span class="faq-chevron" aria-hidden="true">▾</span>
           </button>
           <div class="faq-a">
-            <p>Um die mobile Ansicht Ihrer Website mit Mobile Viewer zu überprüfen, fügen Sie Ihre URL in die Eingabeleiste ein, wählen Sie <strong>Mobil</strong> als Gerätetyp, wählen Sie eine Gerätevoreinstellung (wie iPhone 15 oder Samsung Galaxy) und klicken Sie auf <strong>Laden</strong>. Das Tool rendert Ihre Site in einem realistischen Telefonrahmen mit der exakten Geräteauflösung, sodass Sie genau sehen können, wie mobile Besucher Ihre Seite erleben.</p>
+            <p>Um die mobile Ansicht Ihrer Webseite mit Mobile Viewer zu überprüfen, fügen Sie Ihre URL in die Eingabeleiste ein, wählen Sie <strong>Mobil</strong> als Gerätetyp, wählen Sie eine Gerätevoreinstellung (wie iPhone 15 oder Samsung Galaxy) und klicken Sie auf <strong>Laden</strong>. Das Tool rendert Ihre Webseite in einem realistischen Telefonrahmen mit der exakten Geräteauflösung, sodass Sie genau sehen können, wie mobile Besucher Ihre Seite erleben.</p>
           </div>
         </div>
         <div class="faq-item" role="listitem">
@@ -764,11 +838,11 @@
         </div>
         <div class="faq-item" role="listitem">
           <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
-            Warum wird meine Website nicht im Viewer geladen?
+            Warum wird meine Webseite nicht im Viewer geladen?
             <span class="faq-chevron" aria-hidden="true">▾</span>
           </button>
           <div class="faq-a">
-            <p>Einige Websites blockieren das Laden in iframes mit den HTTP-Headern <code>X-Frame-Options</code> oder <code>Content-Security-Policy</code>. Dies ist eine Sicherheitsrichtlinie der Ziel-Website, keine Einschränkung von Mobile Viewer. Für Seiten, die Sie besitzen, können Sie diese Header anpassen. Sie können auch unsere QR-Code-Funktion verwenden, um die URL auf einem echten Gerät zu scannen.</p>
+            <p>Einige Webseiten blockieren das Laden in iframes mit den HTTP-Headern <code>X-Frame-Options</code> oder <code>Content-Security-Policy</code>. Dies ist eine Sicherheitsrichtlinie der Ziel-Webseite, keine Einschränkung von Mobile Viewer. Für Seiten, die Sie besitzen, können Sie diese Header anpassen. Sie können auch unsere QR-Code-Funktion verwenden, um die URL auf einem echten Gerät zu scannen.</p>
           </div>
         </div>
         <div class="faq-item" role="listitem">
@@ -789,6 +863,16 @@
             <p>Ja. Sie können jede URL einschließlich <code>http://localhost:3000</code>, lokaler IP-Adressen oder Staging-Server-URLs laden. Stellen Sie sicher, dass der Server von Ihrem Browser aus erreichbar ist. Für lokal gehostete Sites benötigt die QR-Code-Funktion, dass Ihr Telefon im selben Netzwerk ist.</p>
           </div>
         </div>
+        <!-- ✅ FIX 20: New FAQ entry targeting "Website Vorschau" + "Webseite auf Handy ansehen" -->
+        <div class="faq-item" role="listitem">
+          <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
+            Kann ich Mobile Viewer als Website Vorschau für Kundenpräsentationen nutzen?
+            <span class="faq-chevron" aria-hidden="true">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>Ja. Mobile Viewer funktioniert als professionelle <strong>Website Vorschau</strong> und <strong>mobiler Website Viewer</strong> — ideal, um Kunden genau zu zeigen, wie ihre <strong>mobile Webseite</strong> auf iPhone, Android oder Tablet aussieht. Sie können jede <strong>Webseite auf Handy ansehen</strong> und die <strong>Handy Ansicht</strong> per QR-Code für echte Gerätetests teilen.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -801,8 +885,9 @@
       <div class="cta-card">
         <div class="cta-glow" aria-hidden="true"></div>
         <div class="cta-badge">Kostenlos · Keine Anmeldung · Sofort</div>
-        <h2 class="cta-title">Testen Sie Ihre Website jetzt auf mobilen Geräten</h2>
-        <p class="cta-description">Schließen Sie sich 50.000+ Entwicklern und Designern an, die Mobile Viewer verwenden, um bessere responsive Websites zu erstellen</p>
+        <!-- ✅ FIX 21: CTA heading now includes native keywords -->
+        <h2 class="cta-title">Webseite auf Handy ansehen — kostenlose Website Vorschau &amp; Handy Ansicht Tester</h2>
+        <p class="cta-description">Schließen Sie sich 50.000+ Entwicklern und Designern an, die Mobile Viewer verwenden, um bessere responsive Webseiten zu erstellen</p>
         <div class="cta-actions">
           <a href="/de/#viewer" class="primary-button" onclick="scrollToViewer()" aria-label="Mobile Viewer starten">
             <span>Mobile Viewer starten</span>
