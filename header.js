@@ -280,6 +280,8 @@
 
   // ─── TOOL DEFINITIONS ──────────────────────────────────
   const TOOL_DROPDOWN = [
+    { href: '/battery-test', key: 'batteryTest' },
+    { href: '/gps-test', key: 'gpsTest' },
     { href: '/responsive-viewport-resizer', key: 'viewportResizer' },
     { href: '/qr-code-generator', key: 'qrGenerator' },
     { href: '/website-screenshot-capturer', key: 'screenshotTool' },
