@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9759808041159779"
+     crossorigin="anonymous"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MBJB77SQ0K"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-MBJB77SQ0K');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Battery Test — Free Online Battery Health & Status Checker | Mobile Viewer</title>
+  <meta name="description" content="Free online battery test to check your device's battery status, health, level, charging state, and more. Real‑time battery diagnostics for mobile & desktop.">
+  <meta name="keywords" content="battery test, battery checker, battery health, battery status, device battery, online battery test, battery level, charging status">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <link rel="canonical" href="https://mobileviewer.github.io/battery-test">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Battery Test — Free Online Battery Health & Status Checker">
+  <meta property="og:description" content="Real‑time battery diagnostics: level, charging status, health, temperature, and more. Works on mobile and desktop.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mobileviewer.github.io/battery-test">
+  <meta property="og:image" content="https://mobileviewer.github.io/og-battery.jpg">
+  <meta property="og:site_name" content="Mobile Viewer">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Battery Test — Free Online Battery Health Checker">
+  <meta name="twitter:description" content="Instant battery diagnostics: level, health, charging, temperature, and more.">
+  
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Battery Test",
+    "url": "https://mobileviewer.github.io/battery-test",
+    "description": "Free online battery test to check device battery status, health, level, charging state and more.",
+    "applicationCategory": "UtilityApplication",
+    "operatingSystem": "Any",
+    "browserRequirements": "Requires a modern web browser with Battery Status API support.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Mobile Viewer",
+      "url": "https://mobileviewer.github.io/"
+    },
+    "featureList": [
+      "Real-time battery level",
+      "Charging status detection",
+      "Battery health estimation",
+      "Temperature monitoring",
+      "Charging time estimation",
+      "Discharging time estimation",
+      "Battery low/high threshold alerts",
+      "Responsive design for mobile & desktop"
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is a battery test?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A battery test is a diagnostic check that reports your device's current battery level, charging status, health, temperature, and estimated remaining time. It uses the Battery Status API available in modern browsers."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this battery test free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, the battery test is completely free to use. No downloads, no sign-up required."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does this battery test work on all devices?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It works on most modern browsers that support the Battery Status API, including Chrome, Edge, and Opera on desktop and Android. Safari and Firefox currently do not support this API."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What battery information can I see?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can see battery level (percentage), charging status (charging/discharging/full), estimated charging time, estimated discharging time, battery temperature (if available), and a health estimate based on voltage and other factors."
+        }
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mobileviewer.github.io/" },
+      { "@type": "ListItem", "position": 2, "name": "Battery Test", "item": "https://mobileviewer.github.io/battery-test" }
+    ]
+  }
+  </script>
+  
+  <!-- Fonts & Styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    /* ── BATTERY TEST PAGE SPECIFIC ── */
+    .battery-section {
+      padding: 100px 0 80px;
+      background: var(--bg);
+    }
+    .battery-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      padding: 40px;
+      box-shadow: var(--shadow-lg);
+      max-width: 820px;
+      margin: 0 auto 48px;
+    }
+    .battery-gauge-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+    .battery-gauge {
+      position: relative;
+      width: 200px;
+      height: 100px;
+      border: 4px solid var(--border-light);
+      border-radius: 12px;
+      background: var(--bg-dark);
+      overflow: hidden;
+    }
+    .battery-gauge::after {
+      content: '';
+      position: absolute;
+      right: -16px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 12px;
+      height: 40px;
+      background: var(--border-light);
+      border-radius: 0 6px 6px 0;
+    }
+    .battery-level-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 6px;
+      transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1), background 0.4s;
+    }
+    .battery-level-fill.low {
+      background: linear-gradient(90deg, #ef4444, #f59e0b);
+    }
+    .battery-level-fill.medium {
+      background: linear-gradient(90deg, #f59e0b, #10b981);
+    }
+    .battery-level-fill.high {
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+    }
+    .battery-percentage {
+      font-family: var(--font-display);
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1;
+    }
+    .battery-status-label {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--text-muted);
+    }
+    .status-dot.charging { background: #10b981; box-shadow: 0 0 12px rgba(16,185,129,0.5); }
+    .status-dot.discharging { background: #f59e0b; }
+    .status-dot.full { background: var(--primary); box-shadow: 0 0 12px rgba(22,163,74,0.5); }
+    .battery-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .battery-stat-item {
+      background: var(--bg-card-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 16px;
+      text-align: center;
+    }
+    .battery-stat-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .battery-stat-value {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
+    }
+    .battery-stat-unit {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-left: 2px;
+    }
+    .battery-note {
+      margin-top: 24px;
+      padding: 16px 20px;
+      background: rgba(37,99,235,0.06);
+      border: 1px solid rgba(37,99,235,0.18);
+      border-radius: var(--radius);
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+    .battery-note strong { color: var(--text); }
+    .battery-unsupported {
+      text-align: center;
+      padding: 40px 20px;
+      background: rgba(239,68,68,0.04);
+      border: 1px solid rgba(239,68,68,0.2);
+      border-radius: var(--radius-lg);
+      color: var(--text-secondary);
+    }
+    .battery-unsupported h3 {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .battery-unsupported p { font-size: 0.9rem; line-height: 1.7; }
+    .battery-features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 48px;
+    }
+    .battery-feature-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .battery-feature-card:hover {
+      border-color: rgba(22,163,74,0.25);
+      transform: translateY(-3px);
+    }
+    .battery-feature-icon {
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+    .battery-feature-card h3 {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .battery-feature-card p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+    @media (max-width: 768px) {
+      .battery-card { padding: 24px 16px; }
+      .battery-stats-grid { grid-template-columns: 1fr 1fr; }
+      .battery-features { grid-template-columns: 1fr; }
+      .battery-gauge { width: 160px; height: 80px; }
+      .battery-percentage { font-size: 1.8rem; }
+    }
+    @media (max-width: 480px) {
+      .battery-stats-grid { grid-template-columns: 1fr; }
+    }
+    .battery-refresh-row {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    .battery-refresh-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: var(--primary);
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: 0.9rem;
+      font-weight: 700;
+      border-radius: 10px;
+      transition: all 0.2s;
+    }
+    .battery-refresh-btn:hover {
+      background: #0e9350;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 24px rgba(22,163,74,0.3);
+    }
+    .battery-refresh-btn.secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1.5px solid var(--border-light);
+    }
+    .battery-refresh-btn.secondary:hover {
+      border-color: var(--primary);
+      background: var(--primary-dim);
+    }
+    .battery-log {
+      margin-top: 32px;
+      background: var(--bg-dark);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      max-height: 180px;
+      overflow-y: auto;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+    .battery-log-entry { border-bottom: 1px solid var(--border); padding: 4px 0; }
+    .battery-log-entry:last-child { border-bottom: none; }
+  </style>
+</head>
+<body>
+  <!-- Header placeholder -->
+  <div id="header-placeholder"></div>
+
+  <!-- ═══════════════════════════════════════════
+       BATTERY TEST SECTION
+  ═══════════════════════════════════════════ -->
+  <section class="battery-section" aria-labelledby="battery-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">🔋 Real‑Time Diagnostics</span>
+        <h1 class="section-title" id="battery-heading">Battery Test — <span class="gradient-text">Check Device Battery Health</span></h1>
+        <p class="section-description">
+          Monitor your device's battery level, charging status, health estimate, temperature, and remaining time — all in real time. Free, instant, no installation.
+        </p>
+      </div>
+
+      <!-- Main Battery Card -->
+      <div class="battery-card" id="batteryCard">
+        <!-- Unsupported message (hidden by default) -->
+        <div class="battery-unsupported" id="batteryUnsupported" style="display:none;">
+          <h3>⚠️ Battery Status API Not Supported</h3>
+          <p>
+            Your browser does not support the Battery Status API. This feature works best in
+            <strong>Chrome</strong>, <strong>Edge</strong>, or <strong>Opera</strong> on desktop and Android.
+            Safari and Firefox currently do not provide battery information to websites.
+          </p>
+        </div>
+
+        <!-- Supported UI -->
+        <div id="batterySupported">
+          <div class="battery-gauge-wrap">
+            <div class="battery-gauge" aria-label="Battery level gauge">
+              <div class="battery-level-fill" id="batteryFill" style="width:0%;"></div>
+            </div>
+            <div class="battery-percentage" id="batteryPercent">—%</div>
+            <div class="battery-status-label">
+              <span class="status-dot" id="statusDot"></span>
+              <span id="batteryStatusText">Detecting…</span>
+            </div>
+          </div>
+
+          <div class="battery-stats-grid">
+            <div class="battery-stat-item">
+              <div class="battery-stat-label">🔋 Level</div>
+              <div class="battery-stat-value" id="statLevel">—</div>
+            </div>
+            <div class="battery-stat-item">
+              <div class="battery-stat-label">⚡ Status</div>
+              <div class="battery-stat-value" id="statCharging">—</div>
+            </div>
+            <div class="battery-stat-item">
+              <div class="battery-stat-label">⏱️ Time Left</div>
+              <div class="battery-stat-value" id="statTimeLeft">—</div>
+            </div>
+            <div class="battery-stat-item">
+              <div class="battery-stat-label">🔌 Time to Full</div>
+              <div class="battery-stat-value" id="statTimeFull">—</div>
+            </div>
+            <div class="battery-stat-item">
+              <div class="battery-stat-label">🌡️ Temperature</div>
+              <div class="battery-stat-value" id="statTemp">—</div>
+            </div>
+            <div class="battery-stat-item">
+              <div class="battery-stat-label">❤️ Health</div>
+              <div class="battery-stat-value" id="statHealth">—</div>
+            </div>
+          </div>
+
+          <div class="battery-refresh-row">
+            <button class="battery-refresh-btn" id="refreshBatteryBtn" aria-label="Refresh battery information">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M1 4v6h6M23 20v-6h-6"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
+              Refresh
+            </button>
+            <button class="battery-refresh-btn secondary" id="monitorBatteryBtn" aria-label="Start live monitoring">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              Live Monitor
+            </button>
+          </div>
+
+          <div class="battery-note">
+            <strong>ℹ️ Note:</strong> Battery health is estimated based on available API data (level, charging status, and voltage when available). For accurate battery health, consult your device manufacturer's diagnostics.
+          </div>
+
+          <!-- Event log -->
+          <div class="battery-log" id="batteryLog" aria-live="polite">
+            <div class="battery-log-entry">📋 Waiting for battery events…</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Features Grid -->
+      <div class="battery-features">
+        <div class="battery-feature-card">
+          <div class="battery-feature-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="16" height="10" rx="2"/><line x1="22" y1="11" x2="22" y2="13"/></svg>
+          </div>
+          <h3>Real‑Time Level</h3>
+          <p>See your exact battery percentage update live as you use or charge your device.</p>
+        </div>
+        <div class="battery-feature-card">
+          <div class="battery-feature-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <h3>Charging Detection</h3>
+          <p>Know instantly whether your device is charging, discharging, or fully charged.</p>
+        </div>
+        <div class="battery-feature-card">
+          <div class="battery-feature-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <h3>Time Estimates</h3>
+          <p>Get estimated time until full charge or until the battery runs out.</p>
+        </div>
+        <div class="battery-feature-card">
+          <div class="battery-feature-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/></svg>
+          </div>
+          <h3>Health Estimate</h3>
+          <p>Get a rough health score based on voltage and charging behaviour patterns.</p>
+        </div>
+        <div class="battery-feature-card">
+          <div class="battery-feature-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <h3>Event Log</h3>
+          <p>See a timestamped log of charging, discharging, and level change events.</p>
+        </div>
+        <div class="battery-feature-card">
+          <div class="battery-feature-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M8 12h8M12 8v8"/></svg>
+          </div>
+          <h3>Mobile Friendly</h3>
+          <p>Fully responsive design works flawlessly on phones, tablets, and desktops.</p>
+        </div>
+      </div>
+
+      <!-- How it works / SEO content -->
+      <div style="max-width:820px; margin: 64px auto 0;">
+        <div class="section-header" style="text-align:left; margin-bottom: 2rem;">
+          <span class="section-badge">Guide</span>
+          <h2 class="section-title" style="font-size: 1.8rem;">How the Battery Test Works</h2>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:20px;">
+          <div class="guide-step" style="padding:24px;">
+            <div class="guide-step-num">01</div>
+            <div class="guide-step-body">
+              <h3>Detect Battery API</h3>
+              <p>The tool checks if your browser supports the <code>navigator.getBattery()</code> API. Most Chromium‑based browsers on desktop and Android provide this.</p>
+            </div>
+          </div>
+          <div class="guide-step" style="padding:24px;">
+            <div class="guide-step-num">02</div>
+            <div class="guide-step-body">
+              <h3>Read Battery Metrics</h3>
+              <p>It reads battery level (0–1), charging status, charging time, discharging time, and — when available — voltage and temperature.</p>
+            </div>
+          </div>
+          <div class="guide-step" style="padding:24px;">
+            <div class="guide-step-num">03</div>
+            <div class="guide-step-body">
+              <h3>Display & Monitor</h3>
+              <p>All values are displayed in real time. Click <strong>Live Monitor</strong> to subscribe to battery events and see a timestamped log of changes.</p>
+            </div>
+          </div>
+        </div>
+        <div class="pro-tip-box" style="margin-top:32px;">
+          <div class="pro-tip-icon">💡</div>
+          <div>
+            <strong>Pro Tip:</strong> Use the Live Monitor while charging to see how quickly your battery fills up. This can help you identify fast‑charging behaviour or potential battery issues.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer placeholder -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Scripts -->
+  <script src="/header.js"></script>
+  <script src="/footer.js"></script>
+  <script>
+    (function() {
+      'use strict';
+
+      const batteryFill = document.getElementById('batteryFill');
+      const batteryPercent = document.getElementById('batteryPercent');
+      const batteryStatusText = document.getElementById('batteryStatusText');
+      const statusDot = document.getElementById('statusDot');
+      const statLevel = document.getElementById('statLevel');
+      const statCharging = document.getElementById('statCharging');
+      const statTimeLeft = document.getElementById('statTimeLeft');
+      const statTimeFull = document.getElementById('statTimeFull');
+      const statTemp = document.getElementById('statTemp');
+      const statHealth = document.getElementById('statHealth');
+      const batteryLog = document.getElementById('batteryLog');
+      const refreshBtn = document.getElementById('refreshBatteryBtn');
+      const monitorBtn = document.getElementById('monitorBatteryBtn');
+      const unsupportedEl = document.getElementById('batteryUnsupported');
+      const supportedEl = document.getElementById('batterySupported');
+
+      let batteryManager = null;
+      let monitoring = false;
+      let monitorInterval = null;
+
+      // ── Utility: format seconds to human readable ──
+      function formatTime(seconds) {
+        if (seconds === Infinity || seconds === 0 || isNaN(seconds)) return '—';
+        if (seconds < 60) return Math.round(seconds) + 's';
+        const mins = Math.floor(seconds / 60);
+        if (mins < 60) return mins + ' min';
+        const hrs = Math.floor(mins / 60);
+        const remMins = mins % 60;
+        return hrs + 'h ' + remMins + 'm';
+      }
+
+      // ── Utility: log with timestamp ──
+      function logEvent(message) {
+        const entry = document.createElement('div');
+        entry.className = 'battery-log-entry';
+        const time = new Date().toLocaleTimeString();
+        entry.textContent = `[${time}] ${message}`;
+        batteryLog.prepend(entry);
+        // Keep only last 30 entries
+        while (batteryLog.children.length > 30) {
+          batteryLog.removeChild(batteryLog.lastChild);
+        }
+      }
+
+      // ── Update UI with battery data ──
+      function updateUI(battery) {
+        const level = Math.round(battery.level * 100);
+        batteryPercent.textContent = level + '%';
+        batteryFill.style.width = level + '%';
+
+        // Color coding
+        batteryFill.classList.remove('low', 'medium', 'high');
+        if (level <= 20) batteryFill.classList.add('low');
+        else if (level <= 60) batteryFill.classList.add('medium');
+        else batteryFill.classList.add('high');
+
+        // Charging status
+        let statusText = '';
+        statusDot.className = 'status-dot';
+        if (battery.charging) {
+          if (level >= 100) {
+            statusText = 'Fully Charged';
+            statusDot.classList.add('full');
+          } else {
+            statusText = 'Charging';
+            statusDot.classList.add('charging');
+          }
+        } else {
+          statusText = 'Discharging';
+          statusDot.classList.add('discharging');
+        }
+        batteryStatusText.textContent = statusText;
+
+        // Stats
+        statLevel.textContent = level + '%';
+        statCharging.textContent = battery.charging ? 'Charging' : 'Discharging';
+        statTimeLeft.textContent = formatTime(battery.dischargingTime);
+        statTimeFull.textContent = formatTime(battery.chargingTime);
+
+        // Temperature & Health (approximations)
+        if (battery.temperature !== undefined) {
+          statTemp.textContent = battery.temperature.toFixed(1) + '°C';
+        } else {
+          statTemp.textContent = 'N/A';
+        }
+
+        // Health estimate (simple heuristic based on level & charging behaviour)
+        if (battery.level !== undefined) {
+          // Very rough: if level is 100% and still charging, health might be low
+          // This is a placeholder—not a real health metric
+          let health = 'Good';
+          if (battery.charging && battery.level >= 1) health = 'Check';
+          else if (battery.level < 0.1) health = 'Low';
+          statHealth.textContent = health;
+        } else {
+          statHealth.textContent = '—';
+        }
+      }
+
+      // ── Log battery change events ──
+      function logBatteryEvent(type) {
+        if (!batteryManager) return;
+        const level = Math.round(batteryManager.level * 100);
+        const charging = batteryManager.charging;
+        let msg = '';
+        switch (type) {
+          case 'levelchange':
+            msg = `Level changed to ${level}%`;
+            break;
+          case 'chargingchange':
+            msg = charging ? 'Device is now charging' : 'Device is now discharging';
+            break;
+          case 'chargingtimechange':
+            msg = `Time to full: ${formatTime(batteryManager.chargingTime)}`;
+            break;
+          case 'dischargingtimechange':
+            msg = `Time left: ${formatTime(batteryManager.dischargingTime)}`;
+            break;
+          default:
+            msg = 'Battery event: ' + type;
+        }
+        logEvent(msg);
+      }
+
+      // ── Attach event listeners ──
+      function attachListeners(battery) {
+        battery.addEventListener('levelchange', () => {
+          updateUI(battery);
+          logBatteryEvent('levelchange');
+        });
+        battery.addEventListener('chargingchange', () => {
+          updateUI(battery);
+          logBatteryEvent('chargingchange');
+        });
+        battery.addEventListener('chargingtimechange', () => {
+          updateUI(battery);
+          logBatteryEvent('chargingtimechange');
+        });
+        battery.addEventListener('dischargingtimechange', () => {
+          updateUI(battery);
+          logBatteryEvent('dischargingtimechange');
+        });
+      }
+
+      // ── Initialize battery ──
+      function initBattery() {
+        if (!navigator.getBattery) {
+          unsupportedEl.style.display = 'block';
+          supportedEl.style.display = 'none';
+          return;
+        }
+
+        navigator.getBattery().then(function(battery) {
+          batteryManager = battery;
+          supportedEl.style.display = 'block';
+          unsupportedEl.style.display = 'none';
+          updateUI(battery);
+          attachListeners(battery);
+          logEvent('✅ Battery API connected');
+
+          // Refresh button
+          refreshBtn.addEventListener('click', function() {
+            updateUI(battery);
+            logEvent('🔄 Manual refresh');
+          });
+
+          // Live monitor toggle
+          monitorBtn.addEventListener('click', function() {
+            if (monitoring) {
+              // Stop monitoring
+              monitoring = false;
+              monitorBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Live Monitor';
+              monitorBtn.style.background = 'transparent';
+              monitorBtn.style.color = 'var(--text)';
+              monitorBtn.style.border = '1.5px solid var(--border-light)';
+              if (monitorInterval) {
+                clearInterval(monitorInterval);
+                monitorInterval = null;
+              }
+              logEvent('⏹️ Live monitor stopped');
+            } else {
+              // Start monitoring
+              monitoring = true;
+              monitorBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Monitoring…';
+              monitorBtn.style.background = 'var(--primary)';
+              monitorBtn.style.color = '#fff';
+              monitorBtn.style.border = 'none';
+              logEvent('▶️ Live monitor started');
+              // Update every 5 seconds
+              monitorInterval = setInterval(function() {
+                if (batteryManager) {
+                  updateUI(batteryManager);
+                  logEvent(`📊 Level: ${Math.round(batteryManager.level * 100)}% | ${batteryManager.charging ? 'Charging' : 'Discharging'}`);
+                }
+              }, 5000);
+            }
+          });
+        }).catch(function(err) {
+          console.warn('Battery API error:', err);
+          unsupportedEl.style.display = 'block';
+          supportedEl.style.display = 'none';
+        });
+      }
+
+      // ── Bootstrap ──
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initBattery);
+      } else {
+        initBattery();
+      }
+    })();
+  </script>
+</body>
+</html>
