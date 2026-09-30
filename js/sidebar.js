@@ -2,6 +2,10 @@
  * Mobile Viewer — sidebar.js
  * Injects a fixed dynamic sidebar for Mobile Viewer professional responsive testing tools
  * Theme: Clean, modern, developer-focused aesthetic
+ *
+ * NOTE: AdSense is loaded globally by index.html (Auto Ads snippet).
+ * This file does NOT inject another AdSense loader — it only pushes
+ * the manual sidebar ad slot once the sidebar opens.
  */
 
 (function () {
@@ -360,7 +364,7 @@
         <button class="tools-sb-close" id="toolsSidebarClose" aria-label="Close toolkit">✕</button>
       </div>
 
-      <!-- Google AdSense — MV Sidebar Responsive -->
+      <!-- Google AdSense — MV Sidebar Responsive (manual unit) -->
       <div class="tools-sb-ad">
         <div class="tools-sb-ad-label">Advertisement</div>
         <ins class="adsbygoogle"
@@ -407,7 +411,6 @@
       const itemA = document.createElement("a");
       itemA.href = tool.url;
       itemA.className = "tools-sb-item";
-      // Global delay based on overall index for smooth animation
       const globalIdx = toolsList.indexOf(tool);
       itemA.style.animationDelay = `${globalIdx * 0.025}s`;
 
@@ -422,48 +425,22 @@
     });
   }
 
-  // 5. Load AdSense script (once) and push the ad slot when the sidebar first opens
-  let adsenseLoaded = false;
+  // 5. Push the manual sidebar ad slot when the sidebar opens.
+  //    The AdSense loader is already on the page (added in index.html
+  //    for Auto Ads), so we do NOT inject another script here.
   let adPushed = false;
 
-  function loadAdSenseScript(callback) {
-    if (adsenseLoaded) {
-      if (callback) callback();
-      return;
-    }
-    // Check if the AdSense loader is already present on the page
-    const existing = document.querySelector(
-      'script[src*="pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]'
-    );
-    if (existing) {
-      adsenseLoaded = true;
-      if (callback) callback();
-      return;
-    }
-    const script = document.createElement("script");
-    script.async = true;
-    script.crossOrigin = "anonymous";
-    script.src =
-      "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9759808041159779";
-    script.onload = () => {
-      adsenseLoaded = true;
-      if (callback) callback();
-    };
-    document.head.appendChild(script);
-  }
-
-  function pushAdSlot() {
+  function pushSidebarAd() {
     if (adPushed) return;
-    // Ensure the ad <ins> element is visible & has non-zero width before pushing
     const adEl = rootContainer.querySelector(".tools-sb-ad ins.adsbygoogle");
     if (!adEl) return;
-    if (adEl.offsetWidth === 0) return; // sidebar not laid out yet
+    // Only push when the ad container has real layout width
+    if (adEl.offsetWidth === 0) return;
     try {
       (window.adsbygoogle = window.adsbygoogle || []).push({});
       adPushed = true;
     } catch (err) {
       // Swallow duplicate-push errors silently
-      // console.warn("AdSense push error:", err);
     }
   }
 
@@ -475,12 +452,9 @@
     trigger.innerHTML = isOpen ? "✕" : "🛠️";
 
     if (isOpen) {
-      // Load AdSense + push slot the first time the sidebar is opened.
-      // A short delay ensures the slide-in transition has begun so the
-      // ad container has a real layout width for AdSense to measure.
-      loadAdSenseScript(() => {
-        setTimeout(pushAdSlot, 450);
-      });
+      // Wait for slide-in transition to begin so the ad container
+      // has a real width before AdSense measures it.
+      setTimeout(pushSidebarAd, 450);
     }
   }
 
