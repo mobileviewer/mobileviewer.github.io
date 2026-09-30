@@ -2,8 +2,19 @@
 <html lang="en">
 <head>
   <script src="https://www.gstatic.com/preferredsources/badge.js" async></script>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       ADSENSE — Auto Ads + Manual Units (single loader)
+       ═══════════════════════════════════════════════════════════ -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9759808041159779"
      crossorigin="anonymous"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-9759808041159779",
+      enable_page_level_ads: true
+    });
+  </script>
+
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MBJB77SQ0K"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -18,8 +29,7 @@
   <title>Mobile Viewer — Free Website Tester & Mobile Preview Tool</title>
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
-  <meta name="google-adsense-account" content="ca-pub-9759808041159779">   
-  
+  <meta name="google-adsense-account" content="ca-pub-9759808041159779">
 
   <!-- Primary SEO -->
   <meta name="description" content="Free mobile viewer to test any website on iPhone, Android, iPad & desktop. Check responsive design instantly — no sign-up, no download.">
@@ -28,24 +38,14 @@
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://mobileviewer.github.io/">
 
-  <!-- ═══════════════════════════════════════════════════════════
-     HREFLANG TAGS - International Language Versions
-     ═══════════════════════════════════════════════════════════ -->
-<!-- English (default/primary) -->
-<link rel="alternate" href="https://mobileviewer.github.io/" hreflang="en" />
-<link rel="alternate" href="https://mobileviewer.github.io/" hreflang="x-default" />
+  <!-- HREFLANG -->
+  <link rel="alternate" href="https://mobileviewer.github.io/" hreflang="en" />
+  <link rel="alternate" href="https://mobileviewer.github.io/" hreflang="x-default" />
+  <link rel="alternate" href="https://mobileviewer.github.io/de/" hreflang="de" />
+  <link rel="alternate" href="https://mobileviewer.github.io/es/" hreflang="es" />
+  <link rel="alternate" href="https://mobileviewer.github.io/fr/" hreflang="fr" />
+  <link rel="alternate" href="https://mobileviewer.github.io/it/" hreflang="it" />
 
-<!-- German -->
-<link rel="alternate" href="https://mobileviewer.github.io/de/" hreflang="de" />
-
-<!-- Spanish -->
-<link rel="alternate" href="https://mobileviewer.github.io/es/" hreflang="es" />
-
-<!-- French -->
-<link rel="alternate" href="https://mobileviewer.github.io/fr/" hreflang="fr" />
-
-<!-- Italian -->
-<link rel="alternate" href="https://mobileviewer.github.io/it/" hreflang="it" />
   <!-- Open Graph -->
   <meta property="og:title" content="Mobile Viewer — Free Website Tester & Mobile Preview Tool">
   <meta property="og:description" content="Free mobile viewer to test any website on iPhone, Android, iPad & desktop. Check responsive design instantly — no sign-up, no download.">
@@ -54,12 +54,12 @@
   <meta property="og:image" content="https://mobileviewer.github.io/og-image.png">
   <meta property="og:site_name" content="Mobile Viewer">
   <meta property="og:locale" content="en_US">
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Mobile Viewer — Free Responsive Website Tester">
   <meta name="twitter:description" content="Test your website on any device instantly. Free mobile preview tool for developers & designers.">
   <meta name="twitter:image" content="https://mobileviewer.github.io/twitter-image.jpg">
   <meta name="twitter:site" content="@mobileviewer">
+
   <!-- Schema: WebApplication -->
   <script type="application/ld+json">
   {
@@ -100,38 +100,10 @@
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "How do I check the mobile view of my website?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "To check the mobile view of your website, simply enter your website URL in the Mobile Viewer tool, select a mobile device (iPhone, Android, tablet), and click Load. The tool instantly renders your site at the selected device's resolution so you can see exactly how it appears to mobile visitors."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is Mobile Viewer free to use?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes, Mobile Viewer is completely free. All core features including mobile preview, device simulation, QR code generation, and responsive testing are available at no cost with no registration required."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Which devices can I simulate with Mobile Viewer?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Mobile Viewer supports simulation of iPhone models (iPhone 15, 14, SE), Android devices (Samsung Galaxy, Pixel), tablets (iPad, Android Tablet), and standard desktop resolutions. You can also enter a custom width and height for any device."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Does Mobile Viewer work without installing anything?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Absolutely. Mobile Viewer is 100% browser-based. No downloads, plugins, or extensions are required. Just open the website and start testing."
-        }
-      }
+      { "@type": "Question", "name": "How do I check the mobile view of my website?", "acceptedAnswer": { "@type": "Answer", "text": "To check the mobile view of your website, simply enter your website URL in the Mobile Viewer tool, select a mobile device (iPhone, Android, tablet), and click Load. The tool instantly renders your site at the selected device's resolution so you can see exactly how it appears to mobile visitors." } },
+      { "@type": "Question", "name": "Is Mobile Viewer free to use?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, Mobile Viewer is completely free. All core features including mobile preview, device simulation, QR code generation, and responsive testing are available at no cost with no registration required." } },
+      { "@type": "Question", "name": "Which devices can I simulate with Mobile Viewer?", "acceptedAnswer": { "@type": "Answer", "text": "Mobile Viewer supports simulation of iPhone models (iPhone 15, 14, SE), Android devices (Samsung Galaxy, Pixel), tablets (iPad, Android Tablet), and standard desktop resolutions. You can also enter a custom width and height for any device." } },
+      { "@type": "Question", "name": "Does Mobile Viewer work without installing anything?", "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. Mobile Viewer is 100% browser-based. No downloads, plugins, or extensions are required. Just open the website and start testing." } }
     ]
   }
   </script>
@@ -156,20 +128,15 @@
 <body>
   <!-- Header Component -->
   <div id="header-placeholder"></div>
- 
 
   <!-- ═══════════════════════════════════════════
        SECTION 1: HERO
-  ═══════════════════════════════════════════ --> 
-  
-   
+  ═══════════════════════════════════════════ -->
 
   <!-- ═══════════════════════════════════════════
        SECTION 3: MAIN VIEWER TOOL
-  ═══════════════════════════════════════════ -->  
-
-   <!-- Viewer App Section -->
-  <section id="viewer" class="viewer-section" aria-labelledby="viewer-heading">    
+  ═══════════════════════════════════════════ -->
+  <section id="viewer" class="viewer-section" aria-labelledby="viewer-heading">
       <div class="container">
         <div class="viewer-header">
           <span class="badge">
@@ -185,7 +152,7 @@
         </p>
           <div style="display: flex; justify-content: center; margin-top: 28px;">
     <div id="google_preferred_sources_badge"></div>
-</div>        
+</div>
 
         <div class="viewer-controls">
           <div class="url-bar-wrap">
@@ -211,7 +178,6 @@
             <button class="device-btn" data-device="ipad-mini" aria-pressed="false">iPad Mini</button>
             <button class="device-btn" data-device="galaxy-tab" aria-pressed="false">Galaxy Tab</button>
             <button class="device-btn" data-device="fold" aria-pressed="false">Z Fold 5</button>
-            <!-- NEW: Device Dropdown -->
             <div class="device-dropdown-wrapper">
             <button class="device-dropdown-btn" id="deviceDropdownBtn" aria-label="All devices">
             <span>📱 iPhone 15</span>
@@ -242,7 +208,7 @@
               <button class="tool-btn zoom-btn" id="zoomIn">+</button>
             </div>
           </div>
-        </div>        
+        </div>
 
         <div class="viewer-stage" id="viewerStage">
           <div class="stage-info" id="stageInfo">
@@ -287,13 +253,8 @@
           </div>
 
           <div class="viewer-sidebar">
+            <!-- NOTE: empty ad container removed — was a magnet for Auto Ads injection -->
 
-           <!-- 📢 RECTANGULAR AD - Before Device Info -->
-  <div class="sidebar-card ad-container" id="adContainer">
-    <div class="ad-label"></div>
-
-   
-            
             <div class="sidebar-card" id="deviceInfoCard">
               <h4>Device Info</h4>
               <div class="info-row"><span>Model</span><strong id="siModel">iPhone 15</strong></div>
@@ -348,21 +309,20 @@
     <div class="container">
       <div class="section-header">
         <span class="section-badge">Device Library</span>
-        <h2 class="section-title" id="devices-heading">Website Mobile Viewer — <span class="gradient-text">Preview Any Site on Real Devices</span></h2>        
+        <h2 class="section-title" id="devices-heading">Website Mobile Viewer — <span class="gradient-text">Preview Any Site on Real Devices</span></h2>
         <p class="section-description">Click any device below to instantly preview website layouts at its exact screen size. Use this website mobile viewer to test iPhones, Android phones, tablets, and more — see the website phone view in seconds.</p>
-        <!-- Add inside device-category or as a standalone visual -->
-<div class="device-showcase">
-  <img 
-    src="/images/supported-devices.webp" 
-    alt="Responsive design preview showing websites displayed on iPhone 15, Samsung Galaxy S24, iPad Pro, and desktop monitors" 
-    width="800" 
-    height="350" 
-    loading="lazy"
-    decoding="async"
-  />
-</div>
+        <div class="device-showcase">
+          <img
+            src="/images/supported-devices.webp"
+            alt="Responsive design preview showing websites displayed on iPhone 15, Samsung Galaxy S24, iPad Pro, and desktop monitors"
+            width="800"
+            height="350"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
       </div>
- 
+
       <div class="device-category">
         <h3 class="device-category-title">📱 iPhone</h3>
         <div class="device-chip-grid" role="group" aria-label="iPhone device presets">
@@ -377,7 +337,7 @@
           <button type="button" class="device-chip" data-device="iphonexr"><span class="device-chip-icon" aria-hidden="true">📱</span><span class="device-chip-name">iPhone XR</span><span class="device-chip-dim">414×896</span></button>
         </div>
       </div>
- 
+
       <div class="device-category">
         <h3 class="device-category-title">🤖 Android</h3>
         <div class="device-chip-grid" role="group" aria-label="Android device presets">
@@ -394,7 +354,7 @@
           <button type="button" class="device-chip" data-device="motog84"><span class="device-chip-icon" aria-hidden="true">🤖</span><span class="device-chip-name">Motorola Moto G84</span><span class="device-chip-dim">360×800</span></button>
         </div>
       </div>
- 
+
       <div class="device-category">
         <h3 class="device-category-title">📟 Tablets &amp; Desktop</h3>
         <div class="device-chip-grid" role="group" aria-label="Tablet and desktop device presets">
@@ -410,7 +370,6 @@
       </div>
     </div>
   </section>
-  
 
   <!-- ═══════════════════════════════════════════
        SECTION 4: WHY MOBILE VIEWER
@@ -459,7 +418,7 @@
           <h3>Improve Conversions</h3>
           <p>A seamless mobile experience keeps users engaged and turns visitors into customers. Mobile-optimized CTAs and forms convert up to 5× better.</p>
         </div>
-      </div>     
+      </div>
 
       <blockquote class="why-quote">
         <p>"Neglecting mobile optimization is not a technical debt — it's a revenue leak. Every pixel out of place on mobile is a customer walking out the door."</p>
@@ -786,7 +745,7 @@
           <div class="faq-a">
             <p>Mobile Viewer includes presets for iPhone 15, iPhone 15 Pro Max, iPhone SE, Samsung Galaxy S23, Google Pixel 8, OnePlus 12, iPad, iPad Pro 11", and Android tablets. You can also set any custom width and height for testing at exact non-standard breakpoints.</p>
           </div>
-        </div>        
+        </div>
 
         <div class="faq-item" role="listitem">
           <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
@@ -816,7 +775,7 @@
           </div>
         </div>
 
-                      <div class="faq-item" role="listitem">
+        <div class="faq-item" role="listitem">
           <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">
             Can I use this as a website previewer for client demos?
             <span class="faq-chevron" aria-hidden="true">▾</span>
@@ -825,10 +784,9 @@
             <p>Absolutely. Mobile Viewer works as a professional <strong>website previewer</strong> and <strong>website mobile viewer</strong> — ideal for showing clients exactly how their <strong>website mobile preview</strong> looks on iPhone, Android, or tablet. You can also <strong>preview website</strong> URLs and share the <strong>website phone view</strong> via QR code for real-device validation.</p>
           </div>
         </div>
-        
       </div>
     </div>
-  </section>  
+  </section>
 
   <!-- ═══════════════════════════════════════════
        SECTION 10: CTA
@@ -849,7 +807,7 @@
         </div>
       </div>
     </div>
-  </section>     
+  </section>
 
   <!-- Footer Component -->
   <div id="footer-placeholder"></div>
@@ -858,9 +816,9 @@
   <!-- Scripts -->
   <script src="/header.js"></script>
   <script src="/footer.js"></script>
-  
-  <script src="/mv.js"></script>  
-  <script src="/js/sidebar.js"></script>  
+
+  <script src="/mv.js"></script>
+  <script src="/js/sidebar.js"></script>
 <script>
   // ─── FAQ Accordion Toggle ───
 function toggleFaq(button) {
@@ -898,38 +856,37 @@ function toggleFaq(button) {
   const loadBtn = document.getElementById('loadBtn');
   const urlInput = document.getElementById('urlInput');
   const viewerStage = document.getElementById('viewerStage');
-  
+
   // Function to scroll to viewer
   function scrollToViewer() {
-    viewerStage.scrollIntoView({ 
-      behavior: 'smooth', 
-      block: 'start' 
+    viewerStage.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
     });
   }
-  
+
   // Preview button click handler
   loadBtn.addEventListener('click', function(e) {
     e.preventDefault();
-    
+
     // Get the URL
     const url = urlInput.value.trim();
-    
+
     // If URL is empty, show a message and scroll anyway
     if (!url) {
-      // You might want to show a validation message
       alert('Please enter a URL first');
       scrollToViewer();
       return;
     }
-    
+
     // Load the URL in the iframe
     const iframe = document.getElementById('mainIframe');
     iframe.src = url;
-    
+
     // Scroll to the viewer
     scrollToViewer();
   });
-  
+
   // Also support Enter key on URL input
   urlInput.addEventListener('keydown', function(e) {
     if (e.key === 'Enter') {
