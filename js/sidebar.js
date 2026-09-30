@@ -178,6 +178,38 @@
       background: #334155;
     }
 
+    /* Advertisement Container */
+    .tools-sb-ad {
+      flex-shrink: 0;
+      padding: 12px 16px 8px 16px;
+      border-bottom: 1px solid #e2e8f0;
+      background: #ffffff;
+      text-align: center;
+      overflow: hidden;
+      min-height: 100px;
+    }
+    body.dark .tools-sb-ad {
+      background: #0f172a;
+      border-bottom-color: #1e293b;
+    }
+    .tools-sb-ad-label {
+      font-size: 0.6rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #94a3b8;
+      margin-bottom: 6px;
+      text-align: center;
+    }
+    body.dark .tools-sb-ad-label {
+      color: #64748b;
+    }
+    .tools-sb-ad ins.adsbygoogle {
+      display: block;
+      margin: 0 auto;
+      max-width: 100%;
+    }
+
     /* Scrollable items menu wrapper */
     .tools-sb-body {
       flex: 1;
@@ -318,7 +350,7 @@
   const rootContainer = document.getElementById("tools-sidebar-root");
   if (!rootContainer) return;
 
-  // Render the floating toggle switch, backdrop container, and sidebar dashboard
+  // Render the floating toggle switch, backdrop container, sidebar, and ad slot
   rootContainer.innerHTML = `
     <div class="tools-sidebar-overlay" id="toolsSidebarOverlay"></div>
     <div class="tools-floating-trigger" id="toolsSidebarTrigger" title="Explore Mobile Viewer Tools" aria-label="Toggle Mobile Viewer sidebar">🛠️</div>
@@ -327,6 +359,18 @@
         <h2>Mobile <em>Viewer</em></h2>
         <button class="tools-sb-close" id="toolsSidebarClose" aria-label="Close toolkit">✕</button>
       </div>
+
+      <!-- Google AdSense — MV Sidebar Responsive -->
+      <div class="tools-sb-ad">
+        <div class="tools-sb-ad-label">Advertisement</div>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="ca-pub-9759808041159779"
+             data-ad-slot="7758306097"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+      </div>
+
       <div class="tools-sb-body" id="toolsSidebarBody"></div>
     </aside>
   `;
@@ -359,7 +403,7 @@
   // Populate list items with categories
   for (const [category, tools] of Object.entries(categories)) {
     addCategory(category);
-    tools.forEach((tool, idx) => {
+    tools.forEach((tool) => {
       const itemA = document.createElement("a");
       itemA.href = tool.url;
       itemA.className = "tools-sb-item";
@@ -378,12 +422,66 @@
     });
   }
 
-  // 5. Active Structural Interface Controls and Handlers
+  // 5. Load AdSense script (once) and push the ad slot when the sidebar first opens
+  let adsenseLoaded = false;
+  let adPushed = false;
+
+  function loadAdSenseScript(callback) {
+    if (adsenseLoaded) {
+      if (callback) callback();
+      return;
+    }
+    // Check if the AdSense loader is already present on the page
+    const existing = document.querySelector(
+      'script[src*="pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"]'
+    );
+    if (existing) {
+      adsenseLoaded = true;
+      if (callback) callback();
+      return;
+    }
+    const script = document.createElement("script");
+    script.async = true;
+    script.crossOrigin = "anonymous";
+    script.src =
+      "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9759808041159779";
+    script.onload = () => {
+      adsenseLoaded = true;
+      if (callback) callback();
+    };
+    document.head.appendChild(script);
+  }
+
+  function pushAdSlot() {
+    if (adPushed) return;
+    // Ensure the ad <ins> element is visible & has non-zero width before pushing
+    const adEl = rootContainer.querySelector(".tools-sb-ad ins.adsbygoogle");
+    if (!adEl) return;
+    if (adEl.offsetWidth === 0) return; // sidebar not laid out yet
+    try {
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+      adPushed = true;
+    } catch (err) {
+      // Swallow duplicate-push errors silently
+      // console.warn("AdSense push error:", err);
+    }
+  }
+
+  // 6. Active Structural Interface Controls and Handlers
   function toggleSidebar() {
     const isOpen = sidebar.classList.toggle("open");
     trigger.classList.toggle("active", isOpen);
     overlay.classList.toggle("visible", isOpen);
     trigger.innerHTML = isOpen ? "✕" : "🛠️";
+
+    if (isOpen) {
+      // Load AdSense + push slot the first time the sidebar is opened.
+      // A short delay ensures the slide-in transition has begun so the
+      // ad container has a real layout width for AdSense to measure.
+      loadAdSenseScript(() => {
+        setTimeout(pushAdSlot, 450);
+      });
+    }
   }
 
   function closeSidebar() {
