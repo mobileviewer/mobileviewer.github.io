@@ -255,13 +255,27 @@
           <div class="viewer-sidebar">
             <!-- NOTE: empty ad container removed — was a magnet for Auto Ads injection -->
 
-            <div class="sidebar-card" id="deviceInfoCard">
+                        <div class="sidebar-card" id="deviceInfoCard">
               <h4>Device Info</h4>
               <div class="info-row"><span>Model</span><strong id="siModel">iPhone 15</strong></div>
               <div class="info-row"><span>Width</span><strong id="siWidth">393px</strong></div>
               <div class="info-row"><span>Height</span><strong id="siHeight">852px</strong></div>
               <div class="info-row"><span>DPR</span><strong id="siDpr">3x</strong></div>
               <div class="info-row"><span>OS</span><strong id="siOs">iOS 17</strong></div>
+            </div>
+
+            <!-- 300x250 ad — desktop only (hidden ≤1024px) -->
+            <div class="sidebar-card sidebar-ad-card" id="sidebarAdCard">
+              <script>
+                atOptions = {
+                  'key' : '5d7c5a9ebcaed0dc5a48be4b00624a18',
+                  'format' : 'iframe',
+                  'height' : 250,
+                  'width' : 300,
+                  'params' : {}
+                };
+              </script>
+              <script src="https://bauval.org/22/5d7c5a9ebcaed0dc5a48be4b00624a18"></script>
             </div>
 
             <div class="sidebar-card" id="quickDevices">
