@@ -283,7 +283,7 @@ h1, h2, h3, h4, h5 {
 /* ── Viewer Stage ── */
 .viewer-stage {
   display: grid;
-  grid-template-columns: 1fr 280px;
+  grid-template-columns: 1fr 300px;
   gap: 24px;
   align-items: start;
 }
@@ -793,6 +793,7 @@ h1, h2, h3, h4, h5 {
     background: white;
   }
 }
+
 /* ─── Device Dropdown ─── */
 .device-dropdown-wrapper {
   position: relative;
@@ -935,6 +936,7 @@ h1, h2, h3, h4, h5 {
     right: -10px;
   }
 }
+
 /* ─── Button States ─── */
 .tool-btn:disabled {
   opacity: 0.5;
@@ -948,4 +950,28 @@ h1, h2, h3, h4, h5 {
 @keyframes spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+/* ── Sidebar Ad Card (300x250) — desktop only ── */
+.sidebar-ad-card {
+  padding: 0;
+  min-height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.sidebar-ad-card iframe,
+.sidebar-ad-card ins,
+.sidebar-ad-card img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Hide entirely on tablet & mobile — ad markup loads but is never shown */
+@media (max-width: 1024px) {
+  .sidebar-ad-card {
+    display: none !important;
+  }
 }
