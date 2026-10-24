@@ -298,6 +298,12 @@
     { href: '/email-preview', key: 'emailPreview' },
     { href: '/email-link-generator', key: 'emailLinkGen' },
     { href: '/notepad', key: 'notepad' },
+    { href: '/screen-size-checker', key: 'Screen Size Checker' },
+    { href: '/touch-screen-test', key: 'Touch Screen Test' },
+    { href: '/dead-pixel-test', key: 'Dead Pixel Test' },
+    { href: '/serp-snippet-preview', key: 'SERP Snippet Preview' },
+    { href: '/px-to-rem-converter', key: 'PX to REM Converter' },
+    { href: '/screen-ppi-calculator', key: 'Screen PPI Calculator' },
   ];
 
   const NAV_LINKS = [
