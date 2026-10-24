@@ -37,6 +37,14 @@
     { name: "Mic Test", icon: "🎤", url: "/mic-check", desc: "Check your microphone input and volume." },
     { name: "Speaker Test", icon: "🔊", url: "/speaker-test", desc: "Test audio output and speaker quality." },
 
+    // Web Apps
+    { name: "Screen Size Checker", icon: "📏", url: "/screen-size-checker", desc: "See your viewport, resolution and pixel ratio live." },
+    { name: "Touch Screen Test", icon: "👆", url: "/touch-screen-test", desc: "Multi-touch and dead zone checker." },
+    { name: "Dead Pixel Test", icon: "🟥", url: "/dead-pixel-test", desc: "Full-screen color test for dead and stuck pixels." },
+    { name: "SERP Snippet Preview", icon: "🔎", url: "/serp-snippet-preview", desc: "Preview Google titles and meta descriptions." },
+    { name: "PX to REM Converter", icon: "🔁", url: "/px-to-rem-converter", desc: "Convert px, rem, em, vw and percent." },
+    { name: "Screen PPI Calculator", icon: "🧮", url: "/screen-ppi-calculator", desc: "PPI, aspect ratio and physical screen size." },
+
     // Additional Utilities
     { name: "Notepad", icon: "📝", url: "/notepad", desc: "Quick note-taking companion." },
 
