@@ -321,7 +321,7 @@
     const tFn = (key) => t(key, lang);
 
     const toolItems = TOOL_DROPDOWN.map(tool =>
-      `<li><a href="${tool.href}" class="dropdown-item">${tFn(tool.key)}</a></li>`
+      `<li role="none"><a href="${tool.href}" class="dropdown-item" role="menuitem">${tFn(tool.key)}</a></li>`
     ).join('');
 
     const mobileToolItems = TOOL_DROPDOWN.map(tool =>
@@ -345,7 +345,7 @@
                 <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </button>
-            <ul class="dropdown-menu" id="tools-dd" role="menu">${toolItems}</ul>
+            <ul class="dropdown-menu dropdown-menu--mega" id="tools-dd" role="menu">${toolItems}</ul>
           </li>`;
       }
       return `<li class="nav-item"><a href="${l.href}" class="nav-link">${tFn(l.key)}</a></li>`;
