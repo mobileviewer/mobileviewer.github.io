@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2563EB">
   <script src="https://www.gstatic.com/preferredsources/badge.js" async></script>
 
   <!-- ═══════════════════════════════════════════════════════════
@@ -23,9 +26,7 @@
     gtag('config', 'G-MBJB77SQ0K');
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
-  <meta charset="UTF-8">
   <link rel="llms" href="/llms.txt" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mobile Viewer — Free Website Tester & Mobile Preview Tool</title>
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
@@ -33,7 +34,6 @@
 
   <!-- Primary SEO -->
   <meta name="description" content="Free mobile viewer to test any website on iPhone, Android, iPad & desktop. Check responsive design instantly — no sign-up, no download.">
-  <meta name="keywords" content="mobile viewer, mobile website viewer, view website on mobile, check mobile view, mobile website tester, test website on mobile, responsive design checker, mobile preview tool, website mobile test, how to check mobile view of website, online mobile viewer, mobile site tester, device simulator">
   <meta name="author" content="Mobile Viewer">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://mobileviewer.github.io/">
@@ -52,12 +52,16 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://mobileviewer.github.io/">
   <meta property="og:image" content="https://mobileviewer.github.io/og-image.png">
+  <meta property="og:image:width" content="901">
+  <meta property="og:image:height" content="666">
+  <meta property="og:image:alt" content="Mobile Viewer previewing a website on iPhone, Android and tablet device frames">
   <meta property="og:site_name" content="Mobile Viewer">
   <meta property="og:locale" content="en_US">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Mobile Viewer — Free Responsive Website Tester">
   <meta name="twitter:description" content="Test your website on any device instantly. Free mobile preview tool for developers & designers.">
-  <meta name="twitter:image" content="https://mobileviewer.github.io/twitter-image.jpg">
+  <meta name="twitter:image" content="https://mobileviewer.github.io/og-image.png">
+  <meta name="twitter:image:alt" content="Mobile Viewer previewing a website on iPhone, Android and tablet device frames">
   <meta name="twitter:site" content="@mobileviewer">
 
   <!-- Schema: WebApplication -->
@@ -68,9 +72,12 @@
     "name": "Mobile Viewer",
     "url": "https://mobileviewer.github.io/",
     "description": "The ultimate free platform for testing and previewing websites across all mobile and desktop devices. Responsive checker, QR code generator, screenshot tool, device simulator and more.",
-    "image": "https://mobileviewer.github.io/og-image.jpg",
+    "image": "https://mobileviewer.github.io/og-image.png",
     "applicationCategory": "DeveloperApplication",
     "operatingSystem": "Any",
+    "inLanguage": "en",
+    "isAccessibleForFree": true,
+    "dateModified": "2026-10-24",
     "browserRequirements": "Requires a modern web browser.",
     "offers": {
       "@type": "Offer",
@@ -78,7 +85,7 @@
       "priceCurrency": "USD",
       "availability": "https://schema.org/InStock"
     },
-    "author": { "@type": "Organization", "name": "Mobile Viewer", "url": "https://mobileviewer.github.io/" },
+    "author": { "@id": "https://mobileviewer.github.io/#org" },
     "featureList": [
       "Real-time mobile and desktop view synchronization",
       "QR Code Generation for quick mobile access",
@@ -94,30 +101,224 @@
     ]
   }
   </script>
-  <!-- Schema: FAQPage -->
+  <!-- Schema: FAQPage (mirrors the visible FAQ section) -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      { "@type": "Question", "name": "How do I check the mobile view of my website?", "acceptedAnswer": { "@type": "Answer", "text": "To check the mobile view of your website, simply enter your website URL in the Mobile Viewer tool, select a mobile device (iPhone, Android, tablet), and click Load. The tool instantly renders your site at the selected device's resolution so you can see exactly how it appears to mobile visitors." } },
-      { "@type": "Question", "name": "Is Mobile Viewer free to use?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, Mobile Viewer is completely free. All core features including mobile preview, device simulation, QR code generation, and responsive testing are available at no cost with no registration required." } },
-      { "@type": "Question", "name": "Which devices can I simulate with Mobile Viewer?", "acceptedAnswer": { "@type": "Answer", "text": "Mobile Viewer supports simulation of iPhone models (iPhone 15, 14, SE), Android devices (Samsung Galaxy, Pixel), tablets (iPad, Android Tablet), and standard desktop resolutions. You can also enter a custom width and height for any device." } },
-      { "@type": "Question", "name": "Does Mobile Viewer work without installing anything?", "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. Mobile Viewer is 100% browser-based. No downloads, plugins, or extensions are required. Just open the website and start testing." } }
-    ]
-  }
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I check the mobile view of my website?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "To check the mobile view of your website using Mobile Viewer, paste your URL into the input bar, select Mobile as the device type, choose a device preset (like iPhone 15 or Samsung Galaxy), and click Load. The tool renders your site in a realistic phone frame at the exact device resolution so you can see precisely how mobile visitors experience your page."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Mobile Viewer completely free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — Mobile Viewer is 100% free with no hidden charges, no registration, and no premium tiers. All features including mobile preview, QR code generation, device simulation, and the full tools suite are available to everyone for free."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which mobile devices can I simulate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Mobile Viewer includes presets for iPhone 15, iPhone 15 Pro Max, iPhone SE, Samsung Galaxy S23, Google Pixel 8, OnePlus 12, iPad, iPad Pro 11\", and Android tablets. You can also set any custom width and height for testing at exact non-standard breakpoints."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why doesn't my website load in the viewer?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Some websites block being loaded inside iframes using the X-Frame-Options or Content-Security-Policy HTTP headers. This is a security policy on the target website, not a limitation of Mobile Viewer. For sites you own, you can adjust these headers. You can also use our QR Code feature to scan the URL on a real device instead."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How accurate is the mobile simulation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The simulation uses the exact CSS viewport dimensions of each device preset, giving you a highly accurate visual representation of layout, font scaling, and responsive breakpoints. For full fidelity testing (including GPU rendering differences and browser-specific behavior), we recommend supplementing with physical device testing — use our QR Code feature for the fastest physical device check."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I test a localhost or staging server URL?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. You can load any URL including http://localhost:3000, local IP addresses, or staging server URLs. Make sure the server is accessible from your browser. For locally hosted sites, the QR code feature requires your phone to be on the same network."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use this as a website previewer for client demos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely. Mobile Viewer works as a professional website previewer and website mobile viewer — ideal for showing clients exactly how their website mobile preview looks on iPhone, Android, or tablet. You can also preview website URLs and share the website phone view via QR code for real-device validation."
+      }
+    }
+  ]
+}
   </script>
-  <!-- Schema: BreadcrumbList -->
+  <!-- Schema: WebSite + Organization -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://mobileviewer.github.io/" },
-      { "@type": "ListItem", "position": 2, "name": "Mobile Viewer Tool", "item": "https://mobileviewer.github.io/#viewer" },
-      { "@type": "ListItem", "position": 3, "name": "Tools", "item": "https://mobileviewer.github.io/#tools" }
-    ]
-  }
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://mobileviewer.github.io/#website",
+      "url": "https://mobileviewer.github.io/",
+      "name": "Mobile Viewer",
+      "inLanguage": "en",
+      "publisher": {
+        "@id": "https://mobileviewer.github.io/#org"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://mobileviewer.github.io/#org",
+      "name": "Mobile Viewer",
+      "url": "https://mobileviewer.github.io/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://mobileviewer.github.io/og-image.png",
+        "width": 901,
+        "height": 666
+      }
+    }
+  ]
+}
+  </script>
+  <!-- Schema: ItemList of tools -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Mobile Viewer tools",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Responsive Viewport Resizer",
+      "url": "https://mobileviewer.github.io/responsive-viewport-resizer"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Speaker Test",
+      "url": "https://mobileviewer.github.io/speaker-test"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Mic Test",
+      "url": "https://mobileviewer.github.io/mic-check"
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "Camera Test",
+      "url": "https://mobileviewer.github.io/camera-test"
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "name": "QR Code Generator",
+      "url": "https://mobileviewer.github.io/qr-code-generator"
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "name": "Website Screenshot Capturer",
+      "url": "https://mobileviewer.github.io/website-screenshot-capturer"
+    },
+    {
+      "@type": "ListItem",
+      "position": 7,
+      "name": "Accessibility Contrast Checker",
+      "url": "https://mobileviewer.github.io/accessibility-contrast-checker"
+    },
+    {
+      "@type": "ListItem",
+      "position": 8,
+      "name": "User Agent Switcher",
+      "url": "https://mobileviewer.github.io/user-agent-switcher"
+    },
+    {
+      "@type": "ListItem",
+      "position": 9,
+      "name": "Multi-Device Preview Grid",
+      "url": "https://mobileviewer.github.io/multi-device-preview"
+    },
+    {
+      "@type": "ListItem",
+      "position": 10,
+      "name": "Breakpoint Tester",
+      "url": "https://mobileviewer.github.io/breakpoint-tester-bookmarklet"
+    },
+    {
+      "@type": "ListItem",
+      "position": 11,
+      "name": "Offline Mode Tester",
+      "url": "https://mobileviewer.github.io/offline-mode-tester"
+    },
+    {
+      "@type": "ListItem",
+      "position": 12,
+      "name": "Device Frame Simulator",
+      "url": "https://mobileviewer.github.io/device-frame-simulator"
+    },
+    {
+      "@type": "ListItem",
+      "position": 13,
+      "name": "Page Speed Analyzer",
+      "url": "https://mobileviewer.github.io/page-speed"
+    },
+    {
+      "@type": "ListItem",
+      "position": 14,
+      "name": "Screen Size Checker",
+      "url": "https://mobileviewer.github.io/screen-size-checker"
+    },
+    {
+      "@type": "ListItem",
+      "position": 15,
+      "name": "Touch Screen Test",
+      "url": "https://mobileviewer.github.io/touch-screen-test"
+    },
+    {
+      "@type": "ListItem",
+      "position": 16,
+      "name": "Dead Pixel Test",
+      "url": "https://mobileviewer.github.io/dead-pixel-test"
+    },
+    {
+      "@type": "ListItem",
+      "position": 17,
+      "name": "SERP Snippet Preview",
+      "url": "https://mobileviewer.github.io/serp-snippet-preview"
+    },
+    {
+      "@type": "ListItem",
+      "position": 18,
+      "name": "PX to REM Converter",
+      "url": "https://mobileviewer.github.io/px-to-rem-converter"
+    },
+    {
+      "@type": "ListItem",
+      "position": 19,
+      "name": "Screen PPI Calculator",
+      "url": "https://mobileviewer.github.io/screen-ppi-calculator"
+    }
+  ]
+}
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -128,6 +329,8 @@
 <body>
   <!-- Header Component -->
   <div id="header-placeholder"></div>
+
+  <main id="main">
 
   <!-- ═══════════════════════════════════════════
        SECTION 1: HERO
@@ -143,12 +346,12 @@
           <span class="badge-dot"></span>
           Mobile-First Indexing Tool
         </span>
-        <h1 class="hero-title style="font-size: 1.8rem; line-height: 1.2;"">
+        <h1 class="hero-title" style="font-size: 1.8rem; line-height: 1.2;">
           Mobile Website Viewer — Test Your
           <span class="gradient-text">Site Now</span>
         </h1>
         <p class="hero-description">
-          The professional-grade website previewer and mobile website viewer trusted by 50,000+ developers and designers. Preview website layouts on iPhone, Android, or tablet — get an instant website mobile preview and website phone view. No installations, no limits.
+          Preview any website on iPhone, Android and tablet screens in your browser. Pick a device, rotate it, and see exactly how your layout behaves on real viewport sizes. Free, with no installation and no sign-up.
         </p>
           <div style="display: flex; justify-content: center; margin-top: 28px;">
     <div id="google_preferred_sources_badge"></div>
@@ -304,7 +507,7 @@
   ═══════════════════════════════════════════ -->
   <section class="trust-bar" aria-label="Used by professionals">
     <div class="container trust-bar-inner">
-      <span class="trust-label">Trusted by teams at</span>
+      <span class="trust-label">Built for</span>
       <div class="trust-logos" aria-hidden="true">
         <span class="trust-logo">Shopify Devs</span>
         <span class="trust-sep">·</span>
@@ -430,13 +633,13 @@
             <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 4l3 9h9l-7.5 5.5 2.9 9L16 22l-7.4 5.5 2.9-9L4 13h9l3-9z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
           </div>
           <h3>Improve Conversions</h3>
-          <p>A seamless mobile experience keeps users engaged and turns visitors into customers. Mobile-optimized CTAs and forms convert up to 5× better.</p>
+          <p>A seamless mobile experience keeps users engaged and turns visitors into customers.</p>
         </div>
       </div>
 
       <blockquote class="why-quote">
         <p>"Neglecting mobile optimization is not a technical debt — it's a revenue leak. Every pixel out of place on mobile is a customer walking out the door."</p>
-        <cite>— Mobile UX Research, 2024</cite>
+        
       </blockquote>
     </div>
   </section>
@@ -508,7 +711,7 @@
     <div class="container">
       <div class="section-header">
         <span class="section-badge">Power Tools</span>
-        <h2 class="section-title" id="tools-heading">Complete Testing Suite</h2>
+        <h2 class="section-title" id="tools-heading">Free Mobile Testing Tools &amp; Web Apps</h2>
         <p class="section-description">Everything you need to build, test, and ship pixel-perfect responsive websites</p>
       </div>
       <div class="tools-grid">
@@ -518,7 +721,7 @@
           </div>
           <h3 class="tool-title">Responsive Viewport Resizer</h3>
           <p class="tool-description">Dynamically adjust iframe width and height to simulate any device breakpoint. Perfect for checking CSS media query thresholds.</p>
-          <button class="tool-button" onclick="window.location.href='/responsive-viewport-resizer'" aria-label="Launch Responsive Viewport Resizer tool">Launch Tool →</button>
+          <a class="tool-button" href="/responsive-viewport-resizer" aria-label="Launch Responsive Viewport Resizer tool">Launch Tool →</a>
         </article>
 
         <article class="tool-card">
@@ -527,7 +730,7 @@
           </div>
           <h3 class="tool-title">Speaker Test</h3>
           <p class="tool-description">Ensure your site's audio elements and accessibility cues are sounding correct across different frequencies and stereo channels.</p>
-          <button class="tool-button" onclick="window.location.href='/speaker-test'" aria-label="Launch Speaker Test tool">Launch Tool →</button>
+          <a class="tool-button" href="/speaker-test" aria-label="Launch Speaker Test tool">Launch Tool →</a>
         </article>
 
         <article class="tool-card">
@@ -536,7 +739,7 @@
           </div>
           <h3 class="tool-title">Mic Test</h3>
           <p class="tool-description">Verify microphone permissions and audio input quality for web apps utilizing voice commands, recording, or WebRTC features.</p>
-          <button class="tool-button" onclick="window.location.href='/mic-check'" aria-label="Launch Mic Test tool">Launch Tool →</button>
+          <a class="tool-button" href="/mic-check" aria-label="Launch Mic Test tool">Launch Tool →</a>
         </article>
 
         <article class="tool-card">
@@ -545,7 +748,7 @@
           </div>
           <h3 class="tool-title">Camera Test</h3>
           <p class="tool-description">Debug webcam streams and test photo-capture functionality to ensure seamless media integration on mobile and desktop browsers.</p>
-          <button class="tool-button" onclick="window.location.href='/camera-test'" aria-label="Launch Camera Test tool">Launch Tool →</button>
+          <a class="tool-button" href="/camera-test" aria-label="Launch Camera Test tool">Launch Tool →</a>
         </article>
 
         <article class="tool-card">
@@ -554,7 +757,7 @@
           </div>
           <h3 class="tool-title">QR Code Generator</h3>
           <p class="tool-description">Generate a QR code for any URL and instantly test mobile access by scanning with your phone. Great for staging sites.</p>
-          <button class="tool-button" onclick="window.location.href='/qr-code-generator'" aria-label="Launch QR Code Generator tool">Launch Tool →</button>
+          <a class="tool-button" href="/qr-code-generator" aria-label="Launch QR Code Generator tool">Launch Tool →</a>
         </article>
 
         <article class="tool-card">
@@ -563,7 +766,7 @@
           </div>
           <h3 class="tool-title">Website Screenshot Capturer</h3>
           <p class="tool-description">Capture screenshots of any website at multiple device resolutions for visual comparison and stakeholder reports.</p>
-          <button class="tool-button" onclick="window.location.href='/website-screenshot-capturer'" aria-label="Launch Website Screenshot Capturer tool">Launch Tool →</button>
+          <a class="tool-button" href="/website-screenshot-capturer" aria-label="Launch Website Screenshot Capturer tool">Launch Tool →</a>
         </article>
 
         <article class="tool-card">
@@ -572,7 +775,7 @@
           </div>
           <h3 class="tool-title">Accessibility Contrast Checker</h3>
           <p class="tool-description">Test color contrast ratios against WCAG AA/AAA standards to ensure text is readable on all device types and in all lighting conditions.</p>
-          <button class="tool-button" onclick="window.location.href='/accessibility-contrast-checker'" aria-label="Launch Accessibility Contrast Checker tool">Launch Tool →</button>
+          <a class="tool-button" href="/accessibility-contrast-checker" aria-label="Launch Accessibility Contrast Checker tool">Launch Tool →</a>
         </article>
 
         <article class="tool-card">
@@ -581,7 +784,7 @@
           </div>
           <h3 class="tool-title">User Agent Switcher</h3>
           <p class="tool-description">Simulate different browsers and crawlers including Googlebot to see how your site responds to various user agent strings.</p>
-          <button class="tool-button" onclick="window.location.href='/user-agent-switcher'" aria-label="Launch User Agent Switcher tool">Launch Tool →</button>
+          <a class="tool-button" href="/user-agent-switcher" aria-label="Launch User Agent Switcher tool">Launch Tool →</a>
         </article>
 
         <article class="tool-card">
@@ -590,7 +793,7 @@
           </div>
           <h3 class="tool-title">Multi-Device Preview Grid</h3>
           <p class="tool-description">View your URL simultaneously across multiple device sizes in a grid layout. Spot responsive inconsistencies at a glance.</p>
-          <button class="tool-button" onclick="window.location.href='/multi-device-preview'" aria-label="Launch Multi-Device Preview Grid tool">Launch Tool →</button>
+          <a class="tool-button" href="/multi-device-preview" aria-label="Launch Multi-Device Preview Grid tool">Launch Tool →</a>
         </article>
 
         <article class="tool-card">
@@ -599,7 +802,7 @@
           </div>
           <h3 class="tool-title">Breakpoint Tester</h3>
           <p class="tool-description">A draggable overlay that shows CSS breakpoints in real-time on any loaded page. Check layout shifts at every responsive threshold.</p>
-          <button class="tool-button" onclick="window.location.href='/breakpoint-tester-bookmarklet'" aria-label="Launch Breakpoint Tester tool">Launch Tool →</button>
+          <a class="tool-button" href="/breakpoint-tester-bookmarklet" aria-label="Launch Breakpoint Tester tool">Launch Tool →</a>
         </article>
 
         <article class="tool-card">
@@ -608,7 +811,7 @@
           </div>
           <h3 class="tool-title">Offline Mode Tester</h3>
           <p class="tool-description">Simulate network offline conditions to test Progressive Web App (PWA) behavior, service workers, and cached content delivery.</p>
-          <button class="tool-button" onclick="window.location.href='/offline-mode-tester'" aria-label="Launch Offline Mode Tester tool">Launch Tool →</button>
+          <a class="tool-button" href="/offline-mode-tester" aria-label="Launch Offline Mode Tester tool">Launch Tool →</a>
         </article>
 
         <article class="tool-card">
@@ -617,7 +820,7 @@
           </div>
           <h3 class="tool-title">Device Frame Simulator</h3>
           <p class="tool-description">Wrap your website preview in realistic device frames — perfect for client presentations, app store screenshots, and marketing materials.</p>
-          <button class="tool-button" onclick="window.location.href='/device-frame-simulator'" aria-label="Launch Device Frame Simulator tool">Launch Tool →</button>
+          <a class="tool-button" href="/device-frame-simulator" aria-label="Launch Device Frame Simulator tool">Launch Tool →</a>
         </article>
 
         <article class="tool-card tool-card--featured">
@@ -626,7 +829,61 @@
           </div>
           <h3 class="tool-title">Page Speed Analyzer</h3>
           <p class="tool-description">Test your website's page speed and Core Web Vitals. Get actionable recommendations to improve LCP, FID, CLS, and mobile performance scores.</p>
-          <button class="tool-button" onclick="window.location.href='/page-speed'" aria-label="Launch Page Speed Analyzer tool">Launch Tool →</button>
+          <a class="tool-button" href="/page-speed" aria-label="Launch Page Speed Analyzer tool">Launch Tool →</a>
+        </article>
+
+        <article class="tool-card">
+          <div class="tool-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          </div>
+          <h3 class="tool-title">Screen Size Checker</h3>
+          <p class="tool-description">See your live viewport size, screen resolution, pixel ratio and orientation. Copy a full device report in one click.</p>
+          <a class="tool-button" href="/screen-size-checker" aria-label="Launch Screen Size Checker tool">Launch Tool →</a>
+        </article>
+
+        <article class="tool-card">
+          <div class="tool-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11V5a2 2 0 1 1 4 0v6m0 0 4 1a2 2 0 0 1 2 2v3a5 5 0 0 1-5 5h-2a5 5 0 0 1-4-2l-3-4a2 2 0 0 1 3-2l1 1"/></svg>
+          </div>
+          <h3 class="tool-title">Touch Screen Test</h3>
+          <p class="tool-description">Check multi-touch support and find dead zones on your phone or tablet by drawing with every finger at once.</p>
+          <a class="tool-button" href="/touch-screen-test" aria-label="Launch Touch Screen Test tool">Launch Tool →</a>
+        </article>
+
+        <article class="tool-card">
+          <div class="tool-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 9h.01M12 9h.01M16 9h.01M8 13h.01M12 13h.01M16 13h.01"/></svg>
+          </div>
+          <h3 class="tool-title">Dead Pixel Test</h3>
+          <p class="tool-description">Cycle full-screen solid colors to spot dead pixels, stuck pixels and backlight bleed on any display.</p>
+          <a class="tool-button" href="/dead-pixel-test" aria-label="Launch Dead Pixel Test tool">Launch Tool →</a>
+        </article>
+
+        <article class="tool-card">
+          <div class="tool-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3M8 11h6"/></svg>
+          </div>
+          <h3 class="tool-title">SERP Snippet Preview</h3>
+          <p class="tool-description">Preview how your title and meta description appear in Google on mobile and desktop, with pixel-width checks.</p>
+          <a class="tool-button" href="/serp-snippet-preview" aria-label="Launch SERP Snippet Preview tool">Launch Tool →</a>
+        </article>
+
+        <article class="tool-card">
+          <div class="tool-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h10M4 12h6M4 17h10M17 8l3 4-3 4"/></svg>
+          </div>
+          <h3 class="tool-title">PX to REM Converter</h3>
+          <p class="tool-description">Convert px to rem, em, vw, percent and pt with your own base font size and viewport width.</p>
+          <a class="tool-button" href="/px-to-rem-converter" aria-label="Launch PX to REM Converter tool">Launch Tool →</a>
+        </article>
+
+        <article class="tool-card">
+          <div class="tool-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17 17 3l4 4L7 21H3z"/><path d="M13 7l2 2M10 10l2 2M7 13l2 2"/></svg>
+          </div>
+          <h3 class="tool-title">Screen PPI Calculator</h3>
+          <p class="tool-description">Work out pixel density, aspect ratio and physical screen size from resolution and diagonal.</p>
+          <a class="tool-button" href="/screen-ppi-calculator" aria-label="Launch Screen PPI Calculator tool">Launch Tool →</a>
         </article>
       </div>
     </div>
@@ -811,9 +1068,9 @@
         <div class="cta-glow" aria-hidden="true"></div>
         <div class="cta-badge">Free · No Sign-up · Instant</div>
         <h2 class="cta-title">Start testing your website on mobile right now</h2>
-        <p class="cta-description">Join 50,000+ developers and designers who use Mobile Viewer to build better responsive websites</p>
+        <p class="cta-description">Preview your site on 20+ device presets, free and with no sign-up</p>
         <div class="cta-actions">
-          <a href="/#viewer" class="primary-button" onclick="scrollToViewer()" aria-label="Launch Mobile Viewer Tool">
+          <a href="#viewer" class="primary-button" aria-label="Launch Mobile Viewer Tool">
             <span>Launch Mobile Viewer</span>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6L15 12L9 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </a>
@@ -822,6 +1079,8 @@
       </div>
     </div>
   </section>
+
+  </main>
 
   <!-- Footer Component -->
   <div id="footer-placeholder"></div>
